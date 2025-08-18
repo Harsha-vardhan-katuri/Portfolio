@@ -1,3 +1,3 @@
 # Protifolio
 
-Hi this my protfolio
+Hi this is my protfolio
