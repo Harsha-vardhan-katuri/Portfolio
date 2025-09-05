@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Code, Cpu, Network, MicroscopeIcon as Microchip, Wrench } from "lucide-react"
+import { Code, Cpu, Network, Microscope as Microchip, Wrench } from "lucide-react"
 
 export default function Skills() {
   const skillCategories = [
@@ -45,21 +45,6 @@ export default function Skills() {
 
   return (
     <div className="py-8">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="text-center mb-12"
-      >
-        <h2 className="text-4xl md:text-5xl font-black mb-4">
-          Technical <span className="text-pink-500 font-black">Skills</span>
-        </h2>
-        <p className="text-orange-500 max-w-2xl mx-auto font-black">
-          Comprehensive expertise in embedded systems, firmware development, and IoT technologies
-        </p>
-      </motion.div>
-
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {skillCategories.map((category, index) => (
           <motion.div

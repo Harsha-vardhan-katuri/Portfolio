@@ -46,21 +46,6 @@ export default function Experience() {
 
   return (
     <div className="py-8">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="text-center mb-12"
-      >
-        <h2 className="text-4xl md:text-5xl font-black mb-4">
-          Work <span className="text-green-500 font-black">Experience</span>
-        </h2>
-        <p className="text-cyan-500 max-w-2xl mx-auto font-black">
-          Professional journey in embedded systems, firmware development, and AI technologies
-        </p>
-      </motion.div>
-
       <div className="max-w-4xl mx-auto space-y-8">
         {experiences.map((experience, index) => (
           <motion.div

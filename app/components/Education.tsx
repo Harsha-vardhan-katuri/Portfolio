@@ -23,21 +23,6 @@ export default function Education() {
 
   return (
     <div className="py-8">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="text-center mb-12"
-      >
-        <h2 className="text-4xl md:text-5xl font-black mb-4">
-          My <span className="text-purple-500 font-black">Education</span>
-        </h2>
-        <p className="text-indigo-500 max-w-2xl mx-auto font-black">
-          Academic background that shaped my technical expertise
-        </p>
-      </motion.div>
-
       <div className="max-w-4xl mx-auto space-y-8">
         {education.map((edu, index) => (
           <motion.div

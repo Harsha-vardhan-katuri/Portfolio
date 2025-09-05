@@ -39,21 +39,6 @@ export default function Certifications() {
 
   return (
     <div className="py-8">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="text-center mb-12"
-      >
-        <h2 className="text-4xl md:text-5xl font-black mb-4">
-          Achievements & <span className="text-indigo-500 font-black">Certifications</span>
-        </h2>
-        <p className="text-yellow-500 max-w-2xl mx-auto font-black">
-          Recognition and certifications that validate my expertise and academic excellence
-        </p>
-      </motion.div>
-
       <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
         {achievements.map((achievement, index) => (
           <motion.div

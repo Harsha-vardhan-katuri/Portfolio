@@ -55,21 +55,6 @@ export default function Projects() {
 
   return (
     <div className="py-8">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="text-center mb-12"
-      >
-        <h2 className="text-4xl md:text-5xl font-black mb-4">
-          Featured <span className="text-cyan-500 font-black">Projects</span>
-        </h2>
-        <p className="text-green-500 max-w-2xl mx-auto font-black">
-          Innovative solutions in embedded systems, IoT, and AI technologies
-        </p>
-      </motion.div>
-
       <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
         {projects.map((project, index) => (
           <motion.div
