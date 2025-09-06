@@ -47,7 +47,7 @@ export default function Certifications() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: index * 0.15 }}
-            className="bg-gray-900 rounded-lg p-6 hover:bg-gray-800 transition-colors"
+            className="rounded-lg p-6 hover:bg-gray-800 transition-colors bg-black"
           >
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0">

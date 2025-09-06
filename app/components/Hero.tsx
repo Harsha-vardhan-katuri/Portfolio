@@ -79,83 +79,83 @@ export default function Hero() {
         return (
           <div className="flex flex-col items-center text-center space-y-8 max-w-4xl mx-auto">
             <style jsx>{`
-              .about-heading-wave-text {
-                display: inline-block;
-                animation: ${animatedSections.has("about") ? "about-heading-letter-wave 3s ease-in-out" : "none"};
+            .about-heading-wave-text {
+              display: inline-block;
+              animation: ${animatedSections.has("about") ? "about-heading-letter-wave 3s ease-in-out" : "none"};
+            }
+            
+            .about-heading-wave-text:nth-child(1) { animation-delay: 0s !important; }
+            .about-heading-wave-text:nth-child(2) { animation-delay: 0.1s !important; }
+            .about-heading-wave-text:nth-child(3) { animation-delay: 0.2s !important; }
+            .about-heading-wave-text:nth-child(4) { animation-delay: 0.3s !important; }
+            .about-heading-wave-text:nth-child(5) { animation-delay: 0.4s !important; }
+            
+            @keyframes about-heading-letter-wave {
+              0%, 100% { 
+                transform: translateY(0px) scale(1);
+                background: linear-gradient(45deg, #ffffff, #ffffff);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
               }
-              
-              .about-heading-wave-text:nth-child(1) { animation-delay: 0s; }
-              .about-heading-wave-text:nth-child(2) { animation-delay: 0.1s; }
-              .about-heading-wave-text:nth-child(3) { animation-delay: 0.2s; }
-              .about-heading-wave-text:nth-child(4) { animation-delay: 0.3s; }
-              .about-heading-wave-text:nth-child(5) { animation-delay: 0.4s; }
-              
-              @keyframes about-heading-letter-wave {
-                0%, 100% { 
-                  transform: translateY(0px) scale(1);
-                  background: linear-gradient(45deg, #ffffff, #ffffff);
-                  -webkit-background-clip: text;
-                  background-clip: text;
-                  -webkit-text-fill-color: transparent;
-                }
-                25% { 
-                  transform: translateY(-12px) scale(1.1);
-                  background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
-                  -webkit-background-clip: text;
-                  background-clip: text;
-                  -webkit-text-fill-color: transparent;
-                }
-                50% { 
-                  transform: translateY(-18px) scale(1.2);
-                  background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
-                  -webkit-background-clip: text;
-                  background-clip: text;
-                  -webkit-text-fill-color: transparent;
-                }
-                75% { 
-                  transform: translateY(-12px) scale(1.1);
-                  background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
-                  -webkit-background-clip: text;
-                  background-clip: text;
-                  -webkit-text-fill-color: transparent;
-                }
+              25% { 
+                transform: translateY(-12px) scale(1.1);
+                background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
               }
-              
-              .about-colored-text-wave {
-                display: inline-block;
-                animation: ${animatedSections.has("about") ? "about-colored-letter-wave 3s ease-in-out" : "none"};
+              50% { 
+                transform: translateY(-18px) scale(1.2);
+                background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
               }
-              
-              .about-colored-text-wave:nth-child(1) { animation-delay: 0.5s; }
-              .about-colored-text-wave:nth-child(2) { animation-delay: 0.6s; }
-              
-              @keyframes about-colored-letter-wave {
-                0%, 100% { 
-                  transform: translateY(0px) scale(1);
-                }
-                25% { 
-                  transform: translateY(-15px) scale(1.15);
-                  background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
-                  -webkit-background-clip: text;
-                  background-clip: text;
-                  -webkit-text-fill-color: transparent;
-                }
-                50% { 
-                  transform: translateY(-20px) scale(1.25);
-                  background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
-                  -webkit-background-clip: text;
-                  background-clip: text;
-                  -webkit-text-fill-color: transparent;
-                }
-                75% { 
-                  transform: translateY(-15px) scale(1.15);
-                  background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
-                  -webkit-background-clip: text;
-                  background-clip: text;
-                  -webkit-text-fill-color: transparent;
-                }
+              75% { 
+                transform: translateY(-12px) scale(1.1);
+                background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
               }
-            `}</style>
+            }
+            
+            .about-colored-text-wave {
+              display: inline-block;
+              animation: ${animatedSections.has("about") ? "about-colored-letter-wave 3s ease-in-out" : "none"};
+            }
+            
+            .about-colored-text-wave:nth-child(1) { animation-delay: 0.5s !important; }
+            .about-colored-text-wave:nth-child(2) { animation-delay: 0.6s !important; }
+            
+            @keyframes about-colored-letter-wave {
+              0%, 100% { 
+                transform: translateY(0px) scale(1);
+              }
+              25% { 
+                transform: translateY(-15px) scale(1.15);
+                background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+              50% { 
+                transform: translateY(-20px) scale(1.25);
+                background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+              75% { 
+                transform: translateY(-15px) scale(1.15);
+                background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+            }
+          `}</style>
 
             <h2 className="text-4xl md:text-5xl font-black mb-8">
               {"About".split("").map((letter, index) => (
@@ -177,20 +177,20 @@ export default function Hero() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="bg-gray-900 rounded-lg p-8 text-left"
+              className="rounded-lg p-8 text-left bg-black items-start"
             >
               <p className="text-white text-lg leading-relaxed mb-6 font-semibold">
-                I am a dedicated <span className="text-orange-500 font-black">Firmware Engineer</span> currently working
-                at HealthCube Private Limited, specializing in embedded systems and IoT solutions. My expertise lies in
+                I am a dedicated <span className="font-black text-red-700">Firmware Engineer</span> currently working at
+                HealthCube Private Limited, specializing in embedded systems and IoT solutions. My expertise lies in
                 developing robust firmware for microcontrollers, particularly{" "}
                 <span className="text-cyan-500 font-black">ESP32</span>, and implementing various communication
-                protocols including <span className="text-pink-500 font-black">LoRa, RS485, UART, I2C, and SPI</span>.
+                protocols including <span className="font-black text-purple-800">LoRa, RS485, UART, I2C, and SPI</span>.
               </p>
               <p className="text-white text-lg leading-relaxed font-semibold">
-                With hands-on experience in <span className="text-green-500 font-black">agricultural IoT systems</span>{" "}
+                With hands-on experience in <span className="font-black text-yellow-300">agricultural IoT systems</span>{" "}
                 and <span className="text-purple-500 font-black">medical device firmware</span>, I focus on creating
                 efficient, low-power solutions that deliver reliable performance in real-world applications. My recent
-                work includes developing a <span className="text-indigo-500 font-black">LoRa-enabled soil health</span>{" "}
+                work includes developing a <span className="font-black text-red-600">LoRa-enabled soil health</span>{" "}
                 monitoring system and contributing to production-grade medical device firmware.
               </p>
             </motion.div>
@@ -200,90 +200,90 @@ export default function Hero() {
         return (
           <div>
             <style jsx>{`
-        .exp-heading-wave-text {
-          display: inline-block;
-          animation: ${animatedSections.has("experience") ? "exp-heading-letter-wave 3s ease-in-out" : "none"};
-        }
-        
-        .exp-heading-wave-text:nth-child(1) { animation-delay: 0s; }
-        .exp-heading-wave-text:nth-child(2) { animation-delay: 0.1s; }
-        .exp-heading-wave-text:nth-child(3) { animation-delay: 0.2s; }
-        .exp-heading-wave-text:nth-child(4) { animation-delay: 0.3s; }
-        
-        @keyframes exp-heading-letter-wave {
-          0%, 100% { 
-            transform: translateY(0px) scale(1);
-            background: linear-gradient(45deg, #ffffff, #ffffff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-          25% { 
-            transform: translateY(-12px) scale(1.1);
-            background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-          50% { 
-            transform: translateY(-18px) scale(1.2);
-            background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-          75% { 
-            transform: translateY(-12px) scale(1.1);
-            background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-        }
-        
-        .exp-colored-text-wave {
-          display: inline-block;
-          animation: ${animatedSections.has("experience") ? "exp-colored-letter-wave 3s ease-in-out" : "none"};
-        }
-        
-        .exp-colored-text-wave:nth-child(1) { animation-delay: 0.4s; }
-        .exp-colored-text-wave:nth-child(2) { animation-delay: 0.5s; }
-        .exp-colored-text-wave:nth-child(3) { animation-delay: 0.6s; }
-        .exp-colored-text-wave:nth-child(4) { animation-delay: 0.7s; }
-        .exp-colored-text-wave:nth-child(5) { animation-delay: 0.8s; }
-        .exp-colored-text-wave:nth-child(6) { animation-delay: 0.9s; }
-        .exp-colored-text-wave:nth-child(7) { animation-delay: 1.0s; }
-        .exp-colored-text-wave:nth-child(8) { animation-delay: 1.1s; }
-        .exp-colored-text-wave:nth-child(9) { animation-delay: 1.2s; }
-        .exp-colored-text-wave:nth-child(10) { animation-delay: 1.3s; }
-        
-        @keyframes exp-colored-letter-wave {
-          0%, 100% { 
-            transform: translateY(0px) scale(1);
-          }
-          25% { 
-            transform: translateY(-15px) scale(1.15);
-            background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-          50% { 
-            transform: translateY(-20px) scale(1.25);
-            background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-          75% { 
-            transform: translateY(-15px) scale(1.15);
-            background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-        }
-      `}</style>
+            .exp-heading-wave-text {
+              display: inline-block;
+              animation: ${animatedSections.has("experience") ? "exp-heading-letter-wave 3s ease-in-out" : "none"};
+            }
+            
+            .exp-heading-wave-text:nth-child(1) { animation-delay: 0s !important; }
+            .exp-heading-wave-text:nth-child(2) { animation-delay: 0.1s !important; }
+            .exp-heading-wave-text:nth-child(3) { animation-delay: 0.2s !important; }
+            .exp-heading-wave-text:nth-child(4) { animation-delay: 0.3s !important; }
+            
+            @keyframes exp-heading-letter-wave {
+              0%, 100% { 
+                transform: translateY(0px) scale(1);
+                background: linear-gradient(45deg, #ffffff, #ffffff);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+              25% { 
+                transform: translateY(-12px) scale(1.1);
+                background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+              50% { 
+                transform: translateY(-18px) scale(1.2);
+                background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+              75% { 
+                transform: translateY(-12px) scale(1.1);
+                background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+            }
+            
+            .exp-colored-text-wave {
+              display: inline-block;
+              animation: ${animatedSections.has("experience") ? "exp-colored-letter-wave 3s ease-in-out" : "none"};
+            }
+            
+            .exp-colored-text-wave:nth-child(1) { animation-delay: 0.4s !important; }
+            .exp-colored-text-wave:nth-child(2) { animation-delay: 0.5s !important; }
+            .exp-colored-text-wave:nth-child(3) { animation-delay: 0.6s !important; }
+            .exp-colored-text-wave:nth-child(4) { animation-delay: 0.7s !important; }
+            .exp-colored-text-wave:nth-child(5) { animation-delay: 0.8s !important; }
+            .exp-colored-text-wave:nth-child(6) { animation-delay: 0.9s !important; }
+            .exp-colored-text-wave:nth-child(7) { animation-delay: 1.0s !important; }
+            .exp-colored-text-wave:nth-child(8) { animation-delay: 1.1s !important; }
+            .exp-colored-text-wave:nth-child(9) { animation-delay: 1.2s !important; }
+            .exp-colored-text-wave:nth-child(10) { animation-delay: 1.3s !important; }
+            
+            @keyframes exp-colored-letter-wave {
+              0%, 100% { 
+                transform: translateY(0px) scale(1);
+              }
+              25% { 
+                transform: translateY(-15px) scale(1.15);
+                background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+              50% { 
+                transform: translateY(-20px) scale(1.25);
+                background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+              75% { 
+                transform: translateY(-15px) scale(1.15);
+                background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+            }
+          `}</style>
 
             <h2 className="text-4xl md:text-5xl font-black mb-8 text-center">
               {"Work".split("").map((letter, index) => (
@@ -299,7 +299,7 @@ export default function Hero() {
                 ))}
               </span>
             </h2>
-            <p className="text-cyan-500 max-w-2xl mx-auto font-black text-center mb-12">
+            <p className="max-w-2xl mx-auto font-black text-center mb-12 text-purple-700">
               Professional journey in embedded systems, firmware development, and AI technologies
             </p>
             <Experience />
@@ -309,91 +309,91 @@ export default function Hero() {
         return (
           <div>
             <style jsx>{`
-        .skills-heading-wave-text {
-          display: inline-block;
-          animation: ${animatedSections.has("skills") ? "skills-heading-letter-wave 3s ease-in-out" : "none"};
-        }
-        
-        .skills-heading-wave-text:nth-child(1) { animation-delay: 0s; }
-        .skills-heading-wave-text:nth-child(2) { animation-delay: 0.1s; }
-        .skills-heading-wave-text:nth-child(3) { animation-delay: 0.2s; }
-        .skills-heading-wave-text:nth-child(4) { animation-delay: 0.3s; }
-        .skills-heading-wave-text:nth-child(5) { animation-delay: 0.4s; }
-        .skills-heading-wave-text:nth-child(6) { animation-delay: 0.5s; }
-        .skills-heading-wave-text:nth-child(7) { animation-delay: 0.6s; }
-        .skills-heading-wave-text:nth-child(8) { animation-delay: 0.7s; }
-        .skills-heading-wave-text:nth-child(9) { animation-delay: 0.8s; }
-        
-        @keyframes skills-heading-letter-wave {
-          0%, 100% { 
-            transform: translateY(0px) scale(1);
-            background: linear-gradient(45deg, #ffffff, #ffffff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-          25% { 
-            transform: translateY(-12px) scale(1.1);
-            background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-          50% { 
-            transform: translateY(-18px) scale(1.2);
-            background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-          75% { 
-            transform: translateY(-12px) scale(1.1);
-            background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-        }
-        
-        .skills-colored-text-wave {
-          display: inline-block;
-          animation: ${animatedSections.has("skills") ? "skills-colored-letter-wave 3s ease-in-out" : "none"};
-        }
-        
-        .skills-colored-text-wave:nth-child(1) { animation-delay: 0.9s; }
-        .skills-colored-text-wave:nth-child(2) { animation-delay: 1.0s; }
-        .skills-colored-text-wave:nth-child(3) { animation-delay: 1.1s; }
-        .skills-colored-text-wave:nth-child(4) { animation-delay: 1.2s; }
-        .skills-colored-text-wave:nth-child(5) { animation-delay: 1.3s; }
-        .skills-colored-text-wave:nth-child(6) { animation-delay: 1.4s; }
-        
-        @keyframes skills-colored-letter-wave {
-          0%, 100% { 
-            transform: translateY(0px) scale(1);
-          }
-          25% { 
-            transform: translateY(-15px) scale(1.15);
-            background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-          50% { 
-            transform: translateY(-20px) scale(1.25);
-            background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-          75% { 
-            transform: translateY(-15px) scale(1.15);
-            background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-        }
-      `}</style>
+            .skills-heading-wave-text {
+              display: inline-block;
+              animation: ${animatedSections.has("skills") ? "skills-heading-letter-wave 3s ease-in-out" : "none"};
+            }
+            
+            .skills-heading-wave-text:nth-child(1) { animation-delay: 0s !important; }
+            .skills-heading-wave-text:nth-child(2) { animation-delay: 0.1s !important; }
+            .skills-heading-wave-text:nth-child(3) { animation-delay: 0.2s !important; }
+            .skills-heading-wave-text:nth-child(4) { animation-delay: 0.3s !important; }
+            .skills-heading-wave-text:nth-child(5) { animation-delay: 0.4s !important; }
+            .skills-heading-wave-text:nth-child(6) { animation-delay: 0.5s !important; }
+            .skills-heading-wave-text:nth-child(7) { animation-delay: 0.6s !important; }
+            .skills-heading-wave-text:nth-child(8) { animation-delay: 0.7s !important; }
+            .skills-heading-wave-text:nth-child(9) { animation-delay: 0.8s !important; }
+            
+            @keyframes skills-heading-letter-wave {
+              0%, 100% { 
+                transform: translateY(0px) scale(1);
+                background: linear-gradient(45deg, #ffffff, #ffffff);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+              25% { 
+                transform: translateY(-12px) scale(1.1);
+                background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+              50% { 
+                transform: translateY(-18px) scale(1.2);
+                background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+              75% { 
+                transform: translateY(-12px) scale(1.1);
+                background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+            }
+            
+            .skills-colored-text-wave {
+              display: inline-block;
+              animation: ${animatedSections.has("skills") ? "skills-colored-letter-wave 3s ease-in-out" : "none"};
+            }
+            
+            .skills-colored-text-wave:nth-child(1) { animation-delay: 0.9s !important; }
+            .skills-colored-text-wave:nth-child(2) { animation-delay: 1.0s !important; }
+            .skills-colored-text-wave:nth-child(3) { animation-delay: 1.1s !important; }
+            .skills-colored-text-wave:nth-child(4) { animation-delay: 1.2s !important; }
+            .skills-colored-text-wave:nth-child(5) { animation-delay: 1.3s !important; }
+            .skills-colored-text-wave:nth-child(6) { animation-delay: 1.4s !important; }
+            
+            @keyframes skills-colored-letter-wave {
+              0%, 100% { 
+                transform: translateY(0px) scale(1);
+              }
+              25% { 
+                transform: translateY(-15px) scale(1.15);
+                background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+              50% { 
+                transform: translateY(-20px) scale(1.25);
+                background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+              75% { 
+                transform: translateY(-15px) scale(1.15);
+                background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+            }
+          `}</style>
 
             <h2 className="text-4xl md:text-5xl font-black mb-8 text-center">
               {"Technical".split("").map((letter, index) => (
@@ -409,7 +409,7 @@ export default function Hero() {
                 ))}
               </span>
             </h2>
-            <p className="text-orange-500 max-w-2xl mx-auto font-black text-center mb-12">
+            <p className="max-w-2xl mx-auto font-black text-center mb-12 text-yellow-400">
               Comprehensive expertise in embedded systems, firmware development, and IoT technologies
             </p>
             <Skills />
@@ -419,92 +419,92 @@ export default function Hero() {
         return (
           <div>
             <style jsx>{`
-        .projects-heading-wave-text {
-          display: inline-block;
-          animation: ${animatedSections.has("projects") ? "projects-heading-letter-wave 3s ease-in-out" : "none"};
-        }
-        
-        .projects-heading-wave-text:nth-child(1) { animation-delay: 0s; }
-        .projects-heading-wave-text:nth-child(2) { animation-delay: 0.1s; }
-        .projects-heading-wave-text:nth-child(3) { animation-delay: 0.2s; }
-        .projects-heading-wave-text:nth-child(4) { animation-delay: 0.3s; }
-        .projects-heading-wave-text:nth-child(5) { animation-delay: 0.4s; }
-        .projects-heading-wave-text:nth-child(6) { animation-delay: 0.5s; }
-        .projects-heading-wave-text:nth-child(7) { animation-delay: 0.6s; }
-        .projects-heading-wave-text:nth-child(8) { animation-delay: 0.7s; }
-        
-        @keyframes projects-heading-letter-wave {
-          0%, 100% { 
-            transform: translateY(0px) scale(1);
-            background: linear-gradient(45deg, #ffffff, #ffffff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-          25% { 
-            transform: translateY(-12px) scale(1.1);
-            background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-          50% { 
-            transform: translateY(-18px) scale(1.2);
-            background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-          75% { 
-            transform: translateY(-12px) scale(1.1);
-            background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-        }
-        
-        .projects-colored-text-wave {
-          display: inline-block;
-          animation: ${animatedSections.has("projects") ? "projects-colored-letter-wave 3s ease-in-out" : "none"};
-        }
-        
-        .projects-colored-text-wave:nth-child(1) { animation-delay: 0.8s; }
-        .projects-colored-text-wave:nth-child(2) { animation-delay: 0.9s; }
-        .projects-colored-text-wave:nth-child(3) { animation-delay: 1.0s; }
-        .projects-colored-text-wave:nth-child(4) { animation-delay: 1.1s; }
-        .projects-colored-text-wave:nth-child(5) { animation-delay: 1.2s; }
-        .projects-colored-text-wave:nth-child(6) { animation-delay: 1.3s; }
-        .projects-colored-text-wave:nth-child(7) { animation-delay: 1.4s; }
-        .projects-colored-text-wave:nth-child(8) { animation-delay: 1.5s; }
-        
-        @keyframes projects-colored-letter-wave {
-          0%, 100% { 
-            transform: translateY(0px) scale(1);
-          }
-          25% { 
-            transform: translateY(-15px) scale(1.15);
-            background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-          50% { 
-            transform: translateY(-20px) scale(1.25);
-            background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-          75% { 
-            transform: translateY(-15px) scale(1.15);
-            background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-        }
-      `}</style>
+            .projects-heading-wave-text {
+              display: inline-block;
+              animation: ${animatedSections.has("projects") ? "projects-heading-letter-wave 3s ease-in-out" : "none"};
+            }
+            
+            .projects-heading-wave-text:nth-child(1) { animation-delay: 0s !important; }
+            .projects-heading-wave-text:nth-child(2) { animation-delay: 0.1s !important; }
+            .projects-heading-wave-text:nth-child(3) { animation-delay: 0.2s !important; }
+            .projects-heading-wave-text:nth-child(4) { animation-delay: 0.3s !important; }
+            .projects-heading-wave-text:nth-child(5) { animation-delay: 0.4s !important; }
+            .projects-heading-wave-text:nth-child(6) { animation-delay: 0.5s !important; }
+            .projects-heading-wave-text:nth-child(7) { animation-delay: 0.6s !important; }
+            .projects-heading-wave-text:nth-child(8) { animation-delay: 0.7s !important; }
+            
+            @keyframes projects-heading-letter-wave {
+              0%, 100% { 
+                transform: translateY(0px) scale(1);
+                background: linear-gradient(45deg, #ffffff, #ffffff);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+              25% { 
+                transform: translateY(-12px) scale(1.1);
+                background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+              50% { 
+                transform: translateY(-18px) scale(1.2);
+                background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+              75% { 
+                transform: translateY(-12px) scale(1.1);
+                background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+            }
+            
+            .projects-colored-text-wave {
+              display: inline-block;
+              animation: ${animatedSections.has("projects") ? "projects-colored-letter-wave 3s ease-in-out" : "none"};
+            }
+            
+            .projects-colored-text-wave:nth-child(1) { animation-delay: 0.8s !important; }
+            .projects-colored-text-wave:nth-child(2) { animation-delay: 0.9s !important; }
+            .projects-colored-text-wave:nth-child(3) { animation-delay: 1.0s !important; }
+            .projects-colored-text-wave:nth-child(4) { animation-delay: 1.1s !important; }
+            .projects-colored-text-wave:nth-child(5) { animation-delay: 1.2s !important; }
+            .projects-colored-text-wave:nth-child(6) { animation-delay: 1.3s !important; }
+            .projects-colored-text-wave:nth-child(7) { animation-delay: 1.4s !important; }
+            .projects-colored-text-wave:nth-child(8) { animation-delay: 1.5s !important; }
+            
+            @keyframes projects-colored-letter-wave {
+              0%, 100% { 
+                transform: translateY(0px) scale(1);
+              }
+              25% { 
+                transform: translateY(-15px) scale(1.15);
+                background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+              50% { 
+                transform: translateY(-20px) scale(1.25);
+                background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+              75% { 
+                transform: translateY(-15px) scale(1.15);
+                background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+            }
+          `}</style>
 
             <h2 className="text-4xl md:text-5xl font-black mb-8 text-center">
               {"Featured".split("").map((letter, index) => (
@@ -520,7 +520,7 @@ export default function Hero() {
                 ))}
               </span>
             </h2>
-            <p className="text-green-500 max-w-2xl mx-auto font-black text-center mb-12">
+            <p className="max-w-2xl mx-auto font-black text-center mb-12 text-red-700">
               Innovative solutions in embedded systems, IoT, and AI technologies
             </p>
             <Projects />
@@ -530,87 +530,87 @@ export default function Hero() {
         return (
           <div>
             <style jsx>{`
-        .education-heading-wave-text {
-          display: inline-block;
-          animation: ${animatedSections.has("education") ? "education-heading-letter-wave 3s ease-in-out" : "none"};
-        }
-        
-        .education-heading-wave-text:nth-child(1) { animation-delay: 0s; }
-        .education-heading-wave-text:nth-child(2) { animation-delay: 0.1s; }
-        
-        @keyframes education-heading-letter-wave {
-          0%, 100% { 
-            transform: translateY(0px) scale(1);
-            background: linear-gradient(45deg, #ffffff, #ffffff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-          25% { 
-            transform: translateY(-12px) scale(1.1);
-            background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-          50% { 
-            transform: translateY(-18px) scale(1.2);
-            background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-          75% { 
-            transform: translateY(-12px) scale(1.1);
-            background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-        }
-        
-        .education-colored-text-wave {
-          display: inline-block;
-          animation: ${animatedSections.has("education") ? "education-colored-letter-wave 3s ease-in-out" : "none"};
-        }
-        
-        .education-colored-text-wave:nth-child(1) { animation-delay: 0.2s; }
-        .education-colored-text-wave:nth-child(2) { animation-delay: 0.3s; }
-        .education-colored-text-wave:nth-child(3) { animation-delay: 0.4s; }
-        .education-colored-text-wave:nth-child(4) { animation-delay: 0.5s; }
-        .education-colored-text-wave:nth-child(5) { animation-delay: 0.6s; }
-        .education-colored-text-wave:nth-child(6) { animation-delay: 0.7s; }
-        .education-colored-text-wave:nth-child(7) { animation-delay: 0.8s; }
-        .education-colored-text-wave:nth-child(8) { animation-delay: 0.9s; }
-        .education-colored-text-wave:nth-child(9) { animation-delay: 1.0s; }
-        
-        @keyframes education-colored-letter-wave {
-          0%, 100% { 
-            transform: translateY(0px) scale(1);
-          }
-          25% { 
-            transform: translateY(-15px) scale(1.15);
-            background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-          50% { 
-            transform: translateY(-20px) scale(1.25);
-            background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-          75% { 
-            transform: translateY(-15px) scale(1.15);
-            background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-        }
-      `}</style>
+            .education-heading-wave-text {
+              display: inline-block;
+              animation: ${animatedSections.has("education") ? "education-heading-letter-wave 3s ease-in-out" : "none"};
+            }
+            
+            .education-heading-wave-text:nth-child(1) { animation-delay: 0s !important; }
+            .education-heading-wave-text:nth-child(2) { animation-delay: 0.1s !important; }
+            
+            @keyframes education-heading-letter-wave {
+              0%, 100% { 
+                transform: translateY(0px) scale(1);
+                background: linear-gradient(45deg, #ffffff, #ffffff);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+              25% { 
+                transform: translateY(-12px) scale(1.1);
+                background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+              50% { 
+                transform: translateY(-18px) scale(1.2);
+                background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+              75% { 
+                transform: translateY(-12px) scale(1.1);
+                background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+            }
+            
+            .education-colored-text-wave {
+              display: inline-block;
+              animation: ${animatedSections.has("education") ? "education-colored-letter-wave 3s ease-in-out" : "none"};
+            }
+            
+            .education-colored-text-wave:nth-child(1) { animation-delay: 0.2s !important; }
+            .education-colored-text-wave:nth-child(2) { animation-delay: 0.3s !important; }
+            .education-colored-text-wave:nth-child(3) { animation-delay: 0.4s !important; }
+            .education-colored-text-wave:nth-child(4) { animation-delay: 0.5s !important; }
+            .education-colored-text-wave:nth-child(5) { animation-delay: 0.6s !important; }
+            .education-colored-text-wave:nth-child(6) { animation-delay: 0.7s !important; }
+            .education-colored-text-wave:nth-child(7) { animation-delay: 0.8s !important; }
+            .education-colored-text-wave:nth-child(8) { animation-delay: 0.9s !important; }
+            .education-colored-text-wave:nth-child(9) { animation-delay: 1.0s !important; }
+            
+            @keyframes education-colored-letter-wave {
+              0%, 100% { 
+                transform: translateY(0px) scale(1);
+              }
+              25% { 
+                transform: translateY(-15px) scale(1.15);
+                background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+              50% { 
+                transform: translateY(-20px) scale(1.25);
+                background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+              75% { 
+                transform: translateY(-15px) scale(1.15);
+                background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+            }
+          `}</style>
 
             <h2 className="text-4xl md:text-5xl font-black mb-8 text-center">
               {"My".split("").map((letter, index) => (
@@ -626,7 +626,7 @@ export default function Hero() {
                 ))}
               </span>
             </h2>
-            <p className="text-indigo-500 max-w-2xl mx-auto font-black text-center mb-12">
+            <p className="max-w-2xl mx-auto font-black text-center mb-12 text-red-800">
               Academic background that shaped my technical expertise
             </p>
             <Education />
@@ -636,101 +636,101 @@ export default function Hero() {
         return (
           <div>
             <style jsx>{`
-        .cert-heading-wave-text {
-          display: inline-block;
-          animation: ${animatedSections.has("certifications") ? "cert-heading-letter-wave 3s ease-in-out" : "none"};
-        }
-        
-        .cert-heading-wave-text:nth-child(1) { animation-delay: 0s; }
-        .cert-heading-wave-text:nth-child(2) { animation-delay: 0.1s; }
-        .cert-heading-wave-text:nth-child(3) { animation-delay: 0.2s; }
-        .cert-heading-wave-text:nth-child(4) { animation-delay: 0.3s; }
-        .cert-heading-wave-text:nth-child(5) { animation-delay: 0.4s; }
-        .cert-heading-wave-text:nth-child(6) { animation-delay: 0.5s; }
-        .cert-heading-wave-text:nth-child(7) { animation-delay: 0.6s; }
-        .cert-heading-wave-text:nth-child(8) { animation-delay: 0.7s; }
-        .cert-heading-wave-text:nth-child(9) { animation-delay: 0.8s; }
-        .cert-heading-wave-text:nth-child(10) { animation-delay: 0.9s; }
-        .cert-heading-wave-text:nth-child(11) { animation-delay: 1.0s; }
-        .cert-heading-wave-text:nth-child(12) { animation-delay: 1.1s; }
-        
-        @keyframes cert-heading-letter-wave {
-          0%, 100% { 
-            transform: translateY(0px) scale(1);
-            background: linear-gradient(45deg, #ffffff, #ffffff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-          25% { 
-            transform: translateY(-12px) scale(1.1);
-            background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-          50% { 
-            transform: translateY(-18px) scale(1.2);
-            background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-          75% { 
-            transform: translateY(-12px) scale(1.1);
-            background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-        }
-        
-        .cert-colored-text-wave {
-          display: inline-block;
-          animation: ${animatedSections.has("certifications") ? "cert-colored-letter-wave 3s ease-in-out" : "none"};
-        }
-        
-        .cert-colored-text-wave:nth-child(1) { animation-delay: 1.2s; }
-        .cert-colored-text-wave:nth-child(2) { animation-delay: 1.3s; }
-        .cert-colored-text-wave:nth-child(3) { animation-delay: 1.4s; }
-        .cert-colored-text-wave:nth-child(4) { animation-delay: 1.5s; }
-        .cert-colored-text-wave:nth-child(5) { animation-delay: 1.6s; }
-        .cert-colored-text-wave:nth-child(6) { animation-delay: 1.7s; }
-        .cert-colored-text-wave:nth-child(7) { animation-delay: 1.8s; }
-        .cert-colored-text-wave:nth-child(8) { animation-delay: 1.9s; }
-        .cert-colored-text-wave:nth-child(9) { animation-delay: 2.0s; }
-        .cert-colored-text-wave:nth-child(10) { animation-delay: 2.1s; }
-        .cert-colored-text-wave:nth-child(11) { animation-delay: 2.2s; }
-        .cert-colored-text-wave:nth-child(12) { animation-delay: 2.3s; }
-        .cert-colored-text-wave:nth-child(13) { animation-delay: 2.4s; }
-        
-        @keyframes cert-colored-letter-wave {
-          0%, 100% { 
-            transform: translateY(0px) scale(1);
-          }
-          25% { 
-            transform: translateY(-15px) scale(1.15);
-            background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-          50% { 
-            transform: translateY(-20px) scale(1.25);
-            background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-          75% { 
-            transform: translateY(-15px) scale(1.15);
-            background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-        }
-      `}</style>
+            .cert-heading-wave-text {
+              display: inline-block;
+              animation: ${animatedSections.has("certifications") ? "cert-heading-letter-wave 3s ease-in-out" : "none"};
+            }
+            
+            .cert-heading-wave-text:nth-child(1) { animation-delay: 0s !important; }
+            .cert-heading-wave-text:nth-child(2) { animation-delay: 0.1s !important; }
+            .cert-heading-wave-text:nth-child(3) { animation-delay: 0.2s !important; }
+            .cert-heading-wave-text:nth-child(4) { animation-delay: 0.3s !important; }
+            .cert-heading-wave-text:nth-child(5) { animation-delay: 0.4s !important; }
+            .cert-heading-wave-text:nth-child(6) { animation-delay: 0.5s !important; }
+            .cert-heading-wave-text:nth-child(7) { animation-delay: 0.6s !important; }
+            .cert-heading-wave-text:nth-child(8) { animation-delay: 0.7s !important; }
+            .cert-heading-wave-text:nth-child(9) { animation-delay: 0.8s !important; }
+            .cert-heading-wave-text:nth-child(10) { animation-delay: 0.9s !important; }
+            .cert-heading-wave-text:nth-child(11) { animation-delay: 1.0s !important; }
+            .cert-heading-wave-text:nth-child(12) { animation-delay: 1.1s !important; }
+            
+            @keyframes cert-heading-letter-wave {
+              0%, 100% { 
+                transform: translateY(0px) scale(1);
+                background: linear-gradient(45deg, #ffffff, #ffffff);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+              25% { 
+                transform: translateY(-12px) scale(1.1);
+                background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+              50% { 
+                transform: translateY(-18px) scale(1.2);
+                background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+              75% { 
+                transform: translateY(-12px) scale(1.1);
+                background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+            }
+            
+            .cert-colored-text-wave {
+              display: inline-block;
+              animation: ${animatedSections.has("certifications") ? "cert-colored-letter-wave 3s ease-in-out" : "none"};
+            }
+            
+            .cert-colored-text-wave:nth-child(1) { animation-delay: 1.2s !important; }
+            .cert-colored-text-wave:nth-child(2) { animation-delay: 1.3s !important; }
+            .cert-colored-text-wave:nth-child(3) { animation-delay: 1.4s !important; }
+            .cert-colored-text-wave:nth-child(4) { animation-delay: 1.5s !important; }
+            .cert-colored-text-wave:nth-child(5) { animation-delay: 1.6s !important; }
+            .cert-colored-text-wave:nth-child(6) { animation-delay: 1.7s !important; }
+            .cert-colored-text-wave:nth-child(7) { animation-delay: 1.8s !important; }
+            .cert-colored-text-wave:nth-child(8) { animation-delay: 1.9s !important; }
+            .cert-colored-text-wave:nth-child(9) { animation-delay: 2.0s !important; }
+            .cert-colored-text-wave:nth-child(10) { animation-delay: 2.1s !important; }
+            .cert-colored-text-wave:nth-child(11) { animation-delay: 2.2s !important; }
+            .cert-colored-text-wave:nth-child(12) { animation-delay: 2.3s !important; }
+            .cert-colored-text-wave:nth-child(13) { animation-delay: 2.4s !important; }
+            
+            @keyframes cert-colored-letter-wave {
+              0%, 100% { 
+                transform: translateY(0px) scale(1);
+              }
+              25% { 
+                transform: translateY(-15px) scale(1.15);
+                background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+              50% { 
+                transform: translateY(-20px) scale(1.25);
+                background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+              75% { 
+                transform: translateY(-15px) scale(1.15);
+                background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+            }
+          `}</style>
 
             <h2 className="text-4xl md:text-5xl font-black mb-8 text-center">
               {"Achievements".split("").map((letter, index) => (
@@ -747,7 +747,7 @@ export default function Hero() {
                 ))}
               </span>
             </h2>
-            <p className="text-yellow-500 max-w-2xl mx-auto font-black text-center mb-12">
+            <p className="max-w-2xl mx-auto font-black text-center mb-12 text-fuchsia-600">
               Recognition and certifications that validate my expertise and academic excellence
             </p>
             <Certifications />
@@ -757,94 +757,94 @@ export default function Hero() {
         return (
           <div className="flex flex-col items-center text-center space-y-8 max-w-4xl mx-auto">
             <style jsx>{`
-              .hire-heading-wave-text {
-                display: inline-block;
-                animation: ${animatedSections.has("hire") ? "hire-heading-letter-wave 3s ease-in-out" : "none"};
+            .hire-heading-wave-text {
+              display: inline-block;
+              animation: ${animatedSections.has("hire") ? "hire-heading-letter-wave 3s ease-in-out" : "none"};
+            }
+            
+            .hire-heading-wave-text:nth-child(1) { animation-delay: 0s !important; }
+            .hire-heading-wave-text:nth-child(2) { animation-delay: 0.1s !important; }
+            .hire-heading-wave-text:nth-child(3) { animation-delay: 0.2s !important; }
+            .hire-heading-wave-text:nth-child(4) { animation-delay: 0.3s !important; }
+            .hire-heading-wave-text:nth-child(5) { animation-delay: 0.4s !important; }
+            .hire-heading-wave-text:nth-child(6) { animation-delay: 0.5s !important; }
+            .hire-heading-wave-text:nth-child(7) { animation-delay: 0.6s !important; }
+            .hire-heading-wave-text:nth-child(8) { animation-delay: 0.7s !important; }
+            .hire-heading-wave-text:nth-child(9) { animation-delay: 0.8s !important; }
+            .hire-heading-wave-text:nth-child(10) { animation-delay: 0.9s !important; }
+            
+            @keyframes hire-heading-letter-wave {
+              0%, 100% { 
+                transform: translateY(0px) scale(1);
+                background: linear-gradient(45deg, #ffffff, #ffffff);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
               }
-              
-              .hire-heading-wave-text:nth-child(1) { animation-delay: 0s; }
-              .hire-heading-wave-text:nth-child(2) { animation-delay: 0.1s; }
-              .hire-heading-wave-text:nth-child(3) { animation-delay: 0.2s; }
-              .hire-heading-wave-text:nth-child(4) { animation-delay: 0.3s; }
-              .hire-heading-wave-text:nth-child(5) { animation-delay: 0.4s; }
-              .hire-heading-wave-text:nth-child(6) { animation-delay: 0.5s; }
-              .hire-heading-wave-text:nth-child(7) { animation-delay: 0.6s; }
-              .hire-heading-wave-text:nth-child(8) { animation-delay: 0.7s; }
-              .hire-heading-wave-text:nth-child(9) { animation-delay: 0.8s; }
-              .hire-heading-wave-text:nth-child(10) { animation-delay: 0.9s; }
-              
-              @keyframes hire-heading-letter-wave {
-                0%, 100% { 
-                  transform: translateY(0px) scale(1);
-                  background: linear-gradient(45deg, #ffffff, #ffffff);
-                  -webkit-background-clip: text;
-                  background-clip: text;
-                  -webkit-text-fill-color: transparent;
-                }
-                25% { 
-                  transform: translateY(-12px) scale(1.1);
-                  background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
-                  -webkit-background-clip: text;
-                  background-clip: text;
-                  -webkit-text-fill-color: transparent;
-                }
-                50% { 
-                  transform: translateY(-18px) scale(1.2);
-                  background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
-                  -webkit-background-clip: text;
-                  background-clip: text;
-                  -webkit-text-fill-color: transparent;
-                }
-                75% { 
-                  transform: translateY(-12px) scale(1.1);
-                  background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
-                  -webkit-background-clip: text;
-                  background-clip: text;
-                  -webkit-text-fill-color: transparent;
-                }
+              25% { 
+                transform: translateY(-12px) scale(1.1);
+                background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
               }
-              
-              .hire-colored-text-wave {
-                display: inline-block;
-                animation: ${animatedSections.has("hire") ? "hire-colored-letter-wave 3s ease-in-out" : "none"};
+              50% { 
+                transform: translateY(-18px) scale(1.2);
+                background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
               }
-              
-              .hire-colored-text-wave:nth-child(1) { animation-delay: 1.0s; }
-              .hire-colored-text-wave:nth-child(2) { animation-delay: 1.1s; }
-              .hire-colored-text-wave:nth-child(3) { animation-delay: 1.2s; }
-              .hire-colored-text-wave:nth-child(4) { animation-delay: 1.3s; }
-              .hire-colored-text-wave:nth-child(5) { animation-delay: 1.4s; }
-              .hire-colored-text-wave:nth-child(6) { animation-delay: 1.5s; }
-              .hire-colored-text-wave:nth-child(7) { animation-delay: 1.6s; }
-              .hire-colored-text-wave:nth-child(8) { animation-delay: 1.7s; }
-              
-              @keyframes hire-colored-letter-wave {
-                0%, 100% { 
-                  transform: translateY(0px) scale(1);
-                }
-                25% { 
-                  transform: translateY(-15px) scale(1.15);
-                  background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
-                  -webkit-background-clip: text;
-                  background-clip: text;
-                  -webkit-text-fill-color: transparent;
-                }
-                50% { 
-                  transform: translateY(-20px) scale(1.25);
-                  background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
-                  -webkit-background-clip: text;
-                  background-clip: text;
-                  -webkit-text-fill-color: transparent;
-                }
-                75% { 
-                  transform: translateY(-15px) scale(1.15);
-                  background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
-                  -webkit-background-clip: text;
-                  background-clip: text;
-                  -webkit-text-fill-color: transparent;
-                }
+              75% { 
+                transform: translateY(-12px) scale(1.1);
+                background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
               }
-            `}</style>
+            }
+            
+            .hire-colored-text-wave {
+              display: inline-block;
+              animation: ${animatedSections.has("hire") ? "hire-colored-letter-wave 3s ease-in-out" : "none"};
+            }
+            
+            .hire-colored-text-wave:nth-child(1) { animation-delay: 1.0s !important; }
+            .hire-colored-text-wave:nth-child(2) { animation-delay: 1.1s !important; }
+            .hire-colored-text-wave:nth-child(3) { animation-delay: 1.2s !important; }
+            .hire-colored-text-wave:nth-child(4) { animation-delay: 1.3s !important; }
+            .hire-colored-text-wave:nth-child(5) { animation-delay: 1.4s !important; }
+            .hire-colored-text-wave:nth-child(6) { animation-delay: 1.5s !important; }
+            .hire-colored-text-wave:nth-child(7) { animation-delay: 1.6s !important; }
+            .hire-colored-text-wave:nth-child(8) { animation-delay: 1.7s !important; }
+            
+            @keyframes hire-colored-letter-wave {
+              0%, 100% { 
+                transform: translateY(0px) scale(1);
+              }
+              25% { 
+                transform: translateY(-15px) scale(1.15);
+                background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+              50% { 
+                transform: translateY(-20px) scale(1.25);
+                background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+              75% { 
+                transform: translateY(-15px) scale(1.15);
+                background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+            }
+          `}</style>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -875,7 +875,7 @@ export default function Hero() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="bg-gray-900 rounded-lg p-8 text-center space-y-6"
+              className="rounded-lg p-8 text-center space-y-6 bg-black"
             >
               <h3 className="text-2xl font-black text-white mb-4">Available for Freelance Projects</h3>
               <p className="text-white text-lg font-black mb-6">
@@ -905,122 +905,122 @@ export default function Hero() {
         return (
           <div className="flex flex-col items-center text-center space-y-8 max-w-2xl mx-auto">
             <style jsx>{`
-              @keyframes rainbow-wave {
-                0% { background-position: 0% 50%; }
-                50% { background-position: 100% 50%; }
-                100% { background-position: 0% 50%; }
+            @keyframes rainbow-wave {
+              0% { background-position: 0% 50%; }
+              50% { background-position: 100% 50%; }
+              100% { background-position: 0% 50%; }
+            }
+            
+            .action-button {
+              position: relative;
+              overflow: hidden;
+              transition: all 0.3s ease;
+            }
+            
+            .action-button:hover {
+              transform: translateY(-3px);
+              box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+            }
+            
+            .action-button:hover .button-text {
+              color: #000000 !important;
+              font-weight: 900;
+            }
+            
+            .action-button:hover .rainbow-overlay {
+              opacity: 1;
+            }
+            
+            .rainbow-overlay {
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background: linear-gradient(
+                45deg,
+                rgba(255, 0, 0, 0.15), rgba(255, 127, 0, 0.15), rgba(255, 255, 0, 0.15), 
+                rgba(0, 255, 0, 0.15), rgba(0, 0, 255, 0.15), rgba(75, 0, 130, 0.15), 
+                rgba(148, 0, 211, 0.15), rgba(255, 20, 147, 0.15)
+              );
+              background-size: 400% 400%;
+              animation: rainbow-wave 1.8s ease-in-out infinite;
+              opacity: 0;
+              transition: opacity 0.3s ease;
+              border-radius: 0.5rem;
+            }
+            
+            .wave-text {
+              display: inline-block;
+              transition: all 0.3s ease;
+            }
+            
+            .action-button:hover .wave-text:nth-child(1) { animation-delay: 0s; }
+            .action-button:hover .wave-text:nth-child(2) { animation-delay: 0.1s; }
+            .action-button:hover .wave-text:nth-child(3) { animation-delay: 0.2s; }
+            .action-button:hover .wave-text:nth-child(4) { animation-delay: 0.3s; }
+            .action-button:hover .wave-text:nth-child(5) { animation-delay: 0.4s; }
+            .action-button:hover .wave-text:nth-child(6) { animation-delay: 0.5s; }
+            .action-button:hover .wave-text:nth-child(7) { animation-delay: 0.6s; }
+            .action-button:hover .wave-text:nth-child(8) { animation-delay: 0.7s; }
+            .action-button:hover .wave-text:nth-child(9) { animation-delay: 0.8s; }
+            .action-button:hover .wave-text:nth-child(10) { animation-delay: 0.9s; }
+            
+            @keyframes wave-letter {
+              0%, 100% { 
+                transform: translateY(0px) scale(1);
+                color: #000000;
               }
-              
-              .action-button {
-                position: relative;
-                overflow: hidden;
-                transition: all 0.3s ease;
+              25% { 
+                transform: translateY(-10px) scale(1.15);
+                background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
               }
-              
-              .action-button:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+              50% { 
+                transform: translateY(-15px) scale(1.25);
+                background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
               }
-              
-              .action-button:hover .button-text {
-                color: #000000 !important;
-                font-weight: 900;
+              75% { 
+                transform: translateY(-10px) scale(1.15);
+                background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
               }
-              
-              .action-button:hover .rainbow-overlay {
-                opacity: 1;
+            }
+            
+            .action-button:hover .wave-text {
+              animation: wave-letter 1.6s ease-in-out infinite;
+            }
+            
+            .icon-wave {
+              transition: all 0.3s ease;
+            }
+            
+            .action-button:hover .icon-wave {
+              animation: icon-bounce 1.2s ease-in-out infinite;
+            }
+            
+            @keyframes icon-bounce {
+              0%, 100% { 
+                transform: translateY(0px) rotate(0deg) scale(1);
               }
-              
-              .rainbow-overlay {
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: linear-gradient(
-                  45deg,
-                  rgba(255, 0, 0, 0.15), rgba(255, 127, 0, 0.15), rgba(255, 255, 0, 0.15), 
-                  rgba(0, 255, 0, 0.15), rgba(0, 0, 255, 0.15), rgba(75, 0, 130, 0.15), 
-                  rgba(148, 0, 211, 0.15), rgba(255, 20, 147, 0.15)
-                );
-                background-size: 400% 400%;
-                animation: rainbow-wave 1.8s ease-in-out infinite;
-                opacity: 0;
-                transition: opacity 0.3s ease;
-                border-radius: 0.5rem;
+              25% { 
+                transform: translateY(-8px) rotate(5deg) scale(1.1);
               }
-              
-              .wave-text {
-                display: inline-block;
-                transition: all 0.3s ease;
+              50% { 
+                transform: translateY(-12px) rotate(-5deg) scale(1.2);
               }
-              
-              .action-button:hover .wave-text:nth-child(1) { animation-delay: 0s; }
-              .action-button:hover .wave-text:nth-child(2) { animation-delay: 0.1s; }
-              .action-button:hover .wave-text:nth-child(3) { animation-delay: 0.2s; }
-              .action-button:hover .wave-text:nth-child(4) { animation-delay: 0.3s; }
-              .action-button:hover .wave-text:nth-child(5) { animation-delay: 0.4s; }
-              .action-button:hover .wave-text:nth-child(6) { animation-delay: 0.5s; }
-              .action-button:hover .wave-text:nth-child(7) { animation-delay: 0.6s; }
-              .action-button:hover .wave-text:nth-child(8) { animation-delay: 0.7s; }
-              .action-button:hover .wave-text:nth-child(9) { animation-delay: 0.8s; }
-              .action-button:hover .wave-text:nth-child(10) { animation-delay: 0.9s; }
-              
-              @keyframes wave-letter {
-                0%, 100% { 
-                  transform: translateY(0px) scale(1);
-                  color: #000000;
-                }
-                25% { 
-                  transform: translateY(-10px) scale(1.15);
-                  background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
-                  -webkit-background-clip: text;
-                  background-clip: text;
-                  -webkit-text-fill-color: transparent;
-                }
-                50% { 
-                  transform: translateY(-15px) scale(1.25);
-                  background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
-                  -webkit-background-clip: text;
-                  background-clip: text;
-                  -webkit-text-fill-color: transparent;
-                }
-                75% { 
-                  transform: translateY(-10px) scale(1.15);
-                  background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
-                  -webkit-background-clip: text;
-                  background-clip: text;
-                  -webkit-text-fill-color: transparent;
-                }
+              75% { 
+                transform: translateY(-8px) rotate(3deg) scale(1.1);
               }
-              
-              .action-button:hover .wave-text {
-                animation: wave-letter 1.6s ease-in-out infinite;
-              }
-              
-              .icon-wave {
-                transition: all 0.3s ease;
-              }
-              
-              .action-button:hover .icon-wave {
-                animation: icon-bounce 1.2s ease-in-out infinite;
-              }
-              
-              @keyframes icon-bounce {
-                0%, 100% { 
-                  transform: translateY(0px) rotate(0deg) scale(1);
-                }
-                25% { 
-                  transform: translateY(-8px) rotate(5deg) scale(1.1);
-                }
-                50% { 
-                  transform: translateY(-12px) rotate(-5deg) scale(1.2);
-                }
-                75% { 
-                  transform: translateY(-8px) rotate(3deg) scale(1.1);
-                }
-              }
-            `}</style>
+            }
+          `}</style>
 
             {/* Profile Image */}
             <motion.div
@@ -1056,7 +1056,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-xl md:text-2xl font-black text-blue-600"
+              className="text-xl md:text-2xl font-black text-red-700"
               style={{ fontWeight: 900 }}
             >
               Firmware Engineer
@@ -1067,7 +1067,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-lg text-orange-500 font-black"
+              className="text-lg font-black text-violet-800"
             >
               Specialized in Embedded Systems & IoT Solutions
             </motion.p>
@@ -1092,8 +1092,8 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="text-white max-w-3xl leading-relaxed font-semibold"
             >
-              Currently working as a <span className="text-pink-500 font-black">Firmware Engineer</span> at HealthCube
-              Private Limited, developing <span className="text-cyan-500 font-black">LoRa-enabled soil</span> health
+              Currently working as a <span className="font-black text-red-700">Firmware Engineer</span> at HealthCube
+              Private Limited, developing <span className="font-black text-yellow-400">LoRa-enabled soil</span> health
               monitoring systems and contributing to production-grade{" "}
               <span className="text-purple-500 font-black">medical device firmware</span>. Experienced in C/C++,
               embedded firmware development, and IoT solutions with expertise in microcontroller architectures and

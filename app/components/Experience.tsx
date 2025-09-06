@@ -54,18 +54,18 @@ export default function Experience() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: index * 0.2 }}
-            className="bg-gray-900 rounded-lg p-6 hover:bg-gray-800 transition-colors"
+            className="rounded-lg p-6 hover:bg-gray-800 transition-colors bg-black"
           >
             <div className="flex items-start justify-between mb-4">
               <div>
                 <h3 className="text-xl font-black text-white mb-2">{experience.title}</h3>
-                <p className="text-orange-500 font-black mb-2">{experience.company}</p>
+                <p className="font-black mb-2 text-indigo-700">{experience.company}</p>
                 <div className="flex items-center gap-4 mb-3 text-sm text-pink-500 font-black">
-                  <div className="flex items-center gap-1">
+                  <div className="flex items-center gap-1 text-red-800">
                     <MapPin className="w-4 h-4" />
                     {experience.location}
                   </div>
-                  <div className="flex items-center gap-1">
+                  <div className="flex items-center gap-1 text-red-800">
                     <Calendar className="w-4 h-4" />
                     {experience.period}
                   </div>

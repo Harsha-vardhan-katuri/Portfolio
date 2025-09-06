@@ -13,7 +13,7 @@ const nextConfig = {
   },
   output: "export", // Enable static export
   trailingSlash: true, // Required for GitHub Pages
-  basePath: process.env.NODE_ENV === "production" ? "/portfolio" : "",
+  basePath: process.env.NODE_ENV === "production" ? "/portfolio" : "", // Replace YOUR_REPO_NAME with your actual repo name
 }
 
 module.exports = nextConfig

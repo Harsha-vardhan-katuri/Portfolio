@@ -53,7 +53,7 @@ export default function Skills() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: index * 0.15 }}
-            className="bg-gray-900 rounded-lg p-6 hover:bg-gray-800 transition-colors"
+            className="rounded-lg p-6 hover:bg-gray-800 transition-colors bg-black"
           >
             <div
               className={`inline-flex items-center justify-center w-16 h-16 rounded-lg bg-gradient-to-r ${category.color} mb-4`}

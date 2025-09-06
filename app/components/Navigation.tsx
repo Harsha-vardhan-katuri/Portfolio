@@ -64,7 +64,7 @@ export default function Navigation({ activeSection = "home", setActiveSection }:
         }
         
         .nav-button:hover .button-text {
-          color: #000000 !important;
+          color: #ffffff !important;
           font-weight: 900;
         }
         
@@ -96,23 +96,25 @@ export default function Navigation({ activeSection = "home", setActiveSection }:
           transition: all 0.3s ease;
         }
         
-        .nav-button:hover .wave-text:nth-child(1) { animation-delay: 0s; }
-        .nav-button:hover .wave-text:nth-child(2) { animation-delay: 0.1s; }
-        .nav-button:hover .wave-text:nth-child(3) { animation-delay: 0.2s; }
-        .nav-button:hover .wave-text:nth-child(4) { animation-delay: 0.3s; }
-        .nav-button:hover .wave-text:nth-child(5) { animation-delay: 0.4s; }
-        .nav-button:hover .wave-text:nth-child(6) { animation-delay: 0.5s; }
-        .nav-button:hover .wave-text:nth-child(7) { animation-delay: 0.6s; }
-        .nav-button:hover .wave-text:nth-child(8) { animation-delay: 0.7s; }
-        .nav-button:hover .wave-text:nth-child(9) { animation-delay: 0.8s; }
-        .nav-button:hover .wave-text:nth-child(10) { animation-delay: 0.9s; }
-        .nav-button:hover .wave-text:nth-child(11) { animation-delay: 1.0s; }
-        .nav-button:hover .wave-text:nth-child(12) { animation-delay: 1.1s; }
+        .nav-button:hover .wave-text:nth-child(1) { animation-delay: 0s !important; }
+        .nav-button:hover .wave-text:nth-child(2) { animation-delay: 0.1s !important; }
+        .nav-button:hover .wave-text:nth-child(3) { animation-delay: 0.2s !important; }
+        .nav-button:hover .wave-text:nth-child(4) { animation-delay: 0.3s !important; }
+        .nav-button:hover .wave-text:nth-child(5) { animation-delay: 0.4s !important; }
+        .nav-button:hover .wave-text:nth-child(6) { animation-delay: 0.5s !important; }
+        .nav-button:hover .wave-text:nth-child(7) { animation-delay: 0.6s !important; }
+        .nav-button:hover .wave-text:nth-child(8) { animation-delay: 0.7s !important; }
+        .nav-button:hover .wave-text:nth-child(9) { animation-delay: 0.8s !important; }
+        .nav-button:hover .wave-text:nth-child(10) { animation-delay: 0.9s !important; }
+        .nav-button:hover .wave-text:nth-child(11) { animation-delay: 1.0s !important; }
+        .nav-button:hover .wave-text:nth-child(12) { animation-delay: 1.1s !important; }
+        .nav-button:hover .wave-text:nth-child(13) { animation-delay: 1.2s !important; }
+        .nav-button:hover .wave-text:nth-child(14) { animation-delay: 1.3s !important; }
         
         @keyframes wave-letter {
           0%, 100% { 
             transform: translateY(0px) scale(1);
-            color: #000000;
+            color: #ffffff;
           }
           25% { 
             transform: translateY(-8px) scale(1.1);
@@ -152,7 +154,7 @@ export default function Navigation({ activeSection = "home", setActiveSection }:
                 className={`nav-button px-4 py-2 rounded-full text-sm font-black transition-all relative ${
                   activeSection === section.id
                     ? "bg-gray-800 text-white"
-                    : `${section.color} hover:text-black hover:bg-white/10`
+                    : `${section.color} hover:text-white hover:bg-white/10`
                 }`}
               >
                 <div className="rainbow-overlay"></div>
