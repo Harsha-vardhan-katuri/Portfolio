@@ -49,6 +49,13 @@ const projects = [
   },
 ]
 
+// This function is required for static export with dynamic routes
+export async function generateStaticParams() {
+  return projects.map((project) => ({
+    slug: project.slug,
+  }))
+}
+
 export default function ProjectDemo({ params }: { params: { slug: string } }) {
   const project = projects.find((p) => p.slug === params.slug)
 
