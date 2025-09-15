@@ -18,7 +18,7 @@ This repository contains the source code of my **personal portfolio website**, c
 
 ## 🔹 Running Locally
 
-```bash
+\`\`\`bash
 # Clone the repository
 git clone https://github.com/HarshaVardhanKaturi/portfolio.git
 
@@ -28,6 +28,3 @@ cd portfolio
 # For React/Next.js projects
 npm install
 npm run dev
-
-
-
