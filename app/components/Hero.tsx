@@ -285,7 +285,7 @@ export default function Hero() {
             }
           `}</style>
 
-            <h2 className="text-4xl md:text-5xl font-black mb-8 text-center">
+            <h2 className="text-4xl md:text-5xl font-black mb-8 text-center mt-4">
               {"Work".split("").map((letter, index) => (
                 <span key={index} className="exp-heading-wave-text">
                   {letter === " " ? "\u00A0" : letter}
@@ -299,7 +299,7 @@ export default function Hero() {
                 ))}
               </span>
             </h2>
-            <p className="max-w-2xl mx-auto font-black text-center mb-12 text-purple-700">
+            <p className="max-w-2xl mx-auto font-black text-center text-purple-700 mb-7">
               Professional journey in embedded systems, firmware development, and AI technologies
             </p>
             <Experience />
@@ -395,7 +395,7 @@ export default function Hero() {
             }
           `}</style>
 
-            <h2 className="text-4xl md:text-5xl font-black mb-8 text-center">
+            <h2 className="text-4xl md:text-5xl font-black mb-8 text-center mt-4">
               {"Technical".split("").map((letter, index) => (
                 <span key={index} className="skills-heading-wave-text">
                   {letter === " " ? "\u00A0" : letter}
@@ -409,7 +409,7 @@ export default function Hero() {
                 ))}
               </span>
             </h2>
-            <p className="max-w-2xl mx-auto font-black text-center mb-12 text-yellow-400">
+            <p className="max-w-2xl mx-auto font-black text-center text-yellow-400 mb-7">
               Comprehensive expertise in embedded systems, firmware development, and IoT technologies
             </p>
             <Skills />
@@ -506,7 +506,7 @@ export default function Hero() {
             }
           `}</style>
 
-            <h2 className="text-4xl md:text-5xl font-black mb-8 text-center">
+            <h2 className="text-4xl md:text-5xl font-black mb-8 text-center mt-4">
               {"Featured".split("").map((letter, index) => (
                 <span key={index} className="projects-heading-wave-text">
                   {letter === " " ? "\u00A0" : letter}
@@ -612,7 +612,7 @@ export default function Hero() {
             }
           `}</style>
 
-            <h2 className="text-4xl md:text-5xl font-black mb-8 text-center">
+            <h2 className="text-4xl md:text-5xl font-black mb-8 text-center mt-4">
               {"My".split("").map((letter, index) => (
                 <span key={index} className="education-heading-wave-text">
                   {letter === " " ? "\u00A0" : letter}
@@ -626,7 +626,7 @@ export default function Hero() {
                 ))}
               </span>
             </h2>
-            <p className="max-w-2xl mx-auto font-black text-center mb-12 text-red-800">
+            <p className="max-w-2xl mx-auto font-black text-center text-red-800 mb-7">
               Academic background that shaped my technical expertise
             </p>
             <Education />
@@ -732,7 +732,7 @@ export default function Hero() {
             }
           `}</style>
 
-            <h2 className="text-4xl md:text-5xl font-black mb-8 text-center">
+            <h2 className="text-4xl md:text-5xl font-black mb-8 text-center mt-4">
               {"Achievements".split("").map((letter, index) => (
                 <span key={index} className="cert-heading-wave-text">
                   {letter === " " ? "\u00A0" : letter}
@@ -747,7 +747,7 @@ export default function Hero() {
                 ))}
               </span>
             </h2>
-            <p className="max-w-2xl mx-auto font-black text-center mb-12 text-fuchsia-600">
+            <p className="max-w-2xl mx-auto font-black text-center text-fuchsia-600 mb-7">
               Recognition and certifications that validate my expertise and academic excellence
             </p>
             <Certifications />
