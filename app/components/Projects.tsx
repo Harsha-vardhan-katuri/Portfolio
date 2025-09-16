@@ -33,7 +33,7 @@ export default function Projects() {
         "Reduced response generation time by 35% with DistilGPT-2 integration",
         "Increased user engagement by 50% with instant health advice delivery",
       ],
-      githubLink: "#",
+      githubLink: "https://github.com/Harsha-vardhan-katuri/AI_Chat_Bot",
       category: "AI & Machine Learning",
     },
     {
@@ -97,7 +97,7 @@ export default function Projects() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <ExternalLink className="w-5 h-5" />
+                    
                   </a>
                 </div>
               </div>
