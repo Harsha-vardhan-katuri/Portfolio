@@ -18,7 +18,7 @@ export default function Projects() {
         "Enabled wireless transmission over 1km range with 95% delivery accuracy in agricultural field conditions",
         "Maintained packet integrity while limiting current draw to below 50mA",
       ],
-      githubLink: "#",
+      githubLink: "https://github.com/Harsha-vardhan-katuri/Soil-Sensor-Project",
       category: "IoT & Embedded Systems",
     },
     {
