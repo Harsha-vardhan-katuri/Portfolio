@@ -5,7 +5,6 @@ import { Linkedin, Mail, Download, Github, Phone, MapPin, Check } from "lucide-r
 import Link from "next/link"
 import Image from "next/image"
 import FallingCubes from "./FallingCubes"
-import { Button } from "@/components/ui/button"
 import { useState, useEffect } from "react"
 import Skills from "./Skills"
 import Education from "./Education"
@@ -27,14 +26,14 @@ export default function Hero() {
     }
   }, [activeSection, animatedSections])
 
+  // Scroll to top when section changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }, [activeSection])
+
   const handleResumeDownload = () => {
-    // Create a link element and trigger download
-    const link = document.createElement("a")
-    link.href = "/resume.pdf" // Assuming resume is in public folder
-    link.download = "Harsha_Vardhan_Katuri_Resume.pdf"
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
+    // Open Google Drive link in new tab
+    window.open("https://drive.google.com/file/d/12LjzYqlAkPaz9xmxxNB0uoS1poytS9me/view?usp=drive_link", "_blank")
   }
 
   const handleEmailCopy = async () => {
@@ -77,7 +76,7 @@ export default function Hero() {
     switch (activeSection) {
       case "about":
         return (
-          <div className="flex flex-col items-center text-center space-y-8 max-w-4xl mx-auto">
+          <div className="flex flex-col items-center text-center space-y-8 max-w-4xl mx-auto min-h-screen justify-center">
             <style jsx>{`
             .about-heading-wave-text {
               display: inline-block;
@@ -198,7 +197,7 @@ export default function Hero() {
         )
       case "experience":
         return (
-          <div>
+          <div className="min-h-screen flex flex-col justify-center pt-16">
             <style jsx>{`
             .exp-heading-wave-text {
               display: inline-block;
@@ -285,7 +284,7 @@ export default function Hero() {
             }
           `}</style>
 
-            <h2 className="text-4xl md:text-5xl font-black mb-8 text-center mt-4">
+            <h2 className="text-4xl md:text-5xl font-black mb-16 text-center mt-4">
               {"Work".split("").map((letter, index) => (
                 <span key={index} className="exp-heading-wave-text">
                   {letter === " " ? "\u00A0" : letter}
@@ -299,7 +298,7 @@ export default function Hero() {
                 ))}
               </span>
             </h2>
-            <p className="max-w-2xl mx-auto font-black text-center text-purple-700 mb-7">
+            <p className="max-w-2xl mx-auto font-black text-center text-purple-700 mb-2">
               Professional journey in embedded systems, firmware development, and AI technologies
             </p>
             <Experience />
@@ -307,7 +306,7 @@ export default function Hero() {
         )
       case "skills":
         return (
-          <div>
+          <div className="min-h-screen flex flex-col justify-center pt-16">
             <style jsx>{`
             .skills-heading-wave-text {
               display: inline-block;
@@ -395,7 +394,7 @@ export default function Hero() {
             }
           `}</style>
 
-            <h2 className="text-4xl md:text-5xl font-black mb-8 text-center mt-4">
+            <h2 className="text-4xl md:text-5xl font-black mb-16 text-center mt-4">
               {"Technical".split("").map((letter, index) => (
                 <span key={index} className="skills-heading-wave-text">
                   {letter === " " ? "\u00A0" : letter}
@@ -409,7 +408,7 @@ export default function Hero() {
                 ))}
               </span>
             </h2>
-            <p className="max-w-2xl mx-auto font-black text-center text-yellow-400 mb-7">
+            <p className="max-w-2xl mx-auto font-black text-center text-yellow-400 mb-2">
               Comprehensive expertise in embedded systems, firmware development, and IoT technologies
             </p>
             <Skills />
@@ -417,7 +416,7 @@ export default function Hero() {
         )
       case "projects":
         return (
-          <div>
+          <div className="min-h-screen flex flex-col justify-center pt-16">
             <style jsx>{`
             .projects-heading-wave-text {
               display: inline-block;
@@ -506,7 +505,7 @@ export default function Hero() {
             }
           `}</style>
 
-            <h2 className="text-4xl md:text-5xl font-black mb-8 text-center mt-4">
+            <h2 className="text-4xl md:text-5xl font-black mb-16 text-center mt-4">
               {"Featured".split("").map((letter, index) => (
                 <span key={index} className="projects-heading-wave-text">
                   {letter === " " ? "\u00A0" : letter}
@@ -520,7 +519,7 @@ export default function Hero() {
                 ))}
               </span>
             </h2>
-            <p className="max-w-2xl mx-auto font-black text-center mb-12 text-red-700">
+            <p className="max-w-2xl mx-auto font-black text-center mb-2 text-red-700">
               Innovative solutions in embedded systems, IoT, and AI technologies
             </p>
             <Projects />
@@ -528,7 +527,7 @@ export default function Hero() {
         )
       case "education":
         return (
-          <div>
+          <div className="min-h-screen flex flex-col justify-center pt-16">
             <style jsx>{`
             .education-heading-wave-text {
               display: inline-block;
@@ -612,7 +611,7 @@ export default function Hero() {
             }
           `}</style>
 
-            <h2 className="text-4xl md:text-5xl font-black mb-8 text-center mt-4">
+            <h2 className="text-4xl md:text-5xl font-black mb-16 text-center mt-4">
               {"My".split("").map((letter, index) => (
                 <span key={index} className="education-heading-wave-text">
                   {letter === " " ? "\u00A0" : letter}
@@ -626,7 +625,7 @@ export default function Hero() {
                 ))}
               </span>
             </h2>
-            <p className="max-w-2xl mx-auto font-black text-center text-red-800 mb-7">
+            <p className="max-w-2xl mx-auto font-black text-center text-red-800 mb-2">
               Academic background that shaped my technical expertise
             </p>
             <Education />
@@ -634,7 +633,7 @@ export default function Hero() {
         )
       case "certifications":
         return (
-          <div>
+          <div className="min-h-screen flex flex-col justify-center pt-16">
             <style jsx>{`
             .cert-heading-wave-text {
               display: inline-block;
@@ -732,7 +731,7 @@ export default function Hero() {
             }
           `}</style>
 
-            <h2 className="text-4xl md:text-5xl font-black mb-8 text-center mt-4">
+            <h2 className="text-4xl md:text-5xl font-black mb-16 text-center mt-4">
               {"Achievements".split("").map((letter, index) => (
                 <span key={index} className="cert-heading-wave-text">
                   {letter === " " ? "\u00A0" : letter}
@@ -747,7 +746,7 @@ export default function Hero() {
                 ))}
               </span>
             </h2>
-            <p className="max-w-2xl mx-auto font-black text-center text-fuchsia-600 mb-7">
+            <p className="max-w-2xl mx-auto font-black text-center text-fuchsia-600 mb-2">
               Recognition and certifications that validate my expertise and academic excellence
             </p>
             <Certifications />
@@ -755,93 +754,131 @@ export default function Hero() {
         )
       case "hire":
         return (
-          <div className="flex flex-col items-center text-center space-y-8 max-w-4xl mx-auto">
+          <div className="flex flex-col items-center text-center space-y-8 max-w-4xl mx-auto min-h-screen justify-center">
             <style jsx>{`
-            .hire-heading-wave-text {
-              display: inline-block;
-              animation: ${animatedSections.has("hire") ? "hire-heading-letter-wave 3s ease-in-out" : "none"};
+            @keyframes rainbow-wave {
+              0% { background-position: 0% 50%; }
+              50% { background-position: 100% 50%; }
+              100% { background-position: 0% 50%; }
             }
-            
-            .hire-heading-wave-text:nth-child(1) { animation-delay: 0s !important; }
-            .hire-heading-wave-text:nth-child(2) { animation-delay: 0.1s !important; }
-            .hire-heading-wave-text:nth-child(3) { animation-delay: 0.2s !important; }
-            .hire-heading-wave-text:nth-child(4) { animation-delay: 0.3s !important; }
-            .hire-heading-wave-text:nth-child(5) { animation-delay: 0.4s !important; }
-            .hire-heading-wave-text:nth-child(6) { animation-delay: 0.5s !important; }
-            .hire-heading-wave-text:nth-child(7) { animation-delay: 0.6s !important; }
-            .hire-heading-wave-text:nth-child(8) { animation-delay: 0.7s !important; }
-            .hire-heading-wave-text:nth-child(9) { animation-delay: 0.8s !important; }
-            .hire-heading-wave-text:nth-child(10) { animation-delay: 0.9s !important; }
-            
-            @keyframes hire-heading-letter-wave {
+
+            .action-button {
+              position: relative;
+              overflow: hidden;
+              transition: all 0.3s ease;
+            }
+
+            .action-button:hover {
+              transform: translateY(-3px);
+              box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+            }
+
+            .action-button:hover .button-text {
+              color: #000000 !important;
+              font-weight: 900;
+            }
+
+            .action-button:hover .rainbow-overlay {
+              opacity: 1;
+            }
+
+            .rainbow-overlay {
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background: linear-gradient(
+                45deg,
+                rgba(255, 0, 0, 0.15), rgba(255, 127, 0, 0.15), rgba(255, 255, 0, 0.15), 
+                rgba(0, 255, 0, 0.15), rgba(0, 0, 255, 0.15), rgba(75, 0, 130, 0.15), 
+                rgba(148, 0, 211, 0.15), rgba(255, 20, 147, 0.15)
+              );
+              background-size: 400% 400%;
+              animation: rainbow-wave 1.8s ease-in-out infinite;
+              opacity: 0;
+              transition: opacity 0.3s ease;
+              border-radius: 0.5rem;
+            }
+
+            .wave-text {
+              display: inline-block;
+              transition: all 0.3s ease;
+            }
+
+            .action-button:hover .wave-text:nth-child(1) { animation-delay: 0s; }
+            .action-button:hover .wave-text:nth-child(2) { animation-delay: 0.1s; }
+            .action-button:hover .wave-text:nth-child(3) { animation-delay: 0.2s; }
+            .action-button:hover .wave-text:nth-child(4) { animation-delay: 0.3s; }
+            .action-button:hover .wave-text:nth-child(5) { animation-delay: 0.4s; }
+            .action-button:hover .wave-text:nth-child(6) { animation-delay: 0.5s; }
+            .action-button:hover .wave-text:nth-child(7) { animation-delay: 0.6s; }
+            .action-button:hover .wave-text:nth-child(8) { animation-delay: 0.7s; }
+            .action-button:hover .wave-text:nth-child(9) { animation-delay: 0.8s; }
+            .action-button:hover .wave-text:nth-child(10) { animation-delay: 0.9s; }
+            .action-button:hover .wave-text:nth-child(11) { animation-delay: 1.0s; }
+            .action-button:hover .wave-text:nth-child(12) { animation-delay: 1.1s; }
+            .action-button:hover .wave-text:nth-child(13) { animation-delay: 1.2s; }
+            .action-button:hover .wave-text:nth-child(14) { animation-delay: 1.3s; }
+            .action-button:hover .wave-text:nth-child(15) { animation-delay: 1.4s; }
+            .action-button:hover .wave-text:nth-child(16) { animation-delay: 1.5s; }
+            .action-button:hover .wave-text:nth-child(17) { animation-delay: 1.6s; }
+            .action-button:hover .wave-text:nth-child(18) { animation-delay: 1.7s; }
+            .action-button:hover .wave-text:nth-child(19) { animation-delay: 1.8s; }
+            .action-button:hover .wave-text:nth-child(20) { animation-delay: 1.9s; }
+
+            @keyframes wave-letter {
               0%, 100% { 
                 transform: translateY(0px) scale(1);
-                background: linear-gradient(45deg, #ffffff, #ffffff);
-                -webkit-background-clip: text;
-                background-clip: text;
-                -webkit-text-fill-color: transparent;
+                color: #000000;
               }
               25% { 
-                transform: translateY(-12px) scale(1.1);
+                transform: translateY(-10px) scale(1.15);
                 background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
                 -webkit-background-clip: text;
                 background-clip: text;
                 -webkit-text-fill-color: transparent;
               }
               50% { 
-                transform: translateY(-18px) scale(1.2);
+                transform: translateY(-15px) scale(1.25);
                 background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
                 -webkit-background-clip: text;
                 background-clip: text;
                 -webkit-text-fill-color: transparent;
               }
               75% { 
-                transform: translateY(-12px) scale(1.1);
+                transform: translateY(-10px) scale(1.15);
                 background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
                 -webkit-background-clip: text;
                 background-clip: text;
                 -webkit-text-fill-color: transparent;
               }
             }
-            
-            .hire-colored-text-wave {
-              display: inline-block;
-              animation: ${animatedSections.has("hire") ? "hire-colored-letter-wave 3s ease-in-out" : "none"};
+
+            .action-button:hover .wave-text {
+              animation: wave-letter 1.6s ease-in-out infinite;
             }
-            
-            .hire-colored-text-wave:nth-child(1) { animation-delay: 1.0s !important; }
-            .hire-colored-text-wave:nth-child(2) { animation-delay: 1.1s !important; }
-            .hire-colored-text-wave:nth-child(3) { animation-delay: 1.2s !important; }
-            .hire-colored-text-wave:nth-child(4) { animation-delay: 1.3s !important; }
-            .hire-colored-text-wave:nth-child(5) { animation-delay: 1.4s !important; }
-            .hire-colored-text-wave:nth-child(6) { animation-delay: 1.5s !important; }
-            .hire-colored-text-wave:nth-child(7) { animation-delay: 1.6s !important; }
-            .hire-colored-text-wave:nth-child(8) { animation-delay: 1.7s !important; }
-            
-            @keyframes hire-colored-letter-wave {
+
+            .icon-wave {
+              transition: all 0.3s ease;
+            }
+
+            .action-button:hover .icon-wave {
+              animation: icon-bounce 1.2s ease-in-out infinite;
+            }
+
+            @keyframes icon-bounce {
               0%, 100% { 
-                transform: translateY(0px) scale(1);
+                transform: translateY(0px) rotate(0deg) scale(1);
               }
               25% { 
-                transform: translateY(-15px) scale(1.15);
-                background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
-                -webkit-background-clip: text;
-                background-clip: text;
-                -webkit-text-fill-color: transparent;
+                transform: translateY(-8px) rotate(5deg) scale(1.1);
               }
               50% { 
-                transform: translateY(-20px) scale(1.25);
-                background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
-                -webkit-background-clip: text;
-                background-clip: text;
-                -webkit-text-fill-color: transparent;
+                transform: translateY(-12px) rotate(-5deg) scale(1.2);
               }
               75% { 
-                transform: translateY(-15px) scale(1.15);
-                background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
-                -webkit-background-clip: text;
-                background-clip: text;
-                -webkit-text-fill-color: transparent;
+                transform: translateY(-8px) rotate(3deg) scale(1.1);
               }
             }
           `}</style>
@@ -885,25 +922,45 @@ export default function Hero() {
                 help bring your ideas to reality.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <Button className="bg-black hover:bg-gray-800 text-white font-black px-8 py-3" asChild>
-                  <Link href="mailto:katuriharshavardhan369@gmail.com">
-                    <Mail className="w-5 h-5 mr-2" />
-                    Email Me
-                  </Link>
-                </Button>
-                <Button className="bg-black hover:bg-gray-800 text-white font-black px-8 py-3" asChild>
-                  <Link href="https://www.linkedin.com/in/harsha-vardhan-katuri-772166256/" target="_blank">
-                    <Linkedin className="w-5 h-5 mr-2" />
-                    Connect on LinkedIn
-                  </Link>
-                </Button>
+                <button
+                  className="action-button bg-black hover:bg-gray-800 text-white font-black px-8 py-3 rounded-lg flex items-center gap-2 relative"
+                  onClick={() => (window.location.href = "mailto:katuriharshavardhan369@gmail.com")}
+                >
+                  <div className="rainbow-overlay"></div>
+                  <div className="icon-wave">
+                    <Mail className="w-5 h-5" />
+                  </div>
+                  <span className="button-text relative z-10">
+                    {"Email Me".split("").map((letter, index) => (
+                      <span key={index} className="wave-text">
+                        {letter === " " ? "\u00A0" : letter}
+                      </span>
+                    ))}
+                  </span>
+                </button>
+
+                <Link href="https://www.linkedin.com/in/harsha-vardhan-katuri-772166256/" target="_blank">
+                  <button className="action-button bg-black hover:bg-gray-800 text-white font-black px-8 py-3 rounded-lg flex items-center gap-2 relative">
+                    <div className="rainbow-overlay"></div>
+                    <div className="icon-wave">
+                      <Linkedin className="w-5 h-5" />
+                    </div>
+                    <span className="button-text relative z-10">
+                      {"Connect on LinkedIn".split("").map((letter, index) => (
+                        <span key={index} className="wave-text">
+                          {letter === " " ? "\u00A0" : letter}
+                        </span>
+                      ))}
+                    </span>
+                  </button>
+                </Link>
               </div>
             </motion.div>
           </div>
         )
       default:
         return (
-          <div className="flex flex-col items-center text-center space-y-8 max-w-2xl mx-auto">
+          <div className="flex flex-col items-center text-center space-y-8 max-w-2xl mx-auto min-h-screen justify-center">
             <style jsx>{`
             @keyframes rainbow-wave {
               0% { background-position: 0% 50%; }
@@ -1031,7 +1088,7 @@ export default function Hero() {
             >
               <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-black">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/harsha.jpg-uphx2UA7uij7KGB4m98IHwrQgB7JhD.jpeg"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/harsha.jpg-ywbzZga5wdtOdP2WiPfsFpjM1o30qa.jpeg"
                   alt="Harsha Vardhan Katuri"
                   fill
                   className="object-cover"

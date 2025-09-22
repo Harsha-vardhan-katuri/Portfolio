@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ExternalLink, Github } from "lucide-react"
+import { Github } from "lucide-react"
 import Image from "next/image"
 
 export default function Projects() {
@@ -48,7 +48,7 @@ export default function Projects() {
         "Achieved environmental readings accurate to ±2°C for temperature and ±5%RH for humidity",
         "Integrated ESP01 Wi-Fi module with LPC2148 for reliable real-time updates",
       ],
-      githubLink: "#",
+      githubLink: null,
       category: "IoT & Cloud Integration",
     },
   ]
@@ -63,7 +63,7 @@ export default function Projects() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: index * 0.2 }}
-            className="bg-gray-900 rounded-lg overflow-hidden hover:bg-gray-800 transition-colors"
+            className="bg-black rounded-lg overflow-hidden hover:bg-gray-900 transition-colors border border-gray-700"
           >
             <div className="relative h-48 overflow-hidden">
               <Image
@@ -83,22 +83,16 @@ export default function Projects() {
               <div className="flex items-start justify-between mb-4">
                 <h3 className="text-xl font-black text-white mb-2">{project.title}</h3>
                 <div className="flex gap-2">
-                  <a
-                    href={project.githubLink}
-                    className="text-pink-500 hover:text-white transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Github className="w-5 h-5" />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-purple-500 hover:text-white transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    
-                  </a>
+                  {project.githubLink && (
+                    <a
+                      href={project.githubLink}
+                      className="text-pink-500 hover:text-white transition-colors"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Github className="w-5 h-5" />
+                    </a>
+                  )}
                 </div>
               </div>
 
