@@ -5,6 +5,7 @@ import { Linkedin, Mail, Download, Github, Phone, MapPin, Check } from "lucide-r
 import Link from "next/link"
 import Image from "next/image"
 import FallingCubes from "./FallingCubes"
+import HexagonBackground from "./HexagonBackground"
 import { useState, useEffect } from "react"
 import Skills from "./Skills"
 import Education from "./Education"
@@ -1254,7 +1255,7 @@ export default function Hero() {
 
   return (
     <section className="min-h-screen relative bg-black overflow-hidden" id="home">
-      <FallingCubes />
+      {activeSection === "hire" ? <HexagonBackground /> : <FallingCubes />}
       <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
 
       {/* Content Area */}
