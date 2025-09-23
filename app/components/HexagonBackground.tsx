@@ -1,9 +1,10 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
 export default function HexagonBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -15,59 +16,80 @@ export default function HexagonBackground() {
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
 
-    class Hexagon {
+    class KeyboardHexagon {
       x: number
       y: number
       size: number
+      baseSize: number
       opacity: number
-      speed: number
-      angle: number
-      rotationSpeed: number
+      baseOpacity: number
       color: string
-      time: number
+      isPressed: boolean
+      pressOffset: number
+      targetPressOffset: number
+      pressSpeed: number
 
-      constructor() {
-        this.x = Math.random() * canvas.width
-        this.y = Math.random() * canvas.height
-        this.size = Math.random() * 40 + 20 // 20-60px hexagons
-        this.opacity = Math.random() * 0.3 + 0.1 // 0.1-0.4 opacity
-        this.speed = Math.random() * 0.5 + 0.2 // Slow movement
-        this.angle = 0
-        this.rotationSpeed = (Math.random() - 0.5) * 0.01 // Very slow rotation
-        this.time = Math.random() * Math.PI * 2
+      constructor(x: number, y: number, size: number) {
+        this.x = x
+        this.y = y
+        this.size = size
+        this.baseSize = size
+        this.opacity = Math.random() * 0.2 + 0.1 // Subtle opacity
+        this.baseOpacity = this.opacity
+        this.isPressed = false
+        this.pressOffset = 0
+        this.targetPressOffset = 0
+        this.pressSpeed = 0.25 // Fast press like keyboard
 
-        // Different shades of gray like Google's
-        const grayShades = ["#2a2a2a", "#3a3a3a", "#4a4a4a", "#5a5a5a", "#6a6a6a"]
-        this.color = grayShades[Math.floor(Math.random() * grayShades.length)]
+        // Only black colors - no gray, no shine
+        const blackColors = [
+          "#000000", // Pure black
+          "#0a0a0a", // Very dark black
+          "#141414", // Slightly lighter black
+          "#1e1e1e", // Dark black
+          "#0f0f0f", // Almost black
+          "#050505", // Very very dark
+        ]
+        this.color = blackColors[Math.floor(Math.random() * blackColors.length)]
+      }
+
+      checkPress(mouseX: number, mouseY: number) {
+        const distance = Math.sqrt((mouseX - this.x) ** 2 + (mouseY - this.y) ** 2)
+        const wasPressed = this.isPressed
+        this.isPressed = distance < this.size + 15
+
+        if (this.isPressed && !wasPressed) {
+          // Press DOWN like keyboard key
+          this.targetPressOffset = 12 // Press down by 12px
+        } else if (!this.isPressed && wasPressed) {
+          // Release back up
+          this.targetPressOffset = 0
+        }
       }
 
       update() {
-        this.time += this.speed * 0.01
-        this.angle += this.rotationSpeed
+        // Fast keyboard-like press animation
+        this.pressOffset += (this.targetPressOffset - this.pressOffset) * this.pressSpeed
 
-        // Gentle floating movement
-        this.x += Math.sin(this.time) * 0.3
-        this.y += Math.cos(this.time * 0.8) * 0.2
-
-        // Wrap around screen edges
-        if (this.x < -this.size) this.x = canvas.width + this.size
-        if (this.x > canvas.width + this.size) this.x = -this.size
-        if (this.y < -this.size) this.y = canvas.height + this.size
-        if (this.y > canvas.height + this.size) this.y = -this.size
-
-        // Subtle opacity pulsing
-        this.opacity = 0.2 + Math.sin(this.time * 2) * 0.1
+        if (this.isPressed) {
+          // Slightly smaller when pressed (like real keyboard key)
+          this.size = this.baseSize * 0.95
+          this.opacity = Math.min(this.baseOpacity * 1.5, 0.3)
+        } else {
+          // Return to normal size
+          this.size += (this.baseSize - this.size) * 0.2
+          this.opacity += (this.baseOpacity - this.opacity) * 0.2
+        }
       }
 
       drawHexagon() {
         if (!ctx) return
 
         ctx.save()
-        ctx.translate(this.x, this.y)
-        ctx.rotate(this.angle)
+        ctx.translate(this.x, this.y + this.pressOffset) // Press DOWN
         ctx.globalAlpha = this.opacity
 
-        // Draw hexagon
+        // Draw hexagon - flat black, no shine
         ctx.beginPath()
         for (let i = 0; i < 6; i++) {
           const angle = (i * Math.PI) / 3
@@ -81,53 +103,62 @@ export default function HexagonBackground() {
         }
         ctx.closePath()
 
-        // Fill hexagon
+        // Fill with flat black color - no gradients, no shine
         ctx.fillStyle = this.color
         ctx.fill()
 
-        // Add subtle border
-        ctx.strokeStyle = this.color
-        ctx.lineWidth = 1
-        ctx.stroke()
+        // Only add border when pressed (like keyboard key depth)
+        if (this.isPressed) {
+          ctx.strokeStyle = "#333333"
+          ctx.lineWidth = 0.5
+          ctx.stroke()
+        }
 
         ctx.restore()
       }
     }
 
-    const hexagons: Hexagon[] = []
+    const hexagons: KeyboardHexagon[] = []
 
-    // Create hexagon grid pattern like Google
-    const createHexagons = () => {
+    // Create static hexagon grid
+    const createKeyboardHexagons = () => {
       hexagons.length = 0
-      const hexSize = 60
-      const rows = Math.ceil(canvas.height / (hexSize * 0.75)) + 2
-      const cols = Math.ceil(canvas.width / (hexSize * Math.sqrt(3))) + 2
+      const hexSize = 30 // Good size for keyboard effect
+      const spacing = hexSize * 2
+      const rows = Math.ceil(canvas.height / (spacing * 0.75)) + 3
+      const cols = Math.ceil(canvas.width / (spacing * Math.sqrt(3))) + 3
 
       for (let row = 0; row < rows; row++) {
         for (let col = 0; col < cols; col++) {
-          const hexagon = new Hexagon()
+          // Honeycomb pattern positioning
+          const x = col * spacing * Math.sqrt(3) + (row % 2) * ((spacing * Math.sqrt(3)) / 2)
+          const y = row * spacing * 0.75
 
-          // Position hexagons in honeycomb pattern
-          hexagon.x = col * hexSize * Math.sqrt(3) + (row % 2) * ((hexSize * Math.sqrt(3)) / 2)
-          hexagon.y = row * hexSize * 0.75
+          // Add slight randomness
+          const randomX = x + (Math.random() - 0.5) * 10
+          const randomY = y + (Math.random() - 0.5) * 10
+          const randomSize = hexSize + (Math.random() - 0.5) * 8
 
-          // Add some randomness to break the perfect grid
-          hexagon.x += (Math.random() - 0.5) * 20
-          hexagon.y += (Math.random() - 0.5) * 20
-
-          hexagons.push(hexagon)
+          hexagons.push(new KeyboardHexagon(randomX, randomY, randomSize))
         }
-      }
-
-      // Add some random floating hexagons
-      for (let i = 0; i < 30; i++) {
-        hexagons.push(new Hexagon())
       }
     }
 
+    const handleMouseMove = (event: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect()
+      const mouseX = event.clientX - rect.left
+      const mouseY = event.clientY - rect.top
+      setMousePos({ x: mouseX, y: mouseY })
+
+      // Check press for all hexagons
+      hexagons.forEach((hexagon) => {
+        hexagon.checkPress(mouseX, mouseY)
+      })
+    }
+
     const animate = () => {
-      // Clear with dark background like Google
-      ctx.fillStyle = "#1a1a1a"
+      // Pure black background - no shine, flat
+      ctx.fillStyle = "#000000"
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
       // Update and draw all hexagons
@@ -139,18 +170,20 @@ export default function HexagonBackground() {
       requestAnimationFrame(animate)
     }
 
-    createHexagons()
+    createKeyboardHexagons()
     animate()
 
     const handleResize = () => {
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
-      createHexagons()
+      createKeyboardHexagons()
     }
 
+    canvas.addEventListener("mousemove", handleMouseMove)
     window.addEventListener("resize", handleResize)
 
     return () => {
+      canvas.removeEventListener("mousemove", handleMouseMove)
       window.removeEventListener("resize", handleResize)
     }
   }, [])
