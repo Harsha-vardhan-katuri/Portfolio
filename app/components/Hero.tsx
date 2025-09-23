@@ -176,7 +176,7 @@ export default function Hero() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="rounded-lg p-8 text-left bg-black items-start"
+              className="rounded-lg p-8 text-left bg-black/90 backdrop-blur-sm items-start border border-white/20"
             >
               <p className="text-white text-lg leading-relaxed mb-6 font-semibold">
                 I am a dedicated <span className="font-black text-red-700">Firmware Engineer</span> currently working at
@@ -912,7 +912,7 @@ export default function Hero() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="rounded-lg p-8 text-center space-y-6 bg-black"
+              className="rounded-lg p-8 text-center space-y-6 bg-black/90 backdrop-blur-sm border border-white/20"
             >
               <h3 className="text-2xl font-black text-white mb-4">Available for Freelance Projects</h3>
               <p className="text-white text-lg font-black mb-6">
@@ -1086,7 +1086,7 @@ export default function Hero() {
               transition={{ duration: 0.8 }}
               className="relative w-[200px] h-[200px] md:w-[250px] md:h-[250px]"
             >
-              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-black">
+              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white/20">
                 <Image
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/harsha.jpg-ywbzZga5wdtOdP2WiPfsFpjM1o30qa.jpeg"
                   alt="Harsha Vardhan Katuri"
@@ -1165,7 +1165,7 @@ export default function Hero() {
               className="flex flex-wrap justify-center gap-4 mt-8"
             >
               <button
-                className="action-button bg-black hover:bg-gray-800 text-white font-black flex items-center gap-2 relative px-6 py-3 rounded-lg"
+                className="action-button bg-black/90 hover:bg-gray-800 text-white font-black flex items-center gap-2 relative px-6 py-3 rounded-lg border border-white/20"
                 onClick={handleEmailCopy}
               >
                 <div className="rainbow-overlay"></div>
@@ -1182,7 +1182,7 @@ export default function Hero() {
               </button>
 
               <button
-                className="action-button bg-black hover:bg-gray-800 text-white font-black relative px-6 py-3 rounded-lg flex items-center gap-2"
+                className="action-button bg-black/90 hover:bg-gray-800 text-white font-black relative px-6 py-3 rounded-lg flex items-center gap-2 border border-white/20"
                 onClick={handlePhoneCopy}
               >
                 <div className="rainbow-overlay"></div>
@@ -1199,7 +1199,7 @@ export default function Hero() {
               </button>
 
               <Link href="https://github.com/Harsha-vardhan-katuri" target="_blank">
-                <button className="action-button bg-black hover:bg-gray-800 text-white font-black px-6 py-3 rounded-lg flex items-center gap-2 relative">
+                <button className="action-button bg-black/90 hover:bg-gray-800 text-white font-black px-6 py-3 rounded-lg flex items-center gap-2 relative border border-white/20">
                   <div className="rainbow-overlay"></div>
                   <div className="icon-wave">
                     <Github className="w-4 h-4" />
@@ -1215,7 +1215,7 @@ export default function Hero() {
               </Link>
 
               <Link href="https://www.linkedin.com/in/harsha-vardhan-katuri-772166256/" target="_blank">
-                <button className="action-button bg-black hover:bg-gray-800 text-white font-black px-6 py-3 rounded-lg flex items-center gap-2 relative">
+                <button className="action-button bg-black/90 hover:bg-gray-800 text-white font-black px-6 py-3 rounded-lg flex items-center gap-2 relative border border-white/20">
                   <div className="rainbow-overlay"></div>
                   <div className="icon-wave">
                     <Linkedin className="w-4 h-4" />
@@ -1231,7 +1231,7 @@ export default function Hero() {
               </Link>
 
               <button
-                className="action-button bg-black hover:bg-gray-800 text-white font-black px-6 py-3 rounded-lg flex items-center gap-2 relative"
+                className="action-button bg-black/90 hover:bg-gray-800 text-white font-black px-6 py-3 rounded-lg flex items-center gap-2 relative border border-white/20"
                 onClick={handleResumeDownload}
               >
                 <div className="rainbow-overlay"></div>
