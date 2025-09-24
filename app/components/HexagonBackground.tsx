@@ -47,12 +47,12 @@ export default function HexagonBackground() {
         this.pressOffset = 0
         this.targetPressOffset = 0
 
-        // Floating animation
+        // Enhanced floating animation
         this.floatOffset = 0
-        this.floatSpeed = Math.random() * 0.015 + 0.008 // Slow gentle movement
-        this.floatAmplitude = Math.random() * 6 + 3 // 3-9px movement
+        this.floatSpeed = Math.random() * 0.02 + 0.01 // Slightly faster
+        this.floatAmplitude = Math.random() * 10 + 5 // 5-15px movement (more visible)
         this.time = Math.random() * Math.PI * 2
-        this.elevation = Math.random() * 3 + 1 // Random elevation for 3D effect
+        this.elevation = Math.random() * 3 + 1
 
         // Dark hexagon colors like in the image
         const darkHexColors = [
@@ -84,14 +84,14 @@ export default function HexagonBackground() {
       }
 
       update() {
-        // Update floating animation
+        // Enhanced floating animation - more visible movement
         this.time += this.floatSpeed
-        this.floatOffset = Math.sin(this.time) * this.floatAmplitude
+        this.floatOffset = Math.sin(this.time) * this.floatAmplitude * 1.5 // Increased movement
 
         // Update Y position with floating
         this.y = this.baseY + this.floatOffset
 
-        // Press animation
+        // Press animation (keep existing)
         this.pressOffset += (this.targetPressOffset - this.pressOffset) * 0.2
 
         if (this.isPressed) {
