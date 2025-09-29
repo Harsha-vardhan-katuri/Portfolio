@@ -409,7 +409,7 @@ export default function Hero() {
                 ))}
               </span>
             </h2>
-            <p className="max-w-2xl mx-auto font-black text-center text-yellow-400 mb-2">
+            <p className="max-w-2xl mx-auto font-black text-center mb-2 text-red-800">
               Comprehensive expertise in embedded systems, firmware development, and IoT technologies
             </p>
             <Skills />
@@ -1089,7 +1089,7 @@ export default function Hero() {
             >
               <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white/20">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/harsha.jpg-ywbzZga5wdtOdP2WiPfsFpjM1o30qa.jpeg"
+                  src="/images/design-mode/harsha.jpg(1).jpeg"
                   alt="Harsha Vardhan Katuri"
                   fill
                   className="object-cover"
