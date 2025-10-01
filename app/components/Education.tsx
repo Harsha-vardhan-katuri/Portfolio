@@ -41,8 +41,8 @@ export default function Education() {
               </div>
               <div className="flex-1">
                 <h3 className="text-xl font-black text-white mb-2">{edu.degree}</h3>
-                <p className="text-orange-500 font-black mb-2">{edu.school}</p>
-                <div className="flex items-center gap-4 mb-3 text-sm text-green-500 font-black">
+                <p className="font-black mb-2 text-yellow-400">{edu.school}</p>
+                <div className="flex items-center gap-4 mb-3 text-sm font-black text-red-800">
                   <div className="flex items-center gap-1">
                     <Calendar className="w-4 h-4" />
                     {edu.period}
