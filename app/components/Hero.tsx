@@ -401,7 +401,7 @@ export default function Hero() {
                   {letter === " " ? "\u00A0" : letter}
                 </span>
               ))}{" "}
-              <span className="font-black text-blue-800">
+              <span className="font-black text-blue-700">
                 {"Skills".split("").map((letter, index) => (
                   <span key={index} className="skills-colored-text-wave">
                     {letter === " " ? "\u00A0" : letter}
