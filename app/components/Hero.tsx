@@ -739,7 +739,7 @@ export default function Hero() {
                 </span>
               ))}{" "}
               &{" "}
-              <span className="text-indigo-500 font-black">
+              <span className="font-black text-indigo-700">
                 {"Certifications".split("").map((letter, index) => (
                   <span key={index} className="cert-colored-text-wave">
                     {letter === " " ? "\u00A0" : letter}
@@ -904,7 +904,7 @@ export default function Hero() {
                   ))}
                 </span>
               </h2>
-              <p className="text-cyan-500 max-w-2xl mx-auto font-black text-xl">
+              <p className="max-w-2xl mx-auto font-black text-xl text-yellow-400">
                 Ready to bring your embedded systems and IoT projects to life
               </p>
             </motion.div>
