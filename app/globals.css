@@ -8,49 +8,16 @@
 
 html {
   scroll-behavior: smooth;
-  background: #000000;
-  font-family: "Inter", "Segoe UI", sans-serif;
+  background: #00001c;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: #000000;
-  font-family: "Inter", "Segoe UI", sans-serif;
-  letter-spacing: -0.5px;
+  background: #00001c;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-}
-
-/* Modern Button Styles */
-@layer components {
-  .btn-modern {
-    @apply relative inline-flex items-center justify-center font-bold tracking-wide overflow-hidden transition-all duration-300 ease-out;
-  }
-
-  .btn-modern::before {
-    content: "";
-    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 scale-x-0 transform origin-center transition-all duration-500;
-  }
-
-  .btn-modern:hover::before {
-    @apply opacity-20 scale-x-100;
-  }
-
-  .btn-modern::after {
-    content: "";
-    @apply absolute inset-0 rounded-lg opacity-0 transition-opacity duration-300;
-    background: radial-gradient(
-      circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-      rgba(255, 255, 255, 0.1) 0%,
-      transparent 80%
-    );
-  }
-
-  .btn-modern:hover::after {
-    @apply opacity-100;
   }
 }

@@ -922,112 +922,37 @@ export default function Hero() {
                 <span className="text-pink-500 font-black">embedded systems</span> projects. Let's discuss how I can
                 help bring your ideas to reality.
               </p>
-              <div className="flex flex-wrap justify-center gap-6">
-                <style jsx>{`
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap');
-    
-    .modern-btn {
-      font-family: 'Poppins', sans-serif;
-      position: relative;
-      padding: 14px 32px;
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      border-radius: 12px;
-      overflow: hidden;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      backdrop-filter: blur(10px);
-      border: 1.5px solid rgba(255, 255, 255, 0.2);
-      background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
-      color: white;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    }
-
-    .modern-btn:hover {
-      transform: translateY(-4px) scale(1.02);
-      border-color: rgba(255, 255, 255, 0.4);
-      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), 0 0 40px rgba(255, 255, 255, 0.1);
-    }
-
-    .btn-shine {
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(
-        45deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.15) 50%,
-        transparent 100%
-      );
-      transform: rotate(45deg);
-      animation: shine 3s infinite;
-      pointer-events: none;
-    }
-
-    @keyframes shine {
-      0% {
-        transform: translateX(-100%) translateY(-100%) rotate(45deg);
-      }
-      100% {
-        transform: translateX(100%) translateY(100%) rotate(45deg);
-      }
-    }
-
-    .modern-btn:hover .btn-shine {
-      animation: shine 0.8s ease-in-out;
-    }
-
-    .icon-glow {
-      transition: all 0.4s ease;
-      filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
-    }
-
-    .modern-btn:hover .icon-glow {
-      filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
-      transform: scale(1.2) rotate(10deg);
-    }
-
-    .text-shimmer {
-      background: linear-gradient(90deg, #fff 0%, #fff 70%, #a0a0a0 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      transition: all 0.4s ease;
-    }
-
-    .modern-btn:hover .text-shimmer {
-      background: linear-gradient(90deg, #fff 0%, #e0e0e0 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-  `}</style>
-
+              <div className="flex flex-wrap justify-center gap-4">
                 <button
-                  className="modern-btn group"
+                  className="action-button bg-black hover:bg-gray-800 text-white font-black px-8 py-3 rounded-lg flex items-center gap-2 relative"
                   onClick={() => (window.location.href = "mailto:katuriharshavardhan369@gmail.com")}
                 >
-                  <div className="btn-shine"></div>
-                  <div className="icon-glow relative z-10">
+                  <div className="rainbow-overlay"></div>
+                  <div className="icon-wave">
                     <Mail className="w-5 h-5" />
                   </div>
-                  <span className="text-shimmer relative z-10 group-hover:text-white transition-all">Email Me</span>
+                  <span className="button-text relative z-10">
+                    {"Email Me".split("").map((letter, index) => (
+                      <span key={index} className="wave-text">
+                        {letter === " " ? "\u00A0" : letter}
+                      </span>
+                    ))}
+                  </span>
                 </button>
 
                 <Link href="https://www.linkedin.com/in/harsha-vardhan-katuri-772166256/" target="_blank">
-                  <button className="modern-btn group">
-                    <div className="btn-shine"></div>
-                    <div className="icon-glow relative z-10">
+                  <button className="action-button bg-black hover:bg-gray-800 text-white font-black px-8 py-3 rounded-lg flex items-center gap-2 relative">
+                    <div className="rainbow-overlay"></div>
+                    <div className="icon-wave">
                       <Linkedin className="w-5 h-5" />
                     </div>
-                    <span className="text-shimmer relative z-10 group-hover:text-white transition-all">Connect</span>
+                    <span className="button-text relative z-10">
+                      {"Connect on LinkedIn".split("").map((letter, index) => (
+                        <span key={index} className="wave-text">
+                          {letter === " " ? "\u00A0" : letter}
+                        </span>
+                      ))}
+                    </span>
                   </button>
                 </Link>
               </div>
@@ -1098,59 +1023,45 @@ export default function Hero() {
             .action-button:hover .wave-text:nth-child(8) { animation-delay: 0.7s; }
             .action-button:hover .wave-text:nth-child(9) { animation-delay: 0.8s; }
             .action-button:hover .wave-text:nth-child(10) { animation-delay: 0.9s; }
-            
+
+            /* Updated wave-letter animation */
             @keyframes wave-letter {
-              0%, 100% { 
+              0% { 
                 transform: translateY(0px) scale(1);
-                color: #000000;
-              }
-              25% { 
-                transform: translateY(-10px) scale(1.15);
-                background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
-                -webkit-background-clip: text;
-                background-clip: text;
-                -webkit-text-fill-color: transparent;
+                color: #ffffff;
               }
               50% { 
-                transform: translateY(-15px) scale(1.25);
-                background: linear-gradient(45deg, #00ff00, #0000ff, #4b0082);
-                -webkit-background-clip: text;
-                background-clip: text;
-                -webkit-text-fill-color: transparent;
+                transform: translateY(-15px) scale(1.1);
+                color: #000000;
               }
-              75% { 
-                transform: translateY(-10px) scale(1.15);
-                background: linear-gradient(45deg, #9400d3, #ff1493, #00ffff);
-                -webkit-background-clip: text;
-                background-clip: text;
-                -webkit-text-fill-color: transparent;
+              100% { 
+                transform: translateY(0px) scale(1);
+                color: #ffffff;
               }
             }
             
             .action-button:hover .wave-text {
-              animation: wave-letter 1.6s ease-in-out infinite;
+              animation: wave-letter 0.8s ease-in-out 1;
             }
             
             .icon-wave {
               transition: all 0.3s ease;
             }
             
+            /* Updated icon-bounce animation */
             .action-button:hover .icon-wave {
-              animation: icon-bounce 1.2s ease-in-out infinite;
+              animation: icon-bounce 0.8s ease-in-out 1;
             }
             
             @keyframes icon-bounce {
-              0%, 100% { 
+              0% { 
                 transform: translateY(0px) rotate(0deg) scale(1);
-              }
-              25% { 
-                transform: translateY(-8px) rotate(5deg) scale(1.1);
               }
               50% { 
                 transform: translateY(-12px) rotate(-5deg) scale(1.2);
               }
-              75% { 
-                transform: translateY(-8px) rotate(3deg) scale(1.1);
+              100% { 
+                transform: translateY(0px) rotate(0deg) scale(1);
               }
             }
           `}</style>
@@ -1179,12 +1090,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-5xl font-black text-white tracking-tight md:text-4xl"
-              style={{
-                fontFamily: "'Poppins', sans-serif",
-                fontWeight: 800,
-                letterSpacing: "-1px",
-              }}
+              className="text-3xl md:text-4xl font-black text-white"
             >
               Harsha Vardhan Katuri
             </motion.h1>
@@ -1194,13 +1100,10 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-2xl font-bold bg-gradient-to-r from-red-500 via-orange-400 to-yellow-400 bg-clip-text text-transparent md:text-2xl"
-              style={{
-                fontFamily: "'Poppins', sans-serif",
-                letterSpacing: "0.5px",
-              }}
+              className="text-xl md:text-2xl font-black text-red-700"
+              style={{ fontWeight: 900 }}
             >
-              Firmware Engineer & IoT Specialist
+              Firmware Engineer
             </motion.h2>
 
             {/* Subtitle */}
@@ -1231,7 +1134,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-white max-w-3xl leading-relaxed font-semibold text-lg"
+              className="text-white max-w-3xl leading-relaxed font-semibold"
             >
               Currently working as a <span className="font-black text-red-700">Firmware Engineer</span> at HealthCube
               Private Limited, developing <span className="font-black text-yellow-400">LoRa-enabled soil</span> health
@@ -1246,141 +1149,89 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
-              className="flex flex-wrap justify-center gap-6 mt-12"
+              className="flex flex-wrap justify-center gap-4 mt-8"
             >
-              <style jsx>{`
-                @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap');
-                
-                .modern-btn {
-                  font-family: 'Poppins', sans-serif;
-                  position: relative;
-                  padding: 14px 32px;
-                  font-size: 15px;
-                  font-weight: 700;
-                  letter-spacing: 0.5px;
-                  border-radius: 12px;
-                  overflow: hidden;
-                  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-                  backdrop-filter: blur(10px);
-                  border: 1.5px solid rgba(255, 255, 255, 0.2);
-                  background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
-                  color: white;
-                  cursor: pointer;
-                  display: inline-flex;
-                  align-items: center;
-                  gap: 12px;
-                  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-                }
-            
-                .modern-btn:hover {
-                  transform: translateY(-4px) scale(1.02);
-                  border-color: rgba(255, 255, 255, 0.4);
-                  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-                  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), 0 0 40px rgba(255, 255, 255, 0.1);
-                }
-            
-                .btn-shine {
-                  position: absolute;
-                  top: -50%;
-                  left: -50%;
-                  width: 200%;
-                  height: 200%;
-                  background: linear-gradient(
-                    45deg,
-                    transparent 0%,
-                    rgba(255, 255, 255, 0.15) 50%,
-                    transparent 100%
-                  );
-                  transform: rotate(45deg);
-                  animation: shine 3s infinite;
-                  pointer-events: none;
-                }
-            
-                @keyframes shine {
-                  0% {
-                    transform: translateX(-100%) translateY(-100%) rotate(45deg);
-                  }
-                  100% {
-                    transform: translateX(100%) translateY(100%) rotate(45deg);
-                  }
-                }
-            
-                .modern-btn:hover .btn-shine {
-                  animation: shine 0.8s ease-in-out;
-                }
-            
-                .icon-glow {
-                  transition: all 0.4s ease;
-                  filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
-                }
-            
-                .modern-btn:hover .icon-glow {
-                  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
-                  transform: scale(1.2) rotate(10deg);
-                }
-            
-                .text-shimmer {
-                  background: linear-gradient(90deg, #fff 0%, #fff 70%, #a0a0a0 100%);
-                  -webkit-background-clip: text;
-                  background-clip: text;
-                  -webkit-text-fill-color: transparent;
-                  transition: all 0.4s ease;
-                }
-            
-                .modern-btn:hover .text-shimmer {
-                  background: linear-gradient(90deg, #fff 0%, #e0e0e0 100%);
-                  -webkit-background-clip: text;
-                  background-clip: text;
-                  -webkit-text-fill-color: transparent;
-                }
-              `}</style>
-
-              <button className="modern-btn group" onClick={handleEmailCopy}>
-                <div className="btn-shine"></div>
-                <div className="icon-glow relative z-10">
-                  {copiedEmail ? <Check className="w-5 h-5" /> : <Mail className="w-5 h-5" />}
+              <button
+                className="action-button bg-black/90 hover:bg-gray-800 text-white font-black flex items-center gap-2 relative px-6 py-3 rounded-lg border border-white/20"
+                onClick={handleEmailCopy}
+              >
+                <div className="rainbow-overlay"></div>
+                <div className="icon-wave">
+                  {copiedEmail ? <Check className="w-4 h-4" /> : <Mail className="w-4 h-4" />}
                 </div>
-                <span className="text-shimmer relative z-10 group-hover:text-white transition-all">
-                  {copiedEmail ? "Copied!" : "Get in Touch"}
+                <span className="button-text relative z-10">
+                  {(copiedEmail ? "Email Copied!" : "Gmail").split("").map((letter, index) => (
+                    <span key={index} className="wave-text">
+                      {letter === " " ? "\u00A0" : letter}
+                    </span>
+                  ))}
                 </span>
               </button>
 
-              <button className="modern-btn group" onClick={handlePhoneCopy}>
-                <div className="btn-shine"></div>
-                <div className="icon-glow relative z-10">
-                  {copiedPhone ? <Check className="w-5 h-5" /> : <Phone className="w-5 h-5" />}
+              <button
+                className="action-button bg-black/90 hover:bg-gray-800 text-white font-black relative px-6 py-3 rounded-lg flex items-center gap-2 border border-white/20"
+                onClick={handlePhoneCopy}
+              >
+                <div className="rainbow-overlay"></div>
+                <div className="icon-wave">
+                  {copiedPhone ? <Check className="w-4 h-4" /> : <Phone className="w-4 h-4" />}
                 </div>
-                <span className="text-shimmer relative z-10 group-hover:text-white transition-all">
-                  {copiedPhone ? "Copied!" : "Call Me"}
+                <span className="button-text relative z-10">
+                  {(copiedPhone ? "Number Copied!" : "Contact").split("").map((letter, index) => (
+                    <span key={index} className="wave-text">
+                      {letter === " " ? "\u00A0" : letter}
+                    </span>
+                  ))}
                 </span>
               </button>
 
               <Link href="https://github.com/Harsha-vardhan-katuri" target="_blank">
-                <button className="modern-btn group">
-                  <div className="btn-shine"></div>
-                  <div className="icon-glow relative z-10">
-                    <Github className="w-5 h-5" />
+                <button className="action-button bg-black/90 hover:bg-gray-800 text-white font-black px-6 py-3 rounded-lg flex items-center gap-2 relative border border-white/20">
+                  <div className="rainbow-overlay"></div>
+                  <div className="icon-wave">
+                    <Github className="w-4 h-4" />
                   </div>
-                  <span className="text-shimmer relative z-10 group-hover:text-white transition-all">GitHub</span>
+                  <span className="button-text relative z-10">
+                    {"GitHub".split("").map((letter, index) => (
+                      <span key={index} className="wave-text">
+                        {letter === " " ? "\u00A0" : letter}
+                      </span>
+                    ))}
+                  </span>
                 </button>
               </Link>
 
               <Link href="https://www.linkedin.com/in/harsha-vardhan-katuri-772166256/" target="_blank">
-                <button className="modern-btn group">
-                  <div className="btn-shine"></div>
-                  <div className="icon-glow relative z-10">
-                    <Linkedin className="w-5 h-5" />
+                <button className="action-button bg-black/90 hover:bg-gray-800 text-white font-black px-6 py-3 rounded-lg flex items-center gap-2 relative border border-white/20">
+                  <div className="rainbow-overlay"></div>
+                  <div className="icon-wave">
+                    <Linkedin className="w-4 h-4" />
                   </div>
-                  <span className="text-shimmer relative z-10 group-hover:text-white transition-all">LinkedIn</span>
+                  <span className="button-text relative z-10">
+                    {"LinkedIn".split("").map((letter, index) => (
+                      <span key={index} className="wave-text">
+                        {letter === " " ? "\u00A0" : letter}
+                      </span>
+                    ))}
+                  </span>
                 </button>
               </Link>
 
-              <button className="modern-btn group" onClick={handleResumeDownload}>
-                <div className="btn-shine"></div>
-                <div className="icon-glow relative z-10">
-                  <Download className="w-5 h-5" />
+              <button
+                className="action-button bg-black/90 hover:bg-gray-800 text-white font-black px-6 py-3 rounded-lg flex items-center gap-2 relative border border-white/20"
+                onClick={handleResumeDownload}
+              >
+                <div className="rainbow-overlay"></div>
+                <div className="icon-wave">
+                  <Download className="w-4 h-4" />
                 </div>
-                <span className="text-shimmer relative z-10 group-hover:text-white transition-all">Resume</span>
+                <span className="button-text relative z-10">
+                  {"Resume".split("").map((letter, index) => (
+                    <span key={index} className="wave-text">
+                      {letter === " " ? "\u00A0" : letter}
+                    </span>
+                  ))}
+                </span>
               </button>
             </motion.div>
           </div>
