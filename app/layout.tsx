@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Harsha Vardhan Katuri - Portfolio",
   description: "Embedded Systems and IoT Specialist",
-    generator: 'v0.app'
+  generator: "v0.app",
 }
 
 export default function RootLayout({
@@ -18,7 +18,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} bg-black`}>{children}</body>
+      <body className={`${inter.className}`} style={{ backgroundColor: "#00001c" }}>
+        {children}
+      </body>
     </html>
   )
 }
