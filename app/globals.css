@@ -8,12 +8,12 @@
 
 html {
   scroll-behavior: smooth;
-  background: #00001c;
+  background: #4a1f5c;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: #00001c;
+  background: #4a1f5c;
 }
 
 @media (prefers-reduced-motion: reduce) {

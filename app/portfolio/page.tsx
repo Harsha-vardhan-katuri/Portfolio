@@ -3,7 +3,7 @@ import Projects from "../components/Projects"
 
 export default function PortfolioPage() {
   return (
-    <main className="text-white min-h-screen" style={{ backgroundColor: "#00001c" }}>
+    <main className="text-white min-h-screen" style={{ backgroundColor: "#4A1F5C" }}>
       <Navigation activeSection="projects" />
       <div className="pt-20">
         <Projects />
