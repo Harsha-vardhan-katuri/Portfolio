@@ -143,7 +143,7 @@ export default function Hero() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-lg font-black text-violet-300"
+              className="text-lg font-black text-lime-500"
             >
               Specialized in Embedded Systems & IoT Solutions
             </motion.p>
@@ -156,7 +156,7 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="flex flex-wrap justify-center gap-4 text-green-400 font-black"
             >
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 text-teal-400">
                 <MapPin className="w-4 h-4" />
                 Bengaluru, Karnataka, 560068
               </div>

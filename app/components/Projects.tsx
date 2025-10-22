@@ -100,14 +100,14 @@ export default function Projects() {
 
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.technologies.map((tech) => (
-                  <span key={tech} className="px-2 py-1 bg-indigo-500 text-white rounded text-sm font-black">
+                  <span key={tech} className="px-2 py-1 text-white rounded text-sm font-black bg-red-950">
                     {tech}
                   </span>
                 ))}
               </div>
 
               <div className="space-y-2">
-                <h4 className="text-sm font-black text-yellow-500 uppercase tracking-wide">Key Achievements</h4>
+                <h4 className="text-sm font-black uppercase tracking-wide text-green-600">Key Achievements</h4>
                 <ul className="space-y-1">
                   {project.achievements.slice(0, 2).map((achievement, achievementIndex) => (
                     <li key={achievementIndex} className="text-white text-sm flex items-start font-semibold">
