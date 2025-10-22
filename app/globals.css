@@ -8,12 +8,14 @@
 
 html {
   scroll-behavior: smooth;
-  background: #4a1f5c;
+  /* Remove violet background - now using gradient in SimpleBackground */
+  background: linear-gradient(135deg, #0a0015 0%, #1a0033 50%, #0f001f 100%);
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: #4a1f5c;
+  /* Remove violet background */
+  background: linear-gradient(135deg, #0a0015 0%, #1a0033 50%, #0f001f 100%);
 }
 
 @media (prefers-reduced-motion: reduce) {

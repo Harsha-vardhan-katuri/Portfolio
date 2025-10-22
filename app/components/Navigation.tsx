@@ -60,6 +60,12 @@ export default function Navigation({ activeSection = "home", setActiveSection }:
           transform: translateY(-2px);
           box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
         }
+
+        .nav-button.active {
+          background-color: rgba(255, 255, 255, 0.2) !important;
+          border-bottom: 3px solid #ff6b6b;
+          transform: translateY(-2px);
+        }
         
         .wave-text {
           display: inline-block;
@@ -91,7 +97,9 @@ export default function Navigation({ activeSection = "home", setActiveSection }:
                 key={section.id}
                 onClick={() => handleSectionClick(section.id)}
                 className={`nav-button px-4 py-2 rounded-full text-sm font-black transition-all relative ${
-                  activeSection === section.id ? "bg-gray-800 text-white" : "text-white hover:bg-white/10"
+                  activeSection === section.id
+                    ? "active bg-white/20 text-white border-b-2 border-red-500"
+                    : "text-white hover:bg-white/10"
                 }`}
               >
                 <span className="relative z-10">
