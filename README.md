@@ -18,7 +18,7 @@ This repository contains the source code of my **personal portfolio website**, c
 
 ## 🔹 Running Locally
 
-\`\`\`bash
+
 # Clone the repository
 git clone https://github.com/HarshaVardhanKaturi/portfolio.git
 
