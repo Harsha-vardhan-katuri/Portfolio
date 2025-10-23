@@ -20,7 +20,9 @@ export default function Navigation({ activeSection = "home", setActiveSection }:
   const handleSectionClick = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+      setTimeout(() => {
+        element.scrollIntoView({ behavior: "smooth" })
+      }, 0)
     }
   }
 
