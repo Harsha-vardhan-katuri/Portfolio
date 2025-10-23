@@ -23,7 +23,7 @@ export default function Hero() {
 
     const observerOptions = {
       root: null,
-      rootMargin: "0px 0px -80% 0px",
+      rootMargin: "-50% 0px -50% 0px",
       threshold: 0,
     }
 
@@ -257,7 +257,7 @@ export default function Hero() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="rounded-lg p-8 text-left bg-transparent backdrop-blur-sm items-start border border-white/20"
+              className="rounded-lg p-8 text-left bg-transparent backdrop-blur-sm items-start hover:shadow-2xl hover:shadow-sky-500/30 hover:-translate-y-3 transition-all duration-300"
             >
               <p className="text-white text-lg leading-relaxed mb-6 font-semibold">
                 I am a dedicated <span className="font-black text-red-700">Firmware Engineer</span> currently working at
@@ -354,7 +354,7 @@ export default function Hero() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="rounded-lg p-8 text-center space-y-6 bg-transparent backdrop-blur-sm border border-white/20"
+              className="rounded-lg p-8 text-center space-y-6 bg-transparent backdrop-blur-sm hover:shadow-2xl hover:shadow-sky-500/30 hover:-translate-y-3 transition-all duration-300"
             >
               <h3 className="text-2xl font-black text-white mb-4">Available for Freelance Projects</h3>
               <p className="text-white text-lg font-black mb-6">
