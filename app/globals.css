@@ -8,14 +8,14 @@
 
 html {
   scroll-behavior: smooth;
-  /* Remove violet background - now using gradient in SimpleBackground */
-  background: linear-gradient(135deg, #0a0015 0%, #1a0033 50%, #0f001f 100%);
+  /* Updated background to dark navy blue (#00072D) */
+  background: linear-gradient(135deg, #00072d 0%, #001a4d 50%, #000d26 100%);
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  /* Remove violet background */
-  background: linear-gradient(135deg, #0a0015 0%, #1a0033 50%, #0f001f 100%);
+  /* Updated background to dark navy blue (#00072D) */
+  background: linear-gradient(135deg, #00072d 0%, #001a4d 50%, #000d26 100%);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -40,7 +40,7 @@ export default function SimpleBackground() {
 
     // Animation loop
     const animate = () => {
-      ctx.fillStyle = "rgba(0, 0, 255, 0.05)"
+      ctx.fillStyle = "rgba(0, 7, 45, 0.05)"
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
       // Update and draw particles
@@ -78,7 +78,7 @@ export default function SimpleBackground() {
     <canvas
       ref={canvasRef}
       className="fixed top-0 left-0 w-full h-full pointer-events-none"
-      style={{ background: "linear-gradient(135deg, #0000FF 0%, #0000CC 50%, #000099 100%)" }}
+      style={{ background: "linear-gradient(135deg, #00072D 0%, #001a4d 50%, #000d26 100%)" }}
     />
   )
 }

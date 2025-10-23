@@ -257,7 +257,7 @@ export default function Hero() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="rounded-lg p-8 text-left bg-black/90 backdrop-blur-sm items-start border border-white/20"
+              className="rounded-lg p-8 text-left bg-transparent backdrop-blur-sm items-start border border-white/20"
             >
               <p className="text-white text-lg leading-relaxed mb-6 font-semibold">
                 I am a dedicated <span className="font-black text-red-700">Firmware Engineer</span> currently working at
@@ -354,7 +354,7 @@ export default function Hero() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="rounded-lg p-8 text-center space-y-6 bg-black/90 backdrop-blur-sm border border-white/20"
+              className="rounded-lg p-8 text-center space-y-6 bg-transparent backdrop-blur-sm border border-white/20"
             >
               <h3 className="text-2xl font-black text-white mb-4">Available for Freelance Projects</h3>
               <p className="text-white text-lg font-black mb-6">
@@ -363,9 +363,26 @@ export default function Hero() {
                 <span className="text-pink-500 font-black">embedded systems</span> projects. Let's discuss how I can
                 help bring your ideas to reality.
               </p>
+              <style jsx>{`
+                @keyframes ripple {
+                  0% {
+                    box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.7);
+                  }
+                  70% {
+                    box-shadow: 0 0 0 10px rgba(0, 212, 255, 0);
+                  }
+                  100% {
+                    box-shadow: 0 0 0 0 rgba(0, 212, 255, 0);
+                  }
+                }
+                
+                .ripple-button-hire {
+                  animation: ripple 1.5s infinite;
+                }
+              `}</style>
               <div className="flex flex-wrap justify-center gap-4">
                 <button
-                  className="bg-black hover:bg-gray-800 text-white font-black px-8 py-3 rounded-lg flex items-center gap-2"
+                  className="ripple-button-hire bg-transparent hover:bg-white/10 text-white font-black px-8 py-3 rounded-lg flex items-center gap-2 border border-white/30 transition-all"
                   onClick={() => (window.location.href = "mailto:katuriharshavardhan369@gmail.com")}
                 >
                   <Mail className="w-5 h-5" />
@@ -373,7 +390,7 @@ export default function Hero() {
                 </button>
 
                 <Link href="https://www.linkedin.com/in/harsha-vardhan-katuri-772166256/" target="_blank">
-                  <button className="bg-black hover:bg-gray-800 text-white font-black px-8 py-3 rounded-lg flex items-center gap-2">
+                  <button className="ripple-button-hire bg-transparent hover:bg-white/10 text-white font-black px-8 py-3 rounded-lg flex items-center gap-2 border border-white/30 transition-all">
                     <Linkedin className="w-5 h-5" />
                     Connect on LinkedIn
                   </button>
