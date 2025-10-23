@@ -54,7 +54,7 @@ export default function Experience() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: index * 0.2 }}
-            className="rounded-lg p-6 hover:bg-gray-800 transition-colors bg-black"
+            className="rounded-lg p-6 hover:bg-white/5 transition-colors bg-transparent border border-white/20"
           >
             <div className="flex items-start justify-between mb-4">
               <div>

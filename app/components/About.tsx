@@ -48,7 +48,7 @@ export default function About() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-gray-900 rounded-lg p-8"
+            className="bg-transparent rounded-lg p-8"
           >
             <h3 className="text-2xl font-black mb-6 text-green-500">Education</h3>
             <div className="space-y-6">
@@ -73,7 +73,7 @@ export default function About() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-gray-900 rounded-lg p-8"
+            className="bg-transparent rounded-lg p-8"
           >
             <h3 className="text-2xl font-black mb-6 text-indigo-500">Skills</h3>
             <div className="space-y-4">
@@ -99,7 +99,7 @@ export default function About() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-12 bg-gray-900 rounded-lg p-8 text-center"
+          className="mt-12 bg-transparent rounded-lg p-8 text-center"
         >
           <p className="text-white text-lg leading-relaxed font-semibold">
             I am a dedicated <span className="text-orange-500 font-black">Firmware Engineer</span> currently working at

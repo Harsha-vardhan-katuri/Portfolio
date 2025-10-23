@@ -63,7 +63,7 @@ export default function Projects() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: index * 0.2 }}
-            className="bg-black rounded-lg overflow-hidden hover:bg-gray-900 transition-colors border border-gray-700"
+            className="bg-transparent rounded-lg overflow-hidden hover:bg-white/5 transition-colors border border-white/20"
           >
             <div className="relative h-48 overflow-hidden">
               <Image
@@ -79,7 +79,7 @@ export default function Projects() {
               </div>
             </div>
 
-            <div className="p-6 bg-black">
+            <div className="p-6 bg-transparent">
               <div className="flex items-start justify-between mb-4">
                 <h3 className="text-xl font-black text-white mb-2">{project.title}</h3>
                 <div className="flex gap-2">

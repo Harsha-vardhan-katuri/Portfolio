@@ -18,13 +18,9 @@ export default function Navigation({ activeSection = "home", setActiveSection }:
   ]
 
   const handleSectionClick = (sectionId: string) => {
-    if (setActiveSection) {
-      setActiveSection(sectionId)
-    } else {
-      const element = document.getElementById(sectionId)
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" })
-      }
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
     }
   }
 
@@ -54,6 +50,7 @@ export default function Navigation({ activeSection = "home", setActiveSection }:
           position: relative;
           overflow: hidden;
           transition: all 0.3s ease;
+          border-radius: 50px;
         }
         
         .nav-button:hover {
@@ -62,15 +59,16 @@ export default function Navigation({ activeSection = "home", setActiveSection }:
         }
 
         .nav-button.active {
-          background-color: rgba(255, 255, 255, 0.2) !important;
-          border-bottom: 3px solid #ff6b6b;
+          background-color: #00d4ff !important;
+          color: #000000 !important;
+          font-weight: 900;
           transform: translateY(-2px);
+          box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
         }
         
         .wave-text {
           display: inline-block;
           transition: all 0.3s ease;
-          color: #ffffff;
         }
         
         .nav-button:hover .wave-text:nth-child(1) { animation: wave-letter-once 0.8s ease-in-out 0s forwards; }
@@ -89,17 +87,15 @@ export default function Navigation({ activeSection = "home", setActiveSection }:
         .nav-button:hover .wave-text:nth-child(14) { animation: wave-letter-once 0.8s ease-in-out 0.65s forwards; }
       `}</style>
 
-      <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm">
         <div className="flex items-center justify-center h-20 px-4">
-          <div className="flex items-center gap-2 bg-black/60 backdrop-blur-sm rounded-full px-4 py-2">
+          <div className="flex items-center gap-3 bg-black/40 backdrop-blur-md rounded-full px-6 py-3 border border-white/20">
             {sections.map((section) => (
               <button
                 key={section.id}
                 onClick={() => handleSectionClick(section.id)}
-                className={`nav-button px-4 py-2 rounded-full text-sm font-black transition-all relative ${
-                  activeSection === section.id
-                    ? "active bg-white/20 text-white border-b-2 border-red-500"
-                    : "text-white hover:bg-white/10"
+                className={`nav-button px-6 py-2 rounded-full text-sm font-black transition-all relative ${
+                  activeSection === section.id ? "active bg-cyan-400 text-black" : "text-white hover:bg-white/10"
                 }`}
               >
                 <span className="relative z-10">

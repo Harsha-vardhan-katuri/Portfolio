@@ -40,8 +40,7 @@ export default function SimpleBackground() {
 
     // Animation loop
     const animate = () => {
-      // Clear canvas with dark background
-      ctx.fillStyle = "rgba(20, 10, 30, 0.1)"
+      ctx.fillStyle = "rgba(0, 0, 255, 0.05)"
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
       // Update and draw particles
@@ -54,8 +53,7 @@ export default function SimpleBackground() {
         if (particle.x < 0) particle.x = canvas.width
         if (particle.x > canvas.width) particle.x = 0
 
-        // Draw particle
-        ctx.fillStyle = `rgba(100, 200, 255, ${particle.opacity})`
+        ctx.fillStyle = `rgba(255, 0, 0, ${particle.opacity})`
         ctx.beginPath()
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
         ctx.fill()
@@ -80,7 +78,7 @@ export default function SimpleBackground() {
     <canvas
       ref={canvasRef}
       className="fixed top-0 left-0 w-full h-full pointer-events-none"
-      style={{ background: "linear-gradient(135deg, #0a0015 0%, #1a0033 50%, #0f001f 100%)" }}
+      style={{ background: "linear-gradient(135deg, #0000FF 0%, #0000CC 50%, #000099 100%)" }}
     />
   )
 }

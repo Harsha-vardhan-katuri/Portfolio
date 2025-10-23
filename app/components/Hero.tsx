@@ -186,8 +186,26 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.7 }}
               className="flex flex-wrap justify-center gap-4 mt-8"
             >
+              <style jsx>{`
+                @keyframes ripple {
+                  0% {
+                    box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.7);
+                  }
+                  70% {
+                    box-shadow: 0 0 0 10px rgba(0, 212, 255, 0);
+                  }
+                  100% {
+                    box-shadow: 0 0 0 0 rgba(0, 212, 255, 0);
+                  }
+                }
+                
+                .ripple-button {
+                  animation: ripple 1.5s infinite;
+                }
+              `}</style>
+
               <button
-                className="bg-black/90 hover:bg-gray-800 text-white font-black flex items-center gap-2 px-6 py-3 rounded-lg border border-white/20"
+                className="ripple-button bg-transparent hover:bg-white/10 text-white font-black flex items-center gap-2 px-6 py-3 rounded-lg border border-white/30 transition-all"
                 onClick={handleEmailCopy}
               >
                 {copiedEmail ? <Check className="w-4 h-4" /> : <Mail className="w-4 h-4" />}
@@ -195,7 +213,7 @@ export default function Hero() {
               </button>
 
               <button
-                className="bg-black/90 hover:bg-gray-800 text-white font-black px-6 py-3 rounded-lg flex items-center gap-2 border border-white/20"
+                className="ripple-button bg-transparent hover:bg-white/10 text-white font-black px-6 py-3 rounded-lg flex items-center gap-2 border border-white/30 transition-all"
                 onClick={handlePhoneCopy}
               >
                 {copiedPhone ? <Check className="w-4 h-4" /> : <Phone className="w-4 h-4" />}
@@ -203,21 +221,21 @@ export default function Hero() {
               </button>
 
               <Link href="https://github.com/Harsha-vardhan-katuri" target="_blank">
-                <button className="bg-black/90 hover:bg-gray-800 text-white font-black px-6 py-3 rounded-lg flex items-center gap-2 border border-white/20">
+                <button className="ripple-button bg-transparent hover:bg-white/10 text-white font-black px-6 py-3 rounded-lg flex items-center gap-2 border border-white/30 transition-all">
                   <Github className="w-4 h-4" />
                   GitHub
                 </button>
               </Link>
 
               <Link href="https://www.linkedin.com/in/harsha-vardhan-katuri-772166256/" target="_blank">
-                <button className="bg-black/90 hover:bg-gray-800 text-white font-black px-6 py-3 rounded-lg flex items-center gap-2 border border-white/20">
+                <button className="ripple-button bg-transparent hover:bg-white/10 text-white font-black px-6 py-3 rounded-lg flex items-center gap-2 border border-white/30 transition-all">
                   <Linkedin className="w-4 h-4" />
                   LinkedIn
                 </button>
               </Link>
 
               <button
-                className="bg-black/90 hover:bg-gray-800 text-white font-black px-6 py-3 rounded-lg flex items-center gap-2 border border-white/20"
+                className="ripple-button bg-transparent hover:bg-white/10 text-white font-black px-6 py-3 rounded-lg flex items-center gap-2 border border-white/30 transition-all"
                 onClick={handleResumeDownload}
               >
                 <Download className="w-4 h-4" />
