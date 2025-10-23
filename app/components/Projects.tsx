@@ -63,7 +63,7 @@ export default function Projects() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: index * 0.2 }}
-            className="bg-transparent rounded-lg overflow-hidden hover:bg-white/5 transition-colors border border-white/20"
+            className="bg-transparent rounded-lg overflow-hidden hover:shadow-2xl hover:shadow-orange-500/20 hover:-translate-y-2 transition-all duration-300"
           >
             <div className="relative h-48 overflow-hidden">
               <Image

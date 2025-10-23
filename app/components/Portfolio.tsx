@@ -40,7 +40,7 @@ export default function Portfolio() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative aspect-square rounded-lg overflow-hidden"
+              className="group relative aspect-square rounded-lg overflow-hidden hover:shadow-2xl hover:shadow-pink-500/30 hover:-translate-y-3 transition-all duration-300"
             >
               <Image src={project.image || "/placeholder.svg"} alt={project.title} fill className="object-cover" />
               <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-75`} />
