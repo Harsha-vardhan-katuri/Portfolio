@@ -100,7 +100,7 @@ export default function Hero() {
               initial={{ opacity: 0, scale: 0.5 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.3 }}
               className="relative w-[200px] h-[200px] md:w-[250px] md:h-[250px]"
             >
               <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white/20">
@@ -120,7 +120,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              transition={{ duration: 0.3 }}
               className="text-3xl md:text-4xl font-black text-white"
             >
               Harsha Vardhan Katuri
@@ -131,7 +131,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.15 }}
+              transition={{ duration: 0.3 }}
               className="text-xl md:text-2xl font-black text-red-700"
             >
               Firmware Engineer
@@ -142,7 +142,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              transition={{ duration: 0.3 }}
               className="text-lg font-black text-lime-500"
             >
               Specialized in Embedded Systems & IoT Solutions
@@ -153,7 +153,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.25 }}
+              transition={{ duration: 0.3 }}
               className="flex flex-wrap justify-center gap-4 text-green-400 font-black"
             >
               <div className="flex items-center gap-1 text-teal-400">
@@ -167,7 +167,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
+              transition={{ duration: 0.3 }}
               className="text-white max-w-3xl leading-relaxed font-semibold"
             >
               Currently working as a <span className="font-black text-red-700">Firmware Engineer</span> at HealthCube
@@ -183,7 +183,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.35 }}
+              transition={{ duration: 0.3 }}
               className="flex flex-wrap justify-center gap-4 mt-8"
             >
               <style jsx>{`
@@ -256,7 +256,7 @@ export default function Hero() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.3 }}
               className="rounded-lg p-8 text-left bg-transparent backdrop-blur-sm items-start hover:shadow-2xl hover:shadow-sky-500/30 hover:-translate-y-3 transition-all duration-300"
             >
               <p className="text-white text-lg leading-relaxed mb-6 font-semibold">
@@ -339,7 +339,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.3 }}
               className="text-center mb-8"
             >
               <h2 className="text-4xl md:text-5xl font-black mb-4">
@@ -353,7 +353,7 @@ export default function Hero() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.3 }}
               className="rounded-lg p-8 text-center space-y-6 bg-transparent backdrop-blur-sm hover:shadow-2xl hover:shadow-sky-500/30 hover:-translate-y-3 transition-all duration-300"
             >
               <h3 className="text-2xl font-black text-white mb-4">Available for Freelance Projects</h3>
