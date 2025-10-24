@@ -101,7 +101,7 @@ export default function Hero() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3 }}
-              className="relative w-[200px] h-[200px] md:w-[250px] md:h-[250px]"
+              className="relative w-[200px] h-[200px] md:w-[250px] md:h-[250px] pixelate-reveal"
             >
               <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white/20">
                 <Image
@@ -121,7 +121,7 @@ export default function Hero() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3 }}
-              className="text-3xl md:text-4xl font-black text-white"
+              className="text-3xl md:text-4xl font-black text-white pixelate-reveal"
             >
               Harsha Vardhan Katuri
             </motion.h1>
@@ -132,7 +132,7 @@ export default function Hero() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3 }}
-              className="text-xl md:text-2xl font-black text-red-700"
+              className="text-xl md:text-2xl font-black text-red-700 pixelate-reveal"
             >
               Firmware Engineer
             </motion.h2>
@@ -143,7 +143,7 @@ export default function Hero() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3 }}
-              className="text-lg font-black text-lime-500"
+              className="text-lg font-black text-lime-500 pixelate-reveal"
             >
               Specialized in Embedded Systems & IoT Solutions
             </motion.p>
@@ -154,7 +154,7 @@ export default function Hero() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3 }}
-              className="flex flex-wrap justify-center gap-4 text-green-400 font-black"
+              className="flex flex-wrap justify-center gap-4 text-green-400 font-black pixelate-reveal"
             >
               <div className="flex items-center gap-1 text-teal-400">
                 <MapPin className="w-4 h-4" />
@@ -168,7 +168,7 @@ export default function Hero() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3 }}
-              className="text-white max-w-3xl leading-relaxed font-semibold"
+              className="text-white max-w-3xl leading-relaxed font-semibold pixelate-reveal"
             >
               Currently working as a <span className="font-black text-red-700">Firmware Engineer</span> at HealthCube
               Private Limited, developing <span className="font-black text-yellow-400">LoRa-enabled soil</span> health
@@ -184,7 +184,7 @@ export default function Hero() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3 }}
-              className="flex flex-wrap justify-center gap-4 mt-8"
+              className="flex flex-wrap justify-center gap-4 mt-8 pixelate-reveal"
             >
               <style jsx>{`
                 @keyframes ripple {
