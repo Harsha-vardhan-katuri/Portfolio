@@ -30,8 +30,8 @@ export default function Education() {
             initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: index * 0.2 }}
-            className="rounded-lg p-6 hover:bg-transparent transition-colors bg-transparent"
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="rounded-lg p-6 bg-transparent hover:shadow-2xl hover:shadow-sky-500/30 hover:-translate-y-3 transition-all duration-300"
           >
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0">

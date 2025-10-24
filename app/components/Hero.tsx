@@ -100,7 +100,7 @@ export default function Hero() {
               initial={{ opacity: 0, scale: 0.5 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.5 }}
               className="relative w-[200px] h-[200px] md:w-[250px] md:h-[250px]"
             >
               <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white/20">
@@ -120,7 +120,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
               className="text-3xl md:text-4xl font-black text-white"
             >
               Harsha Vardhan Katuri
@@ -131,7 +131,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
               className="text-xl md:text-2xl font-black text-red-700"
             >
               Firmware Engineer
@@ -142,7 +142,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               className="text-lg font-black text-lime-500"
             >
               Specialized in Embedded Systems & IoT Solutions
@@ -153,7 +153,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.5 }}
+              transition={{ duration: 0.5, delay: 0.25 }}
               className="flex flex-wrap justify-center gap-4 text-green-400 font-black"
             >
               <div className="flex items-center gap-1 text-teal-400">
@@ -167,7 +167,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.6 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
               className="text-white max-w-3xl leading-relaxed font-semibold"
             >
               Currently working as a <span className="font-black text-red-700">Firmware Engineer</span> at HealthCube
@@ -183,7 +183,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.7 }}
+              transition={{ duration: 0.5, delay: 0.35 }}
               className="flex flex-wrap justify-center gap-4 mt-8"
             >
               <style jsx>{`
