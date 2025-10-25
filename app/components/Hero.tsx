@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { Linkedin, Mail, Download, Github, Phone, MapPin, Check } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Skills from "./Skills"
 import Education from "./Education"
 import Projects from "./Projects"
@@ -17,6 +17,7 @@ export default function Hero() {
   const [activeSection, setActiveSection] = useState("home")
   const [copiedEmail, setCopiedEmail] = useState(false)
   const [copiedPhone, setCopiedPhone] = useState(false)
+  const userClickedRef = useRef(false)
 
   useEffect(() => {
     const sections = ["home", "about", "experience", "skills", "projects", "education", "certifications", "hire"]
@@ -28,11 +29,13 @@ export default function Hero() {
     }
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id)
-        }
-      })
+      if (!userClickedRef.current) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id)
+          }
+        })
+      }
     }
 
     const observer = new IntersectionObserver(observerCallback, observerOptions)
@@ -89,7 +92,16 @@ export default function Hero() {
     <section className="relative overflow-hidden">
       <SimpleBackground />
 
-      <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
+      <Navigation
+        activeSection={activeSection}
+        setActiveSection={(section) => {
+          userClickedRef.current = true
+          setActiveSection(section)
+          setTimeout(() => {
+            userClickedRef.current = false
+          }, 1000)
+        }}
+      />
 
       <div className="relative z-10">
         {/* Home Section */}
