@@ -61,11 +61,11 @@ export default function Experience() {
                 <h3 className="text-xl font-black text-white mb-2">{experience.title}</h3>
                 <p className="font-black mb-2 text-[rgba(36,32,255,1)]">{experience.company}</p>
                 <div className="flex items-center gap-4 mb-3 text-sm text-pink-500 font-black">
-                  <div className="flex items-center gap-1 text-red-800">
+                  <div className="flex items-center gap-1 text-[rgba(255,0,0,1)]">
                     <MapPin className="w-4 h-4" />
                     {experience.location}
                   </div>
-                  <div className="flex items-center gap-1 text-red-800">
+                  <div className="flex items-center gap-1 text-[rgba(243,5,5,1)]">
                     <Calendar className="w-4 h-4" />
                     {experience.period}
                   </div>

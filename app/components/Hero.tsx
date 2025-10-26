@@ -144,7 +144,7 @@ export default function Hero() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3 }}
-              className="text-xl md:text-2xl font-black text-red-700 pixelate-reveal"
+              className="text-xl md:text-2xl font-black pixelate-reveal text-[rgba(252,6,6,1)]"
             >
               Firmware Engineer
             </motion.h2>
@@ -182,10 +182,10 @@ export default function Hero() {
               transition={{ duration: 0.3 }}
               className="text-white max-w-3xl leading-relaxed font-semibold pixelate-reveal"
             >
-              Currently working as a <span className="font-black text-red-700">Firmware Engineer</span> at HealthCube
+              Currently working as a <span className="font-black text-[rgba(255,0,0,1)]">Firmware Engineer</span> at HealthCube
               Private Limited, developing <span className="font-black text-yellow-400">LoRa-enabled soil</span> health
               monitoring systems and contributing to production-grade{" "}
-              <span className="text-purple-400 font-black">medical device firmware</span>. Experienced in C/C++,
+              <span className="font-black text-[rgba(143,0,220,1)]">medical device firmware</span>. Experienced in C/C++,
               embedded firmware development, and IoT solutions with expertise in microcontroller architectures and
               communication protocols.
             </motion.p>
@@ -303,9 +303,9 @@ export default function Hero() {
         {/* Skills Section */}
         <div id="skills" className="min-h-screen flex flex-col justify-center pt-16 px-4">
           <h2 className="text-4xl md:text-5xl font-black mb-16 text-center mt-4">
-            Technical <span className="font-black text-blue-700">Skills</span>
+            Technical <span className="font-black text-[rgba(0,4,254,1)]">Skills</span>
           </h2>
-          <p className="max-w-2xl mx-auto font-black text-center mb-2 text-red-800">
+          <p className="max-w-2xl mx-auto font-black text-center mb-2 text-[rgba(255,0,0,1)]">
             Comprehensive expertise in embedded systems, firmware development, and IoT technologies
           </p>
           <Skills />
@@ -314,9 +314,9 @@ export default function Hero() {
         {/* Projects Section */}
         <div id="projects" className="min-h-screen flex flex-col justify-center pt-16 px-4">
           <h2 className="text-4xl md:text-5xl font-black mb-16 text-center mt-4">
-            Featured <span className="text-cyan-500 font-black">Projects</span>
+            Featured <span className="font-black text-[rgba(33,214,245,1)]">Projects</span>
           </h2>
-          <p className="max-w-2xl mx-auto font-black text-center mb-2 text-red-700">
+          <p className="max-w-2xl mx-auto font-black text-center mb-2 text-[rgba(245,9,9,1)]">
             Innovative solutions in embedded systems, IoT, and AI technologies
           </p>
           <Projects />
@@ -325,9 +325,9 @@ export default function Hero() {
         {/* Education Section */}
         <div id="education" className="min-h-screen flex flex-col justify-center pt-16 px-4">
           <h2 className="text-4xl md:text-5xl font-black mb-16 text-center mt-4">
-            My <span className="font-black text-green-600">Education</span>
+            My <span className="font-black text-[rgba(8,255,0,1)]">Education</span>
           </h2>
-          <p className="max-w-2xl mx-auto font-black text-center text-red-800 mb-2">
+          <p className="max-w-2xl mx-auto font-black text-center mb-2 text-[rgba(254,4,4,1)]">
             Academic background that shaped my technical expertise
           </p>
           <Education />
@@ -370,9 +370,9 @@ export default function Hero() {
             >
               <h3 className="text-2xl font-black text-white mb-4">Available for Freelance Projects</h3>
               <p className="text-white text-lg font-black mb-6">
-                I'm currently available for <span className="text-orange-500 font-black">firmware development</span>,{" "}
-                <span className="text-green-500 font-black">IoT solutions</span>, and{" "}
-                <span className="text-pink-500 font-black">embedded systems</span> projects. Let's discuss how I can
+                I'm currently available for <span className="font-black text-[rgba(252,0,0,1)]">firmware development</span>,{" "}
+                <span className="font-black text-[rgba(0,255,9,1)]">IoT solutions</span>, and{" "}
+                <span className="font-black text-[rgba(245,3,237,1)]">embedded systems</span> projects. Let's discuss how I can
                 help bring your ideas to reality.
               </p>
               <style jsx>{`

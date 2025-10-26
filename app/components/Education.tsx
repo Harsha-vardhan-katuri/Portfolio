@@ -41,13 +41,13 @@ export default function Education() {
               </div>
               <div className="flex-1">
                 <h3 className="text-xl font-black text-white mb-2">{edu.degree}</h3>
-                <p className="font-black mb-2 text-yellow-400">{edu.school}</p>
+                <p className="font-black mb-2 text-[rgba(244,250,20,1)]">{edu.school}</p>
                 <div className="flex items-center gap-4 mb-3 text-sm font-black text-red-800">
-                  <div className="flex items-center gap-1">
+                  <div className="flex items-center gap-1 text-[rgba(251,0,0,1)]">
                     <Calendar className="w-4 h-4" />
                     {edu.period}
                   </div>
-                  <div className="flex items-center gap-1">
+                  <div className="flex items-center gap-1 text-[rgba(254,0,0,1)]">
                     <Award className="w-4 h-4" />
                     Grade: {edu.grade}
                   </div>

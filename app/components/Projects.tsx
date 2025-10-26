@@ -107,7 +107,7 @@ export default function Projects() {
               </div>
 
               <div className="space-y-2">
-                <h4 className="text-sm font-black uppercase tracking-wide text-green-600">Key Achievements</h4>
+                <h4 className="text-sm font-black uppercase tracking-wide text-[rgba(36,235,7,1)]">Key Achievements</h4>
                 <ul className="space-y-1">
                   {project.achievements.slice(0, 2).map((achievement, achievementIndex) => (
                     <li key={achievementIndex} className="text-white text-sm flex items-start font-semibold">
