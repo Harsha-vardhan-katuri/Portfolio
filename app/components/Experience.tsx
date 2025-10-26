@@ -59,7 +59,7 @@ export default function Experience() {
             <div className="flex items-start justify-between mb-4">
               <div>
                 <h3 className="text-xl font-black text-white mb-2">{experience.title}</h3>
-                <p className="font-black mb-2 text-indigo-700">{experience.company}</p>
+                <p className="font-black mb-2 text-[rgba(36,32,255,1)]">{experience.company}</p>
                 <div className="flex items-center gap-4 mb-3 text-sm text-pink-500 font-black">
                   <div className="flex items-center gap-1 text-red-800">
                     <MapPin className="w-4 h-4" />

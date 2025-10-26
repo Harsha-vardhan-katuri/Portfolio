@@ -155,7 +155,7 @@ export default function Hero() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3 }}
-              className="text-lg font-black text-lime-500 pixelate-reveal"
+              className="text-lg font-black pixelate-reveal text-[rgba(0,255,17,1)]"
             >
               Specialized in Embedded Systems & IoT Solutions
             </motion.p>
@@ -168,7 +168,7 @@ export default function Hero() {
               transition={{ duration: 0.3 }}
               className="flex flex-wrap justify-center gap-4 text-green-400 font-black pixelate-reveal"
             >
-              <div className="flex items-center gap-1 text-teal-400">
+              <div className="flex items-center gap-1 text-[rgba(230,0,255,1)]">
                 <MapPin className="w-4 h-4" />
                 Bengaluru, Karnataka, 560068
               </div>
@@ -261,7 +261,7 @@ export default function Hero() {
         <div id="about" className="min-h-screen flex items-center justify-center pt-20 px-4">
           <div className="flex flex-col items-center text-center space-y-8 max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-black mb-8">
-              About <span className="text-orange-500 font-black">Me</span>
+              About <span className="font-black text-border">Me</span>
             </h2>
 
             <motion.div
@@ -294,7 +294,7 @@ export default function Hero() {
           <h2 className="text-4xl md:text-5xl font-black mb-16 text-center mt-4">
             Work <span className="font-black text-red-700">Experience</span>
           </h2>
-          <p className="max-w-2xl mx-auto font-black text-center text-purple-700 mb-2">
+          <p className="max-w-2xl mx-auto font-black text-center mb-2 text-[rgba(241,255,0,1)]">
             Professional journey in embedded systems, firmware development, and AI technologies
           </p>
           <Experience />
@@ -336,9 +336,9 @@ export default function Hero() {
         {/* Certifications Section */}
         <div id="certifications" className="min-h-screen flex flex-col justify-center pt-16 px-4">
           <h2 className="text-4xl md:text-5xl font-black mb-16 text-center mt-4">
-            Achievements & <span className="font-black text-indigo-700">Certifications</span>
+            Achievements & <span className="font-black text-[rgba(21,0,255,1)]">Certifications</span>
           </h2>
-          <p className="max-w-2xl mx-auto font-black text-center text-fuchsia-600 mb-2">
+          <p className="max-w-2xl mx-auto font-black text-center mb-2 text-[rgba(33,255,0,1)]">
             Recognition and certifications that validate my expertise and academic excellence
           </p>
           <Certifications />
@@ -355,9 +355,9 @@ export default function Hero() {
               className="text-center mb-8"
             >
               <h2 className="text-4xl md:text-5xl font-black mb-4">
-                Let's Work <span className="text-red-500 font-black">Together</span>
+                Let's Work <span className="font-black text-[rgba(252,0,0,1)]">Together</span>
               </h2>
-              <p className="max-w-2xl mx-auto font-black text-xl text-yellow-400">
+              <p className="max-w-2xl mx-auto font-black text-xl text-[rgba(244,250,0,1)]">
                 Ready to bring your embedded systems and IoT projects to life
               </p>
             </motion.div>

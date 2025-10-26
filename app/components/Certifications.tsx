@@ -59,7 +59,7 @@ export default function Certifications() {
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-2">
-                  <h3 className="text-lg font-black text-yellow-400">{achievement.title}</h3>
+                  <h3 className="text-lg font-black text-[rgba(255,253,0,1)]">{achievement.title}</h3>
                 </div>
                 <p className="text-sm mb-2 font-black text-red-700">{achievement.type}</p>
                 <p className="text-white font-semibold">{achievement.description}</p>
