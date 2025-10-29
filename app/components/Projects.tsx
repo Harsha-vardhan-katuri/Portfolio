@@ -81,7 +81,7 @@ export default function Projects() {
 
             <div className="p-6 bg-transparent">
               <div className="flex items-start justify-between mb-4">
-                <h3 className="text-xl font-black text-white mb-2">{project.title}</h3>
+                <h3 className="text-xl font-black mb-2 text-[rgba(0,255,1,1)]">{project.title}</h3>
                 <div className="flex gap-2">
                   {project.githubLink && (
                     <a
@@ -100,7 +100,7 @@ export default function Projects() {
 
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.technologies.map((tech) => (
-                  <span key={tech} className="px-2 py-1 text-white rounded text-sm font-black bg-red-950">
+                  <span key={tech} className="px-2 py-1 rounded text-sm font-black bg-[rgba(0,0,0,1)] text-[rgba(255,0,0,1)]">
                     {tech}
                   </span>
                 ))}

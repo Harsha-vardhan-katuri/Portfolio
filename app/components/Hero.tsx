@@ -155,7 +155,7 @@ export default function Hero() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3 }}
-              className="text-lg font-black pixelate-reveal text-[rgba(0,255,17,1)]"
+              className="text-lg font-black pixelate-reveal text-border"
             >
               Specialized in Embedded Systems & IoT Solutions
             </motion.p>
@@ -168,7 +168,7 @@ export default function Hero() {
               transition={{ duration: 0.3 }}
               className="flex flex-wrap justify-center gap-4 text-green-400 font-black pixelate-reveal"
             >
-              <div className="flex items-center gap-1 text-[rgba(230,0,255,1)]">
+              <div className="flex items-center gap-1 text-border">
                 <MapPin className="w-4 h-4" />
                 Bengaluru, Karnataka, 560068
               </div>
@@ -183,9 +183,9 @@ export default function Hero() {
               className="text-white max-w-3xl leading-relaxed font-semibold pixelate-reveal"
             >
               Currently working as a <span className="font-black text-[rgba(255,0,0,1)]">Firmware Engineer</span> at HealthCube
-              Private Limited, developing <span className="font-black text-yellow-400">LoRa-enabled soil</span> health
+              Private Limited, developing <span className="font-black text-border">LoRa-enabled soil</span> health
               monitoring systems and contributing to production-grade{" "}
-              <span className="font-black text-[rgba(143,0,220,1)]">medical device firmware</span>. Experienced in C/C++,
+              <span className="font-black text-border">medical device firmware</span>. Experienced in C/C++,
               embedded firmware development, and IoT solutions with expertise in microcontroller architectures and
               communication protocols.
             </motion.p>
@@ -275,14 +275,14 @@ export default function Hero() {
                 I am a dedicated <span className="font-black text-red-700">Firmware Engineer</span> currently working at
                 HealthCube Private Limited, specializing in embedded systems and IoT solutions. My expertise lies in
                 developing robust firmware for microcontrollers, particularly{" "}
-                <span className="text-cyan-500 font-black">ESP32</span>, and implementing various communication
-                protocols including <span className="font-black text-purple-800">LoRa, RS485, UART, I2C, and SPI</span>.
+                <span className="font-black text-border">ESP32</span>, and implementing various communication
+                protocols including <span className="font-black text-[rgba(140,0,255,1)]">LoRa, RS485, UART, I2C, and SPI</span>.
               </p>
               <p className="text-white text-lg leading-relaxed font-semibold">
-                With hands-on experience in <span className="font-black text-yellow-300">agricultural IoT systems</span>{" "}
-                and <span className="text-purple-500 font-black">medical device firmware</span>, I focus on creating
+                With hands-on experience in <span className="font-black text-border">agricultural IoT systems</span>{" "}
+                and <span className="font-black text-border">medical device firmware</span>, I focus on creating
                 efficient, low-power solutions that deliver reliable performance in real-world applications. My recent
-                work includes developing a <span className="font-black text-red-600">LoRa-enabled soil health</span>{" "}
+                work includes developing a <span className="font-black text-border">LoRa-enabled soil health</span>{" "}
                 monitoring system and contributing to production-grade medical device firmware.
               </p>
             </motion.div>
@@ -292,7 +292,7 @@ export default function Hero() {
         {/* Experience Section */}
         <div id="experience" className="min-h-screen flex flex-col justify-center pt-16 px-4">
           <h2 className="text-4xl md:text-5xl font-black mb-16 text-center mt-4">
-            Work <span className="font-black text-red-700">Experience</span>
+            Work <span className="font-black text-border">Experience</span>
           </h2>
           <p className="max-w-2xl mx-auto font-black text-center mb-2 text-[rgba(241,255,0,1)]">
             Professional journey in embedded systems, firmware development, and AI technologies
@@ -303,7 +303,7 @@ export default function Hero() {
         {/* Skills Section */}
         <div id="skills" className="min-h-screen flex flex-col justify-center pt-16 px-4">
           <h2 className="text-4xl md:text-5xl font-black mb-16 text-center mt-4">
-            Technical <span className="font-black text-[rgba(0,4,254,1)]">Skills</span>
+            Technical <span className="font-black text-border">Skills</span>
           </h2>
           <p className="max-w-2xl mx-auto font-black text-center mb-2 text-[rgba(255,0,0,1)]">
             Comprehensive expertise in embedded systems, firmware development, and IoT technologies
@@ -314,7 +314,7 @@ export default function Hero() {
         {/* Projects Section */}
         <div id="projects" className="min-h-screen flex flex-col justify-center pt-16 px-4">
           <h2 className="text-4xl md:text-5xl font-black mb-16 text-center mt-4">
-            Featured <span className="font-black text-[rgba(33,214,245,1)]">Projects</span>
+            Featured <span className="font-black text-border">Projects</span>
           </h2>
           <p className="max-w-2xl mx-auto font-black text-center mb-2 text-[rgba(245,9,9,1)]">
             Innovative solutions in embedded systems, IoT, and AI technologies
@@ -325,7 +325,7 @@ export default function Hero() {
         {/* Education Section */}
         <div id="education" className="min-h-screen flex flex-col justify-center pt-16 px-4">
           <h2 className="text-4xl md:text-5xl font-black mb-16 text-center mt-4">
-            My <span className="font-black text-[rgba(8,255,0,1)]">Education</span>
+            My <span className="font-black text-border">Education</span>
           </h2>
           <p className="max-w-2xl mx-auto font-black text-center mb-2 text-[rgba(254,4,4,1)]">
             Academic background that shaped my technical expertise
@@ -336,7 +336,7 @@ export default function Hero() {
         {/* Certifications Section */}
         <div id="certifications" className="min-h-screen flex flex-col justify-center pt-16 px-4">
           <h2 className="text-4xl md:text-5xl font-black mb-16 text-center mt-4">
-            Achievements & <span className="font-black text-[rgba(21,0,255,1)]">Certifications</span>
+            Achievements & <span className="font-black text-border">Certifications</span>
           </h2>
           <p className="max-w-2xl mx-auto font-black text-center mb-2 text-[rgba(33,255,0,1)]">
             Recognition and certifications that validate my expertise and academic excellence
@@ -355,7 +355,7 @@ export default function Hero() {
               className="text-center mb-8"
             >
               <h2 className="text-4xl md:text-5xl font-black mb-4">
-                Let's Work <span className="font-black text-[rgba(252,0,0,1)]">Together</span>
+                Let's Work <span className="font-black text-border">Together</span>
               </h2>
               <p className="max-w-2xl mx-auto font-black text-xl text-[rgba(244,250,0,1)]">
                 Ready to bring your embedded systems and IoT projects to life
