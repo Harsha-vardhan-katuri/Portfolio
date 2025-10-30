@@ -155,7 +155,7 @@ export default function Hero() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3 }}
-              className="text-lg font-black pixelate-reveal text-border"
+              className="text-lg font-black pixelate-reveal text-[rgba(10,221,10,1)]"
             >
               Specialized in Embedded Systems & IoT Solutions
             </motion.p>
