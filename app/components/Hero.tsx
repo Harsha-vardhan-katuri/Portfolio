@@ -357,7 +357,7 @@ export default function Hero() {
               <h2 className="text-4xl md:text-5xl font-black mb-4">
                 Let's Work <span className="font-black text-border">Together</span>
               </h2>
-              <p className="max-w-2xl mx-auto font-black text-xl text-[rgba(244,250,0,1)]">
+              <p className="max-w-2xl mx-auto font-black text-xl text-[rgba(31,236,8,1)]">
                 Ready to bring your embedded systems and IoT projects to life
               </p>
             </motion.div>
