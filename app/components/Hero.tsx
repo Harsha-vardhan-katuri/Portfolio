@@ -327,7 +327,7 @@ export default function Hero() {
           <h2 className="text-4xl md:text-5xl font-black mb-16 text-center mt-4">
             My <span className="font-black text-border">Education</span>
           </h2>
-          <p className="max-w-2xl mx-auto font-black text-center mb-2 text-[rgba(254,4,4,1)]">
+          <p className="max-w-2xl mx-auto font-black text-center mb-2 text-[rgba(11,5,255,1)]">
             Academic background that shaped my technical expertise
           </p>
           <Education />
