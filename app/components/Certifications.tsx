@@ -7,28 +7,30 @@ export default function Certifications() {
   const achievements = [
     {
       title: "JEE Mains Achievement",
-      description: "Secured a 91% in the JEE Mains exam", // Updated text
+      description: "Secured 91% in JEE Mains exam, outperforming thousands of candidates",
       type: "Academic Achievement",
       icon: <Trophy className="w-6 h-6 text-white" />,
       color: "from-yellow-500 to-orange-500",
     },
     {
-      title: "Intermediate Topper",
-      description: "Ranked as the top student in Intermediate", // Updated text
+      title: "Top Student Recognition",
+      description: "Ranked as the top student in Intermediate education with 9.94 CGPA",
       type: "Academic Achievement",
       icon: <Star className="w-6 h-6 text-white" />,
       color: "from-pink-500 to-purple-500",
     },
     {
       title: "Advanced Embedded Systems",
-      description: "Certification from Vector India", // Updated text
+      description:
+        "Comprehensive certification from Vector India covering microcontroller architectures and embedded programming",
       type: "Technical Certification",
       icon: <Award className="w-6 h-6 text-white" />,
       color: "from-green-500 to-cyan-500",
     },
     {
-      title: "AI: Transformative Learning with Tech Saksham",
-      description: "Certification from AICTE, Microsoft, and SAP", // Updated text
+      title: "AI: Transformative Learning with TechSaksham",
+      description:
+        "Advanced AI and machine learning certification from AICTE, Microsoft, and SAP collaboration program",
       type: "Technical Certification",
       icon: <Award className="w-6 h-6 text-white" />,
       color: "from-indigo-500 to-blue-500",
