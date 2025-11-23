@@ -4,6 +4,8 @@
 
 :root {
   --foreground-rgb: 255, 255, 255;
+  --font-inter: "Inter", sans-serif;
+  --font-space: "Space Grotesk", sans-serif;
 }
 
 html {
@@ -14,8 +16,17 @@ html {
 
 body {
   color: rgb(var(--foreground-rgb));
-  /* Updated background to dark navy blue (#00072D) */
-  background: linear-gradient(135deg, #00072d 0%, #001a4d 50%, #000d26 100%);
+  background: transparent;
+  font-family: var(--font-inter);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-space);
 }
 
 @media (prefers-reduced-motion: reduce) {

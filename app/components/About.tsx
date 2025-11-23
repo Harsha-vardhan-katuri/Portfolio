@@ -6,24 +6,24 @@ import { GraduationCap } from "lucide-react"
 export default function About() {
   const education = [
     {
-      degree: "B.Tech in Electronics and Communication Engineering",
+      degree: "B.Tech ECE", // Updated based on resume
       school: "Gudlavalleru Engineering College",
-      period: "2019 - 2023",
+      period: "2019 – 2023",
       grade: "8.36",
     },
     {
-      degree: "Intermediate in MPC",
+      degree: "Intermediate MPC", // Updated based on resume
       school: "Narayana Junior College",
-      period: "2017 - 2019",
+      period: "2017 – 2019",
       grade: "9.94",
     },
   ]
 
   const skills = [
-    { name: "Embedded Systems", progress: 95 },
-    { name: "IoT Development", progress: 90 },
-    { name: "C/C++ Programming", progress: 85 },
-    { name: "Hardware Interfacing", progress: 88 },
+    { name: "Firmware Development", progress: 95 }, // Updated skills
+    { name: "Embedded C/C++", progress: 92 },
+    { name: "IoT Solutions", progress: 90 },
+    { name: "Communication Protocols", progress: 88 },
   ]
 
   return (
@@ -104,9 +104,10 @@ export default function About() {
           <p className="text-white text-lg leading-relaxed font-semibold">
             I am a dedicated <span className="text-orange-500 font-black">Firmware Engineer</span> currently working at
             HealthCube Private Limited, specializing in embedded systems and IoT solutions. My expertise lies in
-            developing robust firmware for microcontrollers, particularly{" "}
-            <span className="text-cyan-500 font-black">ESP32</span>, and implementing various communication protocols
-            including <span className="text-pink-500 font-black">LoRa, RS485, UART, I2C, and SPI</span>.
+            designing core firmware, executing board bring-up, and implementing communication protocols like{" "}
+            <span className="text-cyan-500 font-black">UART, I2C, SPI, and RS485</span>. I have hands-on experience in
+            developing <span className="text-pink-500 font-black">LoRa soil monitoring systems</span> and analyzing
+            device logs for system stability.
           </p>
         </motion.div>
       </div>

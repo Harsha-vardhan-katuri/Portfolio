@@ -1,45 +1,40 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Code, Cpu, Network, Microscope as Microchip, Wrench } from "lucide-react"
+import { Code, Cpu, Network, Wrench } from "lucide-react"
 
 export default function Skills() {
   const skillCategories = [
     {
       title: "Programming Languages",
       icon: <Code className="w-8 h-8" />,
-      skills: ["C", "C++", "Embedded C", "Python", "Data Structures"],
+      skills: ["C/C++", "Embedded C", "Data Structures", "Python"], // Updated based on resume
       color: "from-red-500 to-orange-500",
     },
     {
-      title: "Embedded Systems",
+      title: "Embedded & Hardware", // Updated title
       icon: <Cpu className="w-8 h-8" />,
       skills: [
-        "Microcontroller Architectures",
-        "Hardware Interfacing",
-        "Linux Internals",
-        "Network Protocols",
-        "Device Drivers",
+        "Microcontroller architectures",
+        "Hardware interfacing",
+        "Board bring-up",
+        "UART/SPI/I2C/RS485",
+        "Modbus",
+        "Hardware debugging",
       ],
       color: "from-green-500 to-cyan-500",
     },
     {
-      title: "Communication Protocols",
-      icon: <Network className="w-8 h-8" />,
-      skills: ["I2C", "SPI", "UART", "RS485", "Modbus RTU", "LoRa"],
-      color: "from-pink-500 to-purple-500",
-    },
-    {
-      title: "System on Chips",
-      icon: <Microchip className="w-8 h-8" />,
-      skills: ["ESP32", "ESP8266", "ARM Cortex-M", "LPC2148"],
-      color: "from-indigo-500 to-blue-500",
-    },
-    {
-      title: "Tools & Platforms",
+      title: "SoCs, Tools & Platforms", // Updated title
       icon: <Wrench className="w-8 h-8" />,
-      skills: ["Keil IDE", "Arduino IDE", "MATLAB", "Git", "GitHub", "VS Code", "Ubuntu"],
+      skills: ["ESP32", "ESP01", "LPC2148", "Keil IDE", "Arduino IDE", "Git/GitHub", "Ubuntu"], // Updated skills
       color: "from-yellow-500 to-orange-500",
+    },
+    {
+      title: "Standards & Processes", // New category based on resume
+      icon: <Network className="w-8 h-8" />,
+      skills: ["ISO 13485", "IEC 60601", "Product Development SOPs", "Verification & Validation"], // Updated skills
+      color: "from-pink-500 to-purple-500",
     },
   ]
 
@@ -63,7 +58,10 @@ export default function Skills() {
             <h3 className="text-xl font-black mb-4 text-white">{category.title}</h3>
             <div className="flex flex-wrap gap-2">
               {category.skills.map((skill) => (
-                <span key={skill} className="px-3 py-1 text-white rounded-full text-sm font-black bg-[rgba(20,12,243,1)]">
+                <span
+                  key={skill}
+                  className="px-3 py-1 text-white rounded-full text-sm font-black bg-[rgba(20,12,243,1)]"
+                >
                   {skill}
                 </span>
               ))}

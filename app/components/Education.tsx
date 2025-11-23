@@ -6,18 +6,18 @@ import { GraduationCap, Calendar, Award } from "lucide-react"
 export default function Education() {
   const education = [
     {
-      degree: "B.Tech in Electronics and Communication Engineering",
+      degree: "Gudlavalleru Engineering College – B.Tech ECE", // Updated format
       school: "Gudlavalleru Engineering College",
-      period: "August 2019 – May 2023",
-      grade: "8.36 CGPA",
-      description: "Specialized in embedded systems, digital electronics, and communication protocols",
+      period: "2019–2023",
+      grade: "CGPA: 8.36", // Updated format
+      description: "Specialized in Embedded Systems and Electronics",
     },
     {
-      degree: "Intermediate in MPC (Mathematics, Physics, Chemistry)",
+      degree: "Narayana Junior College – MPC", // Updated format
       school: "Narayana Junior College",
-      period: "June 2017 – April 2019",
-      grade: "9.94 CGPA",
-      description: "Strong foundation in mathematics and physics with focus on analytical thinking",
+      period: "2017–2019",
+      grade: "CGPA: 9.94", // Updated format
+      description: "Mathematics, Physics, and Chemistry",
     },
   ]
 
@@ -49,7 +49,7 @@ export default function Education() {
                   </div>
                   <div className="flex items-center gap-1 text-[rgba(254,0,0,1)]">
                     <Award className="w-4 h-4" />
-                    Grade: {edu.grade}
+                    {edu.grade}
                   </div>
                 </div>
                 <p className="text-white font-semibold">{edu.description}</p>
