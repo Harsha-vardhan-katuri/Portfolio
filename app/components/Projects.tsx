@@ -92,7 +92,7 @@ export default function Projects() {
         "Classifies stress levels into Calm, Normal, Sweaty/Mild Stress, and High Stress categories",
         "Visualizes real-time data using Arduino Serial Plotter with spike detection algorithms",
       ],
-      githubLink: null,
+      githubLink: "https://github.com/Harsha-vardhan-katuri/GSR-Sensor-Project",
       category: "Biomedical IoT",
     },
     {
@@ -107,7 +107,7 @@ export default function Projects() {
         "Synthesized motion analysis algorithms to detect movement within 100 milliseconds per packet, improving processing speed",
         "Reinforced data integrity through advanced error correction, improving packet reliability by 98%, ensuring robust transmission",
       ],
-      githubLink: "https://github.com/Harsha-vardhan-katuri",
+      githubLink: "https://github.com/Harsha-vardhan-katuri/BLE_Packet_Parser",
       category: "Wireless Comm",
     },
     {
@@ -122,7 +122,7 @@ export default function Projects() {
         "Refined image reconstruction algorithms, cutting display latency by 30% and achieving 98% accuracy in rendering images",
         "Upgraded network communication protocols, reducing packet loss to under 2% and improving real-time delivery performance",
       ],
-      githubLink: "https://github.com/Harsha-vardhan-katuri",
+      githubLink: "https://github.com/Harsha-vardhan-katuri/Image_Projector_Firmware",
       category: "Network Systems",
     },
   ]
