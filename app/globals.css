@@ -11,13 +11,13 @@
 html {
   scroll-behavior: smooth;
   /* Updated background to dark navy blue (#00072D) */
-  background: linear-gradient(135deg, #00072d 0%, #001a4d 50%, #000d26 100%);
+  background: #00072d;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
   background: transparent;
-  font-family: var(--font-inter);
+  font-family: "Calibri", sans-serif;
 }
 
 h1,
@@ -26,7 +26,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-space);
+  font-family: "Calibri", sans-serif;
 }
 
 @media (prefers-reduced-motion: reduce) {

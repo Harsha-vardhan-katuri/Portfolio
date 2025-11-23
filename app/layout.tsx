@@ -1,10 +1,6 @@
 import "./globals.css"
-import { Inter, Space_Grotesk } from "next/font/google"
 import type { Metadata } from "next"
 import type React from "react"
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
-const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space" })
 
 export const metadata: Metadata = {
   title: "Harsha Vardhan Katuri - Portfolio",
@@ -19,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans`} style={{ backgroundColor: "#00072D" }}>
+      <body className="font-sans" style={{ backgroundColor: "#00072D", fontFamily: "Calibri, sans-serif" }}>
         {children}
       </body>
     </html>

@@ -115,7 +115,7 @@ export default function Hero() {
               transition={{ duration: 0.3 }}
               className="relative w-[200px] h-[200px] md:w-[250px] md:h-[250px] pixelate-reveal"
             >
-              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white/20">
+              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white">
                 <Image
                   src="/images/design-mode/harsha.jpg(1).jpeg"
                   alt="Harsha Vardhan Katuri"
@@ -133,7 +133,7 @@ export default function Hero() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3 }}
-              className="text-3xl md:text-4xl font-black text-white pixelate-reveal"
+              className="text-3xl md:text-4xl font-bold text-white pixelate-reveal"
             >
               Harsha Vardhan Katuri
             </motion.h1>
@@ -144,7 +144,7 @@ export default function Hero() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3 }}
-              className="text-xl md:text-2xl font-black pixelate-reveal text-[rgba(252,6,6,1)]"
+              className="text-xl md:text-2xl font-bold pixelate-reveal text-white"
             >
               Firmware Engineer
             </motion.h2>
@@ -155,7 +155,7 @@ export default function Hero() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3 }}
-              className="text-lg font-black pixelate-reveal text-[rgba(10,221,10,1)]"
+              className="text-lg font-bold pixelate-reveal text-white"
             >
               Specialized in Embedded Systems & IoT Solutions
             </motion.p>
@@ -166,9 +166,9 @@ export default function Hero() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3 }}
-              className="flex flex-wrap justify-center gap-4 text-green-400 font-black pixelate-reveal"
+              className="flex flex-wrap justify-center gap-4 text-white font-bold pixelate-reveal"
             >
-              <div className="flex items-center gap-1 text-border">
+              <div className="flex items-center gap-1">
                 <MapPin className="w-4 h-4" />
                 Bengaluru, Karnataka, 560068
               </div>
@@ -180,14 +180,14 @@ export default function Hero() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3 }}
-              className="text-white max-w-3xl leading-relaxed font-semibold pixelate-reveal"
+              className="text-white max-w-3xl leading-relaxed font-normal pixelate-reveal"
             >
-              Currently working as a <span className="font-black text-[rgba(255,0,0,1)]">Firmware Engineer</span> at HealthCube
-              Private Limited, developing <span className="font-black text-border">LoRa-enabled soil</span> health
+              Currently working as a <span className="font-bold text-white">Firmware Engineer</span> at HealthCube
+              Private Limited, developing <span className="font-bold text-white">LoRa-enabled soil</span> health
               monitoring systems and contributing to production-grade{" "}
-              <span className="font-black text-border">medical device firmware</span>. Experienced in C/C++,
-              embedded firmware development, and IoT solutions with expertise in microcontroller architectures and
-              communication protocols.
+              <span className="font-bold text-white">medical device firmware</span>. Experienced in C/C++, embedded
+              firmware development, and IoT solutions with expertise in microcontroller architectures and communication
+              protocols.
             </motion.p>
 
             {/* Action Buttons */}
@@ -198,26 +198,8 @@ export default function Hero() {
               transition={{ duration: 0.3 }}
               className="flex flex-wrap justify-center gap-4 mt-8 pixelate-reveal"
             >
-              <style jsx>{`
-                @keyframes ripple {
-                  0% {
-                    box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.7);
-                  }
-                  70% {
-                    box-shadow: 0 0 0 10px rgba(0, 212, 255, 0);
-                  }
-                  100% {
-                    box-shadow: 0 0 0 0 rgba(0, 212, 255, 0);
-                  }
-                }
-                
-                .ripple-button {
-                  animation: ripple 1.5s infinite;
-                }
-              `}</style>
-
               <button
-                className="ripple-button bg-transparent hover:bg-white/10 text-white font-black flex items-center gap-2 px-6 py-3 rounded-lg border border-white/30 transition-all"
+                className="bg-transparent hover:bg-white/10 text-white font-bold flex items-center gap-2 px-6 py-3 rounded-lg border border-white transition-all"
                 onClick={handleEmailCopy}
               >
                 {copiedEmail ? <Check className="w-4 h-4" /> : <Mail className="w-4 h-4" />}
@@ -225,7 +207,7 @@ export default function Hero() {
               </button>
 
               <button
-                className="ripple-button bg-transparent hover:bg-white/10 text-white font-black px-6 py-3 rounded-lg flex items-center gap-2 border border-white/30 transition-all"
+                className="bg-transparent hover:bg-white/10 text-white font-bold px-6 py-3 rounded-lg flex items-center gap-2 border border-white transition-all"
                 onClick={handlePhoneCopy}
               >
                 {copiedPhone ? <Check className="w-4 h-4" /> : <Phone className="w-4 h-4" />}
@@ -233,21 +215,21 @@ export default function Hero() {
               </button>
 
               <Link href="https://github.com/Harsha-vardhan-katuri" target="_blank">
-                <button className="ripple-button bg-transparent hover:bg-white/10 text-white font-black px-6 py-3 rounded-lg flex items-center gap-2 border border-white/30 transition-all">
+                <button className="bg-transparent hover:bg-white/10 text-white font-bold px-6 py-3 rounded-lg flex items-center gap-2 border border-white transition-all">
                   <Github className="w-4 h-4" />
                   GitHub
                 </button>
               </Link>
 
               <Link href="https://www.linkedin.com/in/harsha-vardhan-katuri-772166256/" target="_blank">
-                <button className="ripple-button bg-transparent hover:bg-white/10 text-white font-black px-6 py-3 rounded-lg flex items-center gap-2 border border-white/30 transition-all">
+                <button className="bg-transparent hover:bg-white/10 text-white font-bold px-6 py-3 rounded-lg flex items-center gap-2 border border-white transition-all">
                   <Linkedin className="w-4 h-4" />
                   LinkedIn
                 </button>
               </Link>
 
               <button
-                className="ripple-button bg-transparent hover:bg-white/10 text-white font-black px-6 py-3 rounded-lg flex items-center gap-2 border border-white/30 transition-all"
+                className="bg-transparent hover:bg-white/10 text-white font-bold px-6 py-3 rounded-lg flex items-center gap-2 border border-white transition-all"
                 onClick={handleResumeDownload}
               >
                 <Download className="w-4 h-4" />
@@ -260,8 +242,8 @@ export default function Hero() {
         {/* About Section */}
         <div id="about" className="min-h-screen flex items-center justify-center pt-20 px-4">
           <div className="flex flex-col items-center text-center space-y-8 max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-black mb-8">
-              About <span className="font-black text-border">Me</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white">
+              About <span className="font-bold text-white">Me</span>
             </h2>
 
             <motion.div
@@ -269,21 +251,21 @@ export default function Hero() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3 }}
-              className="rounded-lg p-8 text-left bg-transparent backdrop-blur-sm items-start hover:shadow-2xl hover:shadow-sky-500/30 hover:-translate-y-3 transition-all duration-300"
+              className="rounded-lg p-8 text-left bg-transparent backdrop-blur-sm items-start border border-white/10"
             >
-              <p className="text-white text-lg leading-relaxed mb-6 font-semibold">
-                I am a dedicated <span className="font-black text-red-700">Firmware Engineer</span> currently working at
+              <p className="text-white text-lg leading-relaxed mb-6 font-normal">
+                I am a dedicated <span className="font-bold text-white">Firmware Engineer</span> currently working at
                 HealthCube Private Limited, specializing in embedded systems and IoT solutions. My expertise lies in
                 developing robust firmware for microcontrollers, particularly{" "}
-                <span className="font-black text-border">ESP32</span>, and implementing various communication
-                protocols including <span className="font-black text-[rgba(140,0,255,1)]">LoRa, RS485, UART, I2C, and SPI</span>.
+                <span className="font-bold text-white">ESP32</span>, and implementing various communication protocols
+                including <span className="font-bold text-white">LoRa, RS485, UART, I2C, and SPI</span>.
               </p>
-              <p className="text-white text-lg leading-relaxed font-semibold">
-                With hands-on experience in <span className="font-black text-border">agricultural IoT systems</span>{" "}
-                and <span className="font-black text-border">medical device firmware</span>, I focus on creating
-                efficient, low-power solutions that deliver reliable performance in real-world applications. My recent
-                work includes developing a <span className="font-black text-border">LoRa-enabled soil health</span>{" "}
-                monitoring system and contributing to production-grade medical device firmware.
+              <p className="text-white text-lg leading-relaxed font-normal">
+                With hands-on experience in <span className="font-bold text-white">agricultural IoT systems</span> and{" "}
+                <span className="font-bold text-white">medical device firmware</span>, I focus on creating efficient,
+                low-power solutions that deliver reliable performance in real-world applications. My recent work
+                includes developing a <span className="font-bold text-white">LoRa-enabled soil health</span> monitoring
+                system and contributing to production-grade medical device firmware.
               </p>
             </motion.div>
           </div>
@@ -291,10 +273,10 @@ export default function Hero() {
 
         {/* Experience Section */}
         <div id="experience" className="min-h-screen flex flex-col justify-center pt-16 px-4">
-          <h2 className="text-4xl md:text-5xl font-black mb-16 text-center mt-4">
-            Work <span className="font-black text-border">Experience</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center mt-4 text-white">
+            Work <span className="font-bold text-white">Experience</span>
           </h2>
-          <p className="max-w-2xl mx-auto font-black text-center mb-2 text-[rgba(241,255,0,1)]">
+          <p className="max-w-2xl mx-auto font-bold text-center mb-2 text-white">
             Professional journey in embedded systems, firmware development, and AI technologies
           </p>
           <Experience />
@@ -302,10 +284,10 @@ export default function Hero() {
 
         {/* Skills Section */}
         <div id="skills" className="min-h-screen flex flex-col justify-center pt-16 px-4">
-          <h2 className="text-4xl md:text-5xl font-black mb-16 text-center mt-4">
-            Technical <span className="font-black text-border">Skills</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center mt-4 text-white">
+            Technical <span className="font-bold text-white">Skills</span>
           </h2>
-          <p className="max-w-2xl mx-auto font-black text-center mb-2 text-[rgba(255,0,0,1)]">
+          <p className="max-w-2xl mx-auto font-bold text-center mb-2 text-white">
             Comprehensive expertise in embedded systems, firmware development, and IoT technologies
           </p>
           <Skills />
@@ -313,10 +295,10 @@ export default function Hero() {
 
         {/* Projects Section */}
         <div id="projects" className="min-h-screen flex flex-col justify-center pt-16 px-4">
-          <h2 className="text-4xl md:text-5xl font-black mb-16 text-center mt-4">
-            Featured <span className="font-black text-border">Projects</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center mt-4 text-white">
+            Featured <span className="font-bold text-white">Projects</span>
           </h2>
-          <p className="max-w-2xl mx-auto font-black text-center mb-2 text-[rgba(245,9,9,1)]">
+          <p className="max-w-2xl mx-auto font-bold text-center mb-2 text-white">
             Innovative solutions in embedded systems, IoT, and AI technologies
           </p>
           <Projects />
@@ -324,10 +306,10 @@ export default function Hero() {
 
         {/* Education Section */}
         <div id="education" className="min-h-screen flex flex-col justify-center pt-16 px-4">
-          <h2 className="text-4xl md:text-5xl font-black mb-16 text-center mt-4">
-            My <span className="font-black text-border">Education</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center mt-4 text-white">
+            My <span className="font-bold text-white">Education</span>
           </h2>
-          <p className="max-w-2xl mx-auto font-black text-center mb-2 text-[rgba(11,5,255,1)]">
+          <p className="max-w-2xl mx-auto font-bold text-center mb-2 text-white">
             Academic background that shaped my technical expertise
           </p>
           <Education />
@@ -335,10 +317,10 @@ export default function Hero() {
 
         {/* Certifications Section */}
         <div id="certifications" className="min-h-screen flex flex-col justify-center pt-16 px-4">
-          <h2 className="text-4xl md:text-5xl font-black mb-16 text-center mt-4">
-            Achievements & <span className="font-black text-border">Certifications</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center mt-4 text-white">
+            Achievements & <span className="font-bold text-white">Certifications</span>
           </h2>
-          <p className="max-w-2xl mx-auto font-black text-center mb-2 text-[rgba(33,255,0,1)]">
+          <p className="max-w-2xl mx-auto font-bold text-center mb-2 text-white">
             Recognition and certifications that validate my expertise and academic excellence
           </p>
           <Certifications />
@@ -354,10 +336,10 @@ export default function Hero() {
               transition={{ duration: 0.3 }}
               className="text-center mb-8"
             >
-              <h2 className="text-4xl md:text-5xl font-black mb-4">
-                Let's Work <span className="font-black text-border">Together</span>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+                Let's Work <span className="font-bold text-white">Together</span>
               </h2>
-              <p className="max-w-2xl mx-auto font-black text-xl text-[rgba(31,236,8,1)]">
+              <p className="max-w-2xl mx-auto font-bold text-xl text-white">
                 Ready to bring your embedded systems and IoT projects to life
               </p>
             </motion.div>
@@ -366,35 +348,19 @@ export default function Hero() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3 }}
-              className="rounded-lg p-8 text-center space-y-6 bg-transparent backdrop-blur-sm hover:shadow-2xl hover:shadow-sky-500/30 hover:-translate-y-3 transition-all duration-300"
+              className="rounded-lg p-8 text-center space-y-6 bg-transparent backdrop-blur-sm border border-white/10"
             >
-              <h3 className="text-2xl font-black text-white mb-4">Available for Freelance Projects</h3>
-              <p className="text-white text-lg font-black mb-6">
-                I'm currently available for <span className="font-black text-[rgba(252,0,0,1)]">firmware development</span>,{" "}
-                <span className="font-black text-[rgba(0,255,9,1)]">IoT solutions</span>, and{" "}
-                <span className="font-black text-[rgba(245,3,237,1)]">embedded systems</span> projects. Let's discuss how I can
-                help bring your ideas to reality.
+              <h3 className="text-2xl font-bold text-white mb-4">Available for Freelance Projects</h3>
+              <p className="text-white text-lg font-bold mb-6">
+                I'm currently available for <span className="font-bold text-white">firmware development</span>,{" "}
+                <span className="font-bold text-white">IoT solutions</span>, and{" "}
+                <span className="font-bold text-white">embedded systems</span> projects. Let's discuss how I can help
+                bring your ideas to reality.
               </p>
-              <style jsx>{`
-                @keyframes ripple {
-                  0% {
-                    box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.7);
-                  }
-                  70% {
-                    box-shadow: 0 0 0 10px rgba(0, 212, 255, 0);
-                  }
-                  100% {
-                    box-shadow: 0 0 0 0 rgba(0, 212, 255, 0);
-                  }
-                }
-                
-                .ripple-button-hire {
-                  animation: ripple 1.5s infinite;
-                }
-              `}</style>
+
               <div className="flex flex-wrap justify-center gap-4">
                 <button
-                  className="ripple-button-hire bg-transparent hover:bg-white/10 text-white font-black px-8 py-3 rounded-lg flex items-center gap-2 border border-white/30 transition-all"
+                  className="bg-transparent hover:bg-white/10 text-white font-bold px-8 py-3 rounded-lg flex items-center gap-2 border border-white transition-all"
                   onClick={() => (window.location.href = "mailto:katuriharshavardhan369@gmail.com")}
                 >
                   <Mail className="w-5 h-5" />
@@ -402,7 +368,7 @@ export default function Hero() {
                 </button>
 
                 <Link href="https://www.linkedin.com/in/harsha-vardhan-katuri-772166256/" target="_blank">
-                  <button className="ripple-button-hire bg-transparent hover:bg-white/10 text-white font-black px-8 py-3 rounded-lg flex items-center gap-2 border border-white/30 transition-all">
+                  <button className="bg-transparent hover:bg-white/10 text-white font-bold px-8 py-3 rounded-lg flex items-center gap-2 border border-white transition-all">
                     <Linkedin className="w-5 h-5" />
                     Connect on LinkedIn
                   </button>

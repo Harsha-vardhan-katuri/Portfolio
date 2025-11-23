@@ -19,12 +19,7 @@ export default function About() {
     },
   ]
 
-  const skills = [
-    { name: "Embedded Systems", progress: 95 },
-    { name: "IoT Development", progress: 90 },
-    { name: "C/C++ Programming", progress: 85 },
-    { name: "Hardware Interfacing", progress: 88 },
-  ]
+  // Skills moved to main Skills component as requested, simplifying About to just About/Education highlights
 
   return (
     <section id="about" className="py-20">
@@ -35,59 +30,35 @@ export default function About() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-black mb-4">
-            About <span className="text-orange-500 font-black">Me</span>
+          {/* Removed colorful text classes */}
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+            About <span className="text-white font-bold">Me</span>
           </h2>
-          <p className="text-cyan-500 max-w-2xl mx-auto font-black">
+          <p className="text-white max-w-2xl mx-auto font-bold">
             Passionate firmware engineer specializing in embedded systems and IoT solutions
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-transparent rounded-lg p-8"
+            className="bg-transparent rounded-lg p-8 border border-white/10"
           >
-            <h3 className="text-2xl font-black mb-6 text-green-500">Education</h3>
+            <h3 className="text-2xl font-bold mb-6 text-white">Education</h3>
             <div className="space-y-6">
               {education.map((edu, index) => (
                 <div key={index} className="flex gap-4">
                   <div className="mt-1">
-                    <GraduationCap className="w-6 h-6 text-pink-500" />
+                    <GraduationCap className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-black text-white">{edu.degree}</h4>
-                    <p className="text-purple-500 font-black">{edu.school}</p>
-                    <p className="text-sm text-yellow-500 font-black">
+                    <h4 className="font-bold text-white">{edu.degree}</h4>
+                    <p className="text-white font-bold">{edu.school}</p>
+                    <p className="text-sm text-white font-bold">
                       {edu.period} • Grade: {edu.grade}
                     </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="bg-transparent rounded-lg p-8"
-          >
-            <h3 className="text-2xl font-black mb-6 text-indigo-500">Skills</h3>
-            <div className="space-y-4">
-              {skills.map((skill, index) => (
-                <div key={index}>
-                  <div className="flex justify-between mb-2">
-                    <span className="font-black text-white">{skill.name}</span>
-                    <span className="font-black text-red-500">{skill.progress}%</span>
-                  </div>
-                  <div className="h-2 bg-gray-700 rounded-full">
-                    <div
-                      className="h-full bg-gradient-to-r from-orange-500 to-pink-500 rounded-full"
-                      style={{ width: `${skill.progress}%` }}
-                    />
                   </div>
                 </div>
               ))}
@@ -99,14 +70,14 @@ export default function About() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-12 bg-transparent rounded-lg p-8 text-center"
+          className="mt-12 bg-transparent rounded-lg p-8 text-center border border-white/10"
         >
-          <p className="text-white text-lg leading-relaxed font-semibold">
-            I am a dedicated <span className="text-orange-500 font-black">Firmware Engineer</span> currently working at
+          <p className="text-white text-lg leading-relaxed font-normal">
+            I am a dedicated <span className="text-white font-bold">Firmware Engineer</span> currently working at
             HealthCube Private Limited, specializing in embedded systems and IoT solutions. My expertise lies in
             developing robust firmware for microcontrollers, particularly{" "}
-            <span className="text-cyan-500 font-black">ESP32</span>, and implementing various communication protocols
-            including <span className="text-pink-500 font-black">LoRa, RS485, UART, I2C, and SPI</span>.
+            <span className="text-white font-bold">ESP32</span>, and implementing various communication protocols
+            including <span className="text-white font-bold">LoRa, RS485, UART, I2C, and SPI</span>.
           </p>
         </motion.div>
       </div>

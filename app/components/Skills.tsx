@@ -1,45 +1,72 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Code, Cpu, Network, Microscope as Microchip, Wrench } from "lucide-react"
+import { Code, Cpu, Network, Microscope as Microchip, Shield, CheckCircle } from "lucide-react"
 
 export default function Skills() {
   const skillCategories = [
     {
       title: "Programming Languages",
-      icon: <Code className="w-8 h-8" />,
-      skills: ["C", "C++", "Embedded C", "Python", "Data Structures"],
-      color: "from-red-500 to-orange-500",
+      icon: <Code className="w-6 h-6" />,
+      skills: [
+        { name: "C", level: 95 },
+        { name: "C++", level: 90 },
+        { name: "Embedded C", level: 95 },
+        { name: "Python", level: 85 },
+        { name: "Data Structures", level: 80 },
+      ],
     },
     {
       title: "Embedded Systems",
-      icon: <Cpu className="w-8 h-8" />,
+      icon: <Cpu className="w-6 h-6" />,
       skills: [
-        "Microcontroller Architectures",
-        "Hardware Interfacing",
-        "Linux Internals",
-        "Network Protocols",
-        "Device Drivers",
+        { name: "Microcontroller Arch.", level: 90 },
+        { name: "Hardware Interfacing", level: 95 },
+        { name: "Linux Internals", level: 75 },
+        { name: "Device Drivers", level: 70 },
+        { name: "Board Bring-up", level: 85 },
       ],
-      color: "from-green-500 to-cyan-500",
     },
     {
       title: "Communication Protocols",
-      icon: <Network className="w-8 h-8" />,
-      skills: ["I2C", "SPI", "UART", "RS485", "Modbus RTU", "LoRa"],
-      color: "from-pink-500 to-purple-500",
+      icon: <Network className="w-6 h-6" />,
+      skills: [
+        { name: "I2C / SPI / UART", level: 95 },
+        { name: "RS485 / Modbus", level: 90 },
+        { name: "LoRa", level: 85 },
+        { name: "MQTT / HTTP", level: 80 },
+      ],
+    },
+    {
+      title: "Hardware & Testing",
+      icon: <CheckCircle className="w-6 h-6" />,
+      skills: [
+        { name: "Component Fault ID", level: 90 },
+        { name: "Root Cause Analysis", level: 85 },
+        { name: "Voltage/Continuity Test", level: 95 },
+        { name: "Soldering", level: 90 },
+        { name: "Hardware Debugging", level: 88 },
+      ],
     },
     {
       title: "System on Chips",
-      icon: <Microchip className="w-8 h-8" />,
-      skills: ["ESP32", "ESP8266", "ARM Cortex-M", "LPC2148"],
-      color: "from-indigo-500 to-blue-500",
+      icon: <Microchip className="w-6 h-6" />,
+      skills: [
+        { name: "ESP32 / ESP8266", level: 95 },
+        { name: "ARM Cortex-M", level: 85 },
+        { name: "LPC2148", level: 80 },
+        { name: "Arduino", level: 95 },
+      ],
     },
     {
-      title: "Tools & Platforms",
-      icon: <Wrench className="w-8 h-8" />,
-      skills: ["Keil IDE", "Arduino IDE", "MATLAB", "Git", "GitHub", "VS Code", "Ubuntu"],
-      color: "from-yellow-500 to-orange-500",
+      title: "Standards & Tools",
+      icon: <Shield className="w-6 h-6" />,
+      skills: [
+        { name: "ISO 13485 / IEC 60601", level: 80 },
+        { name: "Keil / Eclipse IDE", level: 90 },
+        { name: "Git / GitHub / GitLab", level: 90 },
+        { name: "VS Code / Ubuntu", level: 95 },
+      ],
     },
   ]
 
@@ -53,19 +80,28 @@ export default function Skills() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0, delay: index * 0.0008, ease: "easeOut" }}
-            className="rounded-lg p-6 bg-transparent hover:shadow-2xl hover:shadow-sky-500/30 hover:-translate-y-3 transition-all duration-300"
+            className="rounded-lg p-6 bg-transparent hover:shadow-xl hover:shadow-white/10 hover:-translate-y-2 transition-all duration-300 border border-white/20"
           >
-            <div
-              className={`inline-flex items-center justify-center w-16 h-16 rounded-lg bg-gradient-to-r ${category.color} mb-4`}
-            >
+            <div className="flex items-center gap-3 mb-6 border-b border-white/20 pb-4">
               <div className="text-white">{category.icon}</div>
+              <h3 className="text-xl font-bold text-white">{category.title}</h3>
             </div>
-            <h3 className="text-xl font-black mb-4 text-white">{category.title}</h3>
-            <div className="flex flex-wrap gap-2">
+            <div className="space-y-4">
               {category.skills.map((skill) => (
-                <span key={skill} className="px-3 py-1 text-white rounded-full text-sm font-black bg-[rgba(20,12,243,1)]">
-                  {skill}
-                </span>
+                <div key={skill.name}>
+                  <div className="flex justify-between mb-1">
+                    <span className="text-white font-medium text-sm">{skill.name}</span>
+                    <span className="text-white/80 text-xs font-bold">{skill.level}%</span>
+                  </div>
+                  <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${skill.level}%` }}
+                      transition={{ duration: 0.8, delay: 0.2 }}
+                      className="h-full bg-white rounded-full"
+                    />
+                  </div>
+                </div>
               ))}
             </div>
           </motion.div>

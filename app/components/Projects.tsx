@@ -137,7 +137,7 @@ export default function Projects() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0, delay: index * 0.0008, ease: "easeOut" }}
-            className="bg-transparent rounded-lg overflow-hidden hover:shadow-2xl hover:shadow-cyan-500/20 hover:-translate-y-2 transition-all duration-300 group border border-white/5 hover:border-cyan-500/30"
+            className="bg-transparent rounded-lg overflow-hidden hover:shadow-2xl hover:shadow-white/10 hover:-translate-y-2 transition-all duration-300 group border border-white/20"
           >
             <div className="relative h-48 overflow-hidden">
               <Image
@@ -147,24 +147,24 @@ export default function Projects() {
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute top-4 left-4">
-                <span className="px-3 py-1 bg-cyan-600 text-white rounded-full text-sm font-bold shadow-lg shadow-cyan-500/20">
+                <span className="px-3 py-1 bg-white/90 text-black rounded-full text-sm font-bold shadow-lg">
                   {project.category}
                 </span>
               </div>
             </div>
 
             <div className="p-6 bg-transparent relative">
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-blue-900/10 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/5 pointer-events-none" />
               <div className="relative z-10">
                 <div className="flex items-start justify-between mb-4">
-                  <h3 className="text-xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 group-hover:from-cyan-300 group-hover:to-blue-300 transition-all">
+                  <h3 className="text-xl font-bold mb-2 text-white group-hover:text-white transition-all">
                     {project.title}
                   </h3>
                   <div className="flex gap-2">
                     {project.githubLink && (
                       <a
                         href={project.githubLink}
-                        className="text-gray-400 hover:text-white transition-colors"
+                        className="text-white/70 hover:text-white transition-colors"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -174,13 +174,13 @@ export default function Projects() {
                   </div>
                 </div>
 
-                <p className="text-gray-300 font-medium mb-4 leading-relaxed">{project.description}</p>
+                <p className="text-white/80 font-medium mb-4 leading-relaxed">{project.description}</p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="px-2 py-1 rounded text-xs font-bold bg-blue-900/30 text-cyan-300 border border-blue-500/20"
+                      className="px-2 py-1 rounded text-xs font-bold bg-white/10 text-white border border-white/20"
                     >
                       {tech}
                     </span>
@@ -188,14 +188,14 @@ export default function Projects() {
                 </div>
 
                 <div className="space-y-2">
-                  <h4 className="text-xs font-bold uppercase tracking-widest text-gray-500">Key Achievements</h4>
+                  <h4 className="text-xs font-bold uppercase tracking-widest text-white/50">Key Achievements</h4>
                   <ul className="space-y-2">
                     {project.achievements.slice(0, 2).map((achievement, achievementIndex) => (
                       <li
                         key={achievementIndex}
-                        className="text-gray-300 text-sm flex items-start font-medium group-hover:text-white transition-colors"
+                        className="text-white/90 text-sm flex items-start font-medium transition-colors"
                       >
-                        <span className="text-cyan-500 mr-2 mt-1">•</span>
+                        <span className="text-white mr-2 mt-1 font-bold">•</span>
                         <span>{achievement}</span>
                       </li>
                     ))}
