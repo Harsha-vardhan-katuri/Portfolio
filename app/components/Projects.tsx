@@ -137,7 +137,7 @@ export default function Projects() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0, delay: index * 0.0008, ease: "easeOut" }}
-            className="bg-transparent rounded-lg overflow-hidden hover:shadow-2xl hover:shadow-white/10 hover:-translate-y-2 transition-all duration-300 group border border-white/20"
+            className="backdrop-blur-xl bg-white/5 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2 hover:scale-[1.02] hover:border-blue-400/50 transition-all duration-500 group border border-white/10"
           >
             <div className="relative h-48 overflow-hidden">
               <Image
@@ -147,17 +147,17 @@ export default function Projects() {
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute top-4 left-4">
-                <span className="px-3 py-1 bg-white/90 text-black rounded-full text-sm font-bold shadow-lg">
+                <span className="px-3 py-1 bg-gradient-to-r from-blue-500/90 to-sky-500/90 backdrop-blur-sm text-white rounded-full text-sm font-bold shadow-lg">
                   {project.category}
                 </span>
               </div>
             </div>
 
-            <div className="p-6 bg-transparent relative">
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/5 pointer-events-none" />
+            <div className="p-6 backdrop-blur-xl bg-white/5 relative">
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/5 to-sky-500/10 pointer-events-none" />
               <div className="relative z-10">
                 <div className="flex items-start justify-between mb-4">
-                  <h3 className="text-xl font-bold mb-2 text-white group-hover:text-white transition-all">
+                  <h3 className="text-xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-sky-400 group-hover:from-blue-200 group-hover:to-sky-300 transition-all">
                     {project.title}
                   </h3>
                   <div className="flex gap-2">
@@ -174,13 +174,13 @@ export default function Projects() {
                   </div>
                 </div>
 
-                <p className="text-white/80 font-medium mb-4 leading-relaxed">{project.description}</p>
+                <p className="text-slate-300 font-medium mb-4 leading-relaxed">{project.description}</p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="px-2 py-1 rounded text-xs font-bold bg-white/10 text-white border border-white/20"
+                      className="px-2 py-1 rounded text-xs font-bold bg-blue-500/10 text-blue-300 border border-blue-400/20 backdrop-blur-sm hover:bg-blue-500/20 hover:border-blue-400/40 transition-all"
                     >
                       {tech}
                     </span>
@@ -188,14 +188,14 @@ export default function Projects() {
                 </div>
 
                 <div className="space-y-2">
-                  <h4 className="text-xs font-bold uppercase tracking-widest text-white/50">Key Achievements</h4>
+                  <h4 className="text-xs font-bold uppercase tracking-widest text-slate-400">Key Achievements</h4>
                   <ul className="space-y-2">
                     {project.achievements.slice(0, 2).map((achievement, achievementIndex) => (
                       <li
                         key={achievementIndex}
-                        className="text-white/90 text-sm flex items-start font-medium transition-colors"
+                        className="text-slate-200 text-sm flex items-start font-medium group-hover:text-white transition-colors"
                       >
-                        <span className="text-white mr-2 mt-1 font-bold">•</span>
+                        <span className="text-blue-400 mr-2 mt-1 font-bold">•</span>
                         <span>{achievement}</span>
                       </li>
                     ))}

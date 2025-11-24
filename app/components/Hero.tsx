@@ -242,8 +242,8 @@ export default function Hero() {
         {/* About Section */}
         <div id="about" className="min-h-screen flex items-center justify-center pt-20 px-4">
           <div className="flex flex-col items-center text-center space-y-8 max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white">
-              About <span className="font-bold text-white">Me</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-gradient-about">
+              About <span className="text-gradient-about">Me</span>
             </h2>
 
             <motion.div
@@ -273,8 +273,8 @@ export default function Hero() {
 
         {/* Experience Section */}
         <div id="experience" className="min-h-screen flex flex-col justify-center pt-16 px-4">
-          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center mt-4 text-white">
-            Work <span className="font-bold text-white">Experience</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center mt-4 text-gradient-experience">
+            Work <span className="text-gradient-experience">Experience</span>
           </h2>
           <p className="max-w-2xl mx-auto font-bold text-center mb-2 text-white">
             Professional journey in embedded systems, firmware development, and AI technologies
@@ -284,8 +284,8 @@ export default function Hero() {
 
         {/* Skills Section */}
         <div id="skills" className="min-h-screen flex flex-col justify-center pt-16 px-4">
-          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center mt-4 text-white">
-            Technical <span className="font-bold text-white">Skills</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center mt-4 text-gradient-skills">
+            Technical <span className="text-gradient-skills">Skills</span>
           </h2>
           <p className="max-w-2xl mx-auto font-bold text-center mb-2 text-white">
             Comprehensive expertise in embedded systems, firmware development, and IoT technologies
@@ -295,8 +295,8 @@ export default function Hero() {
 
         {/* Projects Section */}
         <div id="projects" className="min-h-screen flex flex-col justify-center pt-16 px-4">
-          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center mt-4 text-white">
-            Featured <span className="font-bold text-white">Projects</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center mt-4 text-gradient-projects">
+            Featured <span className="text-gradient-projects">Projects</span>
           </h2>
           <p className="max-w-2xl mx-auto font-bold text-center mb-2 text-white">
             Innovative solutions in embedded systems, IoT, and AI technologies
@@ -306,8 +306,8 @@ export default function Hero() {
 
         {/* Education Section */}
         <div id="education" className="min-h-screen flex flex-col justify-center pt-16 px-4">
-          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center mt-4 text-white">
-            My <span className="font-bold text-white">Education</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center mt-4 text-gradient-education">
+            My <span className="text-gradient-education">Education</span>
           </h2>
           <p className="max-w-2xl mx-auto font-bold text-center mb-2 text-white">
             Academic background that shaped my technical expertise
@@ -317,8 +317,8 @@ export default function Hero() {
 
         {/* Certifications Section */}
         <div id="certifications" className="min-h-screen flex flex-col justify-center pt-16 px-4">
-          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center mt-4 text-white">
-            Achievements & <span className="font-bold text-white">Certifications</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center mt-4 text-gradient-certifications">
+            Achievements & <span className="text-gradient-certifications">Certifications</span>
           </h2>
           <p className="max-w-2xl mx-auto font-bold text-center mb-2 text-white">
             Recognition and certifications that validate my expertise and academic excellence

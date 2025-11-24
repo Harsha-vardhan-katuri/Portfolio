@@ -31,18 +31,20 @@ export default function Education() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0, delay: index * 0.0008, ease: "easeOut" }}
-            className="rounded-lg p-6 bg-transparent hover:shadow-2xl hover:shadow-white/10 hover:-translate-y-3 transition-all duration-300 border border-white/20"
+            className="backdrop-blur-xl bg-white/5 rounded-3xl p-6 hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-3 hover:scale-[1.02] hover:border-blue-400/50 transition-all duration-500 border border-white/10"
           >
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0">
-                <div className="w-12 h-12 border border-white/30 rounded-lg flex items-center justify-center">
-                  <GraduationCap className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500/20 to-sky-500/20 border border-blue-400/30 rounded-2xl flex items-center justify-center backdrop-blur-sm">
+                  <GraduationCap className="w-6 h-6 text-blue-400" />
                 </div>
               </div>
               <div className="flex-1">
-                <h3 className="text-xl font-bold text-white mb-2">{edu.degree}</h3>
-                <p className="font-bold mb-2 text-white">{edu.school}</p>
-                <div className="flex items-center gap-4 mb-3 text-sm font-bold text-white/80">
+                <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-sky-400 mb-2">
+                  {edu.degree}
+                </h3>
+                <p className="font-bold mb-2 text-slate-200">{edu.school}</p>
+                <div className="flex items-center gap-4 mb-3 text-sm font-bold text-slate-300">
                   <div className="flex items-center gap-1">
                     <Calendar className="w-4 h-4" />
                     {edu.period}
@@ -52,7 +54,7 @@ export default function Education() {
                     Grade: {edu.grade}
                   </div>
                 </div>
-                <p className="text-white font-normal">{edu.description}</p>
+                <p className="text-slate-300 font-normal">{edu.description}</p>
               </div>
             </div>
           </motion.div>

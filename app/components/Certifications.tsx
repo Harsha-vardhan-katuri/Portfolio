@@ -43,20 +43,22 @@ export default function Certifications() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0, delay: index * 0.0008, ease: "easeOut" }}
-            className="rounded-lg p-6 bg-transparent hover:shadow-2xl hover:shadow-white/10 hover:-translate-y-3 transition-all duration-300 border border-white/20"
+            className="backdrop-blur-xl bg-white/5 rounded-3xl p-6 hover:shadow-2xl hover:shadow-amber-500/20 hover:-translate-y-3 hover:scale-[1.02] hover:border-amber-400/50 transition-all duration-500 border border-white/10"
           >
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0">
-                <div className="w-12 h-12 border border-white/30 rounded-lg flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-amber-500/20 to-amber-400/20 border border-amber-400/30 rounded-2xl flex items-center justify-center backdrop-blur-sm">
                   {achievement.icon}
                 </div>
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-2">
-                  <h3 className="text-lg font-bold text-white">{achievement.title}</h3>
+                  <h3 className="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-400">
+                    {achievement.title}
+                  </h3>
                 </div>
-                <p className="text-sm mb-2 font-bold text-white/70">{achievement.type}</p>
-                <p className="text-white font-normal">{achievement.description}</p>
+                <p className="text-sm mb-2 font-bold text-slate-400">{achievement.type}</p>
+                <p className="text-slate-300 font-normal">{achievement.description}</p>
               </div>
             </div>
           </motion.div>

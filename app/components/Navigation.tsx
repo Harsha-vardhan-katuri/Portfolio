@@ -62,11 +62,11 @@ export default function Navigation({ activeSection = "home", setActiveSection }:
         }
 
         .nav-button.active {
-          background-color: #00d4ff !important;
-          color: #000000 !important;
+          background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%) !important;
+          color: #ffffff !important;
           font-weight: 900;
           transform: translateY(-2px);
-          box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+          box-shadow: 0 0 25px rgba(59, 130, 246, 0.6), 0 0 50px rgba(6, 182, 212, 0.4);
         }
         
         .wave-text {
@@ -92,13 +92,13 @@ export default function Navigation({ activeSection = "home", setActiveSection }:
 
       <header className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm">
         <div className="flex items-center justify-center h-20 px-4">
-          <div className="flex items-center gap-3 bg-black/40 backdrop-blur-md rounded-full px-6 py-3 border border-white/20">
+          <div className="flex items-center gap-3 backdrop-blur-xl bg-black/30 rounded-full px-6 py-3 border border-white/20 shadow-2xl shadow-blue-500/10">
             {sections.map((section) => (
               <button
                 key={section.id}
                 onClick={() => handleSectionClick(section.id)}
                 className={`nav-button px-6 py-2 rounded-full text-sm font-black transition-all relative ${
-                  activeSection === section.id ? "active bg-cyan-400 text-black" : "text-white hover:bg-white/10"
+                  activeSection === section.id ? "active" : "text-slate-200 hover:bg-white/10 hover:scale-110"
                 }`}
               >
                 <span className="relative z-10">
