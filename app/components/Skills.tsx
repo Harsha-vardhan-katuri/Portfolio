@@ -80,10 +80,12 @@ export default function Skills() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0, delay: index * 0.0008, ease: "easeOut" }}
-            className="rounded-lg p-6 bg-transparent hover:shadow-xl hover:shadow-white/10 hover:-translate-y-2 transition-all duration-300 border border-white/20"
+            className="glass-card rounded-3xl p-6 hover:shadow-2xl hover:shadow-cyan-500/20 hover:-translate-y-2 transition-all duration-300 group"
           >
             <div className="flex items-center gap-3 mb-6 border-b border-white/20 pb-4">
-              <div className="text-white">{category.icon}</div>
+              <div className="p-2 rounded-xl bg-gradient-to-br from-cyan-500/20 to-purple-500/20 text-white group-hover:scale-110 transition-transform">
+                {category.icon}
+              </div>
               <h3 className="text-xl font-bold text-white">{category.title}</h3>
             </div>
             <div className="space-y-4">
@@ -91,14 +93,14 @@ export default function Skills() {
                 <div key={skill.name}>
                   <div className="flex justify-between mb-1">
                     <span className="text-white font-medium text-sm">{skill.name}</span>
-                    <span className="text-white/80 text-xs font-bold">{skill.level}%</span>
+                    <span className="text-cyan-400 text-xs font-bold">{skill.level}%</span>
                   </div>
-                  <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
+                  <div className="h-2 bg-white/10 rounded-full overflow-hidden">
                     <motion.div
                       initial={{ width: 0 }}
                       whileInView={{ width: `${skill.level}%` }}
                       transition={{ duration: 0.8, delay: 0.2 }}
-                      className="h-full bg-white rounded-full"
+                      className="h-full bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 rounded-full shadow-lg shadow-cyan-500/50"
                     />
                   </div>
                 </div>

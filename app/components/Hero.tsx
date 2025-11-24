@@ -199,7 +199,7 @@ export default function Hero() {
               className="flex flex-wrap justify-center gap-4 mt-8 pixelate-reveal"
             >
               <button
-                className="bg-transparent hover:bg-white/10 text-white font-bold flex items-center gap-2 px-6 py-3 rounded-lg border border-white transition-all"
+                className="glass-button text-white font-bold flex items-center gap-2 px-6 py-3 rounded-2xl hover:scale-105 active:scale-95 transition-all"
                 onClick={handleEmailCopy}
               >
                 {copiedEmail ? <Check className="w-4 h-4" /> : <Mail className="w-4 h-4" />}
@@ -207,7 +207,7 @@ export default function Hero() {
               </button>
 
               <button
-                className="bg-transparent hover:bg-white/10 text-white font-bold px-6 py-3 rounded-lg flex items-center gap-2 border border-white transition-all"
+                className="glass-button text-white font-bold px-6 py-3 rounded-2xl flex items-center gap-2 hover:scale-105 active:scale-95 transition-all"
                 onClick={handlePhoneCopy}
               >
                 {copiedPhone ? <Check className="w-4 h-4" /> : <Phone className="w-4 h-4" />}
@@ -215,21 +215,21 @@ export default function Hero() {
               </button>
 
               <Link href="https://github.com/Harsha-vardhan-katuri" target="_blank">
-                <button className="bg-transparent hover:bg-white/10 text-white font-bold px-6 py-3 rounded-lg flex items-center gap-2 border border-white transition-all">
+                <button className="glass-button text-white font-bold px-6 py-3 rounded-2xl flex items-center gap-2 hover:scale-105 active:scale-95 transition-all">
                   <Github className="w-4 h-4" />
                   GitHub
                 </button>
               </Link>
 
               <Link href="https://www.linkedin.com/in/harsha-vardhan-katuri-772166256/" target="_blank">
-                <button className="bg-transparent hover:bg-white/10 text-white font-bold px-6 py-3 rounded-lg flex items-center gap-2 border border-white transition-all">
+                <button className="glass-button text-white font-bold px-6 py-3 rounded-2xl flex items-center gap-2 hover:scale-105 active:scale-95 transition-all">
                   <Linkedin className="w-4 h-4" />
                   LinkedIn
                 </button>
               </Link>
 
               <button
-                className="bg-transparent hover:bg-white/10 text-white font-bold px-6 py-3 rounded-lg flex items-center gap-2 border border-white transition-all"
+                className="glass-button text-white font-bold px-6 py-3 rounded-2xl flex items-center gap-2 hover:scale-105 active:scale-95 transition-all"
                 onClick={handleResumeDownload}
               >
                 <Download className="w-4 h-4" />
@@ -251,7 +251,7 @@ export default function Hero() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3 }}
-              className="rounded-lg p-8 text-left bg-transparent backdrop-blur-sm items-start border border-white/10"
+              className="glass-card rounded-3xl p-8 text-left"
             >
               <p className="text-white text-lg leading-relaxed mb-6 font-normal">
                 I am a dedicated <span className="font-bold text-white">Firmware Engineer</span> currently working at
@@ -336,9 +336,7 @@ export default function Hero() {
               transition={{ duration: 0.3 }}
               className="text-center mb-8"
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-                Let's Work <span className="font-bold text-white">Together</span>
-              </h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient">Let's Work Together</h2>
               <p className="max-w-2xl mx-auto font-bold text-xl text-white">
                 Ready to bring your embedded systems and IoT projects to life
               </p>
@@ -348,31 +346,33 @@ export default function Hero() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3 }}
-              className="rounded-lg p-8 text-center space-y-6 bg-transparent backdrop-blur-sm border border-white/10"
+              className="gradient-border"
             >
-              <h3 className="text-2xl font-bold text-white mb-4">Available for Freelance Projects</h3>
-              <p className="text-white text-lg font-bold mb-6">
-                I'm currently available for <span className="font-bold text-white">firmware development</span>,{" "}
-                <span className="font-bold text-white">IoT solutions</span>, and{" "}
-                <span className="font-bold text-white">embedded systems</span> projects. Let's discuss how I can help
-                bring your ideas to reality.
-              </p>
+              <div className="glass-card rounded-3xl p-8 text-center space-y-6">
+                <h3 className="text-2xl font-bold text-white mb-4">Available for Freelance Projects</h3>
+                <p className="text-white text-lg font-normal mb-6">
+                  I'm currently available for <span className="font-bold text-gradient">firmware development</span>,{" "}
+                  <span className="font-bold text-gradient">IoT solutions</span>, and{" "}
+                  <span className="font-bold text-gradient">embedded systems</span> projects. Let's discuss how I can
+                  help bring your ideas to reality.
+                </p>
 
-              <div className="flex flex-wrap justify-center gap-4">
-                <button
-                  className="bg-transparent hover:bg-white/10 text-white font-bold px-8 py-3 rounded-lg flex items-center gap-2 border border-white transition-all"
-                  onClick={() => (window.location.href = "mailto:katuriharshavardhan369@gmail.com")}
-                >
-                  <Mail className="w-5 h-5" />
-                  Email Me
-                </button>
-
-                <Link href="https://www.linkedin.com/in/harsha-vardhan-katuri-772166256/" target="_blank">
-                  <button className="bg-transparent hover:bg-white/10 text-white font-bold px-8 py-3 rounded-lg flex items-center gap-2 border border-white transition-all">
-                    <Linkedin className="w-5 h-5" />
-                    Connect on LinkedIn
+                <div className="flex flex-wrap justify-center gap-4">
+                  <button
+                    className="glass-button text-white font-bold px-8 py-3 rounded-2xl flex items-center gap-2 hover:scale-105 active:scale-95 transition-all"
+                    onClick={() => (window.location.href = "mailto:katuriharshavardhan369@gmail.com")}
+                  >
+                    <Mail className="w-5 h-5" />
+                    Email Me
                   </button>
-                </Link>
+
+                  <Link href="https://www.linkedin.com/in/harsha-vardhan-katuri-772166256/" target="_blank">
+                    <button className="glass-button text-white font-bold px-8 py-3 rounded-2xl flex items-center gap-2 hover:scale-105 active:scale-95 transition-all">
+                      <Linkedin className="w-5 h-5" />
+                      Connect on LinkedIn
+                    </button>
+                  </Link>
+                </div>
               </div>
             </motion.div>
           </div>
