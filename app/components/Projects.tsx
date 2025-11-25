@@ -128,14 +128,14 @@ export default function Projects() {
   ]
 
   return (
-    <div className="py-8">
-      <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold text-gradient">Featured Projects</h2>
-        <p className="text-slate-300 font-medium mt-2">
-          Innovative solutions in embedded systems, IoT, and AI technologies
+    <div className="py-4 md:py-8">
+      <div className="text-center mb-6 md:mb-12">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gradient">Featured Projects</h2>
+        <p className="text-slate-300 font-medium mt-2 text-sm md:text-base px-2">
+          Innovative solutions in embedded systems, IoT, and AI
         </p>
       </div>
-      <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8 max-w-6xl mx-auto">
         {projects.map((project, index) => (
           <motion.div
             key={index}
@@ -143,30 +143,30 @@ export default function Projects() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.3, delay: index * 0.05, ease: "easeOut" }}
-            className="backdrop-blur-xl bg-white/5 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2 hover:scale-[1.02] hover:border-blue-400/50 transition-all duration-500 group border border-white/10"
+            className="backdrop-blur-xl bg-white/5 rounded-2xl md:rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2 hover:scale-[1.02] hover:border-blue-400/50 transition-all duration-500 group border border-white/10"
           >
-            <div className="relative h-48 overflow-hidden">
+            <div className="relative h-32 sm:h-40 md:h-48 overflow-hidden">
               <Image
                 src={project.image || "/placeholder.svg"}
                 alt={project.title}
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
-              <div className="absolute top-4 left-4">
-                <span className="px-3 py-1 bg-gradient-to-r from-blue-500/90 to-sky-500/90 backdrop-blur-sm text-white rounded-full text-sm font-bold shadow-lg">
+              <div className="absolute top-2 md:top-4 left-2 md:left-4">
+                <span className="px-2 md:px-3 py-0.5 md:py-1 bg-gradient-to-r from-blue-500/90 to-sky-500/90 backdrop-blur-sm text-white rounded-full text-xs md:text-sm font-bold shadow-lg">
                   {project.category}
                 </span>
               </div>
             </div>
 
-            <div className="p-6 backdrop-blur-xl bg-white/5 relative">
+            <div className="p-3 md:p-6 backdrop-blur-xl bg-white/5 relative">
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/5 to-sky-500/10 pointer-events-none" />
               <div className="relative z-10">
-                <div className="flex items-start justify-between mb-4">
-                  <h3 className="text-xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-sky-400 group-hover:from-blue-200 group-hover:to-sky-300 transition-all">
+                <div className="flex items-start justify-between mb-2 md:mb-4">
+                  <h3 className="text-base md:text-xl font-bold mb-1 md:mb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-sky-400 group-hover:from-blue-200 group-hover:to-sky-300 transition-all line-clamp-2">
                     {project.title}
                   </h3>
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 flex-shrink-0">
                     {project.githubLink && (
                       <a
                         href={project.githubLink}
@@ -174,35 +174,44 @@ export default function Projects() {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <Github className="w-5 h-5" />
+                        <Github className="w-4 h-4 md:w-5 md:h-5" />
                       </a>
                     )}
                   </div>
                 </div>
 
-                <p className="text-slate-300 font-medium mb-4 leading-relaxed">{project.description}</p>
+                <p className="text-slate-300 font-medium mb-3 md:mb-4 leading-relaxed text-xs md:text-base line-clamp-2">
+                  {project.description}
+                </p>
 
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.map((tech) => (
+                <div className="flex flex-wrap gap-1 md:gap-2 mb-3 md:mb-4">
+                  {project.technologies.slice(0, 4).map((tech) => (
                     <span
                       key={tech}
-                      className="px-2 py-1 rounded text-xs font-bold bg-blue-500/10 text-blue-300 border border-blue-400/20 backdrop-blur-sm hover:bg-blue-500/20 hover:border-blue-400/40 transition-all"
+                      className="px-1.5 md:px-2 py-0.5 md:py-1 rounded text-[10px] md:text-xs font-bold bg-blue-500/10 text-blue-300 border border-blue-400/20 backdrop-blur-sm"
                     >
                       {tech}
                     </span>
                   ))}
+                  {project.technologies.length > 4 && (
+                    <span className="px-1.5 md:px-2 py-0.5 md:py-1 rounded text-[10px] md:text-xs font-bold bg-blue-500/10 text-blue-300 border border-blue-400/20">
+                      +{project.technologies.length - 4}
+                    </span>
+                  )}
                 </div>
 
-                <div className="space-y-2">
-                  <h4 className="text-xs font-bold uppercase tracking-widest text-slate-400">Key Achievements</h4>
-                  <ul className="space-y-2">
-                    {project.achievements.slice(0, 2).map((achievement, achievementIndex) => (
+                <div className="space-y-1 md:space-y-2">
+                  <h4 className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-400">
+                    Key Achievements
+                  </h4>
+                  <ul className="space-y-1 md:space-y-2">
+                    {project.achievements.slice(0, 1).map((achievement, achievementIndex) => (
                       <li
                         key={achievementIndex}
-                        className="text-slate-200 text-sm flex items-start font-medium group-hover:text-white transition-colors"
+                        className="text-slate-200 text-xs md:text-sm flex items-start font-medium group-hover:text-white transition-colors"
                       >
-                        <span className="text-blue-400 mr-2 mt-1 font-bold">•</span>
-                        <span>{achievement}</span>
+                        <span className="text-blue-400 mr-1 md:mr-2 mt-0.5 font-bold">•</span>
+                        <span className="line-clamp-2">{achievement}</span>
                       </li>
                     ))}
                   </ul>
