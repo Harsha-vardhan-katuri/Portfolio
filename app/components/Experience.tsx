@@ -60,6 +60,12 @@ export default function Experience() {
 
   return (
     <div className="py-8">
+      <div className="text-center mb-12">
+        <h2 className="text-4xl md:text-5xl font-bold text-gradient">Work Experience</h2>
+        <p className="text-slate-300 font-medium mt-2">
+          Professional journey in embedded systems, firmware development, and AI technologies
+        </p>
+      </div>
       <div className="max-w-4xl mx-auto space-y-8">
         {experiences.map((experience, index) => (
           <motion.div

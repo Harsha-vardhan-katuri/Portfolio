@@ -161,3 +161,12 @@ h6 {
   -webkit-text-fill-color: transparent;
   animation: shimmer 3.5s linear infinite;
 }
+
+/* Added missing hire section gradient animation */
+.text-gradient-hire {
+  background: linear-gradient(90deg, #00d4ff, #8a2be2, #ff1493, #00d4ff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}

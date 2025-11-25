@@ -273,56 +273,26 @@ export default function Hero() {
 
         {/* Experience Section */}
         <div id="experience" className="min-h-screen flex flex-col justify-center pt-16 px-4">
-          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center mt-4 text-gradient-experience">
-            Work <span className="text-gradient-experience">Experience</span>
-          </h2>
-          <p className="max-w-2xl mx-auto font-bold text-center mb-2 text-white">
-            Professional journey in embedded systems, firmware development, and AI technologies
-          </p>
           <Experience />
         </div>
 
         {/* Skills Section */}
         <div id="skills" className="min-h-screen flex flex-col justify-center pt-16 px-4">
-          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center mt-4 text-gradient-skills">
-            Technical <span className="text-gradient-skills">Skills</span>
-          </h2>
-          <p className="max-w-2xl mx-auto font-bold text-center mb-2 text-white">
-            Comprehensive expertise in embedded systems, firmware development, and IoT technologies
-          </p>
           <Skills />
         </div>
 
         {/* Projects Section */}
         <div id="projects" className="min-h-screen flex flex-col justify-center pt-16 px-4">
-          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center mt-4 text-gradient-projects">
-            Featured <span className="text-gradient-projects">Projects</span>
-          </h2>
-          <p className="max-w-2xl mx-auto font-bold text-center mb-2 text-white">
-            Innovative solutions in embedded systems, IoT, and AI technologies
-          </p>
           <Projects />
         </div>
 
         {/* Education Section */}
         <div id="education" className="min-h-screen flex flex-col justify-center pt-16 px-4">
-          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center mt-4 text-gradient-education">
-            My <span className="text-gradient-education">Education</span>
-          </h2>
-          <p className="max-w-2xl mx-auto font-bold text-center mb-2 text-white">
-            Academic background that shaped my technical expertise
-          </p>
           <Education />
         </div>
 
         {/* Certifications Section */}
         <div id="certifications" className="min-h-screen flex flex-col justify-center pt-16 px-4">
-          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center mt-4 text-gradient-certifications">
-            Achievements & <span className="text-gradient-certifications">Certifications</span>
-          </h2>
-          <p className="max-w-2xl mx-auto font-bold text-center mb-2 text-white">
-            Recognition and certifications that validate my expertise and academic excellence
-          </p>
           <Certifications />
         </div>
 
@@ -336,7 +306,7 @@ export default function Hero() {
               transition={{ duration: 0.3 }}
               className="text-center mb-8"
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient">Let's Work Together</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient-hire">Let's Work Together</h2>
               <p className="max-w-2xl mx-auto font-bold text-xl text-white">
                 Ready to bring your embedded systems and IoT projects to life
               </p>

@@ -35,6 +35,12 @@ export default function Certifications() {
 
   return (
     <div className="py-8">
+      <div className="text-center mb-12">
+        <h2 className="text-4xl md:text-5xl font-bold text-gradient">Certifications & Achievements</h2>
+        <p className="text-slate-300 font-medium mt-2">
+          Recognition and certifications that validate my expertise and academic excellence
+        </p>
+      </div>
       <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
         {achievements.map((achievement, index) => (
           <motion.div

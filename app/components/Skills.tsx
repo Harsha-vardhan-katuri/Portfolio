@@ -72,6 +72,12 @@ export default function Skills() {
 
   return (
     <div className="py-8">
+      <div className="text-center mb-12">
+        <h2 className="text-4xl md:text-5xl font-bold text-gradient">Technical Skills</h2>
+        <p className="text-slate-300 font-medium mt-2">
+          Core competencies in programming, embedded systems, and communication protocols
+        </p>
+      </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {skillCategories.map((category, index) => (
           <motion.div

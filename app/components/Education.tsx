@@ -23,6 +23,10 @@ export default function Education() {
 
   return (
     <div className="py-8">
+      <div className="text-center mb-12">
+        <h2 className="text-4xl md:text-5xl font-bold text-gradient">My Education</h2>
+        <p className="text-slate-300 font-medium mt-2">Academic background that shaped my technical expertise</p>
+      </div>
       <div className="max-w-4xl mx-auto space-y-8">
         {education.map((edu, index) => (
           <motion.div

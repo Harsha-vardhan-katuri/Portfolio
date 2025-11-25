@@ -129,6 +129,12 @@ export default function Projects() {
 
   return (
     <div className="py-8">
+      <div className="text-center mb-12">
+        <h2 className="text-4xl md:text-5xl font-bold text-gradient">Featured Projects</h2>
+        <p className="text-slate-300 font-medium mt-2">
+          Innovative solutions in embedded systems, IoT, and AI technologies
+        </p>
+      </div>
       <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
         {projects.map((project, index) => (
           <motion.div
@@ -136,7 +142,7 @@ export default function Projects() {
             initial={{ opacity: 0, x: index % 2 === 0 ? -120 : 120 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0, delay: index * 0.0008, ease: "easeOut" }}
+            transition={{ duration: 0.3, delay: index * 0.05, ease: "easeOut" }}
             className="backdrop-blur-xl bg-white/5 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2 hover:scale-[1.02] hover:border-blue-400/50 transition-all duration-500 group border border-white/10"
           >
             <div className="relative h-48 overflow-hidden">

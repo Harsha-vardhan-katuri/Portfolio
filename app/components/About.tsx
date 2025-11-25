@@ -19,8 +19,6 @@ export default function About() {
     },
   ]
 
-  // Skills moved to main Skills component as requested, simplifying About to just About/Education highlights
-
   return (
     <section id="about" className="py-20">
       <div className="container mx-auto px-4">
@@ -30,9 +28,7 @@ export default function About() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-blue-500">
-            About <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-200">Me</span>
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient">About Me</h2>
           <p className="text-slate-300 max-w-2xl mx-auto font-medium">
             Passionate firmware engineer specializing in embedded systems and IoT solutions
           </p>
