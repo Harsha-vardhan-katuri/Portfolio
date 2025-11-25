@@ -82,10 +82,10 @@ export default function Skills() {
         {skillCategories.map((category, index) => (
           <motion.div
             key={category.title}
-            initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0, delay: index * 0.0008, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
             className="glass-card rounded-2xl md:rounded-3xl p-4 md:p-6 hover:shadow-2xl hover:shadow-cyan-500/20 hover:-translate-y-2 transition-all duration-300 group"
           >
             <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-6 border-b border-white/20 pb-3 md:pb-4">
@@ -105,7 +105,8 @@ export default function Skills() {
                     <motion.div
                       initial={{ width: 0 }}
                       whileInView={{ width: `${skill.level}%` }}
-                      transition={{ duration: 0.8, delay: 0.2 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
                       className="h-full bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 rounded-full shadow-lg shadow-cyan-500/50"
                     />
                   </div>

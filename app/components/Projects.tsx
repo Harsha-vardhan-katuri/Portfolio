@@ -139,13 +139,13 @@ export default function Projects() {
         {projects.map((project, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, x: index % 2 === 0 ? -120 : 120 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.3, delay: index * 0.05, ease: "easeOut" }}
-            className="backdrop-blur-xl bg-white/5 rounded-2xl md:rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2 hover:scale-[1.02] hover:border-blue-400/50 transition-all duration-500 group border border-white/10"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
+            className="glass-card rounded-2xl md:rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-cyan-500/20 hover:-translate-y-2 transition-all duration-300 group"
           >
-            <div className="relative h-32 sm:h-40 md:h-48 overflow-hidden">
+            <div className="relative h-40 sm:h-48 md:h-56 overflow-hidden">
               <Image
                 src={project.image || "/placeholder.svg"}
                 alt={project.title}
@@ -153,69 +153,61 @@ export default function Projects() {
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute top-2 md:top-4 left-2 md:left-4">
-                <span className="px-2 md:px-3 py-0.5 md:py-1 bg-gradient-to-r from-blue-500/90 to-sky-500/90 backdrop-blur-sm text-white rounded-full text-xs md:text-sm font-bold shadow-lg">
+                <span className="px-2 md:px-3 py-0.5 md:py-1 bg-gradient-to-r from-cyan-500/90 to-purple-500/90 backdrop-blur-sm text-white rounded-full text-xs md:text-sm font-bold shadow-lg">
                   {project.category}
                 </span>
               </div>
             </div>
 
-            <div className="p-3 md:p-6 backdrop-blur-xl bg-white/5 relative">
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/5 to-sky-500/10 pointer-events-none" />
-              <div className="relative z-10">
-                <div className="flex items-start justify-between mb-2 md:mb-4">
-                  <h3 className="text-base md:text-xl font-bold mb-1 md:mb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-sky-400 group-hover:from-blue-200 group-hover:to-sky-300 transition-all line-clamp-2">
-                    {project.title}
-                  </h3>
-                  <div className="flex gap-2 flex-shrink-0">
-                    {project.githubLink && (
-                      <a
-                        href={project.githubLink}
-                        className="text-white/70 hover:text-white transition-colors"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Github className="w-4 h-4 md:w-5 md:h-5" />
-                      </a>
-                    )}
-                  </div>
-                </div>
-
-                <p className="text-slate-300 font-medium mb-3 md:mb-4 leading-relaxed text-xs md:text-base line-clamp-2">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-1 md:gap-2 mb-3 md:mb-4">
-                  {project.technologies.slice(0, 4).map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-1.5 md:px-2 py-0.5 md:py-1 rounded text-[10px] md:text-xs font-bold bg-blue-500/10 text-blue-300 border border-blue-400/20 backdrop-blur-sm"
+            <div className="p-4 md:p-6">
+              <div className="flex items-start justify-between mb-2 md:mb-4">
+                <h3 className="text-base md:text-xl font-bold mb-1 md:mb-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-purple-400 group-hover:from-cyan-200 group-hover:to-purple-300 transition-all pr-2">
+                  {project.title}
+                </h3>
+                <div className="flex gap-2 flex-shrink-0">
+                  {project.githubLink && (
+                    <a
+                      href={project.githubLink}
+                      className="text-white/70 hover:text-white transition-colors"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      {tech}
-                    </span>
-                  ))}
-                  {project.technologies.length > 4 && (
-                    <span className="px-1.5 md:px-2 py-0.5 md:py-1 rounded text-[10px] md:text-xs font-bold bg-blue-500/10 text-blue-300 border border-blue-400/20">
-                      +{project.technologies.length - 4}
-                    </span>
+                      <Github className="w-4 h-4 md:w-5 md:h-5" />
+                    </a>
                   )}
                 </div>
+              </div>
 
-                <div className="space-y-1 md:space-y-2">
-                  <h4 className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-400">
-                    Key Achievements
-                  </h4>
-                  <ul className="space-y-1 md:space-y-2">
-                    {project.achievements.slice(0, 1).map((achievement, achievementIndex) => (
-                      <li
-                        key={achievementIndex}
-                        className="text-slate-200 text-xs md:text-sm flex items-start font-medium group-hover:text-white transition-colors"
-                      >
-                        <span className="text-blue-400 mr-1 md:mr-2 mt-0.5 font-bold">•</span>
-                        <span className="line-clamp-2">{achievement}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              <p className="text-slate-300 font-medium mb-3 md:mb-4 leading-relaxed text-xs md:text-base">
+                {project.description}
+              </p>
+
+              <div className="flex flex-wrap gap-1.5 md:gap-2 mb-3 md:mb-4">
+                {project.technologies.map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-2 md:px-3 py-0.5 md:py-1 rounded-full text-[10px] md:text-xs font-bold bg-cyan-500/10 text-cyan-300 border border-cyan-400/20 backdrop-blur-sm"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              <div className="space-y-1 md:space-y-2">
+                <h4 className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-400">
+                  Key Achievements
+                </h4>
+                <ul className="space-y-1 md:space-y-2">
+                  {project.achievements.slice(0, 2).map((achievement, achievementIndex) => (
+                    <li
+                      key={achievementIndex}
+                      className="text-slate-200 text-xs md:text-sm flex items-start font-medium group-hover:text-white transition-colors"
+                    >
+                      <span className="text-cyan-400 mr-1.5 md:mr-2 mt-0.5 font-bold">•</span>
+                      <span>{achievement}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </motion.div>
