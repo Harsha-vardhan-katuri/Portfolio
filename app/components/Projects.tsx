@@ -104,15 +104,15 @@ export default function Projects() {
         {projects.map((project, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
-            className="glass-card rounded-2xl md:rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-cyan-500/20 hover:-translate-y-2 transition-all duration-300 group"
+            transition={{ duration: 0.5, delay: index * 0.0008, ease: "easeOut" }}
+            className="glass-card rounded-2xl md:rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-cyan-500/20 hover:-translate-y-2 hover:scale-[1.02] transition-all duration-500 group"
           >
             <div className="relative h-40 sm:h-48 md:h-56 overflow-hidden">
               <Image
-                src={project.image || "/placeholder.svg"}
+                src={project.image || "/placeholder.svg?height=224&width=400&query=embedded systems project"}
                 alt={project.title}
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-110"

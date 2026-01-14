@@ -25,9 +25,8 @@ export default function Experience() {
       type: "Internship",
       githubLink: "#",
       achievements: [
-        "Developed an AI-based health assistant chatbot using Streamlit and Hugging Face Transformers to support intelligent health-related conversations.",
-        "Implemented NLP preprocessing, rule-based keyword matching, and intent classification to improve query understanding and response accuracy.",
-        "Integrated DistilGPT-2 for response generation, optimized tokenization and fallback logic, and enhanced user experience through a clean interactive UI and structured health advice responses.",
+        "Developed an AI-based health assistant chatbot using Streamlit and Hugging Face Transformers to support intelligent health-related conversations. Implemented NLP preprocessing, rule-based keyword matching, and intent classification to improve query understanding and response accuracy. Integrated DistilGPT-2 for response generation, optimized tokenization and fallback logic, and enhanced user experience through a clean interactive UI and structured health advice responses",
+        "Tech: Python, Streamlit, Hugging Face Transformers, NLTK, DistilGPT-2, NLP, AI Chatbots",
       ],
     },
     {
@@ -49,9 +48,8 @@ export default function Experience() {
       type: "Internship",
       githubLink: null,
       achievements: [
-        "Developed a voice-controlled home automation system to operate household appliances using cloud-based speech services.",
-        "Implemented voice command processing using Speech-to-Text and Text-to-Speech services, integrated with IBM Watson Assistant for intent handling and decision logic.",
-        "Designed Node-RED flows to process voice commands, trigger appliance control actions, and provide real-time responses, enabling hands-free operation and improved accessibility for elderly and physically challenged users.",
+        "Developed a voice-controlled home automation system to operate household appliances using cloud-based speech services. Implemented voice command processing using Speech-to-Text and Text-to-Speech services, integrated with IBM Watson Assistant for intent handling and decision logic. Designed Node-RED flows to process voice commands, trigger appliance control actions, and provide real-time responses, enabling hands-free operation and improved accessibility for elderly and physically challenged users",
+        "Tech: IBM Cloud, IBM Watson IoT Platform, IBM Watson Assistant, Node-RED, Speech-to-Text, Text-to-Speech, Python",
       ],
     },
   ]
