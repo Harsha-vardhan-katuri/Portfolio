@@ -69,13 +69,32 @@ export default function About() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-12 backdrop-blur-xl bg-white/5 rounded-3xl p-8 text-center border border-white/10 hover:border-blue-400/50 hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2 transition-all duration-500"
         >
-          <p className="text-slate-200 text-lg leading-relaxed font-normal">
-            I am a dedicated <span className="text-blue-400 font-bold">Firmware Engineer</span> currently working at
-            HealthCube Private Limited, specializing in embedded systems and IoT solutions. My expertise lies in
-            developing robust firmware for microcontrollers, particularly{" "}
-            <span className="text-amber-400 font-bold">ESP32</span>, and implementing various communication protocols
-            including <span className="text-sky-400 font-bold">LoRa, RS485, UART, I2C, and SPI</span>.
-          </p>
+          <div className="space-y-4 text-left md:text-center">
+            <p className="text-slate-200 text-base md:text-lg leading-relaxed font-normal">
+              I am an <span className="text-cyan-400 font-bold">Embedded / Firmware Engineer</span> with hands-on
+              experience in developing bare-metal and embedded software for microcontroller-based systems. My work
+              focuses on{" "}
+              <span className="text-purple-400 font-bold">
+                low-level firmware development, register-level programming, hardware interfacing, board bring-up, and
+                debugging
+              </span>{" "}
+              across ESP32 and other embedded platforms.
+            </p>
+            <p className="text-slate-200 text-base md:text-lg leading-relaxed font-normal">
+              I have worked on real-world projects involving{" "}
+              <span className="text-pink-400 font-bold">
+                communication protocols, sensor integration, packet-based data processing, and IoT systems
+              </span>
+              , along with practical exposure to firmware testing, issue analysis, and system stability improvement. I
+              enjoy working close to hardware, understanding how software interacts with electronics at the register and
+              signal level.
+            </p>
+            <p className="text-slate-200 text-base md:text-lg leading-relaxed font-normal">
+              I am continuously learning production-grade embedded development practices and enjoy collaborating with
+              cross-functional teams to build{" "}
+              <span className="text-sky-400 font-bold">reliable, efficient, and well-structured embedded systems</span>.
+            </p>
+          </div>
         </motion.div>
       </div>
     </section>

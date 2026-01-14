@@ -12,9 +12,9 @@ export default function Experience() {
       period: "February 2025 – Present",
       type: "Full-time",
       achievements: [
-        "Architecting a LoRa-enabled soil health monitoring system by developing embedded firmware in C/C++ for ESP32, integrating RS485-based 7-in-1 sensors to capture NPK, pH, EC, moisture, and temperature data with reliable Modbus RTU communication",
-        "Configuring and validating UART, I2C, SPI, and RS485 protocols to ensure robust, low-latency communication between microcontrollers and peripherals across both agricultural and medical device platforms",
-        "Currently working on enhancing the soil sensor project while parallelly learning and contributing to HealthCube HCXL's production-grade firmware by assisting in debugging and supporting optimization and feature validation efforts",
+        "Designed and completed core firmware projects including the LoRa soil monitoring system and GSR sensor prototype; executed board bring-up, continuity and voltage checks, and component-level fault diagnosis.",
+        "Supported firmware development by configuring UART/I2C/SPI/RS485 stacks, testing new device firmware, analysing device logs, diagnosing issues, and assisting in optimization and validation cycles.",
+        "Collaborated with Quality and Manufacturing teams on PCB soldering, hardware bring-up, device evaluation, documentation updates, and cross-functional issue resolution, while actively learning the codebase and strengthening system stability through guided real-time debugging.",
       ],
     },
     {
@@ -25,9 +25,9 @@ export default function Experience() {
       type: "Internship",
       githubLink: "#",
       achievements: [
-        "Developed an AI-powered Health Assistant Chatbot using Streamlit and Hugging Face Transformers, enabling intelligent health-related conversations with users, achieving a 90% response accuracy for predefined queries",
-        "Implemented rule-based keyword matching, improving query classification accuracy by 40%, and integrated DistilGPT-2, reducing response generation time by 35%",
-        "Enhanced user interaction by providing instant health-related advice, increasing user engagement by 50%, and enabling faster decision-making for medical assistance",
+        "Developed an AI-based health assistant chatbot using Streamlit and Hugging Face Transformers to support intelligent health-related conversations.",
+        "Implemented NLP preprocessing, rule-based keyword matching, and intent classification to improve query understanding and response accuracy.",
+        "Integrated DistilGPT-2 for response generation, optimized tokenization and fallback logic, and enhanced user experience through a clean interactive UI and structured health advice responses.",
       ],
     },
     {
@@ -37,9 +37,8 @@ export default function Experience() {
       period: "July 2023 – April 2024",
       type: "Training",
       achievements: [
-        "Proficient in multiple programming languages, including C, C++, Embedded C and Data Structures, demonstrated through 6+ hands-on projects and practical applications",
-        "Comprehensive understanding of embedded systems, covering microcontroller architectures, hardware interfacing, Linux internals, device drivers, and networking protocols such as I2C, SPI and UART",
-        "Experienced with a range of System on Chips (SoCs) like ESP8266 and LPC2148, and skilled in using development and debugging tools like Keil IDE and Ubuntu",
+        "Built strong foundations in embedded systems through 6+ projects, gaining proficiency in C/C++, Embedded C, Data Structures, microcontroller architectures, hardware interfacing, Linux internals, device drivers, and communication protocols (I2C, SPI, UART).",
+        "Worked extensively with SoCs like ESP8266 and LPC2148, and developed debugging and development skills using tools such as Keil IDE and Ubuntu, enabling efficient embedded application development and problem-solving.",
       ],
     },
     {
@@ -50,10 +49,9 @@ export default function Experience() {
       type: "Internship",
       githubLink: null,
       achievements: [
-        "Worked on Text-to-speech (TTS) and speech-to-text (STT) integration for enhancing voice-based home automation systems",
-        "Enabled seamless interaction between users and smart devices through natural language processing commands",
-        "Facilitated natural communication via spoken commands and responses to improve system usability",
-        "Focused on improving accessibility features, particularly designing interfaces for users with visual impairments",
+        "Developed a voice-controlled home automation system to operate household appliances using cloud-based speech services.",
+        "Implemented voice command processing using Speech-to-Text and Text-to-Speech services, integrated with IBM Watson Assistant for intent handling and decision logic.",
+        "Designed Node-RED flows to process voice commands, trigger appliance control actions, and provide real-time responses, enabling hands-free operation and improved accessibility for elderly and physically challenged users.",
       ],
     },
   ]

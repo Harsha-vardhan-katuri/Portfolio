@@ -9,114 +9,86 @@ export default function Projects() {
     {
       title: "LoRa-Enabled Soil Health Monitoring System",
       description:
-        "Advanced agricultural IoT system using ESP32, RS485 sensors, and LoRa communication for real-time soil parameter monitoring.",
-      image: "/lora-soil-monitoring.png",
-      technologies: ["ESP32", "LoRa", "RS485", "Modbus RTU", "C/C++", "SPI", "UART"],
-      achievements: [
-        "Programmed ESP32 to read NPK, pH, EC, moisture, and temperature via RS485 Modbus RTU with <200 Ms decoding latency and stable real-time signal handling",
-        "Synchronized UART and SPI communication to enable seamless data transfer between the ESP32 and LoRa transceiver, achieving 1 km wireless range with 80% delivery accuracy in agricultural field conditions",
-        "Formatted compact 50-byte sensor payloads and transmitted them over SPI-based LoRa, ensuring packet integrity, optimized current consumption (less than 50 mA), and consistent remote monitoring of soil metrics",
-      ],
+        "Built a long-range soil monitoring system using ESP32 and RS485-based 7-in-1 soil sensors to measure NPK, pH, EC, moisture, and temperature. Implemented Modbus RTU communication for reliable sensor data acquisition with optimized decoding latency. Designed compact payload formatting and synchronized UART-SPI data flow for LoRa transmission, enabling wireless monitoring over long distances with stable packet integrity and low power consumption.",
+      image: "/lora-soil-monitoring-system-esp32-iot.jpg",
+      technologies: ["ESP32", "RS485", "Modbus RTU", "LoRa", "UART", "SPI", "Embedded C/C++", "IoT Systems"],
       githubLink: "https://github.com/Harsha-vardhan-katuri/Soil-Sensor-Project",
       category: "IoT & Embedded Systems",
     },
     {
       title: "AI-Powered Health Assistant Chatbot",
       description:
-        "Intelligent health assistant using Streamlit and Hugging Face Transformers for medical query assistance.",
+        "Developed an AI-based health assistant chatbot using Streamlit and Hugging Face Transformers to support intelligent health-related conversations. Implemented NLP preprocessing, rule-based keyword matching, and intent classification to improve query understanding and response accuracy. Integrated DistilGPT-2 for response generation, optimized tokenization and fallback logic, and enhanced user experience through a clean interactive UI and structured health advice responses.",
       image: "/ai-health-assistant-chatbot.png",
-      technologies: ["Python", "Streamlit", "Hugging Face", "DistilGPT-2", "NLP", "AI/ML"],
-      achievements: [
-        "Developed an AI-powered Health Assistant Chatbot using Streamlit, Hugging Face Transformers, NLTK preprocessing, rule-based keyword matching, custom intent classification, symptom-based query handling, quick suggestions, and structured health advice—improving query accuracy by 40% and reducing DistilGPT-2 latency by 35%",
-        "Enhanced user interaction and response quality through a refined Streamlit UI, optimized tokenization, predefined medical response templates, real-time feedback, and improved chat flow—achieving 90% accuracy for predefined queries and boosting user engagement by 50%",
-      ],
+      technologies: ["Python", "Streamlit", "Hugging Face Transformers", "NLTK", "DistilGPT-2", "NLP", "AI Chatbots"],
       githubLink: "https://github.com/Harsha-vardhan-katuri/AI_Chat_Bot",
       category: "AI & Machine Learning",
     },
     {
-      title: "IoT Weather Reporting System",
+      title: "IoT-Based Weather Reporting System",
       description:
-        "Real-time weather monitoring system with cloud integration for continuous environmental data tracking.",
+        "Designed a real-time weather monitoring system to measure temperature and humidity using the DHT11 sensor and transmit data to the ThingSpeak cloud platform. Implemented periodic data uploads at fixed intervals and optimized cloud configuration for faster data retrieval and visualization. Integrated ESP-01 Wi-Fi module with LPC2148 to ensure stable IoT connectivity and accurate environmental monitoring.",
       image: "/iot-weather-monitoring.png",
-      technologies: ["LPC2148", "ESP01", "DHT11", "ThingSpeak", "Wi-Fi", "LCD Display"],
-      achievements: [
-        "Engineered a real-time weather reporting system using DHT11 to measure temperature and humidity, updating data to Thing Speak cloud at 15-second intervals with reliable connectivity",
-        "Configured Thing Speak for faster cloud access, reducing retrieval time by 60% and enabling efficient real-time visualization through LCD display integration",
-        "Optimized data transmission logic using the ESP-01 Wi-Fi module with LPC2148 to secure environmental readings with a margin of error of 2°C temperature and 5%RH humidity, resulting in stable IoT data updates",
-      ],
+      technologies: ["LPC2148", "ESP-01", "DHT11", "ThingSpeak", "Embedded C", "IoT", "Cloud Integration"],
       githubLink: null,
       category: "IoT & Cloud Integration",
     },
     {
-      title: "OTP Based Smart Wireless Locking System",
+      title: "Image Projector Firmware",
       description:
-        "Secure access control system utilizing One-Time Passwords (OTPs) to replace traditional physical keys.",
+        "Developed embedded firmware to receive and render image data packets for a toy projector system. Implemented packet validation, header and length checks, and chunk-based image data extraction using C. Designed logic to process streamed byte data and reconstruct image frames using sequential packets, focusing on reliable data handling, memory management, and controlled output rendering.",
+      image: "/image-projector.jpg",
+      technologies: ["C", "Embedded Firmware", "Packet Parsing", "Byte-Level Data Processing", "Memory Handling"],
+      githubLink: null,
+      category: "Embedded Systems",
+    },
+    {
+      title: "Button-Controlled LEDs (Bare-Metal Firmware)",
+      description:
+        "Developed bare-metal embedded firmware using direct register-level programming to control multiple LEDs via a push-button input. Configured GPIO using DDR and PORT registers, implemented software debouncing, and designed finite-state logic to cycle LED patterns reliably based on user input.",
+      image: "/button-controlled-leds-bare-metal-embedded.jpg",
+      technologies: [
+        "Bare-Metal Embedded C",
+        "Register-Level Programming",
+        "GPIO",
+        "Debouncing Logic",
+        "Microcontroller I/O",
+      ],
+      githubLink: null,
+      category: "Embedded Systems",
+    },
+    {
+      title: "OTP-Based Smart Wireless Locking System",
+      description:
+        "Designed and implemented a smart wireless locking system using Arduino and Bluetooth communication to enhance access security. Developed logic to generate and validate One-Time Passwords (OTP) via an Android application, enabling secure lock and unlock operations. Integrated servo motor control and status indication to physically actuate the locking mechanism based on OTP verification, ensuring reliable and controlled access.",
       image: "/smart-lock-arduino.jpg",
-      technologies: ["Arduino", "GSM Module", "Keypad", "LCD", "C++", "Embedded Systems"],
-      achievements: [
-        "Employs one-time passwords (OTPs) instead of physical keys for enhanced access security",
-        "Enhances security by requiring unique OTPs for each distinct access attempt",
-        "Offers user convenience and flexibility in both locking and unlocking mechanisms",
-        "Utilizes Arduino microcontrollers to manage secure OTP generation and validation logic",
+      technologies: [
+        "Arduino UNO (ATmega328P)",
+        "Bluetooth HC-05",
+        "Servo Motor",
+        "Embedded C",
+        "MIT App Inventor",
+        "Wireless Security Systems",
       ],
       githubLink: null,
       category: "Embedded Security",
     },
     {
-      title: "Voice Based Home Automation using IoT",
-      description: "Smart home control system enabling seamless interaction through natural voice commands.",
+      title: "Voice-Controlled Home Automation System",
+      description:
+        "Developed a voice-controlled home automation system to operate household appliances using cloud-based speech services. Implemented voice command processing using Speech-to-Text and Text-to-Speech services, integrated with IBM Watson Assistant for intent handling and decision logic. Designed Node-RED flows to process voice commands, trigger appliance control actions, and provide real-time responses, enabling hands-free operation and improved accessibility for elderly and physically challenged users.",
       image: "/voice-automation-iot.jpg",
-      technologies: ["IoT", "Voice Recognition", "NodeMCU", "Relay Module", "C++", "Blynk App"],
-      achievements: [
-        "Integrated Text-to-speech (TTS) and speech-to-text (STT) to boost voice-based automation capabilities",
-        "Enables seamless interaction between users and smart home devices for intuitive control",
-        "Facilitates natural communication via spoken commands and automated audio responses",
-        "Improves accessibility significantly, particularly for users with visual impairments",
+      technologies: [
+        "IBM Cloud",
+        "IBM Watson IoT Platform",
+        "IBM Watson Assistant",
+        "Node-RED",
+        "Speech-to-Text",
+        "Text-to-Speech",
+        "Python",
       ],
       githubLink: null,
       category: "IoT & Automation",
-    },
-    {
-      title: "Grove GSR Sensor with ESP32",
-      description:
-        "Stress level monitoring system measuring skin conductance to detect physiological stress responses.",
-      image: "/gsr-sensor-esp32.jpg",
-      technologies: ["ESP32", "Grove GSR Sensor", "Arduino IDE", "Signal Processing", "Bio-Sensors"],
-      achievements: [
-        "Measures skin conductance in microSiemens (µS) to analyze physiological stress markers and separates signals into tonic (SCL) and phasic (SCR) components for detailed stress analysis",
-        "Classifies stress levels into Calm, Normal, Sweaty/Mild Stress, and High Stress categories and visualizes real-time data using Arduino Serial Plotter with spike detection algorithms",
-      ],
-      githubLink: "https://github.com/Harsha-vardhan-katuri/GSR-Sensor-Project",
-      category: "Biomedical IoT",
-    },
-    {
-      title: "High-Precision BLE Motion Detection",
-      description:
-        "Advanced signal analysis system for detecting motion patterns using Bluetooth Low Energy technology.",
-      image: "/ble-motion-detection.jpg",
-      technologies: ["C", "BLE", "Accelerometer", "Algorithm Design", "Embedded Systems"],
-      achievements: [
-        "Architected a high-efficiency C program to decode BLE packets, achieving 95% precision in extracting critical accelerometer data",
-        "Distinguished iBeacon signals with a 70% faster classification process, enhancing system responsiveness and overall efficiency",
-        "Synthesized motion analysis algorithms to detect movement within 100 milliseconds per packet, improving processing speed",
-        "Reinforced data integrity through advanced error correction, improving packet reliability by 98%, ensuring robust transmission",
-      ],
-      githubLink: "https://github.com/Harsha-vardhan-katuri/BLE_Packet_Parser",
-      category: "Wireless Comm",
-    },
-    {
-      title: "Packetized Image Transmission System",
-      description:
-        "Efficient image transfer protocol implementation with robust error correction for reliable data delivery.",
-      image: "/packetized-image-transfer.jpg",
-      technologies: ["C", "CRC-16", "Image Processing", "Network Protocols", "Error Correction"],
-      achievements: [
-        "Implemented a firmware system to handle the reception and validation of image data packets for a toy projector, ensuring seamless data transmission and storage",
-        "Engineered a packet validation mechanism using CRC-16/XMODEM checksum, ensuring a 98% accuracy rate in detecting corrupted or missing packets and maintaining data integrity",
-        "Optimized memory management by developing functions to erase and save image data, resulting in a 30% reduction in memory usage and improved system performance",
-      ],
-      githubLink: "https://github.com/Harsha-vardhan-katuri/Image_Projector_Firmware",
-      category: "Network Systems",
     },
   ]
 
@@ -175,7 +147,7 @@ export default function Projects() {
                 {project.description}
               </p>
 
-              <div className="flex flex-wrap gap-1.5 md:gap-2 mb-3 md:mb-4">
+              <div className="flex flex-wrap gap-1.5 md:gap-2">
                 {project.technologies.map((tech) => (
                   <span
                     key={tech}
@@ -184,23 +156,6 @@ export default function Projects() {
                     {tech}
                   </span>
                 ))}
-              </div>
-
-              <div className="space-y-1 md:space-y-2">
-                <h4 className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-400">
-                  Key Achievements
-                </h4>
-                <ul className="space-y-1 md:space-y-2">
-                  {project.achievements.slice(0, 2).map((achievement, achievementIndex) => (
-                    <li
-                      key={achievementIndex}
-                      className="text-slate-200 text-xs md:text-sm flex items-start font-medium group-hover:text-white transition-colors"
-                    >
-                      <span className="text-cyan-400 mr-1.5 md:mr-2 mt-0.5 font-bold">•</span>
-                      <span>{achievement}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
             </div>
           </motion.div>
