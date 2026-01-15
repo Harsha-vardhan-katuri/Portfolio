@@ -107,10 +107,10 @@ export default function Experience() {
               {experience.achievements.map((achievement, achievementIndex) => (
                 <li
                   key={achievementIndex}
-                  className="text-slate-200 font-medium flex items-start transition-colors group-hover:text-white"
+                  className="text-slate-200 font-medium flex gap-3 transition-colors group-hover:text-white"
                 >
-                  <span className="text-blue-400 mr-2 mt-2 font-bold">•</span>
-                  <span>{achievement}</span>
+                  <span className="text-blue-400 font-bold flex-shrink-0 pt-0.5">•</span>
+                  <span className="flex-1 leading-relaxed">{achievement}</span>
                 </li>
               ))}
             </ul>

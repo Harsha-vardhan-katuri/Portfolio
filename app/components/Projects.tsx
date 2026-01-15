@@ -39,7 +39,7 @@ export default function Projects() {
         "Developed embedded firmware to receive and render image data packets for a toy projector system. Implemented packet validation, header and length checks, and chunk-based image data extraction using C. Designed logic to process streamed byte data and reconstruct image frames using sequential packets, focusing on reliable data handling, memory management, and controlled output rendering.",
       image: "/image-projector.jpg",
       technologies: ["C", "Embedded Firmware", "Packet Parsing", "Byte-Level Data Processing", "Memory Handling"],
-      githubLink: null,
+      githubLink: "https://github.com/Harsha-vardhan-katuri/Image_Projector_Firmware",
       category: "Embedded Systems",
     },
     {
@@ -54,7 +54,7 @@ export default function Projects() {
         "Debouncing Logic",
         "Microcontroller I/O",
       ],
-      githubLink: null,
+      githubLink: "https://github.com/Harsha-vardhan-katuri/Button_Controlled_LEDs",
       category: "Embedded Systems",
     },
     {
@@ -116,6 +116,7 @@ export default function Projects() {
                 alt={project.title}
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
+                priority={index < 2}
               />
               <div className="absolute top-2 md:top-4 left-2 md:left-4">
                 <span className="px-2 md:px-3 py-0.5 md:py-1 bg-gradient-to-r from-cyan-500/90 to-purple-500/90 backdrop-blur-sm text-white rounded-full text-xs md:text-sm font-bold shadow-lg">

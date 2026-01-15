@@ -82,8 +82,8 @@ export default function Skills() {
         {skillCategories.map((category, index) => (
           <motion.div
             key={category.title}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0, delay: index * 0.0008, ease: "easeOut" }}
             className="glass-card rounded-2xl md:rounded-3xl p-4 md:p-6 hover:shadow-2xl hover:shadow-cyan-500/20 hover:-translate-y-2 transition-all duration-300 group"
