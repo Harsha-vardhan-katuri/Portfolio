@@ -258,16 +258,24 @@ export default function Hero() {
               className="glass-card rounded-2xl md:rounded-3xl p-4 md:p-8 text-left"
             >
               <p className="text-white text-sm md:text-lg leading-relaxed mb-4 md:mb-6 font-normal">
-                I am a dedicated <span className="font-bold text-white">Firmware Engineer</span> currently working at
-                HealthCube Private Limited, specializing in embedded systems and IoT solutions. My expertise lies in
-                developing robust firmware for microcontrollers, particularly{" "}
-                <span className="font-bold text-white">ESP32</span>, and implementing various communication protocols
-                including <span className="font-bold text-white">LoRa, RS485, UART, I2C, and SPI</span>.
+                I am an <span className="font-bold text-cyan-400">Embedded / Firmware Engineer</span> with hands-on
+                experience in developing bare-metal and embedded software for microcontroller-based systems. My work
+                focuses on <span className="font-bold text-purple-400">low-level firmware development</span>,{" "}
+                <span className="font-bold text-pink-400">register-level programming</span>, hardware interfacing, board
+                bring-up, and debugging across ESP32 and other embedded platforms.
+              </p>
+              <p className="text-white text-sm md:text-lg leading-relaxed mb-4 md:mb-6 font-normal">
+                I have worked on <span className="font-bold text-cyan-400">real-world projects</span> involving
+                communication protocols, sensor integration, packet-based data processing, and IoT systems, along with
+                practical exposure to firmware testing, issue analysis, and system stability improvement. I enjoy
+                working close to hardware, understanding how software interacts with electronics at the{" "}
+                <span className="font-bold text-purple-400">register and signal level</span>.
               </p>
               <p className="text-white text-sm md:text-lg leading-relaxed font-normal">
-                With hands-on experience in <span className="font-bold text-white">agricultural IoT systems</span> and{" "}
-                <span className="font-bold text-white">medical device firmware</span>, I focus on creating efficient,
-                low-power solutions that deliver reliable performance in real-world applications.
+                I am continuously learning{" "}
+                <span className="font-bold text-pink-400">production-grade embedded development practices</span> and
+                enjoy collaborating with cross-functional teams to build reliable, efficient, and well-structured
+                embedded systems.
               </p>
             </motion.div>
           </div>
