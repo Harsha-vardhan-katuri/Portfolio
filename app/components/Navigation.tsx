@@ -68,11 +68,13 @@ export default function Navigation({ activeSection = "home", setActiveSection }:
         }
 
         .nav-button.active {
-          background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%) !important;
+          background: linear-gradient(135deg, #8a2be2 0%, #a855f7 100%) !important;
           color: #ffffff !important;
           font-weight: 900;
           transform: translateY(-2px);
-          box-shadow: 0 0 25px rgba(59, 130, 246, 0.6), 0 0 50px rgba(6, 182, 212, 0.4);
+          box-shadow: 0 0 30px rgba(138, 43, 226, 0.8), 0 0 60px rgba(168, 85, 247, 0.6);
+          border: 2px solid rgba(168, 85, 247, 0.8);
+          padding: 6px 20px !important;
         }
         
         .wave-text {
