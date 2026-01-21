@@ -7,6 +7,15 @@ import Image from "next/image"
 export default function Projects() {
   const projects = [
     {
+      title: "GSR-Based Stress Monitoring System",
+      description:
+        "Built a real-time Galvanic Skin Response (GSR) system using ESP32-WROOM-32 and Grove GSR sensor to measure human electrodermal activity. Implemented ADC-based signal acquisition, converted skin resistance to conductance (µS), and extracted tonic (SCL) and phasic (SCR) components to analyze stress and emotional responses. Designed calibration and classification logic to identify Calm, Normal, and Stress states, with live visualization using Serial Plotter.",
+      image: "/gsr-stress-monitoring-system.jpg",
+      technologies: ["ESP32", "GSR Sensor", "ADC", "Embedded C/C++", "Biomedical Signal Processing"],
+      githubLink: null,
+      category: "Biomedical & IoT",
+    },
+    {
       title: "LoRa-Enabled Soil Health Monitoring System",
       description:
         "Built a long-range soil monitoring system using ESP32 and RS485-based 7-in-1 soil sensors to measure NPK, pH, EC, moisture, and temperature. Implemented Modbus RTU communication for reliable sensor data acquisition with optimized decoding latency. Designed compact payload formatting and synchronized UART-SPI data flow for LoRa transmission, enabling wireless monitoring over long distances with stable packet integrity and low power consumption.",
