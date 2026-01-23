@@ -117,7 +117,7 @@ export default function Projects() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0, delay: index * 0.0008, ease: "easeOut" }}
-            className="glass-card rounded-2xl md:rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-cyan-500/20 hover:-translate-y-2 hover:scale-[1.02] transition-all duration-500 group"
+            className="glass-card rounded-2xl md:rounded-3xl overflow-hidden transition-all duration-500 ease-out hover:shadow-2xl hover:shadow-purple-500/30 hover:-translate-y-3 hover:scale-[1.03] group border border-cyan-500/10 hover:border-purple-500/30"
           >
             <div className="relative h-40 sm:h-48 md:h-56 overflow-hidden">
               <Image
