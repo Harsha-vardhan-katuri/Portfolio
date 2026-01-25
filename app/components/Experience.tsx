@@ -89,7 +89,7 @@ export default function Experience() {
                           </h3>
                           <p className="text-purple-300 text-lg font-semibold mb-4">{exp.company}</p>
                           
-                          <ul className="space-y-3 mb-4">
+                          <ul className="space-y-3">
                             {exp.bullets.map((bullet, idx) => (
                               <li key={idx} className="flex gap-3 text-slate-300 text-sm leading-relaxed">
                                 <span className="text-cyan-400 flex-shrink-0 mt-1">•</span>
@@ -97,10 +97,6 @@ export default function Experience() {
                               </li>
                             ))}
                           </ul>
-                          
-                          <div className="pt-4 border-t border-purple-500/20">
-                            <p className="text-cyan-400 font-semibold text-sm">{exp.period}</p>
-                          </div>
                         </motion.div>
                       </motion.div>
                     ) : (
@@ -126,7 +122,7 @@ export default function Experience() {
                           </h3>
                           <p className="text-purple-300 text-lg font-semibold mb-4">{exp.company}</p>
                           
-                          <ul className="space-y-3 mb-4">
+                          <ul className="space-y-3">
                             {exp.bullets.map((bullet, idx) => (
                               <li key={idx} className="flex gap-3 text-slate-300 text-sm leading-relaxed">
                                 <span className="text-cyan-400 flex-shrink-0 mt-1">•</span>
@@ -134,10 +130,6 @@ export default function Experience() {
                               </li>
                             ))}
                           </ul>
-                          
-                          <div className="pt-4 border-t border-purple-500/20">
-                            <p className="text-cyan-400 font-semibold text-sm">{exp.period}</p>
-                          </div>
                         </motion.div>
                       </motion.div>
                     ) : (
@@ -145,17 +137,23 @@ export default function Experience() {
                     )}
                   </div>
 
-                  {/* Timeline Circle - Opposite side of card */}
+                  {/* Timeline Circle with Period - Opposite side of card */}
                   <motion.div
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: index * 0.1 + 0.2 }}
-                    className={`absolute top-8 w-16 h-16 rounded-full bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center border-4 border-slate-900 shadow-lg shadow-cyan-500/50 z-20 ${
-                      isEven ? "right-0 -translate-x-full" : "left-0 translate-x-full"
+                    className={`absolute top-8 flex items-center gap-4 z-20 ${
+                      isEven ? "right-0" : "left-0"
                     }`}
                   >
-                    <span className="text-2xl">{exp.icon}</span>
+                    {isEven && <p className="text-white font-semibold text-sm whitespace-nowrap">{exp.period}</p>}
+                    
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center border-4 border-slate-900 shadow-lg shadow-cyan-500/50 flex-shrink-0">
+                      <span className="text-2xl">{exp.icon}</span>
+                    </div>
+                    
+                    {!isEven && <p className="text-white font-semibold text-sm whitespace-nowrap">{exp.period}</p>}
                   </motion.div>
                 </div>
               )

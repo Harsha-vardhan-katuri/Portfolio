@@ -63,12 +63,8 @@ export default function Education() {
                           
                           <div className="space-y-2 mb-4 text-sm">
                             <div className="flex items-center gap-2 text-slate-300">
-                              <Calendar className="w-4 h-4" />
-                              <span>{edu.period}</span>
-                            </div>
-                            <div className="flex items-center gap-2 text-slate-300">
                               <Award className="w-4 h-4" />
-                              <span>CGPA: {edu.grade}</span>
+                              <span>{edu.grade}</span>
                             </div>
                           </div>
 
@@ -101,12 +97,8 @@ export default function Education() {
                           
                           <div className="space-y-2 mb-4 text-sm">
                             <div className="flex items-center gap-2 text-slate-300">
-                              <Calendar className="w-4 h-4" />
-                              <span>{edu.period}</span>
-                            </div>
-                            <div className="flex items-center gap-2 text-slate-300">
                               <Award className="w-4 h-4" />
-                              <span>CGPA: {edu.grade}</span>
+                              <span>{edu.grade}</span>
                             </div>
                           </div>
 
@@ -118,19 +110,25 @@ export default function Education() {
                     )}
                   </div>
 
-                  {/* Timeline Circle - Opposite side of card */}
+                  {/* Timeline Circle with Period - Opposite side of card */}
                   <motion.div
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: index * 0.1 + 0.2 }}
-                    className={`absolute top-8 w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center border-4 border-slate-900 shadow-lg shadow-purple-500/50 z-20 ${
-                      isEven ? "right-0 -translate-x-full" : "left-0 translate-x-full"
+                    className={`absolute top-8 flex items-center gap-4 z-20 ${
+                      isEven ? "right-0" : "left-0"
                     }`}
                   >
-                    <div className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center">
-                      <span className="text-purple-400 font-bold">{index + 1}</span>
+                    {isEven && <p className="text-slate-300 font-semibold text-sm whitespace-nowrap">{edu.period}</p>}
+                    
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center border-4 border-slate-900 shadow-lg shadow-purple-500/50 flex-shrink-0">
+                      <div className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center">
+                        <span className="text-purple-400 font-bold">{index + 1}</span>
+                      </div>
                     </div>
+                    
+                    {!isEven && <p className="text-slate-300 font-semibold text-sm whitespace-nowrap">{edu.period}</p>}
                   </motion.div>
                 </div>
               )
