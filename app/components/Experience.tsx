@@ -57,10 +57,10 @@ export default function Experience() {
         <p className="text-slate-400 mt-3">Professional journey in embedded systems, firmware development, and AI technologies</p>
       </div>
 
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="relative">
           {/* Center Timeline Line */}
-          <div className="absolute left-1/2 top-0 w-1 h-full bg-gradient-to-b from-cyan-500/50 via-purple-500/50 to-pink-500/50 transform -translate-x-1/2" />
+          <div className="absolute left-1/2 top-0 w-1 h-full bg-gradient-to-b from-cyan-500 via-purple-500 to-pink-500 transform -translate-x-1/2 z-10" />
 
           {/* Timeline Items */}
           <div className="space-y-24">
@@ -68,28 +68,29 @@ export default function Experience() {
               const isEven = index % 2 === 0
               
               return (
-                <div key={index} className="relative">
-                  <div className="grid grid-cols-2 gap-8 items-center">
-                    {/* Left Side - Content */}
-                    {isEven ? (
-                      <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true, margin: "-50px" }}
-                        transition={{ duration: 0.6, delay: index * 0.1 }}
-                        className="col-span-1"
-                      >
-                        {/* Card with content */}
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="relative flex items-start"
+                >
+                  {/* Full width container with timeline circle in center */}
+                  <div className="w-full flex items-start">
+                    {/* Left side - Card or Date */}
+                    <div className="w-1/2 flex flex-col items-end pr-12">
+                      {isEven ? (
                         <motion.div
                           whileHover={{ y: -8, boxShadow: "0 0 30px rgba(168, 85, 247, 0.3)" }}
-                          className="bg-slate-800/40 backdrop-blur border border-purple-500/30 hover:border-purple-500/60 transition-all rounded-2xl p-8 group"
+                          className="bg-slate-800/40 backdrop-blur border border-purple-500/30 hover:border-purple-500/60 transition-all rounded-2xl p-8 group w-full"
                         >
                           <h3 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-1">
                             {exp.title}
                           </h3>
                           <p className="text-purple-300 text-lg font-semibold mb-4">{exp.company}</p>
                           
-                          <ul className="space-y-3 mb-4">
+                          <ul className="space-y-3">
                             {exp.bullets.map((bullet, idx) => (
                               <li key={idx} className="flex gap-3 text-slate-300 text-sm leading-relaxed">
                                 <span className="text-cyan-400 flex-shrink-0 mt-1">•</span>
@@ -97,36 +98,32 @@ export default function Experience() {
                               </li>
                             ))}
                           </ul>
-                          
-                          <div className="pt-4 border-t border-purple-500/20">
-                            <p className="text-cyan-400 font-semibold text-sm">{exp.period}</p>
-                          </div>
                         </motion.div>
-                      </motion.div>
-                    ) : (
-                      <div />
-                    )}
+                      ) : (
+                        <p className="text-white font-semibold text-sm whitespace-nowrap">{exp.period}</p>
+                      )}
+                    </div>
 
-                    {/* Right Side - Content */}
-                    {!isEven ? (
-                      <motion.div
-                        initial={{ opacity: 0, x: 50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true, margin: "-50px" }}
-                        transition={{ duration: 0.6, delay: index * 0.1 }}
-                        className="col-span-1"
-                      >
-                        {/* Card with content */}
+                    {/* Center - Timeline Circle */}
+                    <div className="flex justify-center w-fit -mx-8">
+                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center border-4 border-slate-900 shadow-lg shadow-cyan-500/50 z-40">
+                        <span className="text-2xl">{exp.icon}</span>
+                      </div>
+                    </div>
+
+                    {/* Right side - Card or Date */}
+                    <div className="w-1/2 flex flex-col items-start pl-12">
+                      {!isEven ? (
                         <motion.div
                           whileHover={{ y: -8, boxShadow: "0 0 30px rgba(168, 85, 247, 0.3)" }}
-                          className="bg-slate-800/40 backdrop-blur border border-purple-500/30 hover:border-purple-500/60 transition-all rounded-2xl p-8 group"
+                          className="bg-slate-800/40 backdrop-blur border border-purple-500/30 hover:border-purple-500/60 transition-all rounded-2xl p-8 group w-full"
                         >
                           <h3 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-1">
                             {exp.title}
                           </h3>
                           <p className="text-purple-300 text-lg font-semibold mb-4">{exp.company}</p>
                           
-                          <ul className="space-y-3 mb-4">
+                          <ul className="space-y-3">
                             {exp.bullets.map((bullet, idx) => (
                               <li key={idx} className="flex gap-3 text-slate-300 text-sm leading-relaxed">
                                 <span className="text-cyan-400 flex-shrink-0 mt-1">•</span>
@@ -134,30 +131,13 @@ export default function Experience() {
                               </li>
                             ))}
                           </ul>
-                          
-                          <div className="pt-4 border-t border-purple-500/20">
-                            <p className="text-cyan-400 font-semibold text-sm">{exp.period}</p>
-                          </div>
                         </motion.div>
-                      </motion.div>
-                    ) : (
-                      <div />
-                    )}
+                      ) : (
+                        <p className="text-white font-semibold text-sm whitespace-nowrap">{exp.period}</p>
+                      )}
+                    </div>
                   </div>
-
-                  {/* Timeline Circle - Opposite side of card */}
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.1 + 0.2 }}
-                    className={`absolute top-8 w-16 h-16 rounded-full bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center border-4 border-slate-900 shadow-lg shadow-cyan-500/50 z-20 ${
-                      isEven ? "right-0 -translate-x-full" : "left-0 translate-x-full"
-                    }`}
-                  >
-                    <span className="text-2xl">{exp.icon}</span>
-                  </motion.div>
-                </div>
+                </motion.div>
               )
             })}
           </div>
