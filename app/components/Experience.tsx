@@ -137,21 +137,28 @@ export default function Experience() {
                     )}
                   </div>
 
-                  {/* Timeline Circle with Period - On the center line */}
+                  {/* Timeline Period Text - Opposite side of card */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.1 + 0.2 }}
+                    className={`absolute top-8 z-30 ${isEven ? "right-0 pr-6" : "left-0 pl-6"}`}
+                  >
+                    <p className="text-white font-semibold text-sm whitespace-nowrap">{exp.period}</p>
+                  </motion.div>
+
+                  {/* Timeline Circle - Centered on vertical line */}
                   <motion.div
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: index * 0.1 + 0.2 }}
-                    className="absolute left-1/2 top-8 transform -translate-x-1/2 flex items-center gap-4 z-30"
+                    className="absolute left-1/2 top-8 transform -translate-x-1/2 z-40"
                   >
-                    {isEven && <p className="text-white font-semibold text-sm whitespace-nowrap text-right pr-4">{exp.period}</p>}
-                    
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center border-4 border-slate-900 shadow-lg shadow-cyan-500/50 flex-shrink-0 relative z-30">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center border-4 border-slate-900 shadow-lg shadow-cyan-500/50">
                       <span className="text-2xl">{exp.icon}</span>
                     </div>
-                    
-                    {!isEven && <p className="text-white font-semibold text-sm whitespace-nowrap text-left pl-4">{exp.period}</p>}
                   </motion.div>
                 </div>
               )
