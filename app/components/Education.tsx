@@ -30,8 +30,8 @@ export default function Education() {
       
       <div className="max-w-6xl mx-auto">
         <div className="relative">
-          {/* Central Vertical Timeline Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-purple-500/50 via-pink-500/50 to-cyan-500/50" />
+          {/* Central Vertical Timeline Line - Behind circles with z-10 */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-purple-500 via-pink-500 to-cyan-500 z-10" />
           
           {/* Timeline Items */}
           <div className="space-y-24">
@@ -110,25 +110,23 @@ export default function Education() {
                     )}
                   </div>
 
-                  {/* Timeline Circle with Period - Opposite side of card */}
+                  {/* Timeline Circle with Period - On the center line */}
                   <motion.div
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: index * 0.1 + 0.2 }}
-                    className={`absolute top-8 flex items-center gap-4 z-20 ${
-                      isEven ? "right-0" : "left-0"
-                    }`}
+                    className="absolute left-1/2 top-8 transform -translate-x-1/2 flex items-center gap-4 z-30"
                   >
-                    {isEven && <p className="text-slate-300 font-semibold text-sm whitespace-nowrap">{edu.period}</p>}
+                    {isEven && <p className="text-slate-300 font-semibold text-sm whitespace-nowrap text-right pr-4">{edu.period}</p>}
                     
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center border-4 border-slate-900 shadow-lg shadow-purple-500/50 flex-shrink-0">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center border-4 border-slate-900 shadow-lg shadow-purple-500/50 flex-shrink-0 relative z-30">
                       <div className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center">
                         <span className="text-purple-400 font-bold">{index + 1}</span>
                       </div>
                     </div>
                     
-                    {!isEven && <p className="text-slate-300 font-semibold text-sm whitespace-nowrap">{edu.period}</p>}
+                    {!isEven && <p className="text-slate-300 font-semibold text-sm whitespace-nowrap text-left pl-4">{edu.period}</p>}
                   </motion.div>
                 </div>
               )
