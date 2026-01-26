@@ -12,6 +12,7 @@ import Certifications from "./Certifications"
 import Experience from "./Experience"
 import Navigation from "./Navigation"
 import SimpleBackground from "./animations/SimpleBackground"
+import GlowingRingAnimation from "./animations/GlowingRingAnimation"
 
 export default function Hero() {
   const [activeSection, setActiveSection] = useState("home")
@@ -106,142 +107,171 @@ export default function Hero() {
       <div className="relative z-10">
         {/* Home Section */}
         <div id="home" className="min-h-screen flex items-center justify-center pt-16 md:pt-20 px-3 md:px-4">
-          <div className="flex flex-col items-center text-center space-y-4 md:space-y-8 max-w-2xl mx-auto">
-            {/* Profile Image */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              className="relative w-[140px] h-[140px] md:w-[200px] md:h-[200px] lg:w-[250px] lg:h-[250px]"
-            >
-              <div className="relative w-full h-full rounded-full overflow-hidden border-3 md:border-4 border-white">
-                <Image
-                  src="/images/design-mode/harsha.jpg(1).jpeg"
-                  alt="Harsha Vardhan Katuri"
-                  fill
-                  className="object-cover"
-                  priority
-                  sizes="(max-width: 640px) 140px, (max-width: 768px) 200px, 250px"
-                />
-              </div>
-            </motion.div>
-
-            {/* Name */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-              className="text-2xl sm:text-3xl md:text-4xl font-bold text-white"
-            >
-              Harsha Vardhan Katuri
-            </motion.h1>
-
-            {/* Title - with text-gradient */}
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-              className="text-lg sm:text-xl md:text-2xl font-bold text-gradient"
-            >
-              Firmware Engineer
-            </motion.h2>
-
-            {/* Subtitle */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
-              className="text-sm sm:text-base md:text-lg font-bold text-white"
-            >
-              Specialized in Embedded Systems & IoT Solutions
-            </motion.p>
-
-            {/* Location */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
-              className="flex flex-wrap justify-center gap-2 md:gap-4 text-white font-bold text-sm md:text-base"
-            >
-              <div className="flex items-center gap-1">
-                <MapPin className="w-3 h-3 md:w-4 md:h-4" />
-                Bengaluru, Karnataka
-              </div>
-            </motion.div>
-
-            {/* Description - visible on all screens */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
-              className="text-white max-w-3xl leading-relaxed font-normal text-xs sm:text-sm md:text-base px-2"
-            >
-              Currently working as a <span className="font-bold text-white">Firmware Engineer</span> at HealthCube
-              Private Limited, developing <span className="font-bold text-white">LoRa-enabled soil</span> health
-              monitoring systems and contributing to production-grade{" "}
-              <span className="font-bold text-white">medical device firmware</span>.
-            </motion.p>
-
-            {/* Action Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
-              className="flex flex-wrap justify-center gap-2 md:gap-4 mt-4 md:mt-8 w-full"
-            >
-              <button
-                className="glass-button text-white font-bold flex items-center justify-center gap-1 md:gap-2 px-3 md:px-6 py-2 md:py-3 rounded-xl md:rounded-2xl hover:scale-105 active:scale-95 transition-all text-xs md:text-base"
-                onClick={handleEmailCopy}
+          <div className="max-w-6xl mx-auto w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start md:pt-12">
+              {/* Left Column - Photo with info */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="hidden md:flex flex-col items-center md:items-start border-0 mx-8 my-0 py-0 px-0"
               >
-                {copiedEmail ? <Check className="w-3 h-3 md:w-4 md:h-4" /> : <Mail className="w-3 h-3 md:w-4 md:h-4" />}
-                <span>{copiedEmail ? "Copied!" : "Gmail"}</span>
-              </button>
+                {/* Profile Image - moved right and up */}
+                <div className="relative w-[180px] h-[180px] md:w-[200px] md:h-[200px] lg:w-[250px] lg:h-[250px] rounded-full overflow-hidden border-4 md:border-4 border-white shadow-lg ml-8">
+                  <Image
+                    src="/images/design-mode/harsha.jpg(1).jpeg"
+                    alt="Harsha Vardhan Katuri"
+                    fill
+                    className="object-cover"
+                    priority
+                    sizes="(max-width: 640px) 180px, (max-width: 768px) 200px, 250px"
+                  />
+                </div>
 
-              <button
-                className="glass-button text-white font-bold px-3 md:px-6 py-2 md:py-3 rounded-xl md:rounded-2xl flex items-center justify-center gap-1 md:gap-2 hover:scale-105 active:scale-95 transition-all text-xs md:text-base"
-                onClick={handlePhoneCopy}
+                {/* Info below photo */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="mt-6 text-center md:text-left md:mt-8 mb-0 space-y-3 ml-12 w-full"
+                >
+                  {/* Role */}
+                  <h3 className="text-lg md:text-xl font-bold text-gradient">Firmware Engineer</h3>
+
+                  {/* Specialization */}
+                  <p className="text-sm md:text-base text-slate-300">Specialized in Embedded Systems & IoT Solutions</p>
+
+                  {/* Location */}
+                  <div className="flex items-center justify-center md:justify-start gap-2 text-sm md:text-base text-white font-semibold">
+                    <MapPin className="w-4 h-4" />
+                    <span>Bengaluru, Karnataka</span>
+                  </div>
+                </motion.div>
+              </motion.div>
+
+              {/* Right Column - Name and details / Mobile Full View */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="flex flex-col justify-start space-y-6 md:col-span-1 col-span-1"
               >
-                {copiedPhone ? (
-                  <Check className="w-3 h-3 md:w-4 md:h-4" />
-                ) : (
-                  <Phone className="w-3 h-3 md:w-4 md:h-4" />
-                )}
-                <span>{copiedPhone ? "Copied!" : "Contact"}</span>
-              </button>
+                {/* Mobile Photo - Only shows on mobile */}
+                <div className="md:hidden mb-4">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                    className="flex flex-col items-center space-y-4"
+                  >
+                    <div className="relative w-[160px] h-[160px] rounded-full overflow-hidden border-4 border-white shadow-lg">
+                      <Image
+                        src="/images/design-mode/harsha.jpg(1).jpeg"
+                        alt="Harsha Vardhan Katuri"
+                        fill
+                        className="object-cover"
+                        priority
+                      />
+                    </div>
+                    <div className="text-center space-y-2">
+                      <h3 className="text-lg font-bold text-gradient">Firmware Engineer</h3>
+                      <p className="text-xs text-slate-300">Specialized in Embedded Systems & IoT Solutions</p>
+                      <div className="flex items-center justify-center gap-2 text-xs text-white font-semibold">
+                        <MapPin className="w-3 h-3" />
+                        <span>Bengaluru, Karnataka</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
 
-              <Link href="https://github.com/Harsha-vardhan-katuri" target="_blank" className="contents">
-                <button className="glass-button text-white font-bold px-3 md:px-6 py-2 md:py-3 rounded-xl md:rounded-2xl flex items-center justify-center gap-1 md:gap-2 hover:scale-105 active:scale-95 transition-all text-xs md:text-base">
-                  <Github className="w-3 h-3 md:w-4 md:h-4" />
-                  <span>GitHub</span>
-                </button>
-              </Link>
+                {/* Full Name - Split across lines with glowing animation */}
+                <div className="space-y-1">
+                  <div className="overflow-hidden">
+                    <GlowingRingAnimation text="HARSHA VARDHAN" ringColor="#0055ff" glowColor="#0044ff" />
+                  </div>
+                  <div className="overflow-hidden">
+                    <GlowingRingAnimation text="KATURI" ringColor="#ec4899" glowColor="#db2777" />
+                  </div>
+                </div>
 
-              <Link
-                href="https://www.linkedin.com/in/harsha-vardhan-katuri-772166256/"
-                target="_blank"
-                className="contents"
-              >
-                <button className="glass-button text-white font-bold px-3 md:px-6 py-2 md:py-3 rounded-xl md:rounded-2xl flex items-center justify-center gap-1 md:gap-2 hover:scale-105 active:scale-95 transition-all text-xs md:text-base">
-                  <Linkedin className="w-3 h-3 md:w-4 md:h-4" />
-                  <span>LinkedIn</span>
-                </button>
-              </Link>
+                {/* Currently Working */}
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="text-sm md:text-base text-slate-300 leading-relaxed"
+                >
+                  Currently working as a <span className="font-bold text-white">Firmware Engineer</span> at{" "}
+                  <span className="font-bold text-purple-400">HealthCube Private Limited</span>, developing{" "}
+                  <span className="font-bold text-cyan-400">LoRa-enabled soil</span> health monitoring systems and
+                  contributing to production-grade <span className="font-bold text-pink-400">medical device firmware</span>.
+                </motion.p>
 
-              <button
-                className="glass-button text-white font-bold px-3 md:px-6 py-2 md:py-3 rounded-xl md:rounded-2xl flex items-center justify-center gap-1 md:gap-2 hover:scale-105 active:scale-95 transition-all text-xs md:text-base"
-                onClick={handleResumeDownload}
-              >
-                <Download className="w-3 h-3 md:w-4 md:h-4" />
-                <span>Resume</span>
-              </button>
-            </motion.div>
+                {/* Action Buttons */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                  className="flex flex-wrap gap-3 pt-4"
+                >
+                  <button
+                    className="glass-button text-white font-bold flex items-center justify-center gap-2 px-4 md:px-6 py-2 md:py-3 rounded-xl md:rounded-2xl hover:scale-105 active:scale-95 transition-all text-sm md:text-base"
+                    onClick={handleEmailCopy}
+                  >
+                    {copiedEmail ? (
+                      <Check className="w-4 h-4 md:w-5 md:h-5" />
+                    ) : (
+                      <Mail className="w-4 h-4 md:w-5 md:h-5" />
+                    )}
+                    <span>{copiedEmail ? "Copied!" : "Gmail"}</span>
+                  </button>
+
+                  <button
+                    className="glass-button text-white font-bold px-4 md:px-6 py-2 md:py-3 rounded-xl md:rounded-2xl flex items-center justify-center gap-2 hover:scale-105 active:scale-95 transition-all text-sm md:text-base"
+                    onClick={handlePhoneCopy}
+                  >
+                    {copiedPhone ? (
+                      <Check className="w-4 h-4 md:w-5 md:h-5" />
+                    ) : (
+                      <Phone className="w-4 h-4 md:w-5 md:h-5" />
+                    )}
+                    <span>{copiedPhone ? "Copied!" : "Contact"}</span>
+                  </button>
+
+                  <Link href="https://github.com/Harsha-vardhan-katuri" target="_blank" className="contents">
+                    <button className="glass-button text-white font-bold px-4 md:px-6 py-2 md:py-3 rounded-xl md:rounded-2xl flex items-center justify-center gap-2 hover:scale-105 active:scale-95 transition-all text-sm md:text-base">
+                      <Github className="w-4 h-4 md:w-5 md:h-5" />
+                      <span>GitHub</span>
+                    </button>
+                  </Link>
+
+                  <Link
+                    href="https://www.linkedin.com/in/harsha-vardhan-katuri-772166256/"
+                    target="_blank"
+                    className="contents"
+                  >
+                    <button className="glass-button text-white font-bold px-4 md:px-6 py-2 md:py-3 rounded-xl md:rounded-2xl flex items-center justify-center gap-2 hover:scale-105 active:scale-95 transition-all text-sm md:text-base">
+                      <Linkedin className="w-4 h-4 md:w-5 md:h-5" />
+                      <span>LinkedIn</span>
+                    </button>
+                  </Link>
+
+                  <button
+                    className="glass-button text-white font-bold px-4 md:px-6 py-2 md:py-3 rounded-xl md:rounded-2xl flex items-center justify-center gap-2 hover:scale-105 active:scale-95 transition-all text-sm md:text-base"
+                    onClick={handleResumeDownload}
+                  >
+                    <Download className="w-4 h-4 md:w-5 md:h-5" />
+                    <span>Resume</span>
+                  </button>
+                </motion.div>
+              </motion.div>
+            </div>
           </div>
         </div>
 
