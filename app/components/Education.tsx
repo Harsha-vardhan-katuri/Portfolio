@@ -49,7 +49,7 @@ export default function Education() {
                   className="relative"
                 >
                   {/* 3-Column Grid: [1fr_auto_1fr] */}
-                  <div className="grid md:grid-cols-[1fr_auto_1fr] gap-8 items-center">
+                  <div className="grid md:grid-cols-[1fr_auto_1fr] gap-8 items-start">
                     {/* Left Column */}
                     <div className="flex flex-col items-end">
                       {isEven ? (
