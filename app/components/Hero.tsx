@@ -12,6 +12,7 @@ import Certifications from "./Certifications"
 import Experience from "./Experience"
 import Navigation from "./Navigation"
 import SimpleBackground from "./animations/SimpleBackground"
+import GlowingRingAnimation from "./animations/GlowingRingAnimation"
 
 export default function Hero() {
   const [activeSection, setActiveSection] = useState("home")
@@ -106,7 +107,16 @@ export default function Hero() {
       <div className="relative z-10">
         {/* Home Section */}
         <div id="home" className="min-h-screen flex items-center justify-center pt-16 md:pt-20 px-3 md:px-4">
-          <div className="flex flex-col items-center text-center space-y-4 md:space-y-8 max-w-2xl mx-auto">
+          <div className="flex flex-col items-center text-center space-y-8 md:space-y-12 max-w-2xl mx-auto">
+            {/* Glowing Ring Animation */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+              className="w-full flex justify-center mb-4 md:mb-8"
+            >
+              <GlowingRingAnimation text="HARSHA" ringColor="#0055ff" glowColor="#0044ff" />
+            </motion.div>
             {/* Profile Image */}
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
