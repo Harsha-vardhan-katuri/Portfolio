@@ -69,6 +69,7 @@
     "react-native-reanimated": "latest",
     "react-native-web": "latest",
     "react-native-webview": "latest",
+    "react-native-worklets": "latest",
     "react-resizable-panels": "latest",
     "recharts": "latest",
     "sonner": "latest",
