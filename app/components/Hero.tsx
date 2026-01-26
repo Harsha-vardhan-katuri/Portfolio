@@ -115,7 +115,7 @@ export default function Hero() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
-                className="hidden md:flex flex-col items-center md:items-start"
+                className="hidden md:flex flex-col items-center md:items-start border-0 mx-8 my-0 py-0 px-0"
               >
                 {/* Profile Image - moved right and up */}
                 <div className="relative w-[180px] h-[180px] md:w-[200px] md:h-[200px] lg:w-[250px] lg:h-[250px] rounded-full overflow-hidden border-4 md:border-4 border-white shadow-lg ml-8">
@@ -135,7 +135,7 @@ export default function Hero() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  className="mt-6 md:mt-8 text-center md:text-left space-y-3 w-full"
+                  className="mt-6 text-center md:text-left md:mt-8 mb-0 space-y-3 ml-12 w-full"
                 >
                   {/* Role */}
                   <h3 className="text-lg md:text-xl font-bold text-gradient">Firmware Engineer</h3>

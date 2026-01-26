@@ -41,7 +41,7 @@ export default function GlowingRingAnimation({
   return (
     <div className="relative flex flex-col items-center justify-center w-full">
       {/* Logo Container - Responsive wrapping */}
-      <div className="flex flex-wrap gap-2 md:gap-3 lg:gap-4 relative z-10 justify-center">
+      <div className="flex flex-wrap relative z-10 justify-center lg:gap-0 mx-px">
         {text.split('').map((letter, index) => (
           <span
             key={index}
