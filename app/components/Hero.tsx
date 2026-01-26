@@ -108,17 +108,17 @@ export default function Hero() {
         {/* Home Section */}
         <div id="home" className="min-h-screen flex items-center justify-center pt-16 md:pt-20 px-3 md:px-4">
           <div className="max-w-6xl mx-auto w-full">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start md:pt-12">
               {/* Left Column - Photo with info */}
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
-                className="flex flex-col items-center md:items-start"
+                className="hidden md:flex flex-col items-center md:items-start"
               >
-                {/* Profile Image */}
-                <div className="relative w-[180px] h-[180px] md:w-[200px] md:h-[200px] lg:w-[250px] lg:h-[250px] rounded-full overflow-hidden border-4 md:border-4 border-white shadow-lg">
+                {/* Profile Image - moved right and up */}
+                <div className="relative w-[180px] h-[180px] md:w-[200px] md:h-[200px] lg:w-[250px] lg:h-[250px] rounded-full overflow-hidden border-4 md:border-4 border-white shadow-lg ml-8">
                   <Image
                     src="/images/design-mode/harsha.jpg(1).jpeg"
                     alt="Harsha Vardhan Katuri"
@@ -151,22 +151,51 @@ export default function Hero() {
                 </motion.div>
               </motion.div>
 
-              {/* Right Column - Name and details */}
+              {/* Right Column - Name and details / Mobile Full View */}
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
-                className="flex flex-col justify-start space-y-6"
+                className="flex flex-col justify-start space-y-6 md:col-span-1 col-span-1"
               >
-                {/* Full Name - Split across lines */}
-                <div className="space-y-2">
-                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight">
-                    HARSHA VARDHAN
-                  </h1>
-                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white">
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">KATURI</span>
-                  </h1>
+                {/* Mobile Photo - Only shows on mobile */}
+                <div className="md:hidden mb-4">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                    className="flex flex-col items-center space-y-4"
+                  >
+                    <div className="relative w-[160px] h-[160px] rounded-full overflow-hidden border-4 border-white shadow-lg">
+                      <Image
+                        src="/images/design-mode/harsha.jpg(1).jpeg"
+                        alt="Harsha Vardhan Katuri"
+                        fill
+                        className="object-cover"
+                        priority
+                      />
+                    </div>
+                    <div className="text-center space-y-2">
+                      <h3 className="text-lg font-bold text-gradient">Firmware Engineer</h3>
+                      <p className="text-xs text-slate-300">Specialized in Embedded Systems & IoT Solutions</p>
+                      <div className="flex items-center justify-center gap-2 text-xs text-white font-semibold">
+                        <MapPin className="w-3 h-3" />
+                        <span>Bengaluru, Karnataka</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+
+                {/* Full Name - Split across lines with glowing animation */}
+                <div className="space-y-1">
+                  <div className="overflow-hidden">
+                    <GlowingRingAnimation text="HARSHA VARDHAN" ringColor="#0055ff" glowColor="#0044ff" />
+                  </div>
+                  <div className="overflow-hidden">
+                    <GlowingRingAnimation text="KATURI" ringColor="#ec4899" glowColor="#db2777" />
+                  </div>
                 </div>
 
                 {/* Currently Working */}
