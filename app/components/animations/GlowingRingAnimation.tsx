@@ -43,17 +43,6 @@ export default function GlowingRingAnimation({
 
   return (
     <div className="relative flex flex-col items-center justify-center">
-      {/* The Glowing Ring */}
-      <div
-        ref={ringRef}
-        className="absolute w-64 h-64 md:w-96 md:h-96 lg:w-[400px] lg:h-[400px] rounded-full opacity-0 pointer-events-none"
-        style={{
-          border: `2px solid ${ringColor}`,
-          boxShadow: `0 0 50px ${glowColor}, inset 0 0 30px ${glowColor}`,
-          transform: 'scale(0.5)',
-        }}
-      />
-
       {/* Logo Container */}
       <div className="flex gap-6 md:gap-8 lg:gap-10 relative z-10">
         {text.split('').map((letter, index) => (

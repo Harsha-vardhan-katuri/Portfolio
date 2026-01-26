@@ -115,7 +115,7 @@ export default function Hero() {
               transition={{ duration: 1 }}
               className="w-full flex justify-center mb-4 md:mb-8"
             >
-              <GlowingRingAnimation text="HARSHA" ringColor="#0055ff" glowColor="#0044ff" />
+              <GlowingRingAnimation text="HARSHA VARDHAN KATURI" ringColor="#0055ff" glowColor="#0044ff" />
             </motion.div>
             {/* Profile Image */}
             <motion.div
@@ -136,17 +136,6 @@ export default function Hero() {
                 />
               </div>
             </motion.div>
-
-            {/* Name */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-              className="text-2xl sm:text-3xl md:text-4xl font-bold text-white"
-            >
-              Harsha Vardhan Katuri
-            </motion.h1>
 
             {/* Title - with text-gradient */}
             <motion.h2
