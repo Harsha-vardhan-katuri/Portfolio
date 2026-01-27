@@ -9,6 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@babel/core": "latest",
     "@emotion/is-prop-valid": "latest",
     "@expo/dom-webview": "latest",
     "@expo/metro-runtime": "latest",

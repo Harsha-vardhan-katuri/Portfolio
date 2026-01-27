@@ -184,12 +184,21 @@ export default function Hero() {
                         <MapPin className="w-3 h-3" />
                         <span>Bengaluru, Karnataka</span>
                       </div>
+                      {/* Name below role in mobile */}
+                      <div className="space-y-1 pt-2">
+                        <div className="overflow-hidden">
+                          <GlowingRingAnimation text="HARSHA VARDHAN" ringColor="#0055ff" glowColor="#0044ff" />
+                        </div>
+                        <div className="overflow-hidden">
+                          <GlowingRingAnimation text="KATURI" ringColor="#ec4899" glowColor="#db2777" />
+                        </div>
+                      </div>
                     </div>
                   </motion.div>
                 </div>
 
-                {/* Full Name - Split across lines with glowing animation */}
-                <div className="space-y-1">
+                {/* Full Name - Split across lines with glowing animation (Desktop only) */}
+                <div className="hidden md:block space-y-1">
                   <div className="overflow-hidden">
                     <GlowingRingAnimation text="HARSHA VARDHAN" ringColor="#0055ff" glowColor="#0044ff" />
                   </div>

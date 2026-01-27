@@ -176,7 +176,7 @@ export default function Experience() {
                     </h3>
                     <p className="text-purple-300 font-semibold mb-3 text-xs">{exp.company}</p>
                     
-                    <ul className="space-y-2">
+                    <ul className="space-y-2 min-h-0">
                       {exp.bullets.map((bullet, idx) => (
                         <li key={idx} className="flex gap-2 text-slate-300 text-xs leading-relaxed">
                           <span className="text-cyan-400 flex-shrink-0 mt-0.5">•</span>
