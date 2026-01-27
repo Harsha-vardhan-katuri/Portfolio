@@ -21,9 +21,7 @@ export default function Experience() {
       period: "December 2024 – January 2025",
       icon: "🤖",
       bullets: [
-        "Developed an AI-based health assistant chatbot using Streamlit and Hugging Face Transformers to support intelligent health-related conversations.",
-        "Implemented NLP preprocessing, rule-based keyword matching, and intent classification to improve query understanding and response accuracy.",
-        "Integrated DistilGPT-2 for response generation, optimized tokenization and fallback logic, and enhanced user experience through a clean interactive UI.",
+        "Developed an AI-based health assistant chatbot using Streamlit and Hugging Face Transformers to support intelligent health-related conversations. Implemented NLP preprocessing, rule-based keyword matching, and intent classification to improve query understanding and response accuracy. Integrated DistilGPT-2 for response generation, optimized tokenization and fallback logic, and enhanced user experience through a clean interactive UI and structured health advice responses",
       ],
     },
     {
@@ -43,9 +41,7 @@ export default function Experience() {
       period: "January 2023 – April 2023",
       icon: "🎤",
       bullets: [
-        "Developed a voice-controlled home automation system to operate household appliances using cloud-based speech services.",
-        "Implemented voice command processing using Speech-to-Text and Text-to-Speech services, integrated with IBM Watson Assistant for intent handling.",
-        "Designed Node-RED flows to process voice commands, trigger appliance control actions, and provide real-time responses for hands-free operation.",
+        "Developed a voice-controlled home automation system to operate household appliances using cloud-based speech services. Implemented voice command processing using Speech-to-Text and Text-to-Speech services, integrated with IBM Watson Assistant for intent handling and decision logic. Designed Node-RED flows to process voice commands, trigger appliance control actions, and provide real-time responses, enabling hands-free operation and improved accessibility for elderly and physically challenged users.",
       ],
     },
   ]
@@ -59,8 +55,8 @@ export default function Experience() {
 
       <div className="max-w-7xl mx-auto px-4">
         <div className="relative">
-          {/* Center Timeline Line - Absolute positioned at exact center */}
-          <div className="absolute left-1/2 top-0 w-1 h-full bg-gradient-to-b from-cyan-500 via-purple-500 to-pink-500 transform -translate-x-1/2 z-20" />
+          {/* Center Timeline Line - Only on desktop */}
+          <div className="hidden md:block absolute left-1/2 top-0 w-1 h-full bg-gradient-to-b from-cyan-500 via-purple-500 to-pink-500 transform -translate-x-1/2 z-20" />
 
           {/* Desktop Timeline Items - Grid Layout */}
           <div className="space-y-24 hidden md:block">
@@ -144,8 +140,8 @@ export default function Experience() {
 
           {/* Mobile Timeline - 2 Column Layout with line on left */}
           <div className="md:hidden relative space-y-12">
-            {/* Timeline Line - Shifted to left side */}
-            <div className="absolute left-6 top-0 w-1 h-full bg-gradient-to-b from-cyan-500 via-purple-500 to-pink-500 z-20" />
+            {/* Left Timeline Line - Mobile only */}
+            <div className="absolute left-6 top-0 w-1 h-full bg-gradient-to-b from-cyan-500 via-purple-500 to-pink-500 z-10" />
 
             {experiences.map((exp, index) => (
               <motion.div
@@ -164,7 +160,7 @@ export default function Experience() {
                 </div>
 
                 {/* Right Column - Period and Card stacked */}
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-2 pl-4">
                   <p className="text-white font-semibold text-xs">{exp.period}</p>
                   
                   <motion.div
@@ -176,7 +172,7 @@ export default function Experience() {
                     </h3>
                     <p className="text-purple-300 font-semibold mb-3 text-xs">{exp.company}</p>
                     
-                    <ul className="space-y-2">
+                    <ul className="space-y-2 min-h-0">
                       {exp.bullets.map((bullet, idx) => (
                         <li key={idx} className="flex gap-2 text-slate-300 text-xs leading-relaxed">
                           <span className="text-cyan-400 flex-shrink-0 mt-0.5">•</span>
