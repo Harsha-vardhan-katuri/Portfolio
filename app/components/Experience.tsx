@@ -59,8 +59,8 @@ export default function Experience() {
 
       <div className="max-w-7xl mx-auto px-4">
         <div className="relative">
-          {/* Center Timeline Line - Absolute positioned at exact center */}
-          <div className="absolute left-1/2 top-0 w-1 h-full bg-gradient-to-b from-cyan-500 via-purple-500 to-pink-500 transform -translate-x-1/2 z-20" />
+          {/* Center Timeline Line - Only on desktop */}
+          <div className="hidden md:block absolute left-1/2 top-0 w-1 h-full bg-gradient-to-b from-cyan-500 via-purple-500 to-pink-500 transform -translate-x-1/2 z-20" />
 
           {/* Desktop Timeline Items - Grid Layout */}
           <div className="space-y-24 hidden md:block">
@@ -144,6 +144,8 @@ export default function Experience() {
 
           {/* Mobile Timeline - 2 Column Layout with line on left */}
           <div className="md:hidden relative space-y-12">
+            {/* Left Timeline Line - Mobile only */}
+            <div className="absolute left-6 top-0 w-1 h-full bg-gradient-to-b from-cyan-500 via-purple-500 to-pink-500 z-10" />
 
             {experiences.map((exp, index) => (
               <motion.div
@@ -162,7 +164,7 @@ export default function Experience() {
                 </div>
 
                 {/* Right Column - Period and Card stacked */}
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-2 pl-4">
                   <p className="text-white font-semibold text-xs">{exp.period}</p>
                   
                   <motion.div
