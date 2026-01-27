@@ -144,8 +144,6 @@ export default function Experience() {
 
           {/* Mobile Timeline - 2 Column Layout with line on left */}
           <div className="md:hidden relative space-y-12">
-            {/* Timeline Line - Shifted to left side */}
-            <div className="absolute left-6 top-0 w-1 h-full bg-gradient-to-b from-cyan-500 via-purple-500 to-pink-500 z-20" />
 
             {experiences.map((exp, index) => (
               <motion.div

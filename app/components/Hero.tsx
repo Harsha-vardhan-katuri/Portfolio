@@ -168,6 +168,16 @@ export default function Hero() {
                     transition={{ duration: 0.5, ease: "easeOut" }}
                     className="flex flex-col items-center space-y-4"
                   >
+                    {/* Name above photo in mobile */}
+                    <div className="space-y-1">
+                      <div className="overflow-hidden">
+                        <GlowingRingAnimation text="HARSHA VARDHAN" ringColor="#0055ff" glowColor="#0044ff" />
+                      </div>
+                      <div className="overflow-hidden">
+                        <GlowingRingAnimation text="KATURI" ringColor="#ec4899" glowColor="#db2777" />
+                      </div>
+                    </div>
+
                     <div className="relative w-[160px] h-[160px] rounded-full overflow-hidden border-4 border-white shadow-lg">
                       <Image
                         src="/images/design-mode/harsha.jpg(1).jpeg"
@@ -183,15 +193,6 @@ export default function Hero() {
                       <div className="flex items-center justify-center gap-2 text-xs text-white font-semibold">
                         <MapPin className="w-3 h-3" />
                         <span>Bengaluru, Karnataka</span>
-                      </div>
-                      {/* Name below role in mobile */}
-                      <div className="space-y-1 pt-2">
-                        <div className="overflow-hidden">
-                          <GlowingRingAnimation text="HARSHA VARDHAN" ringColor="#0055ff" glowColor="#0044ff" />
-                        </div>
-                        <div className="overflow-hidden">
-                          <GlowingRingAnimation text="KATURI" ringColor="#ec4899" glowColor="#db2777" />
-                        </div>
                       </div>
                     </div>
                   </motion.div>
