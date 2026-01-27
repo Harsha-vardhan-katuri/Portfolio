@@ -168,16 +168,7 @@ export default function Hero() {
                     transition={{ duration: 0.5, ease: "easeOut" }}
                     className="flex flex-col items-center space-y-4"
                   >
-                    {/* Name above photo in mobile */}
-                    <div className="space-y-1">
-                      <div className="overflow-hidden">
-                        <GlowingRingAnimation text="HARSHA VARDHAN" ringColor="#0055ff" glowColor="#0044ff" />
-                      </div>
-                      <div className="overflow-hidden">
-                        <GlowingRingAnimation text="KATURI" ringColor="#ec4899" glowColor="#db2777" />
-                      </div>
-                    </div>
-
+                    {/* Photo first */}
                     <div className="relative w-[160px] h-[160px] rounded-full overflow-hidden border-4 border-white shadow-lg">
                       <Image
                         src="/images/design-mode/harsha.jpg(1).jpeg"
@@ -187,6 +178,18 @@ export default function Hero() {
                         priority
                       />
                     </div>
+
+                    {/* Name */}
+                    <div className="space-y-1">
+                      <div className="overflow-hidden">
+                        <GlowingRingAnimation text="HARSHA VARDHAN" ringColor="#0055ff" glowColor="#0044ff" />
+                      </div>
+                      <div className="overflow-hidden">
+                        <GlowingRingAnimation text="KATURI" ringColor="#ec4899" glowColor="#db2777" />
+                      </div>
+                    </div>
+
+                    {/* Role and details */}
                     <div className="text-center space-y-2">
                       <h3 className="text-lg font-bold text-gradient">Firmware Engineer</h3>
                       <p className="text-xs text-slate-300">Specialized in Embedded Systems & IoT Solutions</p>
