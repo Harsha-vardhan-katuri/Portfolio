@@ -73,7 +73,7 @@ export default function Experience() {
                   className="relative"
                 >
                   {/* 3-Column Grid: [1fr_auto_1fr] */}
-                  <div className="grid md:grid-cols-[1fr_auto_1fr] gap-8 items-center">
+                  <div className="grid md:grid-cols-[1fr_auto_1fr] gap-8 items-start">
                     {/* Left Column */}
                     <div className="flex flex-col items-end">
                       {isEven ? (
@@ -96,7 +96,7 @@ export default function Experience() {
                           </ul>
                         </motion.div>
                       ) : (
-                        <p className="text-white font-semibold text-sm text-right">{exp.period}</p>
+                        <p className="text-white font-semibold text-sm text-right self-center">{exp.period}</p>
                       )}
                     </div>
 
@@ -129,7 +129,7 @@ export default function Experience() {
                           </ul>
                         </motion.div>
                       ) : (
-                        <p className="text-white font-semibold text-sm">{exp.period}</p>
+                        <p className="text-white font-semibold text-sm self-center">{exp.period}</p>
                       )}
                     </div>
                   </div>

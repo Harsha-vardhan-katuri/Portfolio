@@ -49,7 +49,7 @@ export default function Education() {
                   className="relative"
                 >
                   {/* 3-Column Grid: [1fr_auto_1fr] */}
-                  <div className="grid md:grid-cols-[1fr_auto_1fr] gap-8 items-center">
+                  <div className="grid md:grid-cols-[1fr_auto_1fr] gap-8 items-start">
                     {/* Left Column */}
                     <div className="flex flex-col items-end">
                       {isEven ? (
@@ -74,7 +74,7 @@ export default function Education() {
                           <p className="text-slate-300 text-sm leading-relaxed">{edu.description}</p>
                         </motion.div>
                       ) : (
-                        <p className="text-slate-300 font-semibold text-sm text-right">{edu.period}</p>
+                        <p className="text-slate-300 font-semibold text-sm text-right self-center">{edu.period}</p>
                       )}
                     </div>
 
@@ -111,7 +111,7 @@ export default function Education() {
                           <p className="text-slate-300 text-sm leading-relaxed">{edu.description}</p>
                         </motion.div>
                       ) : (
-                        <p className="text-slate-300 font-semibold text-sm">{edu.period}</p>
+                        <p className="text-slate-300 font-semibold text-sm self-center">{edu.period}</p>
                       )}
                     </div>
                   </div>
