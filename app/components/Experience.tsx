@@ -75,29 +75,30 @@ export default function Experience() {
                   {/* 3-Column Grid: [1fr_auto_1fr] */}
                   <div className="grid md:grid-cols-[1fr_auto_1fr] gap-8 items-start">
                     {/* Left Column */}
-                    <div className="flex flex-col items-end">
+                    <div className="flex flex-col items-end gap-0">
                       {isEven ? (
-                        <motion.div
-                          whileHover={{ y: -8, boxShadow: "0 0 30px rgba(168, 85, 247, 0.3)" }}
-                          className="bg-slate-800/40 backdrop-blur border border-purple-500/30 hover:border-purple-500/60 transition-all rounded-2xl p-8 group w-full"
-                        >
-                          <h3 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-1">
-                            {exp.title}
-                          </h3>
-                          <p className="text-purple-300 text-lg font-semibold mb-4">{exp.company}</p>
-                          
-                          <ul className="space-y-3">
-                            {exp.bullets.map((bullet, idx) => (
-                              <li key={idx} className="flex gap-3 text-slate-300 text-sm leading-relaxed">
-                                <span className="text-cyan-400 flex-shrink-0 mt-1">•</span>
-                                <span>{bullet}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </motion.div>
-                      ) : (
-                        <p className="text-white font-semibold text-sm text-right">{exp.period}</p>
-                      )}
+                        <>
+                          <p className="text-white font-semibold text-sm text-right mb-2 h-6 flex items-center">{exp.period}</p>
+                          <motion.div
+                            whileHover={{ y: -8, boxShadow: "0 0 30px rgba(168, 85, 247, 0.3)" }}
+                            className="bg-slate-800/40 backdrop-blur border border-purple-500/30 hover:border-purple-500/60 transition-all rounded-2xl p-8 group w-full"
+                          >
+                            <h3 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-1">
+                              {exp.title}
+                            </h3>
+                            <p className="text-purple-300 text-lg font-semibold mb-4">{exp.company}</p>
+                            
+                            <ul className="space-y-3">
+                              {exp.bullets.map((bullet, idx) => (
+                                <li key={idx} className="flex gap-3 text-slate-300 text-sm leading-relaxed">
+                                  <span className="text-cyan-400 flex-shrink-0 mt-1">•</span>
+                                  <span>{bullet}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </motion.div>
+                        </>
+                      ) : null}
                     </div>
 
                     {/* Center - Timeline Circle with background solid to sit on top of line */}
@@ -108,29 +109,30 @@ export default function Experience() {
                     </div>
 
                     {/* Right Column */}
-                    <div className="flex flex-col items-start">
+                    <div className="flex flex-col items-start gap-0">
                       {!isEven ? (
-                        <motion.div
-                          whileHover={{ y: -8, boxShadow: "0 0 30px rgba(168, 85, 247, 0.3)" }}
-                          className="bg-slate-800/40 backdrop-blur border border-purple-500/30 hover:border-purple-500/60 transition-all rounded-2xl p-8 group w-full"
-                        >
-                          <h3 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-1">
-                            {exp.title}
-                          </h3>
-                          <p className="text-purple-300 text-lg font-semibold mb-4">{exp.company}</p>
-                          
-                          <ul className="space-y-3">
-                            {exp.bullets.map((bullet, idx) => (
-                              <li key={idx} className="flex gap-3 text-slate-300 text-sm leading-relaxed">
-                                <span className="text-cyan-400 flex-shrink-0 mt-1">•</span>
-                                <span>{bullet}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </motion.div>
-                      ) : (
-                        <p className="text-white font-semibold text-sm">{exp.period}</p>
-                      )}
+                        <>
+                          <p className="text-white font-semibold text-sm mb-2 h-6 flex items-center">{exp.period}</p>
+                          <motion.div
+                            whileHover={{ y: -8, boxShadow: "0 0 30px rgba(168, 85, 247, 0.3)" }}
+                            className="bg-slate-800/40 backdrop-blur border border-purple-500/30 hover:border-purple-500/60 transition-all rounded-2xl p-8 group w-full"
+                          >
+                            <h3 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-1">
+                              {exp.title}
+                            </h3>
+                            <p className="text-purple-300 text-lg font-semibold mb-4">{exp.company}</p>
+                            
+                            <ul className="space-y-3">
+                              {exp.bullets.map((bullet, idx) => (
+                                <li key={idx} className="flex gap-3 text-slate-300 text-sm leading-relaxed">
+                                  <span className="text-cyan-400 flex-shrink-0 mt-1">•</span>
+                                  <span>{bullet}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </motion.div>
+                        </>
+                      ) : null}
                     </div>
                   </div>
                 </motion.div>
