@@ -96,7 +96,7 @@ export default function Experience() {
                           </ul>
                         </motion.div>
                       ) : (
-                        <p className="text-white font-semibold text-sm text-right self-center">{exp.period}</p>
+                        <p className="text-white font-semibold text-sm text-right">{exp.period}</p>
                       )}
                     </div>
 
@@ -129,7 +129,7 @@ export default function Experience() {
                           </ul>
                         </motion.div>
                       ) : (
-                        <p className="text-white font-semibold text-sm self-center">{exp.period}</p>
+                        <p className="text-white font-semibold text-sm">{exp.period}</p>
                       )}
                     </div>
                   </div>
