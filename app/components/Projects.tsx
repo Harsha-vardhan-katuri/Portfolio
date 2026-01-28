@@ -12,7 +12,7 @@ export default function Projects() {
         "Built a real-time Galvanic Skin Response (GSR) system using ESP32-WROOM-32 and Grove GSR sensor to measure human electrodermal activity. Implemented ADC-based signal acquisition, converted skin resistance to conductance (µS), and extracted tonic (SCL) and phasic (SCR) components to analyze stress and emotional responses. Designed calibration and classification logic to identify Calm, Normal, and Stress states, with live visualization using Serial Plotter.",
       image: "/gsr-stress-monitoring-system.jpg",
       technologies: ["ESP32", "GSR Sensor", "ADC", "Embedded C/C++", "Biomedical Signal Processing"],
-      githubLink: null,
+      githubLink: "https://github.com/Harsha-vardhan-katuri/GSR-Sensor-Project",
       category: "Biomedical & IoT",
     },
     {
