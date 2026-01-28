@@ -48,6 +48,11 @@ export default function Education() {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   className="relative"
                 >
+                  {/* Center Date Above Timeline */}
+                  <div className="flex justify-center mb-3">
+                    <p className="text-slate-300 font-semibold text-sm">{edu.period}</p>
+                  </div>
+
                   {/* 3-Column Grid: [1fr_auto_1fr] */}
                   <div className="grid md:grid-cols-[1fr_auto_1fr] gap-8 items-start">
                     {/* Left Column */}
@@ -73,9 +78,7 @@ export default function Education() {
 
                           <p className="text-slate-300 text-sm leading-relaxed">{edu.description}</p>
                         </motion.div>
-                      ) : (
-                        <p className="text-slate-300 font-semibold text-sm">{edu.period}</p>
-                      )}
+                      ) : null}
                     </div>
 
                     {/* Center - Timeline Circle with background solid to sit on top of line */}
@@ -110,9 +113,7 @@ export default function Education() {
 
                           <p className="text-slate-300 text-sm leading-relaxed">{edu.description}</p>
                         </motion.div>
-                      ) : (
-                        <p className="text-slate-300 font-semibold text-sm">{edu.period}</p>
-                      )}
+                      ) : null}
                     </div>
                   </div>
                 </motion.div>

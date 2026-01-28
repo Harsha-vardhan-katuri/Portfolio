@@ -72,6 +72,11 @@ export default function Experience() {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   className="relative"
                 >
+                  {/* Center Date Above Timeline */}
+                  <div className="flex justify-center mb-3">
+                    <p className="text-white font-semibold text-sm">{exp.period}</p>
+                  </div>
+
                   {/* 3-Column Grid: [1fr_auto_1fr] */}
                   <div className="grid md:grid-cols-[1fr_auto_1fr] gap-8 items-start">
                     {/* Left Column */}
@@ -95,9 +100,7 @@ export default function Experience() {
                             ))}
                           </ul>
                         </motion.div>
-                      ) : (
-                        <p className="text-white font-semibold text-sm">{exp.period}</p>
-                      )}
+                      ) : null}
                     </div>
 
                     {/* Center - Timeline Circle with background solid to sit on top of line */}
@@ -128,9 +131,7 @@ export default function Experience() {
                             ))}
                           </ul>
                         </motion.div>
-                      ) : (
-                        <p className="text-white font-semibold text-sm">{exp.period}</p>
-                      )}
+                      ) : null}
                     </div>
                   </div>
                 </motion.div>
