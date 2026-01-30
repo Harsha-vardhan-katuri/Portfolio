@@ -58,7 +58,7 @@ export default function Experience() {
           {/* Center Timeline Line - Only on desktop */}
           <div className="hidden md:block absolute left-1/2 top-0 w-1 h-full bg-gradient-to-b from-cyan-500 via-purple-500 to-pink-500 transform -translate-x-1/2 z-20" />
 
-          {/* Desktop Timeline Items - Alternating Layout */}
+          {/* Desktop Timeline Items - Grid Layout */}
           <div className="space-y-24 hidden md:block">
             {experiences.map((exp, index) => {
               const isEven = index % 2 === 0
@@ -72,40 +72,65 @@ export default function Experience() {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   className="relative"
                 >
-                  {/* Date Text Positioned */}
-                  <div className={`mb-3 ${isEven ? 'text-right pr-20' : 'text-left pl-20'}`}>
-                    <p className="text-white font-semibold text-sm">{exp.period}</p>
-                  </div>
-
-                  {/* Alternating Flex Layout */}
-                  <div className={`flex gap-8 items-start ${isEven ? 'flex-row' : 'flex-row-reverse'}`}>
-                    {/* Content Card */}
-                    <div className="flex-1">
-                      <motion.div
-                        whileHover={{ y: -8, boxShadow: "0 0 30px rgba(168, 85, 247, 0.3)" }}
-                        className="bg-slate-800/40 backdrop-blur border border-purple-500/30 hover:border-purple-500/60 transition-all rounded-2xl p-8 group w-full"
-                      >
-                        <h3 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-1">
-                          {exp.title}
-                        </h3>
-                        <p className="text-purple-300 text-lg font-semibold mb-4">{exp.company}</p>
-                        
-                        <ul className="space-y-3">
-                          {exp.bullets.map((bullet, idx) => (
-                            <li key={idx} className="flex gap-3 text-slate-300 text-sm leading-relaxed">
-                              <span className="text-cyan-400 flex-shrink-0 mt-1">•</span>
-                              <span>{bullet}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </motion.div>
+                  {/* 3-Column Grid: [1fr_auto_1fr] */}
+                  <div className="grid md:grid-cols-[1fr_auto_1fr] gap-8 items-start">
+                    {/* Left Column */}
+                    <div className="flex flex-col items-end">
+                      {isEven ? (
+                        <motion.div
+                          whileHover={{ y: -8, boxShadow: "0 0 30px rgba(168, 85, 247, 0.3)" }}
+                          className="bg-slate-800/40 backdrop-blur border border-purple-500/30 hover:border-purple-500/60 transition-all rounded-2xl p-8 group w-full"
+                        >
+                          <h3 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-1">
+                            {exp.title}
+                          </h3>
+                          <p className="text-purple-300 text-lg font-semibold mb-4">{exp.company}</p>
+                          
+                          <ul className="space-y-3">
+                            {exp.bullets.map((bullet, idx) => (
+                              <li key={idx} className="flex gap-3 text-slate-300 text-sm leading-relaxed">
+                                <span className="text-cyan-400 flex-shrink-0 mt-1">•</span>
+                                <span>{bullet}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </motion.div>
+                      ) : (
+                        <p className="text-white font-semibold text-sm">{exp.period}</p>
+                      )}
                     </div>
 
-                    {/* Timeline Circle - Centered between content */}
-                    <div className="flex justify-center w-16 flex-shrink-0">
+                    {/* Center - Timeline Circle with background solid to sit on top of line */}
+                    <div className="flex justify-center w-fit mx-auto">
                       <div className="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center border-4 border-slate-900 shadow-lg shadow-cyan-500/50 relative z-40">
                         <span className="text-2xl">{exp.icon}</span>
                       </div>
+                    </div>
+
+                    {/* Right Column */}
+                    <div className="flex flex-col items-start">
+                      {!isEven ? (
+                        <motion.div
+                          whileHover={{ y: -8, boxShadow: "0 0 30px rgba(168, 85, 247, 0.3)" }}
+                          className="bg-slate-800/40 backdrop-blur border border-purple-500/30 hover:border-purple-500/60 transition-all rounded-2xl p-8 group w-full"
+                        >
+                          <h3 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-1">
+                            {exp.title}
+                          </h3>
+                          <p className="text-purple-300 text-lg font-semibold mb-4">{exp.company}</p>
+                          
+                          <ul className="space-y-3">
+                            {exp.bullets.map((bullet, idx) => (
+                              <li key={idx} className="flex gap-3 text-slate-300 text-sm leading-relaxed">
+                                <span className="text-cyan-400 flex-shrink-0 mt-1">•</span>
+                                <span>{bullet}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </motion.div>
+                      ) : (
+                        <p className="text-white font-semibold text-sm">{exp.period}</p>
+                      )}
                     </div>
                   </div>
                 </motion.div>
