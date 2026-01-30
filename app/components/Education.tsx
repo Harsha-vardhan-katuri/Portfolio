@@ -29,10 +29,10 @@ export default function Education() {
       </div>
       
       <div className="w-full px-4 md:px-0 md:max-w-7xl md:mx-auto">
-        {/* Desktop Timeline - Alternating Layout */}
+        {/* Desktop Timeline - 3 Column Grid */}
         <div className="hidden md:block relative">
-          {/* Left and Right Timeline Lines */}
-          <div className="absolute left-1/2 top-0 w-1 h-full bg-gradient-to-b from-purple-500 via-pink-500 to-cyan-500 transform -translate-x-1/2 z-10" />
+          {/* Center Timeline Line - Absolute positioned at exact center */}
+          <div className="absolute left-1/2 top-0 w-1 h-full bg-gradient-to-b from-purple-500 via-pink-500 to-cyan-500 transform -translate-x-1/2 z-20" />
 
           {/* Desktop Timeline Items - Grid Layout */}
           <div className="space-y-24">
@@ -48,44 +48,71 @@ export default function Education() {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   className="relative"
                 >
-                  {/* Date Text Positioned */}
-                  <div className={`mb-3 ${isEven ? 'text-right pr-20' : 'text-left pl-20'}`}>
-                    <p className="text-slate-300 font-semibold text-sm">{edu.period}</p>
-                  </div>
-
-                  {/* Alternating Grid Layout */}
-                  <div className={`flex gap-8 items-start ${isEven ? 'flex-row' : 'flex-row-reverse'}`}>
-                    {/* Content Card */}
-                    <div className="flex-1">
-                      <motion.div
-                        whileHover={{ y: -8 }}
-                        className="glass-card rounded-2xl p-6 border border-purple-500/20 hover:border-pink-500/40 transition-all duration-300 group w-full"
-                      >
-                        <div className="mb-4">
-                          <h3 className="text-lg font-bold text-purple-400 group-hover:text-pink-400 transition-colors">
-                            {edu.degree}
-                          </h3>
-                          <p className="text-white font-semibold mt-1">{edu.school}</p>
-                        </div>
-                        
-                        <div className="space-y-2 mb-4 text-sm">
-                          <div className="flex items-center gap-2 text-slate-300">
-                            <Award className="w-4 h-4" />
-                            <span>{edu.grade}</span>
+                  {/* 3-Column Grid: [1fr_auto_1fr] */}
+                  <div className="grid md:grid-cols-[1fr_auto_1fr] gap-8 items-start">
+                    {/* Left Column */}
+                    <div className="flex flex-col items-end">
+                      {isEven ? (
+                        <motion.div
+                          whileHover={{ y: -8 }}
+                          className="glass-card rounded-2xl p-6 border border-purple-500/20 hover:border-pink-500/40 transition-all duration-300 group w-full"
+                        >
+                          <div className="mb-4">
+                            <h3 className="text-lg font-bold text-purple-400 group-hover:text-pink-400 transition-colors">
+                              {edu.degree}
+                            </h3>
+                            <p className="text-white font-semibold mt-1">{edu.school}</p>
                           </div>
-                        </div>
+                          
+                          <div className="space-y-2 mb-4 text-sm">
+                            <div className="flex items-center gap-2 text-slate-300">
+                              <Award className="w-4 h-4" />
+                              <span>{edu.grade}</span>
+                            </div>
+                          </div>
 
-                        <p className="text-slate-300 text-sm leading-relaxed">{edu.description}</p>
-                      </motion.div>
+                          <p className="text-slate-300 text-sm leading-relaxed">{edu.description}</p>
+                        </motion.div>
+                      ) : (
+                        <p className="text-slate-300 font-semibold text-sm">{edu.period}</p>
+                      )}
                     </div>
 
-                    {/* Timeline Circle - Centered between content */}
-                    <div className="flex justify-center w-16 flex-shrink-0">
+                    {/* Center - Timeline Circle with background solid to sit on top of line */}
+                    <div className="flex justify-center w-fit mx-auto">
                       <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center border-4 border-slate-900 shadow-lg shadow-purple-500/50 relative z-40">
                         <div className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center">
                           <span className="text-purple-400 font-bold">{index + 1}</span>
                         </div>
                       </div>
+                    </div>
+
+                    {/* Right Column */}
+                    <div className="flex flex-col items-start">
+                      {!isEven ? (
+                        <motion.div
+                          whileHover={{ y: -8 }}
+                          className="glass-card rounded-2xl p-6 border border-purple-500/20 hover:border-pink-500/40 transition-all duration-300 group w-full"
+                        >
+                          <div className="mb-4">
+                            <h3 className="text-lg font-bold text-purple-400 group-hover:text-pink-400 transition-colors">
+                              {edu.degree}
+                            </h3>
+                            <p className="text-white font-semibold mt-1">{edu.school}</p>
+                          </div>
+                          
+                          <div className="space-y-2 mb-4 text-sm">
+                            <div className="flex items-center gap-2 text-slate-300">
+                              <Award className="w-4 h-4" />
+                              <span>{edu.grade}</span>
+                            </div>
+                          </div>
+
+                          <p className="text-slate-300 text-sm leading-relaxed">{edu.description}</p>
+                        </motion.div>
+                      ) : (
+                        <p className="text-slate-300 font-semibold text-sm">{edu.period}</p>
+                      )}
                     </div>
                   </div>
                 </motion.div>
