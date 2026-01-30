@@ -108,14 +108,14 @@ export default function Hero() {
         {/* Home Section */}
         <div id="home" className="min-h-screen flex items-center justify-center pt-16 md:pt-20 px-3 md:px-4">
           <div className="max-w-6xl mx-auto w-full">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start md:pt-12">
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-8 md:gap-12 items-start md:pt-12">
               {/* Left Column - Photo with info */}
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
-                className="hidden md:flex flex-col items-center md:items-start border-0 mx-8 my-0 py-0 px-0"
+                className="hidden md:flex flex-col items-center md:items-start border-0 mx-8 my-0 py-0 px-0 ml-0"
               >
                 {/* Profile Image - moved right and up */}
                 <div className="relative w-[180px] h-[180px] md:w-[200px] md:h-[200px] lg:w-[250px] lg:h-[250px] rounded-full overflow-hidden border-4 md:border-4 border-white shadow-lg ml-8">
