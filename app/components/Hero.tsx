@@ -52,7 +52,7 @@ export default function Hero() {
   }, [])
 
   const handleResumeDownload = () => {
-    window.open("https://drive.google.com/file/d/16GCvIOaVr2s9yuVDFo6dDYoq7LEF74ge/view?usp=drive_link", "_blank")
+    window.open("https://drive.google.com/file/d/18dgIRCN0l6gtPTcHtlauA6x-_j8_E5-x/view?usp=drive_link", "_blank")
   }
 
   const handleEmailCopy = async () => {
