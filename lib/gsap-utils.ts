@@ -75,19 +75,27 @@ export const createStaggeredTextAnimation = (
   const chars = element.querySelectorAll('[data-char]')
   if (chars.length === 0) return null
 
-  return gsap.to(chars, {
-    opacity: 1,
-    duration,
-    delay: gsap.utils.stagger(delay),
-    scrollTrigger: {
-      trigger: element,
-      start: 'top 80%',
-      end: 'top 20%',
-      scrub: false,
-      markers: false,
+  return gsap.fromTo(
+    chars,
+    {
+      opacity: 0,
+      y: 10,
     },
-    ease: 'luxury',
-  })
+    {
+      opacity: 1,
+      y: 0,
+      duration,
+      stagger: delay,
+      scrollTrigger: {
+        trigger: element,
+        start: 'top 80%',
+        end: 'top 20%',
+        scrub: false,
+        markers: false,
+      },
+      ease: 'luxury',
+    }
+  )
 }
 
 /**

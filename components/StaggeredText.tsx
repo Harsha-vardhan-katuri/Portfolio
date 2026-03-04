@@ -42,30 +42,39 @@ export const StaggeredText: React.FC<StaggeredTextProps> = ({
 
     const chars = textRef.current.querySelectorAll('[data-char]')
 
+    if (chars.length === 0) return
+
     if (trigger === 'scroll') {
       // Scroll-triggered animation
-      gsap.to(chars, {
-        opacity: 1,
-        duration,
-        delay: gsap.utils.stagger(staggerDelay),
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: textRef.current,
-          start: 'top 80%',
-          end: 'top 30%',
-          scrub: false,
-          markers: false,
+      gsap.fromTo(
+        chars,
+        {
+          opacity: 0,
+          y: 10,
         },
-        willChange: 'opacity',
-      })
+        {
+          opacity: 1,
+          y: 0,
+          duration,
+          stagger: staggerDelay,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: textRef.current,
+            start: 'top 80%',
+            end: 'top 30%',
+            scrub: false,
+            markers: false,
+          },
+        }
+      )
     } else {
       // Load-triggered animation
       gsap.from(chars, {
         opacity: 0,
+        y: 10,
         duration,
-        delay: gsap.utils.stagger(staggerDelay),
+        stagger: staggerDelay,
         ease: 'power2.out',
-        willChange: 'opacity',
       })
     }
 
