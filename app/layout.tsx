@@ -1,11 +1,18 @@
 import "./globals.css"
 import type { Metadata } from "next"
 import type React from "react"
+import { LenisProvider } from "@/lib/lenis-context"
 
 export const metadata: Metadata = {
-  title: "Harsha Vardhan Katuri - Portfolio",
-  description: "Embedded Systems and IoT Specialist",
+  title: "Harsha Vardhan Katuri - Luxury Portfolio",
+  description: "High-end portfolio with premium motion design and smooth scrolling",
   generator: "v0.app",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
 }
 
 export default function RootLayout({
@@ -14,9 +21,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className="font-sans" style={{ backgroundColor: "#00072D", fontFamily: "Calibri, sans-serif" }}>
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body className="font-sans">
+        <LenisProvider>
+          {children}
+        </LenisProvider>
       </body>
     </html>
   )
