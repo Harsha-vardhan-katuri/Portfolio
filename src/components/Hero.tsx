@@ -1,17 +1,19 @@
-import { useRef } from "react";
+import { useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { WireframeGlobe } from "@/components/WireframeGlobe";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 
-export const Hero = () => {
+const ease = [0.22, 1, 0.36, 1] as const;
+
+export const Hero = ({ introComplete }: { introComplete: boolean }) => {
   const sectionRef = useRef<HTMLElement>(null);
   const progress = useScrollProgress(sectionRef as React.RefObject<HTMLElement>);
 
-  const scrollToSection = (id: string) => {
+  const scrollToSection = useCallback((id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
+  }, []);
 
   const textX = -progress * 20;
   const exitProgress = Math.max(0, (progress - 0.7) / 0.3);
@@ -19,8 +21,11 @@ export const Hero = () => {
   const textOpacity = 1 - exitProgress;
   const textBlur = exitProgress * 6;
 
-  const words = ["Harsha", "Vardhan", "Katuri"];
+  const nameChars = "Harsha Vardhan Katuri".split("");
   const subtitleWords = ["Firmware", "Engineer", "&", "IoT", "Developer"];
+
+  // Base delay for hero animations (after intro completes)
+  const baseDelay = introComplete ? 0.1 : 10;
 
   return (
     <section
@@ -38,28 +43,34 @@ export const Hero = () => {
               style={{
                 transform: `translateX(${textX + textExitX}px)`,
                 opacity: textOpacity,
-                filter: `blur(${textBlur}px)`,
+                filter: textBlur > 0 ? `blur(${textBlur}px)` : undefined,
               }}
             >
               <motion.p
-                initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+                animate={introComplete ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+                transition={{ duration: 0.7, delay: baseDelay, ease }}
                 className="text-primary text-lg font-medium tracking-wider uppercase"
               >
                 Hi, I'm
               </motion.p>
 
+              {/* Character-by-character name reveal */}
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
-                {words.map((word, i) => (
+                {nameChars.map((char, i) => (
                   <motion.span
                     key={i}
-                    initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                    transition={{ duration: 0.6, delay: 0.4 + i * 0.08 }}
-                    className="gradient-text-shimmer inline-block mr-4"
+                    initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
+                    animate={introComplete ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+                    transition={{
+                      duration: 0.6,
+                      delay: baseDelay + 0.3 + i * 0.03,
+                      ease,
+                    }}
+                    className="gradient-text-shimmer inline-block"
+                    style={{ minWidth: char === " " ? "0.25em" : undefined }}
                   >
-                    {word}
+                    {char === " " ? "\u00A0" : char}
                   </motion.span>
                 ))}
               </h1>
@@ -68,9 +79,13 @@ export const Hero = () => {
                 {subtitleWords.map((word, i) => (
                   <motion.span
                     key={i}
-                    initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                    transition={{ duration: 0.6, delay: 0.7 + i * 0.08 }}
+                    initial={{ opacity: 0, y: 25, filter: "blur(10px)" }}
+                    animate={introComplete ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+                    transition={{
+                      duration: 0.6,
+                      delay: baseDelay + 1.0 + i * 0.08,
+                      ease,
+                    }}
                     className="inline-block mr-2"
                   >
                     {word}
@@ -80,8 +95,8 @@ export const Hero = () => {
 
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 1.1 }}
+                animate={introComplete ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.7, delay: baseDelay + 1.5, ease }}
                 className="text-lg text-muted-foreground max-w-xl leading-relaxed"
               >
                 Crafting innovative embedded systems and IoT solutions with expertise in
@@ -89,9 +104,9 @@ export const Hero = () => {
               </motion.p>
 
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 1.3 }}
+                initial={{ opacity: 0, y: 25 }}
+                animate={introComplete ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.7, delay: baseDelay + 1.8, ease }}
                 className="flex flex-wrap items-center gap-4 pt-2"
               >
                 <Button
@@ -114,8 +129,8 @@ export const Hero = () => {
 
               <motion.div
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 1.5 }}
+                animate={introComplete ? { opacity: 1 } : {}}
+                transition={{ duration: 0.7, delay: baseDelay + 2.1, ease }}
                 className="flex items-center gap-5 pt-4"
               >
                 {[
@@ -138,9 +153,9 @@ export const Hero = () => {
 
             {/* Globe */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.2, delay: 0.5 }}
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={introComplete ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 1.5, delay: baseDelay + 0.5, ease }}
               className="hidden lg:block"
             >
               <WireframeGlobe scrollProgress={progress} />
@@ -151,11 +166,11 @@ export const Hero = () => {
         {/* Scroll indicator */}
         <motion.button
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2 }}
+          animate={introComplete ? { opacity: 1 } : {}}
+          transition={{ delay: baseDelay + 2.5, duration: 0.6 }}
           onClick={() => scrollToSection("about")}
           className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-float"
-          style={{ opacity: 1 - progress * 3 }}
+          style={{ opacity: Math.max(0, 1 - progress * 3) }}
         >
           <ArrowDown className="h-6 w-6 text-primary/60" />
         </motion.button>
