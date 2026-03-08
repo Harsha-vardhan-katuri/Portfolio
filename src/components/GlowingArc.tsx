@@ -100,9 +100,9 @@ export const GlowingArc = () => {
         ctx.globalAlpha = l.alpha;
         ctx.filter = `blur(${l.blur}px)`;
         const grad = ctx.createRadialGradient(bx, by, 0, bx, by, l.size);
-        grad.addColorStop(0, "hsl(0 0% 100%)");
-        grad.addColorStop(0.3, "hsl(220 100% 85%)");
-        grad.addColorStop(0.6, "hsl(260 80% 70% / 0.5)");
+        grad.addColorStop(0, "hsl(210 100% 90%)");
+        grad.addColorStop(0.3, "hsl(220 100% 70%)");
+        grad.addColorStop(0.6, "hsl(235 85% 55% / 0.5)");
         grad.addColorStop(1, "transparent");
         ctx.fillStyle = grad;
         ctx.beginPath();
