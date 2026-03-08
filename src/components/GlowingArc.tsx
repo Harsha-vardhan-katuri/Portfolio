@@ -154,23 +154,28 @@ export const GlowingArc = () => {
       drawSweepBeam(cx, bigCy, bigRx, bigRy, bigStart, bigEnd, 0, 0.5);
       drawSweepBeam(cx, bigCy, bigRx, bigRy, bigStart, bigEnd, Math.PI * 0.8, 0.4);
 
-      // ===== TWO UPWARD ARCS — at the bottom of the big arc =====
-      // The big arc's lowest point is at angle π/2: (cx, bigCy + bigRy)
-      const bigArcBottomY = bigCy + bigRy;
+      // ===== TWO UPWARD ARCS — contained INSIDE the big arc =====
+      // Place them higher up so they stay within the dome
+      // At this Y level, compute the big arc's width to constrain upward arcs
+      const upCenterY = height * 0.62;
+      // Find how wide the big arc is at upCenterY
+      // bigCy + bigRy * sin(θ) = upCenterY → sin(θ) = (upCenterY - bigCy) / bigRy
+      const sinTheta = Math.min(1, (upCenterY - bigCy) / bigRy);
+      const cosTheta = Math.sqrt(1 - sinTheta * sinTheta);
+      const bigArcWidthAtCenter = bigRx * cosTheta;
 
-      // Both upward arcs centered at the bottom of the big arc
       const upStart = Math.PI + 0.06;
       const upEnd = Math.PI * 2 - 0.06;
 
-      // Arc 1: smaller upward arc (tighter curve above button)
-      const arc1R = width * 0.12;
-      drawGlowArc(cx, bigArcBottomY, arc1R, arc1R, upStart, upEnd, 0.8);
-      drawSweepBeam(cx, bigArcBottomY, arc1R, arc1R, upStart, upEnd, 0.8, 0.7);
+      // Arc 1: smaller — well inside the dome
+      const arc1R = bigArcWidthAtCenter * 0.35;
+      drawGlowArc(cx, upCenterY, arc1R, arc1R, upStart, upEnd, 0.8);
+      drawSweepBeam(cx, upCenterY, arc1R, arc1R, upStart, upEnd, 0.8, 0.7);
 
-      // Arc 2: larger upward arc
-      const arc2R = width * 0.2;
-      drawGlowArc(cx, bigArcBottomY, arc2R, arc2R, upStart, upEnd, 0.65);
-      drawSweepBeam(cx, bigArcBottomY, arc2R, arc2R, upStart, upEnd, 2.0, 0.6);
+      // Arc 2: larger — still inside the dome
+      const arc2R = bigArcWidthAtCenter * 0.6;
+      drawGlowArc(cx, upCenterY, arc2R, arc2R, upStart, upEnd, 0.65);
+      drawSweepBeam(cx, upCenterY, arc2R, arc2R, upStart, upEnd, 2.0, 0.6);
 
       // === Top center sunrise glow (where big arc peaks) ===
       ctx.save();
