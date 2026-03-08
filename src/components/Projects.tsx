@@ -1,6 +1,7 @@
 import { ExternalLink, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { ScrollSection } from "@/components/ScrollSection";
 
 export const Projects = () => {
   const projects = [
@@ -28,77 +29,86 @@ export const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="relative py-32">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-16">
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold font-display gradient-text-shimmer mb-4"
-            >
-              Featured Projects
-            </motion.h2>
-            <motion.div
-              initial={{ width: 0 }}
-              whileInView={{ width: 80 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, delay: 0.3 }}
-              className="h-0.5 bg-gradient-to-r from-primary to-secondary"
-            />
-          </div>
-
-          <div className="space-y-8">
-            {projects.map((project, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 40 }}
+    <ScrollSection id="projects" height="250vh">
+      {() => (
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="mb-12">
+              <motion.h2
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.7, delay: index * 0.15 }}
-                className="glass-card-hover p-8 md:p-10"
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+                className="text-4xl md:text-5xl lg:text-6xl font-bold font-display gradient-text-shimmer mb-4"
               >
-                <div className="grid md:grid-cols-[1fr_auto] gap-8">
-                  <div>
-                    <h3 className="text-2xl md:text-3xl font-bold font-display mb-3">{project.title}</h3>
-                    <p className="text-foreground/70 mb-5 leading-relaxed">{project.description}</p>
+                Featured Projects
+              </motion.h2>
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: 80 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, delay: 0.3 }}
+                className="h-0.5 bg-gradient-to-r from-primary to-secondary"
+              />
+            </div>
 
-                    <div className="flex flex-wrap gap-2 mb-5">
-                      {project.technologies.map((tech, i) => (
-                        <span key={i} className="px-3 py-1 text-xs bg-primary/8 border border-primary/15 rounded-full text-primary/80">
-                          {tech}
-                        </span>
-                      ))}
+            <div className="space-y-6">
+              {projects.map((project, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-30px" }}
+                  transition={{ duration: 0.8, delay: index * 0.15 }}
+                  className="glass-card-hover p-8 md:p-10 group relative overflow-hidden"
+                >
+                  {/* Animated border glow on hover */}
+                  <div className="absolute inset-0 rounded-[20px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                    style={{
+                      background: "linear-gradient(135deg, hsl(199 89% 48% / 0.1), transparent 50%, hsl(260 60% 55% / 0.1))",
+                    }}
+                  />
+
+                  <div className="grid md:grid-cols-[1fr_auto] gap-8 relative z-10">
+                    <div>
+                      <h3 className="text-2xl md:text-3xl font-bold font-display mb-3">{project.title}</h3>
+                      <p className="text-foreground/65 mb-5 leading-relaxed">{project.description}</p>
+
+                      <div className="flex flex-wrap gap-2 mb-5">
+                        {project.technologies.map((tech, i) => (
+                          <span key={i} className="px-3 py-1 text-xs bg-primary/5 border border-primary/10 rounded-full text-primary/70">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+
+                      <ul className="space-y-1.5">
+                        {project.highlights.map((h, i) => (
+                          <li key={i} className="flex items-start gap-2 text-sm text-foreground/55">
+                            <span className="text-primary mt-0.5">▹</span>
+                            <span>{h}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
 
-                    <ul className="space-y-1.5">
-                      {project.highlights.map((h, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-foreground/60">
-                          <span className="text-primary mt-0.5">▹</span>
-                          <span>{h}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    <div className="flex md:flex-col gap-3 self-end">
+                      <Button variant="outline" size="sm" className="border-primary/15 hover:bg-primary/10 hover:border-primary/30 transition-all duration-300" asChild>
+                        <a href={project.github} target="_blank" rel="noopener noreferrer">
+                          <Github className="h-4 w-4 mr-2" /> Code
+                        </a>
+                      </Button>
+                      <Button variant="outline" size="sm" className="border-primary/15 hover:bg-primary/10 hover:border-primary/30 transition-all duration-300">
+                        <ExternalLink className="h-4 w-4 mr-2" /> Demo
+                      </Button>
+                    </div>
                   </div>
-
-                  <div className="flex md:flex-col gap-3 self-end">
-                    <Button variant="outline" size="sm" className="border-primary/20 hover:bg-primary/10" asChild>
-                      <a href={project.github} target="_blank" rel="noopener noreferrer">
-                        <Github className="h-4 w-4 mr-2" /> Code
-                      </a>
-                    </Button>
-                    <Button variant="outline" size="sm" className="border-primary/20 hover:bg-primary/10">
-                      <ExternalLink className="h-4 w-4 mr-2" /> Demo
-                    </Button>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      )}
+    </ScrollSection>
   );
 };

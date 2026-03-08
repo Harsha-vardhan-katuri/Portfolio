@@ -1,5 +1,6 @@
 import { Briefcase, GraduationCap } from "lucide-react";
 import { motion } from "framer-motion";
+import { ScrollSection } from "@/components/ScrollSection";
 
 export const Experience = () => {
   const experiences = [
@@ -10,90 +11,90 @@ export const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="relative py-32">
-      <div className="container mx-auto px-4">
-        <div className="max-w-5xl mx-auto">
-          <div className="mb-16">
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold font-display gradient-text-shimmer mb-4"
-            >
-              Experience & Education
-            </motion.h2>
-            <motion.div
-              initial={{ width: 0 }}
-              whileInView={{ width: 80 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, delay: 0.3 }}
-              className="h-0.5 bg-gradient-to-r from-primary to-secondary"
-            />
-          </div>
+    <ScrollSection id="experience" height="250vh">
+      {() => (
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <div className="mb-12">
+              <motion.h2
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+                className="text-4xl md:text-5xl lg:text-6xl font-bold font-display gradient-text-shimmer mb-4"
+              >
+                Experience & Education
+              </motion.h2>
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: 80 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, delay: 0.3 }}
+                className="h-0.5 bg-gradient-to-r from-primary to-secondary"
+              />
+            </div>
 
-          <div className="relative">
-            {/* Animated timeline line */}
-            <motion.div
-              initial={{ height: 0 }}
-              whileInView={{ height: "100%" }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.5, delay: 0.2 }}
-              className="absolute left-8 md:left-1/2 top-0 w-px bg-gradient-to-b from-primary/50 via-secondary/30 to-primary/50"
-            />
+            <div className="relative">
+              <motion.div
+                initial={{ height: 0 }}
+                whileInView={{ height: "100%" }}
+                viewport={{ once: true }}
+                transition={{ duration: 2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute left-8 md:left-1/2 top-0 w-px bg-gradient-to-b from-primary/40 via-secondary/20 to-primary/40"
+              />
 
-            <div className="space-y-12">
-              {experiences.map((exp, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.7, delay: index * 0.1 }}
-                  className={`relative flex items-start gap-8 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
-                >
-                  {/* Timeline dot */}
+              <div className="space-y-10">
+                {experiences.map((exp, index) => (
                   <motion.div
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                    className="absolute left-8 md:left-1/2 w-3 h-3 -ml-1.5 rounded-full bg-primary z-10"
-                    style={{ boxShadow: "0 0 20px hsl(199 89% 48% / 0.4)" }}
-                  />
+                    key={index}
+                    initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ duration: 0.8, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                    className={`relative flex items-start gap-8 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
+                  >
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                      className="absolute left-8 md:left-1/2 w-3 h-3 -ml-1.5 rounded-full bg-primary z-10"
+                      style={{ boxShadow: "0 0 24px hsl(199 89% 48% / 0.5)" }}
+                    />
 
-                  <div className={`w-full md:w-1/2 ${index % 2 === 0 ? "md:pr-12 ml-20 md:ml-0" : "md:pl-12 ml-20 md:ml-0"}`}>
-                    <div className="glass-card-hover p-6">
-                      <div className="flex items-start gap-4 mb-4">
-                        <div className="p-2.5 glass-card rounded-xl">
-                          {exp.type === "education" ? (
-                            <GraduationCap className="h-5 w-5 text-primary" />
-                          ) : (
-                            <Briefcase className="h-5 w-5 text-primary" />
-                          )}
+                    <div className={`w-full md:w-1/2 ${index % 2 === 0 ? "md:pr-12 ml-20 md:ml-0" : "md:pl-12 ml-20 md:ml-0"}`}>
+                      <div className="glass-card-hover p-6">
+                        <div className="flex items-start gap-4 mb-4">
+                          <div className="p-2.5 glass-card rounded-xl">
+                            {exp.type === "education" ? (
+                              <GraduationCap className="h-5 w-5 text-primary" />
+                            ) : (
+                              <Briefcase className="h-5 w-5 text-primary" />
+                            )}
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="text-lg font-bold font-display">{exp.title}</h3>
+                            <p className="text-primary text-sm font-semibold">{exp.company}</p>
+                            <p className="text-xs text-muted-foreground">{exp.location} • {exp.period}</p>
+                          </div>
                         </div>
-                        <div className="flex-1">
-                          <h3 className="text-lg font-bold font-display">{exp.title}</h3>
-                          <p className="text-primary text-sm font-semibold">{exp.company}</p>
-                          <p className="text-xs text-muted-foreground">{exp.location} • {exp.period}</p>
-                        </div>
+                        <ul className="space-y-1.5">
+                          {exp.description.map((item, i) => (
+                            <li key={i} className="flex items-start gap-2 text-sm text-foreground/65">
+                              <span className="text-primary mt-1">▹</span>
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
-                      <ul className="space-y-1.5">
-                        {exp.description.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm text-foreground/70">
-                            <span className="text-primary mt-1">▹</span>
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
                     </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      )}
+    </ScrollSection>
   );
 };
