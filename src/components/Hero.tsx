@@ -10,23 +10,6 @@ const ease = [0.16, 1, 0.3, 1] as const;
 // Single row of widely spaced letters like ARGUS
 const nameChars = "HARSHA VARDHAN KATURI".split("");
 
-// Each letter flies in from a unique scattered position
-const directions: { x: number; y: number }[] = [
-  // H A R S H A
-  { x: -600, y: -250 }, { x: 350, y: -400 }, { x: -250, y: 500 },
-  { x: 500, y: 300 }, { x: -400, y: 350 }, { x: 250, y: -500 },
-  // (space)
-  { x: 0, y: 0 },
-  // V A R D H A N
-  { x: -550, y: 200 }, { x: 400, y: -350 }, { x: -200, y: 500 },
-  { x: 450, y: -200 }, { x: -350, y: -400 }, { x: 200, y: 500 },
-  { x: -500, y: -250 },
-  // (space)
-  { x: 0, y: 0 },
-  // K A T U R I
-  { x: 400, y: 400 }, { x: -500, y: -200 }, { x: 300, y: 450 },
-  { x: -250, y: -450 }, { x: 450, y: 250 }, { x: -400, y: 350 },
-];
 
 export const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
