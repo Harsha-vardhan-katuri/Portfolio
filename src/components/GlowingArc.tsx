@@ -91,9 +91,9 @@ export const GlowingArc = () => {
       const by = cy + Math.sin(beamAngle) * ry;
 
       const layers = [
-        { blur: 30, size: 45, alpha: 0.3 },
-        { blur: 10, size: 20, alpha: 0.55 },
-        { blur: 2, size: 6, alpha: 0.95 },
+        { blur: 40, size: 55, alpha: 0.45 },
+        { blur: 14, size: 28, alpha: 0.7 },
+        { blur: 3, size: 9, alpha: 1.0 },
       ];
       for (const l of layers) {
         ctx.save();
@@ -152,28 +152,23 @@ export const GlowingArc = () => {
       drawSweepBeam(cx, bigCy, bigRx, bigRy, bigStart, bigEnd, 0, 0.5);
       drawSweepBeam(cx, bigCy, bigRx, bigRy, bigStart, bigEnd, Math.PI * 0.8, 0.4);
 
-      // ===== TWO SMALLER ARCS — facing UP (like in ArgusVPN screenshot) =====
-      // These are smaller arcs that curve upward, sitting inside the big dome
-      // Positioned symmetrically, their bottom edges near the name text area
+      // ===== TWO SMALLER ARCS — facing UP, overlapping in center like ArgusVPN =====
+      const smallRx = bigRx * 0.32;
+      const smallRy = bigRy * 0.22;
+      const smallStart = Math.PI + 0.15;
+      const smallEnd = Math.PI * 2 - 0.15;
 
-      const smallRx = bigRx * 0.35;
-      const smallRy = bigRy * 0.28;
+      // Left upward arc — centered more towards middle, overlapping
+      const leftCx = cx - smallRx * 0.35;
+      const leftCy = height * 0.42;
+      drawGlowArc(leftCx, leftCy, smallRx, smallRy, smallStart, smallEnd, 0.65);
+      drawSweepBeam(leftCx, leftCy, smallRx, smallRy, smallStart, smallEnd, 0.8, 0.7);
 
-      // The small arcs face UP — draw from PI to 2*PI (upper half of ellipse)
-      const smallStart = Math.PI + 0.2;
-      const smallEnd = Math.PI * 2 - 0.2;
-
-      // Left upward arc
-      const leftCx = cx - smallRx * 0.6;
-      const leftCy = height * 0.48;
-      drawGlowArc(leftCx, leftCy, smallRx, smallRy, smallStart, smallEnd, 0.55);
-      drawSweepBeam(leftCx, leftCy, smallRx, smallRy, smallStart, smallEnd, 0.8, 0.65);
-
-      // Right upward arc
-      const rightCx = cx + smallRx * 0.6;
-      const rightCy = height * 0.48;
-      drawGlowArc(rightCx, rightCy, smallRx, smallRy, smallStart, smallEnd, 0.55);
-      drawSweepBeam(rightCx, rightCy, smallRx, smallRy, smallStart, smallEnd, 2.0, 0.6);
+      // Right upward arc — overlapping with left
+      const rightCx = cx + smallRx * 0.35;
+      const rightCy = height * 0.42;
+      drawGlowArc(rightCx, rightCy, smallRx, smallRy, smallStart, smallEnd, 0.65);
+      drawSweepBeam(rightCx, rightCy, smallRx, smallRy, smallStart, smallEnd, 2.0, 0.65);
 
       // === Top center sunrise glow (where big arc peaks) ===
       ctx.save();
@@ -187,24 +182,45 @@ export const GlowingArc = () => {
       ctx.fillRect(0, 0, width, height * 0.5);
       ctx.restore();
 
-      // === Pink accent flares ===
+      // === Pink/magenta accent flares — more of them, brighter ===
       const flares = [
-        bigStart + 0.5 + Math.sin(time * 2) * 0.1,
-        bigEnd - 0.5 + Math.sin(time * 1.5) * 0.1,
+        bigStart + 0.4 + Math.sin(time * 2) * 0.1,
+        bigEnd - 0.4 + Math.sin(time * 1.5) * 0.1,
+        Math.PI * 0.5 + Math.sin(time * 1.8) * 0.15,
+        // Flares on small arcs too
       ];
       for (const fa of flares) {
         const fx = cx + Math.cos(fa) * bigRx;
         const fy = bigCy + Math.sin(fa) * bigRy;
         ctx.save();
-        ctx.globalAlpha = 0.3 + Math.sin(time * 3) * 0.1;
-        ctx.filter = "blur(15px)";
-        const fg = ctx.createRadialGradient(fx, fy, 0, fx, fy, 25);
-        fg.addColorStop(0, "hsl(320 80% 65%)");
-        fg.addColorStop(0.5, "hsl(300 60% 50% / 0.4)");
+        ctx.globalAlpha = 0.45 + Math.sin(time * 3) * 0.15;
+        ctx.filter = "blur(18px)";
+        const fg = ctx.createRadialGradient(fx, fy, 0, fx, fy, 35);
+        fg.addColorStop(0, "hsl(320 90% 70%)");
+        fg.addColorStop(0.4, "hsl(300 70% 55% / 0.5)");
         fg.addColorStop(1, "transparent");
         ctx.fillStyle = fg;
         ctx.beginPath();
-        ctx.arc(fx, fy, 25, 0, Math.PI * 2);
+        ctx.arc(fx, fy, 35, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // Pink flares on small arcs
+      for (const [sCx, sCy] of [[leftCx, leftCy], [rightCx, rightCy]]) {
+        const sfa = Math.PI * 1.5 + Math.sin(time * 2.5) * 0.2;
+        const sfx = sCx + Math.cos(sfa) * smallRx;
+        const sfy = sCy + Math.sin(sfa) * smallRy;
+        ctx.save();
+        ctx.globalAlpha = 0.4 + Math.sin(time * 4) * 0.15;
+        ctx.filter = "blur(12px)";
+        const sfg = ctx.createRadialGradient(sfx, sfy, 0, sfx, sfy, 22);
+        sfg.addColorStop(0, "hsl(310 85% 68%)");
+        sfg.addColorStop(0.5, "hsl(290 60% 50% / 0.4)");
+        sfg.addColorStop(1, "transparent");
+        ctx.fillStyle = sfg;
+        ctx.beginPath();
+        ctx.arc(sfx, sfy, 22, 0, Math.PI * 2);
         ctx.fill();
         ctx.restore();
       }
