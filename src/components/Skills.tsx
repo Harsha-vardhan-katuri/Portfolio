@@ -1,57 +1,62 @@
+import { motion } from "framer-motion";
+import { useInView } from "@/hooks/useScrollProgress";
+
 export const Skills = () => {
+  const { ref, inView } = useInView(0.1);
+
   const skillCategories = [
-    {
-      title: "Programming Languages",
-      skills: ["C", "C++", "Embedded C", "Python", "Data Structures"]
-    },
-    {
-      title: "Embedded Systems",
-      skills: ["Microcontroller Architectures", "Hardware Interfacing", "Linux Internals", "Network Protocols", "Device Drivers"]
-    },
-    {
-      title: "System on Chips (SoCs)",
-      skills: ["ESP32", "ESP8266", "LPC2148", "Arduino"]
-    },
-    {
-      title: "Communication Protocols",
-      skills: ["UART", "I2C", "SPI", "RS485", "LoRa", "MQTT", "Modbus RTU"]
-    },
-    {
-      title: "Tools & Platforms",
-      skills: ["Keil IDE", "Arduino IDE", "VS Code", "Git/GitHub/GitLab", "Ubuntu", "MATLAB"]
-    },
-    {
-      title: "IoT & AI",
-      skills: ["Sensor Integration", "Cloud IoT", "Thing Speak", "Streamlit", "Hugging Face Transformers"]
-    }
+    { title: "Programming Languages", skills: ["C", "C++", "Embedded C", "Python", "Data Structures"] },
+    { title: "Embedded Systems", skills: ["Microcontroller Architectures", "Hardware Interfacing", "Linux Internals", "Network Protocols", "Device Drivers"] },
+    { title: "System on Chips", skills: ["ESP32", "ESP8266", "LPC2148", "Arduino"] },
+    { title: "Communication Protocols", skills: ["UART", "I2C", "SPI", "RS485", "LoRa", "MQTT", "Modbus RTU"] },
+    { title: "Tools & Platforms", skills: ["Keil IDE", "Arduino IDE", "VS Code", "Git/GitHub/GitLab", "Ubuntu", "MATLAB"] },
+    { title: "IoT & AI", skills: ["Sensor Integration", "Cloud IoT", "Thing Speak", "Streamlit", "Hugging Face Transformers"] },
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-background/50 to-background">
+    <section id="skills" className="relative py-32">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">
-            Skills & Expertise
-          </h2>
+          <div className="mb-16">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold font-display gradient-text-shimmer mb-4"
+            >
+              Skills & Expertise
+            </motion.h2>
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: 80 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.3 }}
+              className="h-0.5 bg-gradient-to-r from-primary to-secondary"
+            />
+          </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div ref={ref} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {skillCategories.map((category, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="glass-effect rounded-2xl p-6 hover:scale-105 transition-smooth hover:glow-effect"
+                initial={{ opacity: 0, y: 30 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="glass-card-hover p-6"
               >
-                <h3 className="text-xl font-bold mb-4 text-primary">{category.title}</h3>
+                <h3 className="text-lg font-bold font-display text-primary mb-4">{category.title}</h3>
                 <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill, i) => (
                     <span
                       key={i}
-                      className="px-3 py-1.5 text-sm bg-primary/10 border border-primary/30 rounded-lg hover:bg-primary/20 transition-smooth"
+                      className="px-3 py-1.5 text-sm bg-primary/8 border border-primary/15 rounded-lg text-foreground/70 hover:bg-primary/15 hover:text-foreground hover:border-primary/30 transition-all duration-300"
                     >
                       {skill}
                     </span>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

@@ -1,23 +1,23 @@
-import { Hero3D } from "@/components/Hero3D";
+import { BackgroundEffects } from "@/components/BackgroundEffects";
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
-import { Experience } from "@/components/Experience";
 import { Skills } from "@/components/Skills";
 import { Projects } from "@/components/Projects";
+import { Experience } from "@/components/Experience";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
 const Index = () => {
   return (
     <div className="relative">
-      <Hero3D />
+      <BackgroundEffects />
       <Navigation />
       <Hero />
       <About />
-      <Experience />
       <Skills />
       <Projects />
+      <Experience />
       <Contact />
       <Footer />
     </div>
