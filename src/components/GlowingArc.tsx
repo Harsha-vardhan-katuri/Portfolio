@@ -91,9 +91,9 @@ export const GlowingArc = () => {
       const by = cy + Math.sin(beamAngle) * ry;
 
       const layers = [
-        { blur: 30, size: 45, alpha: 0.3 },
-        { blur: 10, size: 20, alpha: 0.55 },
-        { blur: 2, size: 6, alpha: 0.95 },
+        { blur: 40, size: 55, alpha: 0.45 },
+        { blur: 14, size: 28, alpha: 0.7 },
+        { blur: 3, size: 9, alpha: 1.0 },
       ];
       for (const l of layers) {
         ctx.save();
