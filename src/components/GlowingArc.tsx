@@ -210,23 +210,21 @@ export const GlowingArc = () => {
       }
 
       // Pink flares on small arcs
-      for (const [sCx, sCy] of [[leftCx, leftCy], [rightCx, rightCy]]) {
-        const sfa = Math.PI * 1.5 + Math.sin(time * 2.5) * 0.2;
-        const sfx = sCx + Math.cos(sfa) * smallRx;
-        const sfy = sCy + Math.sin(sfa) * smallRy;
-        ctx.save();
-        ctx.globalAlpha = 0.4 + Math.sin(time * 4) * 0.15;
-        ctx.filter = "blur(12px)";
-        const sfg = ctx.createRadialGradient(sfx, sfy, 0, sfx, sfy, 22);
-        sfg.addColorStop(0, "hsl(310 85% 68%)");
-        sfg.addColorStop(0.5, "hsl(290 60% 50% / 0.4)");
-        sfg.addColorStop(1, "transparent");
-        ctx.fillStyle = sfg;
-        ctx.beginPath();
-        ctx.arc(sfx, sfy, 22, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
-      }
+      const sfa = Math.PI * 1.5 + Math.sin(time * 2.5) * 0.2;
+      const sfx = cx + Math.cos(sfa) * upArcRx;
+      const sfy = btnY + Math.sin(sfa) * arc1Ry;
+      ctx.save();
+      ctx.globalAlpha = 0.4 + Math.sin(time * 4) * 0.15;
+      ctx.filter = "blur(12px)";
+      const sfg = ctx.createRadialGradient(sfx, sfy, 0, sfx, sfy, 22);
+      sfg.addColorStop(0, "hsl(310 85% 68%)");
+      sfg.addColorStop(0.5, "hsl(290 60% 50% / 0.4)");
+      sfg.addColorStop(1, "transparent");
+      ctx.fillStyle = sfg;
+      ctx.beginPath();
+      ctx.arc(sfx, sfy, 22, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
 
       animId = requestAnimationFrame(draw);
     };
