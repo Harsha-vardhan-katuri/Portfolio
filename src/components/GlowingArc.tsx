@@ -71,7 +71,7 @@ export const GlowingArc = () => {
       glowGrad1.addColorStop(0.5, "hsl(260 70% 55% / 0.8)");
       glowGrad1.addColorStop(0.8, "hsl(250 80% 50% / 0.8)");
       glowGrad1.addColorStop(1, "hsl(240 70% 40% / 0.6)");
-      drawArcSegment(cx, cy, rx, ry, tilt, arcStart, arcEnd, 60, 50, 0.15, glowGrad1);
+      drawArcSegment(cx, cy, rx, ry, tilt, arcStart, arcEnd, 70, 55, 0.25, glowGrad1);
 
       // === Mid glow ===
       const glowGrad2 = ctx.createLinearGradient(cx - rx, cy, cx + rx, cy);
