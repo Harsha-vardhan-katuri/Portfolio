@@ -89,10 +89,10 @@ export const GlowingArc = () => {
       coreGrad.addColorStop(0.5, "hsl(260 80% 70% / 1)");
       coreGrad.addColorStop(0.85, "hsl(230 90% 65% / 0.8)");
       coreGrad.addColorStop(1, "hsl(220 100% 60% / 0.3)");
-      drawArcSegment(cx, cy, rx, ry, tilt, arcStart, arcEnd, 3, 3, 0.7, coreGrad);
+      drawArcSegment(cx, cy, rx, ry, tilt, arcStart, arcEnd, 4, 4, 0.85, coreGrad);
 
       // === Thin bright inner line ===
-      drawArcSegment(cx, cy, rx, ry, tilt, arcStart, arcEnd, 1.5, 0, 0.9, coreGrad);
+      drawArcSegment(cx, cy, rx, ry, tilt, arcStart, arcEnd, 2, 0, 1.0, coreGrad);
 
       // === Sweeping light beam rotating along the arc ===
       const numBeams = 2;
