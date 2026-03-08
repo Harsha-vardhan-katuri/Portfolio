@@ -216,7 +216,7 @@ export const GlowingArc = () => {
       // Pink flares on small arcs
       const sfa = Math.PI * 1.5 + Math.sin(time * 2.5) * 0.2;
       const sfx = cx + Math.cos(sfa) * arc1R;
-      const sfy = btnY + Math.sin(sfa) * arc1R;
+      const sfy = upCy + Math.sin(sfa) * arc1R;
       ctx.save();
       ctx.globalAlpha = 0.4 + Math.sin(time * 4) * 0.15;
       ctx.filter = "blur(12px)";
