@@ -47,33 +47,30 @@ export const Hero = () => {
           <div className="w-full flex justify-center items-center px-4 mb-2" style={{ marginTop: "-2vh" }}>
             <div className="flex items-center justify-center flex-wrap" style={{ gap: "clamp(2px, 0.8vw, 12px)" }}>
               {nameChars.map((char, i) => {
-                const dir = directions[i] || { x: 0, y: 0 };
                 const isSpace = char === " ";
 
                 return (
                   <motion.span
                     key={i}
                     initial={{
-                      opacity: isSpace ? 0 : 0,
-                      x: dir.x,
-                      y: dir.y,
-                      filter: "blur(15px)",
+                      opacity: 0,
+                      y: 20,
+                      filter: "blur(8px)",
                     }}
                     animate={{
                       opacity: isSpace ? 0 : 1,
-                      x: 0,
                       y: 0,
                       filter: "blur(0px)",
                     }}
                     transition={{
-                      duration: 2,
-                      delay: 0.2 + i * 0.07,
+                      duration: 0.8,
+                      delay: 0.5 + i * 0.07,
                       ease,
                     }}
                     className="font-black font-display text-foreground"
                     style={{
                       fontSize: "clamp(2.5rem, 6.5vw, 6.5rem)",
-                      letterSpacing: "0.08em",
+                      letterSpacing: "0.12em",
                       lineHeight: 1,
                       display: "inline-block",
                       minWidth: isSpace ? "clamp(15px, 3vw, 40px)" : undefined,
