@@ -130,8 +130,8 @@ export const GlowingArc = () => {
           // Bright arc segment near the beam (brighter section of the ring)
           const segStart = normalizedAngle - 0.3;
           const segEnd = normalizedAngle + 0.3;
-          drawArcSegment(cx, cy, rx, ry, tilt, segStart, segEnd, 6, 8, 0.6, "hsl(0 0% 100% / 0.8)");
-          drawArcSegment(cx, cy, rx, ry, tilt, segStart, segEnd, 2, 2, 0.9, "hsl(0 0% 100%)");
+          drawArcSegment(cx, cy, rx, ry, tilt, segStart, segEnd, 8, 10, 0.8, "hsl(0 0% 100% / 0.9)");
+          drawArcSegment(cx, cy, rx, ry, tilt, segStart, segEnd, 3, 2, 1.0, "hsl(0 0% 100%)");
         }
 
         // Also draw the beam even when going around the bottom (as a secondary effect)
