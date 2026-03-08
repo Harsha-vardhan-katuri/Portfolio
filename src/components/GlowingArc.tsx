@@ -53,27 +53,27 @@ export const GlowingArc = () => {
       brightness: number
     ) => {
       const g1 = ctx.createLinearGradient(cx - rx, cy, cx + rx, cy);
-      g1.addColorStop(0, "hsl(240 70% 40% / 0.5)");
-      g1.addColorStop(0.2, "hsl(250 80% 50% / 0.7)");
-      g1.addColorStop(0.5, "hsl(260 70% 55% / 0.8)");
-      g1.addColorStop(0.8, "hsl(250 80% 50% / 0.7)");
-      g1.addColorStop(1, "hsl(240 70% 40% / 0.5)");
+      g1.addColorStop(0, "hsl(220 80% 25% / 0.5)");
+      g1.addColorStop(0.2, "hsl(230 85% 35% / 0.7)");
+      g1.addColorStop(0.5, "hsl(240 75% 40% / 0.8)");
+      g1.addColorStop(0.8, "hsl(230 85% 35% / 0.7)");
+      g1.addColorStop(1, "hsl(220 80% 25% / 0.5)");
       drawArc(cx, cy, rx, ry, arcStart, arcEnd, 55, 45, 0.2 * brightness, g1);
 
       const g2 = ctx.createLinearGradient(cx - rx, cy, cx + rx, cy);
-      g2.addColorStop(0, "hsl(220 90% 50%)");
-      g2.addColorStop(0.3, "hsl(250 80% 55%)");
-      g2.addColorStop(0.5, "hsl(270 70% 55%)");
-      g2.addColorStop(0.7, "hsl(250 80% 55%)");
-      g2.addColorStop(1, "hsl(220 90% 50%)");
+      g2.addColorStop(0, "hsl(215 95% 40%)");
+      g2.addColorStop(0.3, "hsl(230 85% 45%)");
+      g2.addColorStop(0.5, "hsl(245 75% 45%)");
+      g2.addColorStop(0.7, "hsl(230 85% 45%)");
+      g2.addColorStop(1, "hsl(215 95% 40%)");
       drawArc(cx, cy, rx, ry, arcStart, arcEnd, 18, 22, 0.3 * brightness, g2);
 
       const core = ctx.createLinearGradient(cx - rx, cy, cx + rx, cy);
-      core.addColorStop(0, "hsl(220 100% 60% / 0.2)");
-      core.addColorStop(0.15, "hsl(230 90% 65% / 0.7)");
-      core.addColorStop(0.5, "hsl(260 80% 75% / 1)");
-      core.addColorStop(0.85, "hsl(230 90% 65% / 0.7)");
-      core.addColorStop(1, "hsl(220 100% 60% / 0.2)");
+      core.addColorStop(0, "hsl(210 100% 50% / 0.2)");
+      core.addColorStop(0.15, "hsl(220 95% 55% / 0.7)");
+      core.addColorStop(0.5, "hsl(235 85% 60% / 1)");
+      core.addColorStop(0.85, "hsl(220 95% 55% / 0.7)");
+      core.addColorStop(1, "hsl(210 100% 50% / 0.2)");
       drawArc(cx, cy, rx, ry, arcStart, arcEnd, 3, 3, 0.8 * brightness, core);
       drawArc(cx, cy, rx, ry, arcStart, arcEnd, 1.2, 0, 0.9 * brightness, core);
     };
