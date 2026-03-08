@@ -152,28 +152,23 @@ export const GlowingArc = () => {
       drawSweepBeam(cx, bigCy, bigRx, bigRy, bigStart, bigEnd, 0, 0.5);
       drawSweepBeam(cx, bigCy, bigRx, bigRy, bigStart, bigEnd, Math.PI * 0.8, 0.4);
 
-      // ===== TWO SMALLER ARCS — facing UP (like in ArgusVPN screenshot) =====
-      // These are smaller arcs that curve upward, sitting inside the big dome
-      // Positioned symmetrically, their bottom edges near the name text area
+      // ===== TWO SMALLER ARCS — facing UP, overlapping in center like ArgusVPN =====
+      const smallRx = bigRx * 0.32;
+      const smallRy = bigRy * 0.22;
+      const smallStart = Math.PI + 0.15;
+      const smallEnd = Math.PI * 2 - 0.15;
 
-      const smallRx = bigRx * 0.35;
-      const smallRy = bigRy * 0.28;
+      // Left upward arc — centered more towards middle, overlapping
+      const leftCx = cx - smallRx * 0.35;
+      const leftCy = height * 0.42;
+      drawGlowArc(leftCx, leftCy, smallRx, smallRy, smallStart, smallEnd, 0.65);
+      drawSweepBeam(leftCx, leftCy, smallRx, smallRy, smallStart, smallEnd, 0.8, 0.7);
 
-      // The small arcs face UP — draw from PI to 2*PI (upper half of ellipse)
-      const smallStart = Math.PI + 0.2;
-      const smallEnd = Math.PI * 2 - 0.2;
-
-      // Left upward arc
-      const leftCx = cx - smallRx * 0.6;
-      const leftCy = height * 0.48;
-      drawGlowArc(leftCx, leftCy, smallRx, smallRy, smallStart, smallEnd, 0.55);
-      drawSweepBeam(leftCx, leftCy, smallRx, smallRy, smallStart, smallEnd, 0.8, 0.65);
-
-      // Right upward arc
-      const rightCx = cx + smallRx * 0.6;
-      const rightCy = height * 0.48;
-      drawGlowArc(rightCx, rightCy, smallRx, smallRy, smallStart, smallEnd, 0.55);
-      drawSweepBeam(rightCx, rightCy, smallRx, smallRy, smallStart, smallEnd, 2.0, 0.6);
+      // Right upward arc — overlapping with left
+      const rightCx = cx + smallRx * 0.35;
+      const rightCy = height * 0.42;
+      drawGlowArc(rightCx, rightCy, smallRx, smallRy, smallStart, smallEnd, 0.65);
+      drawSweepBeam(rightCx, rightCy, smallRx, smallRy, smallStart, smallEnd, 2.0, 0.65);
 
       // === Top center sunrise glow (where big arc peaks) ===
       ctx.save();
