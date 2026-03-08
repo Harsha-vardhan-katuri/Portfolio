@@ -15,6 +15,19 @@ export const GlowingArc = () => {
     let animId: number;
     let time = 0;
 
+    // Particles
+    const particles: { x: number; y: number; size: number; speed: number; drift: number; opacity: number }[] = [];
+    for (let i = 0; i < 80; i++) {
+      particles.push({
+        x: Math.random(),
+        y: Math.random(),
+        size: 1 + Math.random() * 1.5,
+        speed: 0.1 + Math.random() * 0.3,
+        drift: (Math.random() - 0.5) * 0.5,
+        opacity: 0.3 + Math.random() * 0.3,
+      });
+    }
+
     const resize = () => {
       width = window.innerWidth;
       height = window.innerHeight;
@@ -25,14 +38,10 @@ export const GlowingArc = () => {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
     resize();
-    const onResize = () => resize();
-    window.addEventListener("resize", onResize);
+    window.addEventListener("resize", resize);
 
-    // Draw a partial arc segment with glow
-    const drawArcSegment = (
-      cx: number, cy: number,
-      rx: number, ry: number,
-      tilt: number,
+    const drawArc = (
+      cx: number, cy: number, r: number,
       startAngle: number, endAngle: number,
       lineWidth: number, blur: number, alpha: number,
       color: string | CanvasGradient
@@ -44,172 +53,197 @@ export const GlowingArc = () => {
       ctx.strokeStyle = color;
       ctx.lineCap = "round";
       ctx.beginPath();
-      ctx.ellipse(cx, cy, rx, ry, tilt, startAngle, endAngle);
+      ctx.arc(cx, cy, r, startAngle, endAngle);
       ctx.stroke();
       ctx.restore();
     };
 
     const draw = () => {
       ctx.clearRect(0, 0, width, height);
-      time += 0.004;
+      time += 0.005;
 
-      const cx = width / 2;
-      // Center of ellipse is pushed down so only the top arc is visible
-      const cy = height * 0.72;
-      const rx = Math.min(width * 0.52, 700);
-      const ry = rx * 0.85;
-      const tilt = 0; // no tilt, just a wide ellipse
+      // ==========================================
+      // PARTICLES (behind everything)
+      // ==========================================
+      for (const p of particles) {
+        p.y -= p.speed * 0.001;
+        p.x += p.drift * 0.0003;
+        if (p.y < -0.05) { p.y = 1.05; p.x = Math.random(); }
+        if (p.x < -0.05) p.x = 1.05;
+        if (p.x > 1.05) p.x = -0.05;
 
-      // Only draw the upper arc portion (from ~PI to ~2PI = the top half)
-      const arcStart = Math.PI + 0.15;
-      const arcEnd = Math.PI * 2 - 0.15;
-
-      // === Outer diffuse glow (widest, most blurred) ===
-      const glowGrad1 = ctx.createLinearGradient(cx - rx, cy, cx + rx, cy);
-      glowGrad1.addColorStop(0, "hsl(240 70% 40% / 0.6)");
-      glowGrad1.addColorStop(0.2, "hsl(250 80% 50% / 0.8)");
-      glowGrad1.addColorStop(0.5, "hsl(260 70% 55% / 0.8)");
-      glowGrad1.addColorStop(0.8, "hsl(250 80% 50% / 0.8)");
-      glowGrad1.addColorStop(1, "hsl(240 70% 40% / 0.6)");
-      drawArcSegment(cx, cy, rx, ry, tilt, arcStart, arcEnd, 60, 50, 0.15, glowGrad1);
-
-      // === Mid glow ===
-      const glowGrad2 = ctx.createLinearGradient(cx - rx, cy, cx + rx, cy);
-      glowGrad2.addColorStop(0, "hsl(220 90% 50%)");
-      glowGrad2.addColorStop(0.3, "hsl(250 80% 55%)");
-      glowGrad2.addColorStop(0.5, "hsl(270 70% 55%)");
-      glowGrad2.addColorStop(0.7, "hsl(250 80% 55%)");
-      glowGrad2.addColorStop(1, "hsl(220 90% 50%)");
-      drawArcSegment(cx, cy, rx, ry, tilt, arcStart, arcEnd, 20, 25, 0.25, glowGrad2);
-
-      // === Core arc line ===
-      const coreGrad = ctx.createLinearGradient(cx - rx, cy, cx + rx, cy);
-      coreGrad.addColorStop(0, "hsl(220 100% 60% / 0.3)");
-      coreGrad.addColorStop(0.15, "hsl(230 90% 65% / 0.8)");
-      coreGrad.addColorStop(0.5, "hsl(260 80% 70% / 1)");
-      coreGrad.addColorStop(0.85, "hsl(230 90% 65% / 0.8)");
-      coreGrad.addColorStop(1, "hsl(220 100% 60% / 0.3)");
-      drawArcSegment(cx, cy, rx, ry, tilt, arcStart, arcEnd, 3, 3, 0.7, coreGrad);
-
-      // === Thin bright inner line ===
-      drawArcSegment(cx, cy, rx, ry, tilt, arcStart, arcEnd, 1.5, 0, 0.9, coreGrad);
-
-      // === Sweeping light beam rotating along the arc ===
-      const numBeams = 2;
-      for (let b = 0; b < numBeams; b++) {
-        const beamAngle = time * 0.8 + b * Math.PI;
-        // Clamp beam to visible arc range
-        const normalizedAngle = ((beamAngle % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
-
-        // Only draw if the beam is in the visible arc range
-        if (normalizedAngle >= arcStart - 0.3 && normalizedAngle <= arcEnd + 0.3) {
-          const bx = cx + Math.cos(normalizedAngle) * rx;
-          const by = cy + Math.sin(normalizedAngle) * ry;
-
-          // Bright point
-          for (let p = 0; p < 3; p++) {
-            const pBlur = [30, 12, 3][p];
-            const pSize = [50, 25, 8][p];
-            const pAlpha = [0.3, 0.5, 0.9][p];
-
-            ctx.save();
-            ctx.globalAlpha = pAlpha;
-            ctx.filter = `blur(${pBlur}px)`;
-            const pGrad = ctx.createRadialGradient(bx, by, 0, bx, by, pSize);
-            pGrad.addColorStop(0, "hsl(0 0% 100%)");
-            pGrad.addColorStop(0.3, "hsl(220 100% 85%)");
-            pGrad.addColorStop(0.6, "hsl(260 80% 70% / 0.5)");
-            pGrad.addColorStop(1, "transparent");
-            ctx.fillStyle = pGrad;
-            ctx.beginPath();
-            ctx.arc(bx, by, pSize, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.restore();
-          }
-
-          // Bright arc segment near the beam (brighter section of the ring)
-          const segStart = normalizedAngle - 0.3;
-          const segEnd = normalizedAngle + 0.3;
-          drawArcSegment(cx, cy, rx, ry, tilt, segStart, segEnd, 6, 8, 0.6, "hsl(0 0% 100% / 0.8)");
-          drawArcSegment(cx, cy, rx, ry, tilt, segStart, segEnd, 2, 2, 0.9, "hsl(0 0% 100%)");
-        }
-
-        // Also draw the beam even when going around the bottom (as a secondary effect)
-        // The beam creates a comet-tail along the arc
-        for (let t = 0; t < 15; t++) {
-          const trailAngle = normalizedAngle - t * 0.04;
-          if (trailAngle < arcStart || trailAngle > arcEnd) continue;
-
-          const tx = cx + Math.cos(trailAngle) * rx;
-          const ty = cy + Math.sin(trailAngle) * ry;
-          const trailAlpha = (1 - t / 15) * 0.4;
-
-          ctx.save();
-          ctx.globalAlpha = trailAlpha;
-          ctx.filter = "blur(6px)";
-          const tGrad = ctx.createRadialGradient(tx, ty, 0, tx, ty, 12);
-          tGrad.addColorStop(0, "hsl(260 80% 80%)");
-          tGrad.addColorStop(1, "transparent");
-          ctx.fillStyle = tGrad;
-          ctx.beginPath();
-          ctx.arc(tx, ty, 12, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.restore();
-        }
-      }
-
-      // === Pink/magenta accent flare (small, at specific points) ===
-      const flareAngle1 = Math.PI * 1.4 + Math.sin(time * 2) * 0.15;
-      const flareAngle2 = Math.PI * 1.75 + Math.sin(time * 1.5 + 1) * 0.1;
-      for (const fa of [flareAngle1, flareAngle2]) {
-        const fx = cx + Math.cos(fa) * rx;
-        const fy = cy + Math.sin(fa) * ry;
+        const px = p.x * width;
+        const py = p.y * height;
+        const flicker = p.opacity + Math.sin(time * 3 + p.x * 10) * 0.1;
 
         ctx.save();
-        ctx.globalAlpha = 0.3 + Math.sin(time * 3) * 0.15;
-        ctx.filter = "blur(15px)";
-        const fGrad = ctx.createRadialGradient(fx, fy, 0, fx, fy, 30);
-        fGrad.addColorStop(0, "hsl(320 80% 65%)");
-        fGrad.addColorStop(0.5, "hsl(300 60% 50% / 0.4)");
-        fGrad.addColorStop(1, "transparent");
-        ctx.fillStyle = fGrad;
+        ctx.globalAlpha = Math.max(0, flicker);
+        ctx.fillStyle = `hsl(210 80% 80%)`;
+        ctx.shadowColor = "hsl(210 90% 70%)";
+        ctx.shadowBlur = 6;
         ctx.beginPath();
-        ctx.arc(fx, fy, 30, 0, Math.PI * 2);
+        ctx.arc(px, py, p.size, 0, Math.PI * 2);
         ctx.fill();
         ctx.restore();
       }
 
-      // === Inner atmosphere / ambient glow inside the arc ===
+      // ==========================================
+      // OUTER ARC — large dome across top
+      // ==========================================
+      // Center far below viewport so only the top curve is visible
+      const outerCx = width / 2;
+      const outerCy = height + height * 1.2; // 120vh below bottom
+      const outerR = Math.sqrt((width / 2) ** 2 + (outerCy) ** 2) * 1.02;
+
+      // Calculate angles where the circle intersects the top edge of viewport
+      // We want the arc to go from left edge to right edge across the top
+      const outerAngleLeft = Math.atan2(0 - outerCy, 0 - outerCx);
+      const outerAngleRight = Math.atan2(0 - outerCy, width - outerCx);
+
+      // Gradient along the arc
+      const outerGrad = ctx.createLinearGradient(0, 0, width, 0);
+      outerGrad.addColorStop(0, "hsl(0 0% 100% / 0.3)");
+      outerGrad.addColorStop(0.2, "hsl(220 100% 65%)");
+      outerGrad.addColorStop(0.5, "hsl(260 80% 65%)");
+      outerGrad.addColorStop(0.8, "hsl(220 100% 65%)");
+      outerGrad.addColorStop(1, "hsl(0 0% 100% / 0.3)");
+
+      // Outer glow (60px blur)
+      drawArc(outerCx, outerCy, outerR, outerAngleLeft, outerAngleRight, 40, 60, 0.15, outerGrad);
+      // Mid glow (25px blur)
+      drawArc(outerCx, outerCy, outerR, outerAngleLeft, outerAngleRight, 12, 25, 0.3, outerGrad);
+      // Core line
+      drawArc(outerCx, outerCy, outerR, outerAngleLeft, outerAngleRight, 4, 3, 0.8, outerGrad);
+      // Bright inner
+      drawArc(outerCx, outerCy, outerR, outerAngleLeft, outerAngleRight, 1.5, 0, 0.9, outerGrad);
+
+      // Sweeping highlight on outer arc
+      const sweepAngle = outerAngleLeft + (outerAngleRight - outerAngleLeft) * ((Math.sin(time * 0.6) + 1) / 2);
+      const sweepX = outerCx + Math.cos(sweepAngle) * outerR;
+      const sweepY = outerCy + Math.sin(sweepAngle) * outerR;
+
+      for (let layer = 0; layer < 3; layer++) {
+        const blurs = [30, 12, 3];
+        const sizes = [50, 25, 8];
+        const alphas = [0.25, 0.45, 0.85];
+        ctx.save();
+        ctx.globalAlpha = alphas[layer];
+        ctx.filter = `blur(${blurs[layer]}px)`;
+        const sg = ctx.createRadialGradient(sweepX, sweepY, 0, sweepX, sweepY, sizes[layer]);
+        sg.addColorStop(0, "hsl(0 0% 100%)");
+        sg.addColorStop(0.4, "hsl(220 100% 85%)");
+        sg.addColorStop(1, "transparent");
+        ctx.fillStyle = sg;
+        ctx.beginPath();
+        ctx.arc(sweepX, sweepY, sizes[layer], 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // Bright segment near sweep
+      const segHalf = 0.04;
+      drawArc(outerCx, outerCy, outerR, sweepAngle - segHalf, sweepAngle + segHalf, 6, 8, 0.5, "hsl(0 0% 100% / 0.8)");
+
+      // Comet tail
+      for (let t = 0; t < 12; t++) {
+        const ta = sweepAngle - t * 0.008;
+        if (ta < outerAngleLeft || ta > outerAngleRight) continue;
+        const tx = outerCx + Math.cos(ta) * outerR;
+        const ty = outerCy + Math.sin(ta) * outerR;
+        ctx.save();
+        ctx.globalAlpha = (1 - t / 12) * 0.35;
+        ctx.filter = "blur(5px)";
+        const tg = ctx.createRadialGradient(tx, ty, 0, tx, ty, 10);
+        tg.addColorStop(0, "hsl(220 100% 85%)");
+        tg.addColorStop(1, "transparent");
+        ctx.fillStyle = tg;
+        ctx.beginPath();
+        ctx.arc(tx, ty, 10, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // ==========================================
+      // INNER ARC — crossing orbit, curves downward
+      // ==========================================
+      const innerCx = width / 2;
+      const innerCy = height * 0.4; // 40vh from top
+      const innerR = outerR * 0.7;
+
+      // Arc from right edge to left edge, curving downward
+      const innerAngleLeft = Math.atan2(height * 0.3 - innerCy, 0 - innerCx);
+      const innerAngleRight = Math.atan2(height * 0.3 - innerCy, width - innerCx);
+
+      // Draw from right to left going through the bottom (positive y direction)
+      const innerStart = innerAngleRight;
+      const innerEnd = innerAngleLeft + Math.PI * 2; // go the long way around bottom
+
+      // But we only want the bottom portion visible
+      const innerVisStart = -0.1; // just past 0 (rightward)
+      const innerVisEnd = Math.PI + 0.1; // just past PI (leftward)
+
+      const innerGrad = ctx.createLinearGradient(0, innerCy, width, innerCy);
+      innerGrad.addColorStop(0, "hsl(185 90% 70% / 0.2)");
+      innerGrad.addColorStop(0.3, "hsl(190 100% 75%)");
+      innerGrad.addColorStop(0.5, "hsl(0 0% 95%)");
+      innerGrad.addColorStop(0.7, "hsl(190 100% 75%)");
+      innerGrad.addColorStop(1, "hsl(185 90% 70% / 0.2)");
+
+      // Outer glow
+      drawArc(innerCx, innerCy, innerR, innerVisStart, innerVisEnd, 20, 40, 0.1, innerGrad);
+      // Mid glow
+      drawArc(innerCx, innerCy, innerR, innerVisStart, innerVisEnd, 8, 15, 0.25, innerGrad);
+      // Core
+      drawArc(innerCx, innerCy, innerR, innerVisStart, innerVisEnd, 2, 2, 0.6, innerGrad);
+      // Inner bright
+      drawArc(innerCx, innerCy, innerR, innerVisStart, innerVisEnd, 1, 0, 0.7, innerGrad);
+
+      // Sweeping highlight on inner arc (opposite direction)
+      const innerSweep = innerVisEnd - (innerVisEnd - innerVisStart) * ((Math.sin(time * 0.8 + 2) + 1) / 2);
+      const isx = innerCx + Math.cos(innerSweep) * innerR;
+      const isy = innerCy + Math.sin(innerSweep) * innerR;
+
       ctx.save();
-      const ambientGrad = ctx.createRadialGradient(cx, cy - ry * 0.4, 0, cx, cy - ry * 0.4, rx * 0.8);
-      ambientGrad.addColorStop(0, "hsl(240 50% 40% / 0.06)");
-      ambientGrad.addColorStop(0.5, "hsl(260 50% 35% / 0.03)");
-      ambientGrad.addColorStop(1, "transparent");
-      ctx.fillStyle = ambientGrad;
-      ctx.fillRect(0, 0, width, height);
+      ctx.globalAlpha = 0.5;
+      ctx.filter = "blur(15px)";
+      const isg = ctx.createRadialGradient(isx, isy, 0, isx, isy, 30);
+      isg.addColorStop(0, "hsl(185 100% 90%)");
+      isg.addColorStop(0.5, "hsl(190 80% 70% / 0.4)");
+      isg.addColorStop(1, "transparent");
+      ctx.fillStyle = isg;
+      ctx.beginPath();
+      ctx.arc(isx, isy, 30, 0, Math.PI * 2);
+      ctx.fill();
       ctx.restore();
 
-      // === Top edge highlights (where arc meets screen edge) ===
-      // Left top glow
+      // ==========================================
+      // CENTER GLOW — light source under text
+      // ==========================================
+      const glowCx = width / 2;
+      const glowCy = height / 2;
+
       ctx.save();
-      ctx.globalAlpha = 0.15;
-      ctx.filter = "blur(40px)";
-      const leftGlow = ctx.createRadialGradient(0, 0, 0, 0, 0, 200);
-      leftGlow.addColorStop(0, "hsl(260 80% 60%)");
-      leftGlow.addColorStop(1, "transparent");
-      ctx.fillStyle = leftGlow;
-      ctx.fillRect(-50, -50, 300, 300);
+      const centerGlow = ctx.createRadialGradient(glowCx, glowCy, 0, glowCx, glowCy, 200);
+      centerGlow.addColorStop(0, "hsl(0 0% 100% / 0.08)");
+      centerGlow.addColorStop(0.3, "hsl(220 80% 70% / 0.05)");
+      centerGlow.addColorStop(0.6, "hsl(240 60% 50% / 0.02)");
+      centerGlow.addColorStop(1, "transparent");
+      ctx.fillStyle = centerGlow;
+      ctx.fillRect(glowCx - 250, glowCy - 250, 500, 500);
       ctx.restore();
 
-      // Right top glow
+      // Brighter center spot
       ctx.save();
-      ctx.globalAlpha = 0.12;
+      ctx.globalAlpha = 0.12 + Math.sin(time * 2) * 0.03;
       ctx.filter = "blur(40px)";
-      const rightGlow = ctx.createRadialGradient(width, 0, 0, width, 0, 200);
-      rightGlow.addColorStop(0, "hsl(300 60% 50%)");
-      rightGlow.addColorStop(1, "transparent");
-      ctx.fillStyle = rightGlow;
-      ctx.fillRect(width - 250, -50, 300, 300);
+      const spotGlow = ctx.createRadialGradient(glowCx, glowCy, 0, glowCx, glowCy, 120);
+      spotGlow.addColorStop(0, "hsl(0 0% 100%)");
+      spotGlow.addColorStop(0.4, "hsl(210 80% 75%)");
+      spotGlow.addColorStop(1, "transparent");
+      ctx.fillStyle = spotGlow;
+      ctx.beginPath();
+      ctx.arc(glowCx, glowCy, 120, 0, Math.PI * 2);
+      ctx.fill();
       ctx.restore();
 
       animId = requestAnimationFrame(draw);
@@ -218,7 +252,7 @@ export const GlowingArc = () => {
     draw();
     return () => {
       cancelAnimationFrame(animId);
-      window.removeEventListener("resize", onResize);
+      window.removeEventListener("resize", resize);
     };
   }, []);
 
