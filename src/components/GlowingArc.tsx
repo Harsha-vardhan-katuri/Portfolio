@@ -52,30 +52,33 @@ export const GlowingArc = () => {
       arcStart: number, arcEnd: number,
       brightness: number
     ) => {
+      // Outer soft glow — deep blue
       const g1 = ctx.createLinearGradient(cx - rx, cy, cx + rx, cy);
-      g1.addColorStop(0, "hsl(220 80% 25% / 0.5)");
-      g1.addColorStop(0.2, "hsl(230 85% 35% / 0.7)");
-      g1.addColorStop(0.5, "hsl(240 75% 40% / 0.8)");
-      g1.addColorStop(0.8, "hsl(230 85% 35% / 0.7)");
-      g1.addColorStop(1, "hsl(220 80% 25% / 0.5)");
-      drawArc(cx, cy, rx, ry, arcStart, arcEnd, 55, 45, 0.2 * brightness, g1);
+      g1.addColorStop(0, "hsl(220 90% 30% / 0.4)");
+      g1.addColorStop(0.3, "hsl(230 95% 45% / 0.6)");
+      g1.addColorStop(0.5, "hsl(235 90% 50% / 0.7)");
+      g1.addColorStop(0.7, "hsl(230 95% 45% / 0.6)");
+      g1.addColorStop(1, "hsl(220 90% 30% / 0.4)");
+      drawArc(cx, cy, rx, ry, arcStart, arcEnd, 60, 50, 0.25 * brightness, g1);
 
+      // Mid glow — brighter blue
       const g2 = ctx.createLinearGradient(cx - rx, cy, cx + rx, cy);
-      g2.addColorStop(0, "hsl(215 95% 40%)");
-      g2.addColorStop(0.3, "hsl(230 85% 45%)");
-      g2.addColorStop(0.5, "hsl(245 75% 45%)");
-      g2.addColorStop(0.7, "hsl(230 85% 45%)");
-      g2.addColorStop(1, "hsl(215 95% 40%)");
-      drawArc(cx, cy, rx, ry, arcStart, arcEnd, 18, 22, 0.3 * brightness, g2);
+      g2.addColorStop(0, "hsl(215 100% 50%)");
+      g2.addColorStop(0.3, "hsl(225 95% 55%)");
+      g2.addColorStop(0.5, "hsl(235 90% 60%)");
+      g2.addColorStop(0.7, "hsl(225 95% 55%)");
+      g2.addColorStop(1, "hsl(215 100% 50%)");
+      drawArc(cx, cy, rx, ry, arcStart, arcEnd, 20, 25, 0.35 * brightness, g2);
 
+      // Core line — bright white-blue
       const core = ctx.createLinearGradient(cx - rx, cy, cx + rx, cy);
-      core.addColorStop(0, "hsl(210 100% 50% / 0.2)");
-      core.addColorStop(0.15, "hsl(220 95% 55% / 0.7)");
-      core.addColorStop(0.5, "hsl(235 85% 60% / 1)");
-      core.addColorStop(0.85, "hsl(220 95% 55% / 0.7)");
-      core.addColorStop(1, "hsl(210 100% 50% / 0.2)");
-      drawArc(cx, cy, rx, ry, arcStart, arcEnd, 3, 3, 0.8 * brightness, core);
-      drawArc(cx, cy, rx, ry, arcStart, arcEnd, 1.2, 0, 0.9 * brightness, core);
+      core.addColorStop(0, "hsl(210 100% 70% / 0.3)");
+      core.addColorStop(0.15, "hsl(220 100% 78% / 0.8)");
+      core.addColorStop(0.5, "hsl(225 100% 85% / 1)");
+      core.addColorStop(0.85, "hsl(220 100% 78% / 0.8)");
+      core.addColorStop(1, "hsl(210 100% 70% / 0.3)");
+      drawArc(cx, cy, rx, ry, arcStart, arcEnd, 3.5, 4, 0.85 * brightness, core);
+      drawArc(cx, cy, rx, ry, arcStart, arcEnd, 1.5, 0, 1.0 * brightness, "hsl(220 100% 90%)");
     };
 
     const drawSweepBeam = (
