@@ -54,15 +54,15 @@ export const GlowingArc = () => {
       time += 0.004;
 
       const cx = width / 2;
-      // Center of ellipse is pushed down so only the top arc is visible
-      const cy = height * 0.72;
+      // Center is pushed UP so only the bottom arc (facing down) is visible
+      const cy = height * 0.08;
       const rx = Math.min(width * 0.52, 700);
-      const ry = rx * 0.85;
-      const tilt = 0; // no tilt, just a wide ellipse
+      const ry = rx * 0.7;
+      const tilt = 0;
 
-      // Only draw the upper arc portion (from ~PI to ~2PI = the top half)
-      const arcStart = Math.PI + 0.15;
-      const arcEnd = Math.PI * 2 - 0.15;
+      // Draw the lower arc portion (0 to PI = the bottom half, facing down)
+      const arcStart = 0.15;
+      const arcEnd = Math.PI - 0.15;
 
       // === Outer diffuse glow (widest, most blurred) ===
       const glowGrad1 = ctx.createLinearGradient(cx - rx, cy, cx + rx, cy);
@@ -71,7 +71,7 @@ export const GlowingArc = () => {
       glowGrad1.addColorStop(0.5, "hsl(260 70% 55% / 0.8)");
       glowGrad1.addColorStop(0.8, "hsl(250 80% 50% / 0.8)");
       glowGrad1.addColorStop(1, "hsl(240 70% 40% / 0.6)");
-      drawArcSegment(cx, cy, rx, ry, tilt, arcStart, arcEnd, 60, 50, 0.15, glowGrad1);
+      drawArcSegment(cx, cy, rx, ry, tilt, arcStart, arcEnd, 70, 55, 0.25, glowGrad1);
 
       // === Mid glow ===
       const glowGrad2 = ctx.createLinearGradient(cx - rx, cy, cx + rx, cy);
@@ -80,7 +80,7 @@ export const GlowingArc = () => {
       glowGrad2.addColorStop(0.5, "hsl(270 70% 55%)");
       glowGrad2.addColorStop(0.7, "hsl(250 80% 55%)");
       glowGrad2.addColorStop(1, "hsl(220 90% 50%)");
-      drawArcSegment(cx, cy, rx, ry, tilt, arcStart, arcEnd, 20, 25, 0.25, glowGrad2);
+      drawArcSegment(cx, cy, rx, ry, tilt, arcStart, arcEnd, 24, 28, 0.4, glowGrad2);
 
       // === Core arc line ===
       const coreGrad = ctx.createLinearGradient(cx - rx, cy, cx + rx, cy);
@@ -89,10 +89,10 @@ export const GlowingArc = () => {
       coreGrad.addColorStop(0.5, "hsl(260 80% 70% / 1)");
       coreGrad.addColorStop(0.85, "hsl(230 90% 65% / 0.8)");
       coreGrad.addColorStop(1, "hsl(220 100% 60% / 0.3)");
-      drawArcSegment(cx, cy, rx, ry, tilt, arcStart, arcEnd, 3, 3, 0.7, coreGrad);
+      drawArcSegment(cx, cy, rx, ry, tilt, arcStart, arcEnd, 4, 4, 0.85, coreGrad);
 
       // === Thin bright inner line ===
-      drawArcSegment(cx, cy, rx, ry, tilt, arcStart, arcEnd, 1.5, 0, 0.9, coreGrad);
+      drawArcSegment(cx, cy, rx, ry, tilt, arcStart, arcEnd, 2, 0, 1.0, coreGrad);
 
       // === Sweeping light beam rotating along the arc ===
       const numBeams = 2;
@@ -130,8 +130,8 @@ export const GlowingArc = () => {
           // Bright arc segment near the beam (brighter section of the ring)
           const segStart = normalizedAngle - 0.3;
           const segEnd = normalizedAngle + 0.3;
-          drawArcSegment(cx, cy, rx, ry, tilt, segStart, segEnd, 6, 8, 0.6, "hsl(0 0% 100% / 0.8)");
-          drawArcSegment(cx, cy, rx, ry, tilt, segStart, segEnd, 2, 2, 0.9, "hsl(0 0% 100%)");
+          drawArcSegment(cx, cy, rx, ry, tilt, segStart, segEnd, 8, 10, 0.8, "hsl(0 0% 100% / 0.9)");
+          drawArcSegment(cx, cy, rx, ry, tilt, segStart, segEnd, 3, 2, 1.0, "hsl(0 0% 100%)");
         }
 
         // Also draw the beam even when going around the bottom (as a secondary effect)
