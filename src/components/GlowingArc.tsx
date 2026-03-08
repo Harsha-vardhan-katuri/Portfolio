@@ -182,24 +182,45 @@ export const GlowingArc = () => {
       ctx.fillRect(0, 0, width, height * 0.5);
       ctx.restore();
 
-      // === Pink accent flares ===
+      // === Pink/magenta accent flares — more of them, brighter ===
       const flares = [
-        bigStart + 0.5 + Math.sin(time * 2) * 0.1,
-        bigEnd - 0.5 + Math.sin(time * 1.5) * 0.1,
+        bigStart + 0.4 + Math.sin(time * 2) * 0.1,
+        bigEnd - 0.4 + Math.sin(time * 1.5) * 0.1,
+        Math.PI * 0.5 + Math.sin(time * 1.8) * 0.15,
+        // Flares on small arcs too
       ];
       for (const fa of flares) {
         const fx = cx + Math.cos(fa) * bigRx;
         const fy = bigCy + Math.sin(fa) * bigRy;
         ctx.save();
-        ctx.globalAlpha = 0.3 + Math.sin(time * 3) * 0.1;
-        ctx.filter = "blur(15px)";
-        const fg = ctx.createRadialGradient(fx, fy, 0, fx, fy, 25);
-        fg.addColorStop(0, "hsl(320 80% 65%)");
-        fg.addColorStop(0.5, "hsl(300 60% 50% / 0.4)");
+        ctx.globalAlpha = 0.45 + Math.sin(time * 3) * 0.15;
+        ctx.filter = "blur(18px)";
+        const fg = ctx.createRadialGradient(fx, fy, 0, fx, fy, 35);
+        fg.addColorStop(0, "hsl(320 90% 70%)");
+        fg.addColorStop(0.4, "hsl(300 70% 55% / 0.5)");
         fg.addColorStop(1, "transparent");
         ctx.fillStyle = fg;
         ctx.beginPath();
-        ctx.arc(fx, fy, 25, 0, Math.PI * 2);
+        ctx.arc(fx, fy, 35, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // Pink flares on small arcs
+      for (const [sCx, sCy] of [[leftCx, leftCy], [rightCx, rightCy]]) {
+        const sfa = Math.PI * 1.5 + Math.sin(time * 2.5) * 0.2;
+        const sfx = sCx + Math.cos(sfa) * smallRx;
+        const sfy = sCy + Math.sin(sfa) * smallRy;
+        ctx.save();
+        ctx.globalAlpha = 0.4 + Math.sin(time * 4) * 0.15;
+        ctx.filter = "blur(12px)";
+        const sfg = ctx.createRadialGradient(sfx, sfy, 0, sfx, sfy, 22);
+        sfg.addColorStop(0, "hsl(310 85% 68%)");
+        sfg.addColorStop(0.5, "hsl(290 60% 50% / 0.4)");
+        sfg.addColorStop(1, "transparent");
+        ctx.fillStyle = sfg;
+        ctx.beginPath();
+        ctx.arc(sfx, sfy, 22, 0, Math.PI * 2);
         ctx.fill();
         ctx.restore();
       }
