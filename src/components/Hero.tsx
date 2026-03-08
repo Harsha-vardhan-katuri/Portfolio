@@ -10,6 +10,23 @@ const ease = [0.16, 1, 0.3, 1] as const;
 // Single row of widely spaced letters like ARGUS
 const nameChars = "HARSHA VARDHAN KATURI".split("");
 
+// Each letter flies in from a unique scattered position
+const directions: { x: number; y: number }[] = [
+  // H A R S H A
+  { x: -600, y: -250 }, { x: 350, y: -400 }, { x: -250, y: 500 },
+  { x: 500, y: 300 }, { x: -400, y: 350 }, { x: 250, y: -500 },
+  // (space)
+  { x: 0, y: 0 },
+  // V A R D H A N
+  { x: -550, y: 200 }, { x: 400, y: -350 }, { x: -200, y: 500 },
+  { x: 450, y: -200 }, { x: -350, y: -400 }, { x: 200, y: 500 },
+  { x: -500, y: -250 },
+  // (space)
+  { x: 0, y: 0 },
+  // K A T U R I
+  { x: 400, y: 400 }, { x: -500, y: -200 }, { x: 300, y: 450 },
+  { x: -250, y: -450 }, { x: 450, y: 250 }, { x: -400, y: 350 },
+];
 
 export const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -47,30 +64,33 @@ export const Hero = () => {
           <div className="w-full flex justify-center items-center px-4 mb-2" style={{ marginTop: "-2vh" }}>
             <div className="flex items-center justify-center flex-wrap" style={{ gap: "clamp(2px, 0.8vw, 12px)" }}>
               {nameChars.map((char, i) => {
+                const dir = directions[i] || { x: 0, y: 0 };
                 const isSpace = char === " ";
 
                 return (
                   <motion.span
                     key={i}
                     initial={{
-                      opacity: 0,
-                      y: 20,
-                      filter: "blur(8px)",
+                      opacity: isSpace ? 0 : 0,
+                      x: dir.x,
+                      y: dir.y,
+                      filter: "blur(15px)",
                     }}
                     animate={{
                       opacity: isSpace ? 0 : 1,
+                      x: 0,
                       y: 0,
                       filter: "blur(0px)",
                     }}
                     transition={{
-                      duration: 0.8,
-                      delay: 0.5 + i * 0.07,
+                      duration: 2,
+                      delay: 0.2 + i * 0.07,
                       ease,
                     }}
                     className="font-black font-display text-foreground"
                     style={{
                       fontSize: "clamp(2.5rem, 6.5vw, 6.5rem)",
-                      letterSpacing: "0.12em",
+                      letterSpacing: "0.08em",
                       lineHeight: 1,
                       display: "inline-block",
                       minWidth: isSpace ? "clamp(15px, 3vw, 40px)" : undefined,
