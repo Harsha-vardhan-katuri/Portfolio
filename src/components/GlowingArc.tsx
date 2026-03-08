@@ -152,26 +152,24 @@ export const GlowingArc = () => {
       drawSweepBeam(cx, bigCy, bigRx, bigRy, bigStart, bigEnd, 0, 0.5);
       drawSweepBeam(cx, bigCy, bigRx, bigRy, bigStart, bigEnd, Math.PI * 0.8, 0.4);
 
-      // ===== TWO UPWARD ARCS — centered on "Get In Touch" button area =====
-      // Both arcs share the same center X (page center) and start/end symmetrically
-      // Their base (bottom) is near the Get In Touch button (~60% down the page)
-      const btnY = height * 0.58; // approximate Y of Get In Touch button
+      // ===== TWO UPWARD CIRCULAR ARCS — same edges as big arc =====
+      // Bottom of big arc = bigCy + bigRy — that's where the big arc's lowest point is
+      const bigArcBottom = bigCy + bigRy;
+      // The upward arcs sit at the same bottom edge as the big arc
+      const upBaseY = bigArcBottom;
 
-      // Both arcs span roughly the same width as the button + small padding
-      const upArcRx = width * 0.14; // horizontal radius ~button width + 1cm each side
-      const upStart = Math.PI + 0.1;
-      const upEnd = Math.PI * 2 - 0.1;
+      // Circular arcs: rx === ry (true circles)
+      // Arc 1: smaller circle (radius ~80px feeling)
+      const arc1R = height * 0.08;
+      const upStart = Math.PI + 0.08;
+      const upEnd = Math.PI * 2 - 0.08;
+      drawGlowArc(cx, upBaseY, arc1R, arc1R, upStart, upEnd, 0.7);
+      drawSweepBeam(cx, upBaseY, arc1R, arc1R, upStart, upEnd, 0.8, 0.7);
 
-      // First smaller arc (radius 3 feeling — tighter, closer to button)
-      const arc1Ry = height * 0.08;
-      drawGlowArc(cx, btnY, upArcRx, arc1Ry, upStart, upEnd, 0.7);
-      drawSweepBeam(cx, btnY, upArcRx, arc1Ry, upStart, upEnd, 0.8, 0.7);
-
-      // Second larger arc (radius 5 feeling — taller, wider)
-      const arc2Rx = upArcRx * 1.35;
-      const arc2Ry = height * 0.16;
-      drawGlowArc(cx, btnY, arc2Rx, arc2Ry, upStart, upEnd, 0.55);
-      drawSweepBeam(cx, btnY, arc2Rx, arc2Ry, upStart, upEnd, 2.0, 0.6);
+      // Arc 2: larger circle (radius ~140px feeling)
+      const arc2R = height * 0.14;
+      drawGlowArc(cx, upBaseY, arc2R, arc2R, upStart, upEnd, 0.55);
+      drawSweepBeam(cx, upBaseY, arc2R, arc2R, upStart, upEnd, 2.0, 0.6);
 
       // === Top center sunrise glow (where big arc peaks) ===
       ctx.save();
@@ -211,8 +209,8 @@ export const GlowingArc = () => {
 
       // Pink flares on small arcs
       const sfa = Math.PI * 1.5 + Math.sin(time * 2.5) * 0.2;
-      const sfx = cx + Math.cos(sfa) * upArcRx;
-      const sfy = btnY + Math.sin(sfa) * arc1Ry;
+      const sfx = cx + Math.cos(sfa) * arc1R;
+      const sfy = upBaseY + Math.sin(sfa) * arc1R;
       ctx.save();
       ctx.globalAlpha = 0.4 + Math.sin(time * 4) * 0.15;
       ctx.filter = "blur(12px)";
