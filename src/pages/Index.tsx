@@ -1,6 +1,4 @@
-import { useState, useCallback } from "react";
 import { BackgroundEffects } from "@/components/BackgroundEffects";
-import { IntroAnimation } from "@/components/IntroAnimation";
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
@@ -11,18 +9,11 @@ import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
 const Index = () => {
-  const [introComplete, setIntroComplete] = useState(false);
-
-  const handleIntroComplete = useCallback(() => {
-    setIntroComplete(true);
-  }, []);
-
   return (
     <div className="relative">
-      {!introComplete && <IntroAnimation onComplete={handleIntroComplete} />}
       <BackgroundEffects />
-      {introComplete && <Navigation />}
-      <Hero introComplete={introComplete} />
+      <Navigation />
+      <Hero />
       <About />
       <Skills />
       <Projects />
