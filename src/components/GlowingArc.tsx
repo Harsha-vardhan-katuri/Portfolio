@@ -154,28 +154,25 @@ export const GlowingArc = () => {
       drawSweepBeam(cx, bigCy, bigRx, bigRy, bigStart, bigEnd, 0, 0.5);
       drawSweepBeam(cx, bigCy, bigRx, bigRy, bigStart, bigEnd, Math.PI * 0.8, 0.4);
 
-      // ===== TWO UPWARD ARCS — contained INSIDE the big arc =====
-      // Place them higher up so they stay within the dome
-      // At this Y level, compute the big arc's width to constrain upward arcs
-      const upCenterY = height * 0.62;
-      // Find how wide the big arc is at upCenterY
-      // bigCy + bigRy * sin(θ) = upCenterY → sin(θ) = (upCenterY - bigCy) / bigRy
-      const sinTheta = Math.min(1, (upCenterY - bigCy) / bigRy);
-      const cosTheta = Math.sqrt(1 - sinTheta * sinTheta);
-      const bigArcWidthAtCenter = bigRx * cosTheta;
+      // ===== TWO OVERLAPPING CIRCLES inside the dome (ArgusVPN style) =====
+      // Two circles offset left and right, overlapping in center like a Venn diagram
+      const innerR = height * 0.32; // radius of each inner circle
+      const innerCy = height * 0.38; // center Y — in the middle area of the dome
+      const innerOffset = width * 0.12; // how far left/right each circle is offset
 
-      const upStart = Math.PI + 0.06;
-      const upEnd = Math.PI * 2 - 0.06;
+      // Left circle — draw roughly the right-facing portion (visible inside dome)
+      const leftCx = cx - innerOffset;
+      // Draw a large arc of each circle (nearly full but skip the far outside edge)
+      drawGlowArc(leftCx, innerCy, innerR, innerR, -0.3, Math.PI + 0.3, 0.7);
+      drawSweepBeam(leftCx, innerCy, innerR, innerR, -0.3, Math.PI + 0.3, 0.5, 0.5);
 
-      // Arc 1: smaller — well inside the dome
-      const arc1R = bigArcWidthAtCenter * 0.35;
-      drawGlowArc(cx, upCenterY, arc1R, arc1R, upStart, upEnd, 0.8);
-      drawSweepBeam(cx, upCenterY, arc1R, arc1R, upStart, upEnd, 0.8, 0.7);
+      // Right circle — draw roughly the left-facing portion
+      const rightCx = cx + innerOffset;
+      drawGlowArc(rightCx, innerCy, innerR, innerR, -0.3, Math.PI + 0.3, 0.7);
+      drawSweepBeam(rightCx, innerCy, innerR, innerR, -0.3, Math.PI + 0.3, 2.5, 0.45);
 
-      // Arc 2: larger — still inside the dome
-      const arc2R = bigArcWidthAtCenter * 0.6;
-      drawGlowArc(cx, upCenterY, arc2R, arc2R, upStart, upEnd, 0.65);
-      drawSweepBeam(cx, upCenterY, arc2R, arc2R, upStart, upEnd, 2.0, 0.6);
+      // Keep arc1R reference for flares below
+      const arc1R = innerR;
 
       // === Top center sunrise glow (where big arc peaks) ===
       ctx.save();
