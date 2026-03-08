@@ -52,30 +52,33 @@ export const GlowingArc = () => {
       arcStart: number, arcEnd: number,
       brightness: number
     ) => {
+      // Outer soft glow — deep blue
       const g1 = ctx.createLinearGradient(cx - rx, cy, cx + rx, cy);
-      g1.addColorStop(0, "hsl(220 80% 25% / 0.5)");
-      g1.addColorStop(0.2, "hsl(230 85% 35% / 0.7)");
-      g1.addColorStop(0.5, "hsl(240 75% 40% / 0.8)");
-      g1.addColorStop(0.8, "hsl(230 85% 35% / 0.7)");
-      g1.addColorStop(1, "hsl(220 80% 25% / 0.5)");
-      drawArc(cx, cy, rx, ry, arcStart, arcEnd, 55, 45, 0.2 * brightness, g1);
+      g1.addColorStop(0, "hsl(220 90% 30% / 0.4)");
+      g1.addColorStop(0.3, "hsl(230 95% 45% / 0.6)");
+      g1.addColorStop(0.5, "hsl(235 90% 50% / 0.7)");
+      g1.addColorStop(0.7, "hsl(230 95% 45% / 0.6)");
+      g1.addColorStop(1, "hsl(220 90% 30% / 0.4)");
+      drawArc(cx, cy, rx, ry, arcStart, arcEnd, 60, 50, 0.25 * brightness, g1);
 
+      // Mid glow — brighter blue
       const g2 = ctx.createLinearGradient(cx - rx, cy, cx + rx, cy);
-      g2.addColorStop(0, "hsl(215 95% 40%)");
-      g2.addColorStop(0.3, "hsl(230 85% 45%)");
-      g2.addColorStop(0.5, "hsl(245 75% 45%)");
-      g2.addColorStop(0.7, "hsl(230 85% 45%)");
-      g2.addColorStop(1, "hsl(215 95% 40%)");
-      drawArc(cx, cy, rx, ry, arcStart, arcEnd, 18, 22, 0.3 * brightness, g2);
+      g2.addColorStop(0, "hsl(215 100% 50%)");
+      g2.addColorStop(0.3, "hsl(225 95% 55%)");
+      g2.addColorStop(0.5, "hsl(235 90% 60%)");
+      g2.addColorStop(0.7, "hsl(225 95% 55%)");
+      g2.addColorStop(1, "hsl(215 100% 50%)");
+      drawArc(cx, cy, rx, ry, arcStart, arcEnd, 20, 25, 0.35 * brightness, g2);
 
+      // Core line — bright white-blue
       const core = ctx.createLinearGradient(cx - rx, cy, cx + rx, cy);
-      core.addColorStop(0, "hsl(210 100% 50% / 0.2)");
-      core.addColorStop(0.15, "hsl(220 95% 55% / 0.7)");
-      core.addColorStop(0.5, "hsl(235 85% 60% / 1)");
-      core.addColorStop(0.85, "hsl(220 95% 55% / 0.7)");
-      core.addColorStop(1, "hsl(210 100% 50% / 0.2)");
-      drawArc(cx, cy, rx, ry, arcStart, arcEnd, 3, 3, 0.8 * brightness, core);
-      drawArc(cx, cy, rx, ry, arcStart, arcEnd, 1.2, 0, 0.9 * brightness, core);
+      core.addColorStop(0, "hsl(210 100% 70% / 0.3)");
+      core.addColorStop(0.15, "hsl(220 100% 78% / 0.8)");
+      core.addColorStop(0.5, "hsl(225 100% 85% / 1)");
+      core.addColorStop(0.85, "hsl(220 100% 78% / 0.8)");
+      core.addColorStop(1, "hsl(210 100% 70% / 0.3)");
+      drawArc(cx, cy, rx, ry, arcStart, arcEnd, 3.5, 4, 0.85 * brightness, core);
+      drawArc(cx, cy, rx, ry, arcStart, arcEnd, 1.5, 0, 1.0 * brightness, "hsl(220 100% 90%)");
     };
 
     const drawSweepBeam = (
@@ -151,31 +154,23 @@ export const GlowingArc = () => {
       drawSweepBeam(cx, bigCy, bigRx, bigRy, bigStart, bigEnd, 0, 0.5);
       drawSweepBeam(cx, bigCy, bigRx, bigRy, bigStart, bigEnd, Math.PI * 0.8, 0.4);
 
-      // ===== TWO UPWARD ARCS — connected to big arc endpoints =====
-      // Big arc endpoints (where the big arc ends on left and right)
-      const bigLeftX = cx + Math.cos(bigEnd) * bigRx;
-      const bigLeftY = bigCy + Math.sin(bigEnd) * bigRy;
-      const bigRightX = cx + Math.cos(bigStart) * bigRx;
-      const bigRightY = bigCy + Math.sin(bigStart) * bigRy;
+      // ===== TWO UPWARD ARCS — at the bottom of the big arc =====
+      // The big arc's lowest point is at angle π/2: (cx, bigCy + bigRy)
+      const bigArcBottomY = bigCy + bigRy;
 
-      // Upward arcs center between those two points, at the same Y level
-      const upCx = (bigLeftX + bigRightX) / 2;
-      const upCy = (bigLeftY + bigRightY) / 2;
-      // Radius = half the distance between endpoints
-      const upHalfW = (bigRightX - bigLeftX) / 2;
+      // Both upward arcs centered at the bottom of the big arc
+      const upStart = Math.PI + 0.06;
+      const upEnd = Math.PI * 2 - 0.06;
 
-      const upStart = Math.PI + 0.08;
-      const upEnd = Math.PI * 2 - 0.08;
+      // Arc 1: smaller upward arc (tighter curve above button)
+      const arc1R = width * 0.12;
+      drawGlowArc(cx, bigArcBottomY, arc1R, arc1R, upStart, upEnd, 0.8);
+      drawSweepBeam(cx, bigArcBottomY, arc1R, arc1R, upStart, upEnd, 0.8, 0.7);
 
-      // Arc 1: tighter upward arc
-      const arc1R = upHalfW * 0.55;
-      drawGlowArc(upCx, upCy, arc1R, arc1R, upStart, upEnd, 0.7);
-      drawSweepBeam(upCx, upCy, arc1R, arc1R, upStart, upEnd, 0.8, 0.7);
-
-      // Arc 2: wider upward arc — matches big arc width
-      const arc2R = upHalfW;
-      drawGlowArc(upCx, upCy, arc2R, arc2R, upStart, upEnd, 0.55);
-      drawSweepBeam(upCx, upCy, arc2R, arc2R, upStart, upEnd, 2.0, 0.6);
+      // Arc 2: larger upward arc
+      const arc2R = width * 0.2;
+      drawGlowArc(cx, bigArcBottomY, arc2R, arc2R, upStart, upEnd, 0.65);
+      drawSweepBeam(cx, bigArcBottomY, arc2R, arc2R, upStart, upEnd, 2.0, 0.6);
 
       // === Top center sunrise glow (where big arc peaks) ===
       ctx.save();
@@ -216,7 +211,7 @@ export const GlowingArc = () => {
       // Pink flares on small arcs
       const sfa = Math.PI * 1.5 + Math.sin(time * 2.5) * 0.2;
       const sfx = cx + Math.cos(sfa) * arc1R;
-      const sfy = upCy + Math.sin(sfa) * arc1R;
+      const sfy = bigArcBottomY + Math.sin(sfa) * arc1R;
       ctx.save();
       ctx.globalAlpha = 0.4 + Math.sin(time * 4) * 0.15;
       ctx.filter = "blur(12px)";
