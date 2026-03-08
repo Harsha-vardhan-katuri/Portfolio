@@ -1,14 +1,23 @@
 import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const INTRO_NAME = "HARSHA VARDHAN KATURI";
+const INTRO_NAME = "HVK";
+
+const ease = [0.16, 1, 0.3, 1] as const;
+
+// Flying directions for each letter (like the GSAP reference)
+const letterDirections = [
+  { x: -300, y: -100 },
+  { x: 0, y: 400 },
+  { x: 300, y: -100 },
+];
 
 const IntroParticle = ({ style }: { style: React.CSSProperties }) => (
   <div className="absolute rounded-full" style={style} />
 );
 
 export const IntroAnimation = ({ onComplete }: { onComplete: () => void }) => {
-  const [stage, setStage] = useState<"letters" | "glow" | "line" | "dissolve" | "done">("letters");
+  const [stage, setStage] = useState<"ring" | "letters" | "glow" | "dissolve" | "done">("ring");
 
   const particles = useMemo(() =>
     Array.from({ length: 30 }, (_, i) => {
@@ -28,28 +37,18 @@ export const IntroAnimation = ({ onComplete }: { onComplete: () => void }) => {
       };
     }), []);
 
-  const letterDelay = 0.07;
-  const totalLetterTime = INTRO_NAME.length * letterDelay + 0.6;
-
   useEffect(() => {
     const timers: NodeJS.Timeout[] = [];
-
-    // Stage 2: glow after letters
-    timers.push(setTimeout(() => setStage("glow"), totalLetterTime * 1000));
-    // Stage 3: underline
-    timers.push(setTimeout(() => setStage("line"), (totalLetterTime + 1.5) * 1000));
-    // Stage 4: dissolve
-    timers.push(setTimeout(() => setStage("dissolve"), (totalLetterTime + 2.8) * 1000));
-    // Done
-    timers.push(setTimeout(() => {
-      setStage("done");
-      onComplete();
-    }, (totalLetterTime + 3.6) * 1000));
-
+    timers.push(setTimeout(() => setStage("letters"), 200));
+    timers.push(setTimeout(() => setStage("glow"), 2400));
+    timers.push(setTimeout(() => setStage("dissolve"), 3800));
+    timers.push(setTimeout(() => { setStage("done"); onComplete(); }, 4600));
     return () => timers.forEach(clearTimeout);
-  }, [onComplete, totalLetterTime]);
+  }, [onComplete]);
 
   if (stage === "done") return null;
+
+  const isDissolving = stage === "dissolve";
 
   return (
     <AnimatePresence>
@@ -57,8 +56,8 @@ export const IntroAnimation = ({ onComplete }: { onComplete: () => void }) => {
         key="intro"
         className="fixed inset-0 z-[9999] flex items-center justify-center"
         style={{ background: "#050816" }}
-        animate={stage === "dissolve" ? { opacity: 0 } : { opacity: 1 }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        animate={isDissolving ? { opacity: 0 } : { opacity: 1 }}
+        transition={{ duration: 0.8, ease }}
       >
         {/* Particles */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -91,73 +90,127 @@ export const IntroAnimation = ({ onComplete }: { onComplete: () => void }) => {
           />
         </div>
 
+        {/* Glowing Ring */}
+        <motion.div
+          className="absolute rounded-full"
+          style={{
+            width: "400px",
+            height: "400px",
+            border: "2px solid hsl(199 89% 48% / 0.6)",
+          }}
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={
+            isDissolving
+              ? { opacity: 0, scale: 1.5 }
+              : stage !== "ring"
+              ? { opacity: 1, scale: 1.2 }
+              : { opacity: 0, scale: 0.5 }
+          }
+          transition={{ duration: 2.5, ease }}
+        >
+          <div
+            className="absolute inset-0 rounded-full"
+            style={{
+              boxShadow: "0 0 60px hsl(199 89% 48% / 0.4), inset 0 0 40px hsl(199 89% 48% / 0.2)",
+            }}
+          />
+        </motion.div>
+
         {/* Text container */}
-        <div className="relative flex flex-col items-center">
+        <div className="relative flex flex-col items-center z-10">
           {/* Glow behind text */}
           <motion.div
-            className="absolute inset-0 pointer-events-none"
+            className="absolute pointer-events-none"
             initial={{ opacity: 0 }}
             animate={
-              stage === "glow" || stage === "line"
-                ? { opacity: [0.4, 0.7, 0.4] }
-                : stage === "dissolve"
+              stage === "glow"
+                ? { opacity: [0.4, 0.8, 0.4] }
+                : isDissolving
                 ? { opacity: 0 }
                 : { opacity: 0 }
             }
             transition={
-              stage === "glow" || stage === "line"
+              stage === "glow"
                 ? { duration: 2, repeat: Infinity, ease: "easeInOut" }
                 : { duration: 0.8 }
             }
             style={{
-              background: "radial-gradient(ellipse 120% 80% at 50% 50%, hsl(199 89% 48% / 0.25) 0%, hsl(260 60% 55% / 0.1) 40%, transparent 70%)",
-              filter: "blur(30px)",
-              inset: "-60px -80px",
+              background: "radial-gradient(ellipse 120% 100% at 50% 50%, hsl(199 89% 48% / 0.3) 0%, hsl(260 60% 55% / 0.15) 40%, transparent 70%)",
+              filter: "blur(40px)",
+              inset: "-80px -120px",
             }}
           />
 
-          {/* Letters */}
-          <div className="relative z-10 flex flex-wrap justify-center gap-x-0">
+          {/* Letters flying in from different directions */}
+          <div className="relative z-10 flex items-center gap-6 md:gap-10">
             {INTRO_NAME.split("").map((char, i) => (
               <motion.span
                 key={i}
-                initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+                initial={{
+                  opacity: 0,
+                  x: letterDirections[i]?.x || 0,
+                  y: letterDirections[i]?.y || 0,
+                  filter: "blur(15px)",
+                }}
                 animate={
-                  stage === "dissolve"
-                    ? { opacity: 0, filter: "blur(6px)", scale: 1.05 }
-                    : { opacity: 1, y: 0, filter: "blur(0px)" }
+                  isDissolving
+                    ? { opacity: 0, filter: "blur(8px)", scale: 1.1, y: -30 }
+                    : stage !== "ring"
+                    ? { opacity: 1, x: 0, y: 0, filter: "blur(0px)" }
+                    : {}
                 }
                 transition={{
-                  duration: stage === "dissolve" ? 0.8 : 0.6,
-                  delay: stage === "dissolve" ? 0 : i * letterDelay,
-                  ease: [0.22, 1, 0.36, 1],
+                  duration: isDissolving ? 0.8 : 2,
+                  delay: isDissolving ? 0 : 0.1 + i * 0.1,
+                  ease,
                 }}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold font-display text-foreground tracking-wider"
-                style={{ display: "inline-block", minWidth: char === " " ? "0.4em" : undefined }}
+                className="text-6xl md:text-7xl lg:text-8xl font-black font-display text-foreground"
+                style={{
+                  textShadow: stage === "glow" || stage === "dissolve"
+                    ? "0 0 30px hsl(199 89% 48% / 0.5), 0 0 60px hsl(199 89% 48% / 0.2)"
+                    : "none",
+                  letterSpacing: "0.1em",
+                }}
               >
-                {char === " " ? "\u00A0" : char}
+                {char}
               </motion.span>
             ))}
           </div>
+
+          {/* Full name subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={
+              isDissolving
+                ? { opacity: 0, y: -10 }
+                : stage === "glow"
+                ? { opacity: 1, y: 0 }
+                : { opacity: 0, y: 20 }
+            }
+            transition={{ duration: 0.8, delay: isDissolving ? 0 : 0.3, ease }}
+            className="mt-6 text-lg md:text-xl tracking-[0.3em] uppercase text-muted-foreground font-light"
+          >
+            Harsha Vardhan Katuri
+          </motion.p>
 
           {/* Underline energy line */}
           <motion.div
             className="relative z-10 mt-4 h-[2px] rounded-full"
             initial={{ width: 0, opacity: 0 }}
             animate={
-              stage === "line"
-                ? { width: 200, opacity: 1 }
-                : stage === "dissolve"
-                ? { width: 200, opacity: 0 }
+              stage === "glow"
+                ? { width: 250, opacity: 1 }
+                : isDissolving
+                ? { width: 250, opacity: 0 }
                 : { width: 0, opacity: 0 }
             }
             transition={{
-              duration: stage === "dissolve" ? 0.6 : 1,
-              ease: [0.22, 1, 0.36, 1],
+              duration: isDissolving ? 0.6 : 1,
+              ease,
             }}
             style={{
               background: "linear-gradient(90deg, transparent, hsl(199 89% 48%), hsl(260 60% 55%), transparent)",
-              boxShadow: "0 0 12px hsl(199 89% 48% / 0.6), 0 0 30px hsl(199 89% 48% / 0.3)",
+              boxShadow: "0 0 15px hsl(199 89% 48% / 0.7), 0 0 40px hsl(199 89% 48% / 0.3)",
             }}
           />
         </div>
