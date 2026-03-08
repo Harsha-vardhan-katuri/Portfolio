@@ -43,31 +43,51 @@ export const Navigation = () => {
 
   return (
     <>
-      <nav className={`hidden md:block fixed top-6 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'top-4' : 'top-6'}`}>
-        <div className="flex justify-center">
-          <div className="flex gap-1 glass-card px-3 py-2 !rounded-full !shadow-lg !shadow-black/30">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  activeSection === item.id
-                    ? "bg-primary text-primary-foreground shadow-lg"
-                    : "text-foreground/50 hover:text-foreground/80 hover:bg-white/5"
-                }`}
-                style={activeSection === item.id ? { boxShadow: "0 0 20px hsl(199 89% 48% / 0.3)" } : {}}
-              >
-                {item.label}
-              </button>
-            ))}
+      {/* Desktop Navigation - Full width bar like ArgusVPN */}
+      <nav className={`hidden md:block fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-background/60 backdrop-blur-xl border-b border-foreground/5' : ''}`}>
+        <div className="container mx-auto px-6">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <button
+              onClick={() => scrollToSection("home")}
+              className="text-xl font-bold font-display tracking-wider text-foreground"
+            >
+              HVK
+            </button>
+
+            {/* Center nav links */}
+            <div className="flex items-center gap-1">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg ${
+                    activeSection === item.id
+                      ? "text-foreground"
+                      : "text-foreground/40 hover:text-foreground/70"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Right side - CTA */}
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="px-5 py-2 text-sm font-semibold bg-foreground text-background rounded-full hover:bg-foreground/90 transition-colors"
+            >
+              Contact Me
+            </button>
           </div>
         </div>
       </nav>
 
-      <nav className="md:hidden fixed top-0 left-0 right-0 z-50 glass-card !rounded-none">
+      {/* Mobile Navigation */}
+      <nav className="md:hidden fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-foreground/5">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
-            <button onClick={() => scrollToSection("home")} className="text-xl font-bold font-display gradient-text-shimmer">
+            <button onClick={() => scrollToSection("home")} className="text-xl font-bold font-display text-foreground tracking-wider">
               HVK
             </button>
             <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="p-2">
@@ -81,7 +101,7 @@ export const Navigation = () => {
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
                   className={`block w-full text-left py-2.5 text-sm transition-colors ${
-                    activeSection === item.id ? "text-primary font-medium" : "text-foreground/60 hover:text-primary"
+                    activeSection === item.id ? "text-foreground font-medium" : "text-foreground/40 hover:text-foreground/70"
                   }`}
                 >
                   {item.label}
