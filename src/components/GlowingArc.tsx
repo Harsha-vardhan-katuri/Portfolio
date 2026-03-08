@@ -80,7 +80,7 @@ export const GlowingArc = () => {
       glowGrad2.addColorStop(0.5, "hsl(270 70% 55%)");
       glowGrad2.addColorStop(0.7, "hsl(250 80% 55%)");
       glowGrad2.addColorStop(1, "hsl(220 90% 50%)");
-      drawArcSegment(cx, cy, rx, ry, tilt, arcStart, arcEnd, 20, 25, 0.25, glowGrad2);
+      drawArcSegment(cx, cy, rx, ry, tilt, arcStart, arcEnd, 24, 28, 0.4, glowGrad2);
 
       // === Core arc line ===
       const coreGrad = ctx.createLinearGradient(cx - rx, cy, cx + rx, cy);
