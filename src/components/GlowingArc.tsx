@@ -54,15 +54,15 @@ export const GlowingArc = () => {
       time += 0.004;
 
       const cx = width / 2;
-      // Center of ellipse is pushed down so only the top arc is visible
-      const cy = height * 0.72;
+      // Center is pushed UP so only the bottom arc (facing down) is visible
+      const cy = height * 0.08;
       const rx = Math.min(width * 0.52, 700);
-      const ry = rx * 0.85;
-      const tilt = 0; // no tilt, just a wide ellipse
+      const ry = rx * 0.7;
+      const tilt = 0;
 
-      // Only draw the upper arc portion (from ~PI to ~2PI = the top half)
-      const arcStart = Math.PI + 0.15;
-      const arcEnd = Math.PI * 2 - 0.15;
+      // Draw the lower arc portion (0 to PI = the bottom half, facing down)
+      const arcStart = 0.15;
+      const arcEnd = Math.PI - 0.15;
 
       // === Outer diffuse glow (widest, most blurred) ===
       const glowGrad1 = ctx.createLinearGradient(cx - rx, cy, cx + rx, cy);
