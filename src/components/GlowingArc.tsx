@@ -153,20 +153,20 @@ export const GlowingArc = () => {
       drawSweepBeam(cx, bigCy, bigRx, bigRy, bigStart, bigEnd, Math.PI * 0.8, 0.4);
 
       // ===== TWO SMALLER ARCS — facing UP, overlapping in center like ArgusVPN =====
-      const smallRx = bigRx * 0.32;
-      const smallRy = bigRy * 0.22;
-      const smallStart = Math.PI + 0.15;
-      const smallEnd = Math.PI * 2 - 0.15;
+      const smallRx = bigRx * 0.38;
+      const smallRy = bigRy * 0.25;
+      const smallStart = Math.PI + 0.12;
+      const smallEnd = Math.PI * 2 - 0.12;
 
-      // Left upward arc — centered more towards middle, overlapping
-      const leftCx = cx - smallRx * 0.35;
-      const leftCy = height * 0.42;
+      // Left upward arc — heavily overlapping in center
+      const leftCx = cx - smallRx * 0.18;
+      const leftCy = height * 0.40;
       drawGlowArc(leftCx, leftCy, smallRx, smallRy, smallStart, smallEnd, 0.65);
       drawSweepBeam(leftCx, leftCy, smallRx, smallRy, smallStart, smallEnd, 0.8, 0.7);
 
-      // Right upward arc — overlapping with left
-      const rightCx = cx + smallRx * 0.35;
-      const rightCy = height * 0.42;
+      // Right upward arc — heavily overlapping with left
+      const rightCx = cx + smallRx * 0.18;
+      const rightCy = height * 0.40;
       drawGlowArc(rightCx, rightCy, smallRx, smallRy, smallStart, smallEnd, 0.65);
       drawSweepBeam(rightCx, rightCy, smallRx, smallRy, smallStart, smallEnd, 2.0, 0.65);
 
