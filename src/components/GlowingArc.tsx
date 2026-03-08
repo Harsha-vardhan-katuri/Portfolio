@@ -152,23 +152,26 @@ export const GlowingArc = () => {
       drawSweepBeam(cx, bigCy, bigRx, bigRy, bigStart, bigEnd, 0, 0.5);
       drawSweepBeam(cx, bigCy, bigRx, bigRy, bigStart, bigEnd, Math.PI * 0.8, 0.4);
 
-      // ===== TWO SMALLER ARCS — facing UP, overlapping in center like ArgusVPN =====
-      const smallRx = bigRx * 0.38;
-      const smallRy = bigRy * 0.25;
-      const smallStart = Math.PI + 0.12;
-      const smallEnd = Math.PI * 2 - 0.12;
+      // ===== TWO UPWARD ARCS — centered on "Get In Touch" button area =====
+      // Both arcs share the same center X (page center) and start/end symmetrically
+      // Their base (bottom) is near the Get In Touch button (~60% down the page)
+      const btnY = height * 0.58; // approximate Y of Get In Touch button
 
-      // Left upward arc — heavily overlapping in center
-      const leftCx = cx - smallRx * 0.18;
-      const leftCy = height * 0.40;
-      drawGlowArc(leftCx, leftCy, smallRx, smallRy, smallStart, smallEnd, 0.65);
-      drawSweepBeam(leftCx, leftCy, smallRx, smallRy, smallStart, smallEnd, 0.8, 0.7);
+      // Both arcs span roughly the same width as the button + small padding
+      const upArcRx = width * 0.14; // horizontal radius ~button width + 1cm each side
+      const upStart = Math.PI + 0.1;
+      const upEnd = Math.PI * 2 - 0.1;
 
-      // Right upward arc — heavily overlapping with left
-      const rightCx = cx + smallRx * 0.18;
-      const rightCy = height * 0.40;
-      drawGlowArc(rightCx, rightCy, smallRx, smallRy, smallStart, smallEnd, 0.65);
-      drawSweepBeam(rightCx, rightCy, smallRx, smallRy, smallStart, smallEnd, 2.0, 0.65);
+      // First smaller arc (radius 3 feeling — tighter, closer to button)
+      const arc1Ry = height * 0.08;
+      drawGlowArc(cx, btnY, upArcRx, arc1Ry, upStart, upEnd, 0.7);
+      drawSweepBeam(cx, btnY, upArcRx, arc1Ry, upStart, upEnd, 0.8, 0.7);
+
+      // Second larger arc (radius 5 feeling — taller, wider)
+      const arc2Rx = upArcRx * 1.35;
+      const arc2Ry = height * 0.16;
+      drawGlowArc(cx, btnY, arc2Rx, arc2Ry, upStart, upEnd, 0.55);
+      drawSweepBeam(cx, btnY, arc2Rx, arc2Ry, upStart, upEnd, 2.0, 0.6);
 
       // === Top center sunrise glow (where big arc peaks) ===
       ctx.save();
