@@ -68,12 +68,12 @@ export default function Navigation({ activeSection = "home", setActiveSection }:
         }
 
         .nav-button.active {
-          background: #050a30 !important;
-          color: #ffffff !important;
+          background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(30, 64, 175, 0.3)) !important;
+          color: #60a5fa !important;
           font-weight: 900;
           transform: translateY(-2px);
-          box-shadow: 0 0 30px rgba(5, 10, 48, 0.8), 0 0 60px rgba(5, 10, 48, 0.6), inset 0 0 20px rgba(168, 85, 247, 0.3);
-          border: 2px solid #050a30;
+          box-shadow: 0 0 30px rgba(59, 130, 246, 0.6), 0 0 60px rgba(59, 130, 246, 0.4), inset 0 0 20px rgba(59, 130, 246, 0.2);
+          border: 2px solid rgba(59, 130, 246, 0.5);
           padding: 6px 20px !important;
         }
         
