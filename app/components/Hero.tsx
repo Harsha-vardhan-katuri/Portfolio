@@ -13,6 +13,8 @@ import Experience from "./Experience"
 import Navigation from "./Navigation"
 import SimpleBackground from "./animations/SimpleBackground"
 import GlowingRingAnimation from "./animations/GlowingRingAnimation"
+import { FuturisticGridBackground } from "@/components/FuturisticGridBackground"
+import { NeuralNetworkBackground } from "@/components/NeuralNetworkBackground"
 
 export default function Hero() {
   const [activeSection, setActiveSection] = useState("home")
@@ -106,8 +108,9 @@ export default function Hero() {
 
       <div className="relative z-10">
         {/* Home Section */}
-        <div id="home" className="min-h-screen flex items-center justify-center pt-16 md:pt-20 px-3 md:px-4">
-          <div className="max-w-6xl mx-auto w-full">
+        <div id="home" className="relative min-h-screen flex items-center justify-center pt-16 md:pt-20 px-3 md:px-4">
+          <FuturisticGridBackground />
+          <div className="max-w-6xl mx-auto w-full relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-8 md:gap-12 items-start md:pt-12">
               {/* Left Column - Photo with info */}
               <motion.div
@@ -289,8 +292,9 @@ export default function Hero() {
         </div>
 
         {/* About Section */}
-        <div id="about" className="min-h-screen flex items-center justify-center pt-16 md:pt-20 px-3 md:px-4">
-          <div className="flex flex-col items-center text-center space-y-4 md:space-y-8 max-w-4xl mx-auto">
+        <div id="about" className="relative min-h-screen flex items-center justify-center pt-16 md:pt-20 px-3 md:px-4">
+          <FuturisticGridBackground />
+          <div className="flex flex-col items-center text-center space-y-4 md:space-y-8 max-w-4xl mx-auto relative z-10">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-8 text-gradient">About Me</h2>
 
             <motion.div
@@ -325,33 +329,49 @@ export default function Hero() {
         </div>
 
         {/* Experience Section */}
-        <div id="experience" className="min-h-screen flex flex-col justify-center pt-12 md:pt-16 px-3 md:px-4">
-          <Experience />
+        <div id="experience" className="relative min-h-screen flex flex-col justify-center pt-12 md:pt-16 px-3 md:px-4">
+          <FuturisticGridBackground />
+          <div className="relative z-10">
+            <Experience />
+          </div>
         </div>
 
         {/* Skills Section */}
-        <div id="skills" className="min-h-screen flex flex-col justify-center pt-12 md:pt-16 px-3 md:px-4">
-          <Skills />
+        <div id="skills" className="relative min-h-screen flex flex-col justify-center pt-12 md:pt-16 px-3 md:px-4">
+          <FuturisticGridBackground />
+          <div className="relative z-10">
+            <Skills />
+          </div>
         </div>
 
         {/* Projects Section */}
-        <div id="projects" className="min-h-screen flex flex-col justify-center pt-12 md:pt-16 px-3 md:px-4">
-          <Projects />
+        <div id="projects" className="relative min-h-screen flex flex-col justify-center pt-12 md:pt-16 px-3 md:px-4">
+          <NeuralNetworkBackground />
+          <div className="relative z-10">
+            <Projects />
+          </div>
         </div>
 
         {/* Education Section */}
-        <div id="education" className="min-h-screen flex flex-col justify-center pt-12 md:pt-16 px-3 md:px-4">
-          <Education />
+        <div id="education" className="relative min-h-screen flex flex-col justify-center pt-12 md:pt-16 px-3 md:px-4">
+          <NeuralNetworkBackground />
+          <div className="relative z-10">
+            <Education />
+          </div>
         </div>
 
         {/* Certifications Section */}
-        <div id="certifications" className="min-h-screen flex flex-col justify-center pt-12 md:pt-16 px-3 md:px-4">
-          <Certifications />
+        <div id="certifications" className="relative min-h-screen flex flex-col justify-center pt-12 md:pt-16 px-3 md:px-4">
+          <NeuralNetworkBackground />
+          <div className="relative z-10">
+            <Certifications />
+          </div>
         </div>
 
         {/* Hire Me Section */}
-        <div id="hire" className="min-h-screen flex items-center justify-center pt-16 md:pt-20 px-3 md:px-4">
-          <div className="flex flex-col items-center text-center space-y-4 md:space-y-8 max-w-4xl mx-auto">
+        <div id="hire" className="relative min-h-screen flex items-center justify-center pt-16 md:pt-20 px-3 md:px-4">
+          <NeuralNetworkBackground />
+          <div className="flex flex-col items-center text-center space-y-4 md:space-y-8 max-w-4xl mx-auto relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
