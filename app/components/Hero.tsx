@@ -14,6 +14,7 @@ import Navigation from "./Navigation"
 import SimpleBackground from "./animations/SimpleBackground"
 import GlowingRingAnimation from "./animations/GlowingRingAnimation"
 import { FuturisticGridBackground } from "@/components/FuturisticGridBackground"
+import { NeuralNetworkBackground } from "@/components/NeuralNetworkBackground"
 
 export default function Hero() {
   const [activeSection, setActiveSection] = useState("home")
@@ -344,23 +345,33 @@ export default function Hero() {
         </div>
 
         {/* Projects Section */}
-        <div id="projects" className="min-h-screen flex flex-col justify-center pt-12 md:pt-16 px-3 md:px-4">
-          <Projects />
+        <div id="projects" className="relative min-h-screen flex flex-col justify-center pt-12 md:pt-16 px-3 md:px-4">
+          <NeuralNetworkBackground />
+          <div className="relative z-10">
+            <Projects />
+          </div>
         </div>
 
         {/* Education Section */}
-        <div id="education" className="min-h-screen flex flex-col justify-center pt-12 md:pt-16 px-3 md:px-4">
-          <Education />
+        <div id="education" className="relative min-h-screen flex flex-col justify-center pt-12 md:pt-16 px-3 md:px-4">
+          <NeuralNetworkBackground />
+          <div className="relative z-10">
+            <Education />
+          </div>
         </div>
 
         {/* Certifications Section */}
-        <div id="certifications" className="min-h-screen flex flex-col justify-center pt-12 md:pt-16 px-3 md:px-4">
-          <Certifications />
+        <div id="certifications" className="relative min-h-screen flex flex-col justify-center pt-12 md:pt-16 px-3 md:px-4">
+          <NeuralNetworkBackground />
+          <div className="relative z-10">
+            <Certifications />
+          </div>
         </div>
 
         {/* Hire Me Section */}
-        <div id="hire" className="min-h-screen flex items-center justify-center pt-16 md:pt-20 px-3 md:px-4">
-          <div className="flex flex-col items-center text-center space-y-4 md:space-y-8 max-w-4xl mx-auto">
+        <div id="hire" className="relative min-h-screen flex items-center justify-center pt-16 md:pt-20 px-3 md:px-4">
+          <NeuralNetworkBackground />
+          <div className="flex flex-col items-center text-center space-y-4 md:space-y-8 max-w-4xl mx-auto relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
