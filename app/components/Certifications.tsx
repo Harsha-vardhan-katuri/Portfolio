@@ -34,9 +34,9 @@ export default function Certifications() {
   ]
 
   return (
-    <div className="py-8">
+    <div id="certifications" className="py-8">
       <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">Certifications & Achievements</h2>
+        <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-purple-600">Certifications & Achievements</h2>
         <p className="text-slate-300 font-medium mt-2">
           Recognition and certifications that validate my expertise and academic excellence
         </p>
