@@ -1,103 +1,112 @@
 'use client'
 
 import { Canvas, useFrame } from '@react-three/fiber'
-import { PerspectiveCamera, OrbitControls } from '@react-three/drei'
+import { PerspectiveCamera } from '@react-three/drei'
 import React, { useEffect, useRef, useState } from 'react'
 import * as THREE from 'three'
 
 interface Particle {
   position: THREE.Vector3
   velocity: THREE.Vector3
-  size: number
+  baseColor: THREE.Color
   brightness: number
 }
 
-interface Connection {
+interface Edge {
   start: number
   end: number
-  progress: number
+  pulsePhase: number
 }
 
-const NeuralNetworkScene = () => {
+const TechMeshScene = () => {
   const particlesRef = useRef<Particle[]>([])
-  const connectionsRef = useRef<Connection[]>([])
+  const edgesRef = useRef<Edge[]>([])
   const meshRef = useRef<THREE.Points>(null)
   const linesRef = useRef<THREE.LineSegments>(null)
   const cameraRef = useRef<THREE.PerspectiveCamera>(null)
-  const frameCountRef = useRef(0)
+  const timeRef = useRef(0)
 
   useEffect(() => {
-    // Create neural network particles (nodes)
+    // Create minimalistic tech mesh particles
     const particles: Particle[] = []
-    const particleCount = 1500
+    const particleCount = 2000
 
+    // Create particles in organized clusters for mesh appearance
     for (let i = 0; i < particleCount; i++) {
-      const x = (Math.random() - 0.5) * 40
-      const y = (Math.random() - 0.5) * 40
-      const z = (Math.random() - 0.5) * 40
+      const angle = (i / particleCount) * Math.PI * 2
+      const radius = 10 + Math.random() * 15
+      const height = (Math.random() - 0.5) * 30
+
+      const x = Math.cos(angle) * radius + (Math.random() - 0.5) * 3
+      const y = height + Math.sin(timeRef.current * 0.0005 + i * 0.01) * 2
+      const z = Math.sin(angle) * radius + (Math.random() - 0.5) * 3
 
       particles.push({
         position: new THREE.Vector3(x, y, z),
         velocity: new THREE.Vector3(
-          (Math.random() - 0.5) * 0.08,
-          (Math.random() - 0.5) * 0.08,
-          (Math.random() - 0.5) * 0.08
+          (Math.random() - 0.5) * 0.02,
+          (Math.random() - 0.5) * 0.01,
+          (Math.random() - 0.5) * 0.02
         ),
-        size: Math.random() * 0.4 + 0.2,
-        brightness: Math.random() * 0.7 + 0.3,
+        baseColor: new THREE.Color(0x00d9ff),
+        brightness: Math.random() * 0.6 + 0.2,
       })
     }
     particlesRef.current = particles
 
-    // Create connections between nearby particles
-    const connections: Connection[] = []
-    const connectionDistance = 12
+    // Create edges between nearby particles (minimal connections for clean look)
+    const edges: Edge[] = []
+    const edgeDistance = 8
 
     for (let i = 0; i < particleCount; i++) {
-      for (let j = i + 1; j < Math.min(i + 40, particleCount); j++) {
+      for (let j = i + 1; j < Math.min(i + 25, particleCount); j++) {
         const dist = particles[i].position.distanceTo(particles[j].position)
-        if (dist < connectionDistance) {
-          connections.push({
+        if (dist < edgeDistance) {
+          edges.push({
             start: i,
             end: j,
-            progress: Math.random(),
+            pulsePhase: Math.random() * Math.PI * 2,
           })
         }
       }
     }
-    connectionsRef.current = connections
+    edgesRef.current = edges
   }, [])
 
   useFrame((state) => {
-    frameCountRef.current++
+    timeRef.current += 1
 
-    // Update particle positions
-    particlesRef.current.forEach((particle) => {
+    // Smooth, minimal particle movement
+    particlesRef.current.forEach((particle, i) => {
       particle.position.add(particle.velocity)
 
-      // Boundary wrapping
-      if (particle.position.x > 20) particle.position.x = -20
-      if (particle.position.x < -20) particle.position.x = 20
-      if (particle.position.y > 20) particle.position.y = -20
-      if (particle.position.y < -20) particle.position.y = 20
-      if (particle.position.z > 20) particle.position.z = -20
-      if (particle.position.z < -20) particle.position.z = 20
+      // Gentle boundary wrapping
+      if (particle.position.x > 25) particle.position.x = -25
+      if (particle.position.x < -25) particle.position.x = 25
+      if (particle.position.y > 15) particle.position.y = -15
+      if (particle.position.y < -15) particle.position.y = 15
+      if (particle.position.z > 25) particle.position.z = -25
+      if (particle.position.z < -25) particle.position.z = 25
 
-      // Pulsing brightness
-      particle.brightness =
-        0.3 +
-        0.7 * (0.5 + 0.5 * Math.sin(frameCountRef.current * 0.01 + particle.position.x))
+      // Subtle pulsing effect
+      particle.brightness = 0.2 + 0.6 * (0.5 + 0.5 * Math.sin(timeRef.current * 0.002 + i * 0.05))
     })
 
-    // Update particles geometry
+    // Update particle geometry with cyan/blue gradient
     if (meshRef.current) {
       const positionAttribute = meshRef.current.geometry.getAttribute('position')
       const colorAttribute = meshRef.current.geometry.getAttribute('color')
 
       particlesRef.current.forEach((particle, i) => {
         positionAttribute.setXYZ(i, particle.position.x, particle.position.y, particle.position.z)
+
+        // Neon blue to cyan gradient
         const color = new THREE.Color()
-        color.setHSL(0.55 + particle.brightness * 0.1, 1, 0.4 + particle.brightness * 0.2)
+        const hue = 0.52 + particle.brightness * 0.08 // Cyan to blue range
+        const saturation = 1
+        const lightness = 0.35 + particle.brightness * 0.25
+
+        color.setHSL(hue, saturation, lightness)
         colorAttribute.setXYZ(i, color.r, color.g, color.b)
       })
 
@@ -105,135 +114,102 @@ const NeuralNetworkScene = () => {
       colorAttribute.needsUpdate = true
     }
 
-    // Update connections
+    // Update light pulses across edges
     if (linesRef.current) {
-      connectionsRef.current.forEach((conn, idx) => {
-        conn.progress = (conn.progress + 0.002) % 1
+      const linePositions = linesRef.current.geometry.getAttribute('position')
+      const lineColors = linesRef.current.geometry.getAttribute('color')
+
+      edgesRef.current.forEach((edge, idx) => {
+        const start = particlesRef.current[edge.start]
+        const end = particlesRef.current[edge.end]
+
+        const baseIdx = idx * 2
+
+        linePositions.setXYZ(baseIdx, start.position.x, start.position.y, start.position.z)
+        linePositions.setXYZ(baseIdx + 1, end.position.x, end.position.y, end.position.z)
+
+        // Animated light pulse traveling along edges
+        const pulse = Math.sin(timeRef.current * 0.005 + edge.pulsePhase)
+        const pulseIntensity = Math.max(0, pulse) * 0.8
+
+        const edgeColor = new THREE.Color()
+        edgeColor.setHSL(0.54, 1, 0.25 + pulseIntensity * 0.4)
+
+        lineColors.setXYZ(baseIdx, edgeColor.r, edgeColor.g, edgeColor.b)
+        lineColors.setXYZ(baseIdx + 1, edgeColor.r, edgeColor.g, edgeColor.b)
       })
 
-      const linePositions: number[] = []
-      const lineColors: number[] = []
-
-      connectionsRef.current.forEach((conn) => {
-        const start = particlesRef.current[conn.start].position
-        const end = particlesRef.current[conn.end].position
-
-        linePositions.push(start.x, start.y, start.z)
-        linePositions.push(end.x, end.y, end.z)
-
-        const alpha = Math.sin(conn.progress * Math.PI) * 0.6
-        const color = new THREE.Color().setHSL(0.55, 1, 0.5)
-        lineColors.push(color.r, color.g, color.b)
-        lineColors.push(color.r, color.g, color.b)
-      })
-
-      const posAttr = linesRef.current.geometry.getAttribute('position')
-      const colAttr = linesRef.current.geometry.getAttribute('color')
-
-      if (posAttr instanceof THREE.BufferAttribute) {
-        posAttr.array = new Float32Array(linePositions)
-        posAttr.needsUpdate = true
-      }
-
-      if (colAttr instanceof THREE.BufferAttribute) {
-        colAttr.array = new Float32Array(lineColors)
-        colAttr.needsUpdate = true
-      }
+      linePositions.needsUpdate = true
+      lineColors.needsUpdate = true
     }
 
     // Cinematic camera drift
     if (cameraRef.current) {
-      const driftX = Math.sin(frameCountRef.current * 0.0005) * 8
-      const driftY = Math.cos(frameCountRef.current * 0.0003) * 6
-      const driftZ = 25 + Math.sin(frameCountRef.current * 0.0004) * 5
-
-      cameraRef.current.position.lerp(
-        new THREE.Vector3(driftX, driftY, driftZ),
-        0.05
-      )
+      cameraRef.current.position.x = Math.sin(timeRef.current * 0.0001) * 5
+      cameraRef.current.position.z = 30 + Math.cos(timeRef.current * 0.00008) * 3
       cameraRef.current.lookAt(0, 0, 0)
     }
   })
 
   return (
     <>
-      <PerspectiveCamera ref={cameraRef} position={[0, 0, 25]} fov={60} near={0.1} far={1000} />
-      <ambientLight intensity={0.4} />
-      <pointLight position={[10, 10, 10]} intensity={1.2} color="#3b82f6" />
-      <pointLight position={[-10, -10, 10]} intensity={0.8} color="#06b6d4" />
+      <PerspectiveCamera ref={cameraRef} position={[0, 0, 30]} fov={75} near={0.1} far={1000} makeDefault />
 
-      {/* Particles */}
+      {/* Volumetric lighting - ambient + directional */}
+      <ambientLight intensity={0.15} color={0x00d9ff} />
+      <directionalLight position={[10, 10, 10]} intensity={0.4} color={0x0099ff} />
+      <pointLight position={[-15, -5, -15]} intensity={0.3} color={0x00d9ff} />
+
+      {/* Particles - nodes of the mesh */}
       <points ref={meshRef}>
         <bufferGeometry>
           <bufferAttribute
             attach="attributes-position"
-            count={1500}
-            array={new Float32Array(1500 * 3).map(() => (Math.random() - 0.5) * 40)}
+            count={2000}
+            array={new Float32Array(2000 * 3)}
             itemSize={3}
           />
           <bufferAttribute
             attach="attributes-color"
-            count={1500}
-            array={new Float32Array(1500 * 3).map(() => Math.random())}
+            count={2000}
+            array={new Float32Array(2000 * 3).fill(0.5)}
             itemSize={3}
           />
         </bufferGeometry>
-        <pointsMaterial
-          size={0.8}
-          sizeAttenuation={true}
-          vertexColors={true}
-          transparent={true}
-          opacity={0.8}
-          fog={false}
-        />
+        <pointsMaterial size={0.3} sizeAttenuation vertexColors transparent opacity={0.8} />
       </points>
 
-      {/* Connections */}
+      {/* Connection lines with light pulses */}
       <lineSegments ref={linesRef}>
         <bufferGeometry>
           <bufferAttribute
             attach="attributes-position"
-            count={0}
-            array={new Float32Array(0)}
+            count={edgesRef.current.length * 2}
+            array={new Float32Array(Math.max(edgesRef.current.length * 2, 1) * 3)}
             itemSize={3}
           />
           <bufferAttribute
             attach="attributes-color"
-            count={0}
-            array={new Float32Array(0)}
+            count={edgesRef.current.length * 2}
+            array={new Float32Array(Math.max(edgesRef.current.length * 2, 1) * 3).fill(0.4)}
             itemSize={3}
           />
         </bufferGeometry>
-        <lineBasicMaterial
-          vertexColors={true}
-          transparent={true}
-          opacity={0.4}
-          fog={false}
-          linewidth={1}
-        />
+        <lineBasicMaterial vertexColors transparent opacity={0.5} linewidth={1} />
       </lineSegments>
 
-      {/* Fog for depth */}
-      <fog attach="fog" args={['#0a0a1a', 10, 80]} />
+      {/* Fog for depth effect */}
+      <fog attach="fog" args={[0x000000, 10, 60]} />
     </>
   )
 }
 
 export const NeuralNetworkBackground = () => {
   return (
-    <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
-      <Canvas
-        style={{
-          width: '100%',
-          height: '100%',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-        }}
-        dpr={[1, 2]}
-        performance={{ min: 0.5 }}
-      >
-        <NeuralNetworkScene />
+    <div className="absolute inset-0 w-full h-full">
+      <Canvas gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}>
+        <color attach="background" args={[0x000000]} />
+        <TechMeshScene />
       </Canvas>
     </div>
   )
