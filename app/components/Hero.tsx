@@ -14,7 +14,7 @@ import Navigation from "./Navigation"
 import SimpleBackground from "./animations/SimpleBackground"
 import GlowingRingAnimation from "./animations/GlowingRingAnimation"
 import { ElegantWaveBackground } from "@/components/ElegantWaveBackground"
-import { NeuralNetworkBackground } from "@/components/NeuralNetworkBackground"
+import { EnergyArcsBackground } from "@/components/EnergyArcsBackground"
 
 export default function Hero() {
   const [activeSection, setActiveSection] = useState("home")
@@ -346,7 +346,7 @@ export default function Hero() {
 
         {/* Projects Section */}
         <div id="projects" className="relative min-h-screen flex flex-col justify-center pt-12 md:pt-16 px-3 md:px-4">
-          <NeuralNetworkBackground />
+          <EnergyArcsBackground />
           <div className="relative z-10">
             <Projects />
           </div>
@@ -354,7 +354,7 @@ export default function Hero() {
 
         {/* Education Section */}
         <div id="education" className="relative min-h-screen flex flex-col justify-center pt-12 md:pt-16 px-3 md:px-4">
-          <NeuralNetworkBackground />
+          <EnergyArcsBackground />
           <div className="relative z-10">
             <Education />
           </div>
@@ -362,7 +362,7 @@ export default function Hero() {
 
         {/* Certifications Section */}
         <div id="certifications" className="relative min-h-screen flex flex-col justify-center pt-12 md:pt-16 px-3 md:px-4">
-          <NeuralNetworkBackground />
+          <EnergyArcsBackground />
           <div className="relative z-10">
             <Certifications />
           </div>
@@ -370,7 +370,7 @@ export default function Hero() {
 
         {/* Hire Me Section */}
         <div id="hire" className="relative min-h-screen flex items-center justify-center pt-16 md:pt-20 px-3 md:px-4">
-          <NeuralNetworkBackground />
+          <EnergyArcsBackground />
           <div className="flex flex-col items-center text-center space-y-4 md:space-y-8 max-w-4xl mx-auto relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
