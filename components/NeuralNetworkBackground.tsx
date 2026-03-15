@@ -26,7 +26,7 @@ const TechMeshScene = () => {
 
   // Memoized particle initialization for fast startup
   const { particleCount, initialPositions, initialVelocities, edges } = useMemo(() => {
-    const count = 1200 // Reduced from 2000 for faster loading
+    const count = 360 // Reduced 70% (from 1200 to 360) for smooth 60fps performance
     const positions = new Float32Array(count * 3)
     const velocities = new Float32Array(count * 3)
     const edgeList: number[] = []
@@ -42,15 +42,15 @@ const TechMeshScene = () => {
       positions[i * 3 + 2] = Math.sin(theta) * Math.sin(phi) * r
 
       // Non-zero velocities for proper animation
-      velocities[i * 3] = (Math.random() - 0.5) * 0.015
-      velocities[i * 3 + 1] = (Math.random() - 0.5) * 0.015
-      velocities[i * 3 + 2] = (Math.random() - 0.5) * 0.015
+      velocities[i * 3] = (Math.random() - 0.5) * 0.02
+      velocities[i * 3 + 1] = (Math.random() - 0.5) * 0.02
+      velocities[i * 3 + 2] = (Math.random() - 0.5) * 0.02
     }
 
-    // Create edges between nearby particles
-    const edgeDistance = 6.5
+    // Create edges between nearby particles - optimized for fewer particles
+    const edgeDistance = 7
     for (let i = 0; i < count; i++) {
-      for (let j = i + 1; j < Math.min(i + 15, count); j++) {
+      for (let j = i + 1; j < Math.min(i + 8, count); j++) {
         const dx = positions[i * 3] - positions[j * 3]
         const dy = positions[i * 3 + 1] - positions[j * 3 + 1]
         const dz = positions[i * 3 + 2] - positions[j * 3 + 2]
@@ -83,37 +83,23 @@ const TechMeshScene = () => {
     if (meshRef.current && particlesRef.current && particleVelocityRef.current) {
       const positions = particlesRef.current
       const velocities = particleVelocityRef.current
+      const BOUNDS = 25
 
-      // Update particle positions with velocity
+      // Update particle positions with velocity - optimized loop
       for (let i = 0; i < particleCount * 3; i += 3) {
         positions[i] += velocities[i]
         positions[i + 1] += velocities[i + 1]
         positions[i + 2] += velocities[i + 2]
 
-        // Boundary wrapping for continuous motion
-        if (positions[i] > 25) {
-          positions[i] = -25
-          velocities[i] = -velocities[i]
+        // Boundary wrapping - consolidated checks
+        if (Math.abs(positions[i]) > BOUNDS) {
+          positions[i] = -Math.sign(positions[i]) * BOUNDS
         }
-        if (positions[i] < -25) {
-          positions[i] = 25
-          velocities[i] = -velocities[i]
+        if (Math.abs(positions[i + 1]) > BOUNDS * 0.8) {
+          positions[i + 1] = -Math.sign(positions[i + 1]) * BOUNDS * 0.8
         }
-        if (positions[i + 1] > 20) {
-          positions[i + 1] = -20
-          velocities[i + 1] = -velocities[i + 1]
-        }
-        if (positions[i + 1] < -20) {
-          positions[i + 1] = 20
-          velocities[i + 1] = -velocities[i + 1]
-        }
-        if (positions[i + 2] > 25) {
-          positions[i + 2] = -25
-          velocities[i + 2] = -velocities[i + 2]
-        }
-        if (positions[i + 2] < -25) {
-          positions[i + 2] = 25
-          velocities[i + 2] = -velocities[i + 2]
+        if (Math.abs(positions[i + 2]) > BOUNDS) {
+          positions[i + 2] = -Math.sign(positions[i + 2]) * BOUNDS
         }
       }
 
@@ -121,24 +107,26 @@ const TechMeshScene = () => {
       positionAttribute.array = positions
       positionAttribute.needsUpdate = true
 
-      // Add color pulsing based on movement
-      const colorAttribute = meshRef.current.geometry.getAttribute('color') as THREE.BufferAttribute
-      const colors = colorAttribute.array as Float32Array
+      // Add color pulsing - only every 2 frames for smoother performance
+      if (timeRef.current % 2 === 0) {
+        const colorAttribute = meshRef.current.geometry.getAttribute('color') as THREE.BufferAttribute
+        const colors = colorAttribute.array as Float32Array
 
-      for (let i = 0; i < particleCount; i++) {
-        const pulse = 0.3 + 0.7 * (0.5 + 0.5 * Math.sin(timeRef.current * 0.003 + i * 0.02))
-        const hue = 0.54 + pulse * 0.08
-        const sat = 1
-        const light = 0.35 + pulse * 0.25
+        for (let i = 0; i < particleCount; i++) {
+          const pulse = 0.3 + 0.7 * (0.5 + 0.5 * Math.sin(timeRef.current * 0.003 + i * 0.02))
+          const hue = 0.54 + pulse * 0.08
+          const sat = 1
+          const light = 0.35 + pulse * 0.25
 
-        const color = new THREE.Color()
-        color.setHSL(hue, sat, light)
+          const color = new THREE.Color()
+          color.setHSL(hue, sat, light)
 
-        colors[i * 3] = color.r
-        colors[i * 3 + 1] = color.g
-        colors[i * 3 + 2] = color.b
+          colors[i * 3] = color.r
+          colors[i * 3 + 1] = color.g
+          colors[i * 3 + 2] = color.b
+        }
+        colorAttribute.needsUpdate = true
       }
-      colorAttribute.needsUpdate = true
     }
 
     // Update line connections with light pulses
@@ -164,10 +152,10 @@ const TechMeshScene = () => {
 
         // Animated light pulse
         const pulse = Math.sin(timeRef.current * 0.005 + i * 0.1)
-        const intensity = Math.max(0.2, pulse) * 0.7
+        const intensity = Math.max(0.2, pulse) * 0.6
 
         const color = new THREE.Color()
-        color.setHSL(0.54, 1, 0.25 + intensity * 0.35)
+        color.setHSL(0.54, 1, 0.25 + intensity * 0.3)
 
         lineColorsArray[lineIdx * 3] = color.r
         lineColorsArray[lineIdx * 3 + 1] = color.g
@@ -182,11 +170,12 @@ const TechMeshScene = () => {
       lineColors.needsUpdate = true
     }
 
-    // Cinematic camera drift
+    // Cinematic camera drift - optimized for smooth motion
     if (cameraRef.current) {
-      cameraRef.current.position.x = Math.sin(timeRef.current * 0.0001) * 4
-      cameraRef.current.position.y = Math.sin(timeRef.current * 0.00008) * 2
-      cameraRef.current.position.z = 28 + Math.cos(timeRef.current * 0.00012) * 3
+      const time = timeRef.current * 0.00005
+      cameraRef.current.position.x = Math.sin(time) * 4
+      cameraRef.current.position.y = Math.sin(time * 0.8) * 2
+      cameraRef.current.position.z = 28 + Math.cos(time * 1.2) * 3
       cameraRef.current.lookAt(0, 0, 0)
     }
   })
@@ -215,7 +204,7 @@ const TechMeshScene = () => {
             itemSize={3}
           />
         </bufferGeometry>
-        <pointsMaterial size={0.25} sizeAttenuation vertexColors transparent opacity={0.85} />
+        <pointsMaterial size={0.35} sizeAttenuation vertexColors transparent opacity={0.8} />
       </points>
 
       {/* Connection lines */}
