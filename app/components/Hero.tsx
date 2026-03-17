@@ -17,12 +17,12 @@ import GlowingRingAnimation from "./animations/GlowingRingAnimation"
 // Lazy load backgrounds with preload for synchronized loading
 const ElegantWaveBackground = dynamic(() => import("@/components/ElegantWaveBackground").then(mod => ({ default: mod.ElegantWaveBackground })), { 
   ssr: false,
-  loading: () => <div className="absolute inset-0 bg-black" />,
-  // Preload immediately when component mounts
+  loading: () => <div className="absolute inset-0 bg-black" />
 })
+
 const EnergyArcsBackground = dynamic(() => import("@/components/EnergyArcsBackground").then(mod => ({ default: mod.EnergyArcsBackground })), { 
   ssr: false,
-  loading: () => <div className="absolute inset-0 bg-black" />,
+  loading: () => <div className="absolute inset-0 bg-black" />
 })
 
 export default function Hero() {
