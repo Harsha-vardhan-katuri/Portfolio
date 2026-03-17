@@ -14,14 +14,15 @@ import Experience from "./Experience"
 import Navigation from "./Navigation"
 import GlowingRingAnimation from "./animations/GlowingRingAnimation"
 
-// Lazy load backgrounds with no SSR for Three.js optimization
+// Lazy load backgrounds with preload for synchronized loading
 const ElegantWaveBackground = dynamic(() => import("@/components/ElegantWaveBackground").then(mod => ({ default: mod.ElegantWaveBackground })), { 
   ssr: false,
-  loading: () => null 
+  loading: () => <div className="absolute inset-0 bg-black" />,
+  // Preload immediately when component mounts
 })
 const EnergyArcsBackground = dynamic(() => import("@/components/EnergyArcsBackground").then(mod => ({ default: mod.EnergyArcsBackground })), { 
   ssr: false,
-  loading: () => null 
+  loading: () => <div className="absolute inset-0 bg-black" />,
 })
 
 export default function Hero() {
