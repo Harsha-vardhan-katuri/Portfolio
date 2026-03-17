@@ -12,6 +12,7 @@ import Projects from "./Projects"
 import Certifications from "./Certifications"
 import Experience from "./Experience"
 import Navigation from "./Navigation"
+import GlowingRingAnimation from "./animations/GlowingRingAnimation"
 
 // Lazy load backgrounds with no SSR for Three.js optimization
 const ElegantWaveBackground = dynamic(() => import("@/components/ElegantWaveBackground").then(mod => ({ default: mod.ElegantWaveBackground })), { 
