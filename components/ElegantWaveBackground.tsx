@@ -121,12 +121,16 @@ export const ElegantWaveBackground: React.FC = () => {
       <Canvas
         camera={{ position: [0, 0, 35], fov: 75 }}
         gl={{
-          antialias: true,
+          antialias: false,
           alpha: true,
-          precision: 'mediump' as const,
+          precision: 'lowp' as const,
           powerPreference: 'high-performance',
+          stencil: false,
+          depth: false,
         }}
-        dpr={typeof window !== 'undefined' ? Math.min(window.devicePixelRatio, 2) : 1}
+        dpr={typeof window !== 'undefined' ? Math.min(window.devicePixelRatio, 1.5) : 1}
+        frameloop="always"
+        flat
         style={{ background: '#000000' }}
       >
         <WaveParticles />
