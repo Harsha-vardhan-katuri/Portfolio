@@ -127,6 +127,7 @@ export const ElegantWaveBackground: React.FC = () => {
           powerPreference: 'high-performance',
           stencil: false,
           depth: false,
+          clearColor: 0x000000,
         }}
         dpr={typeof window !== 'undefined' ? Math.min(window.devicePixelRatio, 1.5) : 1}
         frameloop="always"

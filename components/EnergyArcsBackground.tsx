@@ -11,11 +11,11 @@ const RainbowArcPattern: React.FC<{ patternIndex: number; time: number }> = ({ p
   const { lines } = useMemo(() => {
     const lines: THREE.Mesh[] = []
     const patterns = [
-      createConcentricRainbowArcs, // Pattern 1: Concentric rainbow circles
-      createSemicircleArcs,        // Pattern 2: Semicircle arcs
-      createTriangleArcs,          // Pattern 3: Triangle arc patterns
-      createDoubleRainbowArcs,     // Pattern 4: Double rainbow effect
-      createWaveRainbowArcs,       // Pattern 5: Wave-like rainbow arcs
+      createConcentricRainbowArcs,
+      createSemicircleArcs,
+      createTriangleArcs,
+      createDoubleRainbowArcs,
+      createWaveRainbowArcs,
     ]
     
     const patternFunc = patterns[patternIndex % patterns.length]
@@ -24,7 +24,6 @@ const RainbowArcPattern: React.FC<{ patternIndex: number; time: number }> = ({ p
   
   useFrame(() => {
     if (lineGroupRef.current) {
-      // Animate shimmer and glow along the arcs
       lines.forEach((line, idx) => {
         const material = line.material as THREE.MeshLine
         if (material.uniforms?.dashOffset) {
@@ -43,23 +42,12 @@ const RainbowArcPattern: React.FC<{ patternIndex: number; time: number }> = ({ p
   )
 }
 
-// Pattern 1: Concentric rainbow arcs (like sunrise rainbow)
 function createConcentricRainbowArcs() {
   const lines: THREE.Mesh[] = []
-  const colors = [
-    0xff0000, // Red
-    0xff7f00, // Orange
-    0xffff00, // Yellow
-    0x00ff00, // Green
-    0x0000ff, // Blue
-    0x4b0082, // Indigo
-    0x9400d3, // Violet
-  ]
+  const colors = [0xff0000, 0xff7f00, 0xffff00, 0x00ff00, 0x0000ff, 0x4b0082, 0x9400d3]
   
   for (let i = 0; i < colors.length; i++) {
     const radius = 15 + i * 2
-    const arcHeight = 0.8
-    
     const curve = new THREE.EllipseCurve(0, 0, radius, radius * 0.6, 0, Math.PI, false)
     const points = curve.getPoints(100)
     
@@ -78,7 +66,6 @@ function createConcentricRainbowArcs() {
   return lines
 }
 
-// Pattern 2: Semicircle arcs
 function createSemicircleArcs() {
   const lines: THREE.Mesh[] = []
   const colors = [0x60a5fa, 0x3b82f6, 0x1e40af, 0x00d4ff, 0x60a5fa]
@@ -102,12 +89,10 @@ function createSemicircleArcs() {
   return lines
 }
 
-// Pattern 3: Triangle arc patterns
 function createTriangleArcs() {
   const lines: THREE.Mesh[] = []
   const colors = [0x60a5fa, 0x3b82f6, 0x1e3a8a, 0x0ea5e9, 0x06b6d4]
   
-  // Create triangular arc patterns
   for (let t = 0; t < 3; t++) {
     for (let i = 0; i < 3; i++) {
       const radius = 10 + i * 3
@@ -131,13 +116,10 @@ function createTriangleArcs() {
   return lines
 }
 
-// Pattern 4: Double rainbow effect
 function createDoubleRainbowArcs() {
   const lines: THREE.Mesh[] = []
   const primaryColors = [0xff0000, 0xff7f00, 0xffff00, 0x00ff00, 0x0000ff, 0x4b0082, 0x9400d3]
-  const secondaryColors = primaryColors.map(c => new THREE.Color(c).multiplyScalar(0.5))
   
-  // Primary rainbow
   for (let i = 0; i < primaryColors.length; i++) {
     const radius = 14 + i * 2
     const curve = new THREE.EllipseCurve(0, 0, radius, radius * 0.65, 0, Math.PI, false)
@@ -155,7 +137,6 @@ function createDoubleRainbowArcs() {
     lines.push(line)
   }
   
-  // Secondary rainbow (dimmer, offset)
   for (let i = 0; i < primaryColors.length; i++) {
     const radius = 24 + i * 2
     const curve = new THREE.EllipseCurve(0, 0, radius, radius * 0.65, 0, Math.PI, false)
@@ -179,7 +160,6 @@ function createDoubleRainbowArcs() {
   return lines
 }
 
-// Pattern 5: Wave-like rainbow arcs
 function createWaveRainbowArcs() {
   const lines: THREE.Mesh[] = []
   const colors = [0x60a5fa, 0x3b82f6, 0x1e40af, 0x00d4ff, 0x06b6d4, 0x0ea5e9]
@@ -209,7 +189,6 @@ function createWaveRainbowArcs() {
   return lines
 }
 
-// Particles that drift around the arcs
 const FloatingParticles: React.FC = () => {
   const pointsRef = useRef<THREE.Points>(null)
   const timeRef = useRef(0)
@@ -228,7 +207,6 @@ const FloatingParticles: React.FC = () => {
       positions[i * 3 + 1] = height
       positions[i * 3 + 2] = Math.sin(angle) * radius
       
-      // Blue to violet gradient
       colors[i * 3] = 0.2 + Math.random() * 0.4
       colors[i * 3 + 1] = 0.3 + Math.random() * 0.3
       colors[i * 3 + 2] = 0.8 + Math.random() * 0.2
@@ -267,7 +245,6 @@ export const EnergyArcsBackground: React.FC = () => {
   
   useFrame(() => {
     timeRef.current += 1
-    // Change pattern every 8 seconds
     currentPatternRef.current = Math.floor((timeRef.current / 480) % 5)
   })
   
@@ -300,5 +277,3 @@ export const EnergyArcsBackground: React.FC = () => {
     </div>
   )
 }
-
-export { EnergyArcsBackground }
