@@ -11,11 +11,11 @@ const RainbowArcPattern = () => {
 
   const arcs = useMemo(() => {
     return [
-      { radius: 8, width: 1.5, segments: 64 },
-      { radius: 11, width: 1.8, segments: 64 },
-      { radius: 14, width: 1.5, segments: 64 },
-      { radius: 17, width: 2, segments: 64 },
-      { radius: 20, width: 1.8, segments: 64 },
+      { radius: 8, width: 6, segments: 64 },
+      { radius: 11, width: 7.2, segments: 64 },
+      { radius: 14, width: 6, segments: 64 },
+      { radius: 17, width: 8, segments: 64 },
+      { radius: 20, width: 7.2, segments: 64 },
     ]
   }, [])
 
