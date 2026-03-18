@@ -78,7 +78,10 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
           <SectionReveal className="mt-16 text-center">
             <a
               href="#contact"
-              className="inline-flex items-center gap-3 px-8 py-4 text-lg font-medium text-[var(--color-bg)] bg-[var(--color-accent-primary)] rounded-lg hover:bg-[var(--color-accent-secondary)] transition-all duration-300 ease-[var(--transition-smooth)]"
+              style={{
+                transitionTimingFunction: 'cubic-bezier(0.23, 1, 0.32, 1)',
+              }}
+              className="inline-flex items-center gap-3 px-8 py-4 text-lg font-medium text-[var(--color-bg)] bg-[var(--color-accent-primary)] rounded-lg hover:bg-[var(--color-accent-secondary)] transition-all duration-300"
             >
               Start Your Project
               <svg
