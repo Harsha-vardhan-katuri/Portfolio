@@ -5,7 +5,6 @@ import { Linkedin, Mail, Download, Github, Phone, MapPin, Check } from "lucide-r
 import Link from "next/link"
 import Image from "next/image"
 import { useState, useEffect, useRef } from "react"
-import dynamic from "next/dynamic"
 import Skills from "./Skills"
 import Education from "./Education"
 import Projects from "./Projects"
@@ -13,23 +12,8 @@ import Certifications from "./Certifications"
 import Experience from "./Experience"
 import Navigation from "./Navigation"
 import GlowingRingAnimation from "./animations/GlowingRingAnimation"
-
-// Lazy load backgrounds with preload for synchronized loading
-const ElegantWaveBackground = dynamic(
-  () => import("@/components/ElegantWaveBackground").then(mod => ({ default: mod.ElegantWaveBackground })),
-  { 
-    ssr: false,
-    loading: () => <div className="absolute inset-0 bg-black" />
-  }
-)
-
-const EnergyArcsBackground = dynamic(
-  () => import("@/components/EnergyArcsBackground").then(mod => ({ default: mod.EnergyArcsBackground })),
-  { 
-    ssr: false,
-    loading: () => <div className="absolute inset-0 bg-black" />
-  }
-)
+import { ElegantWaveBackground } from "@/components/ElegantWaveBackground"
+import { EnergyArcsBackground } from "@/components/EnergyArcsBackground"
 
 export default function Hero() {
   const [activeSection, setActiveSection] = useState("home")

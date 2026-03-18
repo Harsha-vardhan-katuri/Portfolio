@@ -142,3 +142,5 @@ export const ElegantWaveBackground: React.FC = () => {
     </div>
   )
 }
+
+export { ElegantWaveBackground }

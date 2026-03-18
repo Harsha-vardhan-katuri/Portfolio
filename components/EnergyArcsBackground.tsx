@@ -301,4 +301,4 @@ export const EnergyArcsBackground: React.FC = () => {
   )
 }
 
-export default EnergyArcsBackground
+export { EnergyArcsBackground }
