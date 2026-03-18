@@ -1,5 +1,6 @@
 'use client'
 
+// Cache clear - v2
 import React, { useEffect, useRef, useMemo } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
@@ -13,10 +14,8 @@ const WaveParticles = () => {
     const positions = new Float32Array(particleCount * 3)
     const colors = new Float32Array(particleCount * 3)
 
-    // Create particles concentrated at edges
     for (let i = 0; i < particleCount; i++) {
       let x, y, z
-
       const rand = Math.random()
       if (rand < 0.33) {
         x = (Math.random() - 0.5) * 60
@@ -35,8 +34,6 @@ const WaveParticles = () => {
       positions[i * 3] = x
       positions[i * 3 + 1] = y
       positions[i * 3 + 2] = z
-
-      // Blue and violet color
       colors[i * 3] = 0.2 + Math.random() * 0.4
       colors[i * 3 + 1] = 0.4 + Math.random() * 0.4
       colors[i * 3 + 2] = 0.8 + Math.random() * 0.2
@@ -50,13 +47,11 @@ const WaveParticles = () => {
 
   useFrame(() => {
     timeRef.current += 1
-
     if (pointsRef.current && geometry) {
       const positions = geometry.getAttribute('position').array as Float32Array
       const colors = geometry.getAttribute('color').array as Float32Array
       const positionAttr = geometry.getAttribute('position') as THREE.BufferAttribute
       const colorAttr = geometry.getAttribute('color') as THREE.BufferAttribute
-
       const particleCount = positions.length / 3
       const time = timeRef.current * 0.0002
 
@@ -66,24 +61,15 @@ const WaveParticles = () => {
         const origY = positions[idx + 1]
         const origZ = positions[idx + 2]
 
-        // Wave deformation
         positions[idx] += Math.sin(time * 0.5 + i) * 0.02
         positions[idx + 1] += Math.cos(time * 0.3 + i) * 0.015
         positions[idx + 2] += Math.sin(time * 0.4 + i * 0.5) * 0.01
 
-        // Boundary wrapping
         const bounds = 30
-        if (Math.abs(positions[idx]) > bounds) {
-          positions[idx] = origX
-        }
-        if (Math.abs(positions[idx + 1]) > 20) {
-          positions[idx + 1] = origY
-        }
-        if (Math.abs(positions[idx + 2]) > bounds) {
-          positions[idx + 2] = origZ
-        }
+        if (Math.abs(positions[idx]) > bounds) positions[idx] = origX
+        if (Math.abs(positions[idx + 1]) > 20) positions[idx + 1] = origY
+        if (Math.abs(positions[idx + 2]) > bounds) positions[idx + 2] = origZ
 
-        // Brightness based on distance from center
         const distFromCenter = Math.sqrt(
           (positions[idx] * positions[idx]) / 2000 +
           (positions[idx + 1] * positions[idx + 1]) / 400
@@ -103,14 +89,7 @@ const WaveParticles = () => {
 
   return (
     <points ref={pointsRef} geometry={geometry}>
-      <pointsMaterial
-        size={0.4}
-        sizeAttenuation
-        vertexColors
-        transparent
-        opacity={0.6}
-        fog={true}
-      />
+      <pointsMaterial size={0.4} sizeAttenuation vertexColors transparent opacity={0.6} fog={true} />
     </points>
   )
 }
