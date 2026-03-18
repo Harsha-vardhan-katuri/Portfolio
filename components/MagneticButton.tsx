@@ -55,6 +55,9 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
   return (
     <button
       ref={buttonRef}
+      style={{
+        transitionTimingFunction: 'cubic-bezier(0.23, 1, 0.32, 1)',
+      }}
       className={`
         ${sizeClasses[size]}
         ${variantClasses[variant]}
@@ -64,7 +67,6 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
         font-medium
         transition-all
         duration-300
-        ease-[var(--transition-smooth)]
         will-change-transform
         active:scale-95
         disabled:opacity-50
