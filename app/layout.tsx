@@ -2,6 +2,9 @@ import "./globals.css"
 import type { Metadata, Viewport } from "next"
 import type React from "react"
 import { LenisProvider } from "@/lib/lenis-context"
+import dynamic from "next/dynamic"
+
+const SyncedBackgroundAnimation = dynamic(() => import("@/components/SyncedBackgroundAnimation").then(m => m.SyncedBackgroundAnimation), { ssr: false })
 
 export const metadata: Metadata = {
   title: "Harsha Vardhan Katuri - Luxury Portfolio",
@@ -24,6 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="font-sans">
+        <SyncedBackgroundAnimation />
         <LenisProvider>
           {children}
         </LenisProvider>
