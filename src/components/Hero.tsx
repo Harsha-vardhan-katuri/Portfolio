@@ -27,54 +27,51 @@ export const Hero = () => {
         <ShaderHero />
 
         {/* Top label bar */}
-        <div className="absolute top-24 left-0 right-0 z-10 px-8 flex justify-between items-center text-xs uppercase tracking-[0.3em] text-foreground/40">
+        <div className="absolute top-20 left-0 right-0 z-10 px-8 flex justify-between items-center text-[10px] uppercase tracking-[0.3em] text-foreground/40">
           <span>Bengaluru, IN</span>
           <span className="hidden md:inline">Available for work — 2026</span>
           <span>v 2.0</span>
         </div>
 
         <div
-          className="relative z-10 h-full flex flex-col items-center justify-center px-6 will-change-transform"
+          className="relative z-10 h-full flex flex-col items-center justify-center px-6 pt-16 will-change-transform"
           style={{
             opacity,
             transform: `translate3d(0, ${translateY}px, 0)`,
           }}
         >
           {/* Eyebrow */}
-          <Reveal delay={0.1} className="mb-6">
-            <span className="text-xs uppercase tracking-[0.5em] text-primary/80 font-medium">
-              ◆ Firmware × IoT × AI
+          <Reveal delay={0.1} className="mb-8">
+            <span className="text-xs uppercase tracking-[0.5em] text-primary font-medium">
+              Firmware Engineer · IoT Developer
             </span>
           </Reveal>
 
-          {/* Massive name */}
-          <h1 className="text-center font-display font-black leading-[0.85] tracking-[-0.04em]">
-            <Reveal delay={0.2} className="block">
-              <span className="block text-[clamp(3rem,11vw,11rem)] bg-gradient-to-b from-foreground via-foreground to-foreground/40 bg-clip-text text-transparent">
-                HARSHA
+          {/* Name — clean, professional, single weight, single colour */}
+          <h1 className="text-center font-display font-bold leading-[1.0] tracking-[-0.03em] text-foreground">
+            <Reveal delay={0.2} block className="w-full">
+              <span className="block text-[clamp(2.5rem,7.5vw,7rem)]">
+                Harsha Vardhan
               </span>
             </Reveal>
-            <Reveal delay={0.35} className="block">
-              <span className="block text-[clamp(3rem,11vw,11rem)] italic font-light bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
-                vardhan
-              </span>
-            </Reveal>
-            <Reveal delay={0.5} className="block">
-              <span className="block text-[clamp(3rem,11vw,11rem)] bg-gradient-to-b from-foreground/40 via-foreground to-foreground bg-clip-text text-transparent">
-                KATURI.
+            <Reveal delay={0.35} block className="w-full">
+              <span className="block text-[clamp(2.5rem,7.5vw,7rem)]">
+                Katuri
               </span>
             </Reveal>
           </h1>
 
-          {/* Subtitle row */}
-          <div className="mt-12 flex items-center gap-6 max-w-3xl">
-            <div className="hidden md:block h-px w-20 bg-foreground/30" />
-            <Reveal delay={0.7}>
-              <p className="text-base md:text-lg text-foreground/65 max-w-md">
-                Engineering production-grade firmware for embedded, IoT and AI-enabled systems.
-              </p>
-            </Reveal>
-          </div>
+          {/* Accent underline */}
+          <Reveal delay={0.55} className="mt-8">
+            <span className="block h-[3px] w-24 bg-primary rounded-full" />
+          </Reveal>
+
+          {/* Subtitle */}
+          <Reveal delay={0.7} block className="mt-6 max-w-2xl">
+            <p className="text-center text-base md:text-lg text-foreground/70 px-4 leading-relaxed">
+              Engineering production-grade firmware for embedded, IoT and AI-enabled systems. Based in Bengaluru, India.
+            </p>
+          </Reveal>
 
           {/* CTA row */}
           <div className="mt-12 flex items-center gap-4 flex-wrap justify-center">

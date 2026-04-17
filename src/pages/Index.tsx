@@ -10,11 +10,13 @@ import { Footer } from "@/components/Footer";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { MagneticCursor } from "@/components/MagneticCursor";
 import { Marquee } from "@/components/Marquee";
+import { PageTransition } from "@/components/PageTransition";
 
 const Index = () => {
   return (
     <SmoothScroll>
       <div className="relative">
+        <PageTransition />
         <BackgroundEffects />
         <MagneticCursor />
         <Navigation />
