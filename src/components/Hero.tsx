@@ -27,35 +27,35 @@ export const Hero = () => {
         <ShaderHero />
 
         {/* Top label bar */}
-        <div className="absolute top-24 left-0 right-0 z-10 px-8 flex justify-between items-center text-xs uppercase tracking-[0.3em] text-foreground/40">
+        <div className="absolute top-20 left-0 right-0 z-10 px-8 flex justify-between items-center text-[10px] uppercase tracking-[0.3em] text-foreground/40">
           <span>Bengaluru, IN</span>
           <span className="hidden md:inline">Available for work — 2026</span>
           <span>v 2.0</span>
         </div>
 
         <div
-          className="relative z-10 h-full flex flex-col items-center justify-center px-6 will-change-transform"
+          className="relative z-10 h-full flex flex-col items-center justify-center px-6 pt-16 will-change-transform"
           style={{
             opacity,
             transform: `translate3d(0, ${translateY}px, 0)`,
           }}
         >
           {/* Eyebrow */}
-          <Reveal delay={0.1} className="mb-6">
+          <Reveal delay={0.1} className="mb-8">
             <span className="text-xs uppercase tracking-[0.5em] text-primary font-medium">
               Firmware Engineer · IoT Developer
             </span>
           </Reveal>
 
           {/* Name — clean, professional, single weight, single colour */}
-          <h1 className="text-center font-display font-bold leading-[0.95] tracking-[-0.03em] text-foreground">
-            <Reveal delay={0.2} className="block">
-              <span className="block text-[clamp(2.75rem,8.5vw,8rem)]">
+          <h1 className="text-center font-display font-bold leading-[1.0] tracking-[-0.03em] text-foreground">
+            <Reveal delay={0.2} block className="w-full">
+              <span className="block text-[clamp(2.5rem,7.5vw,7rem)]">
                 Harsha Vardhan
               </span>
             </Reveal>
-            <Reveal delay={0.35} className="block">
-              <span className="block text-[clamp(2.75rem,8.5vw,8rem)]">
+            <Reveal delay={0.35} block className="w-full">
+              <span className="block text-[clamp(2.5rem,7.5vw,7rem)]">
                 Katuri
               </span>
             </Reveal>
@@ -67,8 +67,8 @@ export const Hero = () => {
           </Reveal>
 
           {/* Subtitle */}
-          <Reveal delay={0.7} className="mt-6">
-            <p className="text-center text-base md:text-lg text-foreground/70 max-w-2xl px-4 leading-relaxed">
+          <Reveal delay={0.7} block className="mt-6 max-w-2xl">
+            <p className="text-center text-base md:text-lg text-foreground/70 px-4 leading-relaxed">
               Engineering production-grade firmware for embedded, IoT and AI-enabled systems. Based in Bengaluru, India.
             </p>
           </Reveal>
