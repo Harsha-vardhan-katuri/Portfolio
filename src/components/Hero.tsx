@@ -42,39 +42,36 @@ export const Hero = () => {
         >
           {/* Eyebrow */}
           <Reveal delay={0.1} className="mb-6">
-            <span className="text-xs uppercase tracking-[0.5em] text-primary/80 font-medium">
-              ◆ Firmware × IoT × AI
+            <span className="text-xs uppercase tracking-[0.5em] text-primary font-medium">
+              Firmware Engineer · IoT Developer
             </span>
           </Reveal>
 
-          {/* Massive name */}
-          <h1 className="text-center font-display font-black leading-[0.85] tracking-[-0.04em]">
+          {/* Name — clean, professional, single weight, single colour */}
+          <h1 className="text-center font-display font-bold leading-[0.95] tracking-[-0.03em] text-foreground">
             <Reveal delay={0.2} className="block">
-              <span className="block text-[clamp(3rem,11vw,11rem)] bg-gradient-to-b from-foreground via-foreground to-foreground/40 bg-clip-text text-transparent">
-                HARSHA
+              <span className="block text-[clamp(2.75rem,8.5vw,8rem)]">
+                Harsha Vardhan
               </span>
             </Reveal>
             <Reveal delay={0.35} className="block">
-              <span className="block text-[clamp(3rem,11vw,11rem)] italic font-light bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
-                vardhan
-              </span>
-            </Reveal>
-            <Reveal delay={0.5} className="block">
-              <span className="block text-[clamp(3rem,11vw,11rem)] bg-gradient-to-b from-foreground/40 via-foreground to-foreground bg-clip-text text-transparent">
-                KATURI.
+              <span className="block text-[clamp(2.75rem,8.5vw,8rem)]">
+                Katuri
               </span>
             </Reveal>
           </h1>
 
-          {/* Subtitle row */}
-          <div className="mt-12 flex items-center gap-6 max-w-3xl">
-            <div className="hidden md:block h-px w-20 bg-foreground/30" />
-            <Reveal delay={0.7}>
-              <p className="text-base md:text-lg text-foreground/65 max-w-md">
-                Engineering production-grade firmware for embedded, IoT and AI-enabled systems.
-              </p>
-            </Reveal>
-          </div>
+          {/* Accent underline */}
+          <Reveal delay={0.55} className="mt-8">
+            <span className="block h-[3px] w-24 bg-primary rounded-full" />
+          </Reveal>
+
+          {/* Subtitle */}
+          <Reveal delay={0.7} className="mt-6">
+            <p className="text-center text-base md:text-lg text-foreground/70 max-w-2xl px-4 leading-relaxed">
+              Engineering production-grade firmware for embedded, IoT and AI-enabled systems. Based in Bengaluru, India.
+            </p>
+          </Reveal>
 
           {/* CTA row */}
           <div className="mt-12 flex items-center gap-4 flex-wrap justify-center">
