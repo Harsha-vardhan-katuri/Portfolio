@@ -1,32 +1,8 @@
 import { useRef, useCallback } from "react";
-import { motion } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { GlowingArc } from "@/components/GlowingArc";
+import { ArrowDown, Github, Linkedin, Mail, ArrowUpRight } from "lucide-react";
+import { ShaderHero } from "@/components/ShaderHero";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
-
-const ease = [0.16, 1, 0.3, 1] as const;
-
-// Single row of widely spaced letters like ARGUS
-const nameChars = "HARSHA VARDHAN KATURI".split("");
-
-// Each letter flies in from a unique scattered position
-const directions: { x: number; y: number }[] = [
-  // H A R S H A
-  { x: -600, y: -250 }, { x: 350, y: -400 }, { x: -250, y: 500 },
-  { x: 500, y: 300 }, { x: -400, y: 350 }, { x: 250, y: -500 },
-  // (space)
-  { x: 0, y: 0 },
-  // V A R D H A N
-  { x: -550, y: 200 }, { x: 400, y: -350 }, { x: -200, y: 500 },
-  { x: 450, y: -200 }, { x: -350, y: -400 }, { x: 200, y: 500 },
-  { x: -500, y: -250 },
-  // (space)
-  { x: 0, y: 0 },
-  // K A T U R I
-  { x: 400, y: 400 }, { x: -500, y: -200 }, { x: 300, y: 450 },
-  { x: -250, y: -450 }, { x: 450, y: 250 }, { x: -400, y: 350 },
-];
+import { Reveal } from "@/components/RevealText";
 
 export const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -36,121 +12,91 @@ export const Hero = () => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   }, []);
 
-  const exitProgress = Math.max(0, (progress - 0.7) / 0.3);
-  const contentOpacity = 1 - exitProgress;
-  const contentBlur = exitProgress * 6;
-  const contentScale = 1 - exitProgress * 0.05;
+  const exitProgress = Math.max(0, (progress - 0.6) / 0.4);
+  const opacity = 1 - exitProgress;
+  const translateY = exitProgress * -80;
 
   return (
     <section
       ref={sectionRef}
       id="home"
       className="relative"
-      style={{ height: "200vh" }}
+      style={{ height: "180vh" }}
     >
       <div className="sticky top-0 h-screen overflow-hidden">
-        {/* Glowing arc canvas behind everything */}
-        <GlowingArc />
+        <ShaderHero />
+
+        {/* Top label bar */}
+        <div className="absolute top-24 left-0 right-0 z-10 px-8 flex justify-between items-center text-xs uppercase tracking-[0.3em] text-foreground/40">
+          <span>Bengaluru, IN</span>
+          <span className="hidden md:inline">Available for work — 2026</span>
+          <span>v 2.0</span>
+        </div>
 
         <div
-          className="relative z-10 h-full flex flex-col items-center justify-center will-change-transform"
+          className="relative z-10 h-full flex flex-col items-center justify-center px-6 will-change-transform"
           style={{
-            opacity: contentOpacity,
-            filter: contentBlur > 0 ? `blur(${contentBlur}px)` : undefined,
-            transform: `scale(${contentScale})`,
+            opacity,
+            transform: `translate3d(0, ${translateY}px, 0)`,
           }}
         >
-          {/* Name - single line, widely spaced, positioned in center of arc */}
-          <div className="w-full flex justify-center items-center px-4 mb-2" style={{ marginTop: "-2vh" }}>
-            <div className="flex items-center justify-center flex-wrap" style={{ gap: "clamp(2px, 0.8vw, 12px)" }}>
-              {nameChars.map((char, i) => {
-                const dir = directions[i] || { x: 0, y: 0 };
-                const isSpace = char === " ";
+          {/* Eyebrow */}
+          <Reveal delay={0.1} className="mb-6">
+            <span className="text-xs uppercase tracking-[0.5em] text-primary/80 font-medium">
+              ◆ Firmware × IoT × AI
+            </span>
+          </Reveal>
 
-                return (
-                  <motion.span
-                    key={i}
-                    initial={{
-                      opacity: isSpace ? 0 : 0,
-                      x: dir.x,
-                      y: dir.y,
-                      filter: "blur(15px)",
-                    }}
-                    animate={{
-                      opacity: isSpace ? 0 : 1,
-                      x: 0,
-                      y: 0,
-                      filter: "blur(0px)",
-                    }}
-                    transition={{
-                      duration: 2,
-                      delay: 0.2 + i * 0.07,
-                      ease,
-                    }}
-                    className="font-black font-display text-foreground"
-                    style={{
-                      fontSize: "clamp(2.5rem, 6.5vw, 6.5rem)",
-                      letterSpacing: "0.08em",
-                      lineHeight: 1,
-                      display: "inline-block",
-                      minWidth: isSpace ? "clamp(15px, 3vw, 40px)" : undefined,
-                      textShadow: "0 0 30px hsl(230 80% 65% / 0.25), 0 0 60px hsl(260 60% 50% / 0.1)",
-                    }}
-                  >
-                    {isSpace ? "" : char}
-                  </motion.span>
-                );
-              })}
-            </div>
+          {/* Massive name */}
+          <h1 className="text-center font-display font-black leading-[0.85] tracking-[-0.04em]">
+            <Reveal delay={0.2} className="block">
+              <span className="block text-[clamp(3rem,11vw,11rem)] bg-gradient-to-b from-foreground via-foreground to-foreground/40 bg-clip-text text-transparent">
+                HARSHA
+              </span>
+            </Reveal>
+            <Reveal delay={0.35} className="block">
+              <span className="block text-[clamp(3rem,11vw,11rem)] italic font-light bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
+                vardhan
+              </span>
+            </Reveal>
+            <Reveal delay={0.5} className="block">
+              <span className="block text-[clamp(3rem,11vw,11rem)] bg-gradient-to-b from-foreground/40 via-foreground to-foreground bg-clip-text text-transparent">
+                KATURI.
+              </span>
+            </Reveal>
+          </h1>
+
+          {/* Subtitle row */}
+          <div className="mt-12 flex items-center gap-6 max-w-3xl">
+            <div className="hidden md:block h-px w-20 bg-foreground/30" />
+            <Reveal delay={0.7}>
+              <p className="text-base md:text-lg text-foreground/65 max-w-md">
+                Engineering production-grade firmware for embedded, IoT and AI-enabled systems.
+              </p>
+            </Reveal>
           </div>
 
-          {/* Subtitle - widely tracked like "VPN THAT SIMPLY WORKS" */}
-          <motion.p
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 2.0, ease }}
-            className="text-center mb-10"
-            style={{
-              fontSize: "clamp(0.75rem, 1.8vw, 1.25rem)",
-              letterSpacing: "0.4em",
-              color: "hsl(0 0% 55%)",
-              fontWeight: 300,
-            }}
-          >
-            FIRMWARE ENGINEER & IOT DEVELOPER
-          </motion.p>
-
-          {/* CTA Button - white pill like "Install ArgusVPN" */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 2.3, ease }}
-            className="flex flex-col items-center gap-4 mb-6"
-          >
-            <Button
-              size="lg"
-              className="bg-foreground hover:bg-foreground/90 text-background rounded-full px-12 py-7 text-base font-semibold shadow-xl"
+          {/* CTA row */}
+          <div className="mt-12 flex items-center gap-4 flex-wrap justify-center">
+            <button
+              data-magnetic
               onClick={() => scrollToSection("contact")}
+              className="group relative px-8 py-4 rounded-full bg-foreground text-background text-sm font-semibold inline-flex items-center gap-3 overflow-hidden hover:scale-[1.03] transition-transform duration-300"
             >
-              Get In Touch
-            </Button>
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 2.6, duration: 0.6 }}
-              className="text-sm text-muted-foreground/50"
+              <span>Get in touch</span>
+              <ArrowUpRight className="h-4 w-4 group-hover:rotate-45 transition-transform duration-300" />
+            </button>
+            <button
+              data-magnetic
+              onClick={() => scrollToSection("projects")}
+              className="px-8 py-4 rounded-full border border-foreground/20 text-sm font-semibold hover:border-primary hover:text-primary transition-colors duration-300"
             >
-              Open to collaborations & opportunities
-            </motion.span>
-          </motion.div>
+              See work
+            </button>
+          </div>
 
-          {/* Social links row */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 2.8, ease }}
-            className="flex items-center gap-5 mt-2"
-          >
+          {/* Social links */}
+          <div className="mt-10 flex items-center gap-3">
             {[
               { icon: Github, href: "https://github.com" },
               { icon: Linkedin, href: "https://linkedin.com" },
@@ -158,28 +104,27 @@ export const Hero = () => {
             ].map(({ icon: Icon, href }, i) => (
               <a
                 key={i}
+                data-magnetic
                 href={href}
                 target={href.startsWith("mailto") ? undefined : "_blank"}
                 rel="noopener noreferrer"
-                className="p-3 rounded-full border border-foreground/8 hover:border-foreground/25 hover:bg-foreground/5 transition-all duration-300"
+                className="p-3 rounded-full border border-foreground/10 hover:border-primary/60 hover:bg-primary/10 transition-all duration-300"
               >
-                <Icon className="h-4 w-4 text-foreground/40 hover:text-foreground/70 transition-colors" />
+                <Icon className="h-4 w-4 text-foreground/60" />
               </a>
             ))}
-          </motion.div>
+          </div>
         </div>
 
         {/* Scroll indicator */}
-        <motion.button
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 3.2, duration: 0.6 }}
+        <button
           onClick={() => scrollToSection("about")}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float z-10"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-foreground/40 hover:text-foreground transition-colors"
           style={{ opacity: Math.max(0, 1 - progress * 3) }}
         >
-          <ArrowDown className="h-6 w-6 text-foreground/25" />
-        </motion.button>
+          <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
+          <ArrowDown className="h-4 w-4 animate-bounce" />
+        </button>
       </div>
     </section>
   );

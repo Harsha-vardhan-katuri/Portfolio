@@ -1,24 +1,49 @@
-import { useEffect, useState, useRef, RefObject } from "react";
+import { useEffect, useRef, useState, RefObject } from "react";
 
+/**
+ * Cheap scroll progress 0..1 for an element across its height.
+ * Uses rAF throttling so we don't trigger one setState per scroll event.
+ */
 export function useScrollProgress(ref: RefObject<HTMLElement>) {
   const [progress, setProgress] = useState(0);
+  const rafRef = useRef<number>();
+  const lastRef = useRef(0);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
     const update = () => {
+      rafRef.current = undefined;
       const rect = el.getBoundingClientRect();
       const viewH = window.innerHeight;
       const total = el.offsetHeight - viewH;
-      if (total <= 0) { setProgress(0); return; }
+      if (total <= 0) {
+        if (lastRef.current !== 0) {
+          lastRef.current = 0;
+          setProgress(0);
+        }
+        return;
+      }
       const scrolled = -rect.top;
-      setProgress(Math.max(0, Math.min(1, scrolled / total)));
+      const next = Math.max(0, Math.min(1, scrolled / total));
+      // skip tiny deltas to avoid wasted renders
+      if (Math.abs(next - lastRef.current) < 0.001) return;
+      lastRef.current = next;
+      setProgress(next);
     };
 
-    window.addEventListener("scroll", update, { passive: true });
+    const onScroll = () => {
+      if (rafRef.current != null) return;
+      rafRef.current = requestAnimationFrame(update);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
     update();
-    return () => window.removeEventListener("scroll", update);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
   }, [ref]);
 
   return progress;
@@ -32,7 +57,12 @@ export function useInView(threshold = 0.15) {
     const el = ref.current;
     if (!el) return;
     const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setInView(true); },
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          obs.disconnect();
+        }
+      },
       { threshold }
     );
     obs.observe(el);

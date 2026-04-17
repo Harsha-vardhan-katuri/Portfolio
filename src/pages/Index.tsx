@@ -3,24 +3,54 @@ import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Skills } from "@/components/Skills";
-import { Projects } from "@/components/Projects";
+import { HorizontalProjects } from "@/components/HorizontalProjects";
 import { Experience } from "@/components/Experience";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
+import { SmoothScroll } from "@/components/SmoothScroll";
+import { MagneticCursor } from "@/components/MagneticCursor";
+import { Marquee } from "@/components/Marquee";
 
 const Index = () => {
   return (
-    <div className="relative">
-      <BackgroundEffects />
-      <Navigation />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Experience />
-      <Contact />
-      <Footer />
-    </div>
+    <SmoothScroll>
+      <div className="relative">
+        <BackgroundEffects />
+        <MagneticCursor />
+        <Navigation />
+        <Hero />
+        <Marquee
+          items={[
+            "FIRMWARE",
+            "EMBEDDED",
+            "IOT",
+            "ESP32",
+            "LORA",
+            "AI",
+            "PYTHON",
+            "C / C++",
+          ]}
+          speed={45}
+        />
+        <About />
+        <Skills />
+        <HorizontalProjects />
+        <Marquee
+          items={[
+            "SHIPPED",
+            "PRODUCTION",
+            "OPEN TO WORK",
+            "AVAILABLE 2026",
+            "BENGALURU",
+          ]}
+          speed={55}
+          reverse
+        />
+        <Experience />
+        <Contact />
+        <Footer />
+      </div>
+    </SmoothScroll>
   );
 };
 
