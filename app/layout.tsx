@@ -2,7 +2,6 @@ import "./globals.css"
 import type { Metadata, Viewport } from "next"
 import type React from "react"
 import { LenisProvider } from "@/lib/lenis-context"
-import BackgroundAnimationWrapper from "@/components/BackgroundAnimationWrapper"
 
 export const metadata: Metadata = {
   title: "Harsha Vardhan Katuri - Luxury Portfolio",
@@ -25,7 +24,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="font-sans">
-        <BackgroundAnimationWrapper />
         <LenisProvider>
           {children}
         </LenisProvider>
