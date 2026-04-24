@@ -1,9 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { DarkShaderBackground } from '@/components/DarkShaderBackground'
-import { HUDNav } from '@/components/HUDNav'
-import { PressGrid } from '@/components/PressGrid'
 
 export default function Home() {
   const containerVariants = {
@@ -31,9 +28,6 @@ export default function Home() {
 
   return (
     <main className="relative w-full min-h-screen overflow-x-hidden">
-      <DarkShaderBackground />
-      <HUDNav />
-
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center pt-20">
         <motion.div
@@ -84,18 +78,15 @@ export default function Home() {
 
       {/* Press Section */}
       <section id="press" className="min-h-screen flex items-center justify-center py-20">
-        <div className="w-full px-6">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: false, amount: 0.3 }}
-            className="text-5xl md:text-6xl font-light text-center mb-20 text-slate-100"
-          >
-            Press & Features
-          </motion.h2>
-          <PressGrid />
-        </div>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: false, amount: 0.3 }}
+          className="text-5xl md:text-6xl font-light text-center text-slate-100"
+        >
+          Press & Features Coming Soon
+        </motion.h2>
       </section>
 
       {/* About Section */}
