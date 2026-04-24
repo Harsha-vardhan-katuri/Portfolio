@@ -4,9 +4,10 @@ import type React from "react"
 import { LenisProvider } from "@/lib/lenis-context"
 
 export const metadata: Metadata = {
-  title: "Harsha Vardhan Katuri - Luxury Portfolio",
-  description: "High-end portfolio with premium motion design and smooth scrolling",
+  title: "Harsha Vardhan Katuri - Premium Portfolio",
+  description: "Premium digital portfolio with dark theme, smooth scrolling, and interactive animations",
   generator: "v0.app",
+  themeColor: "#0a0a0a",
 }
 
 export const viewport: Viewport = {
@@ -14,6 +15,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
+  themeColor: "#0a0a0a",
 }
 
 export default function RootLayout({
@@ -22,8 +24,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className="font-sans">
+    <html lang="en" suppressHydrationWarning className="scroll-smooth">
+      <body className="font-sans bg-slate-950 text-slate-100 antialiased">
         <LenisProvider>
           {children}
         </LenisProvider>
