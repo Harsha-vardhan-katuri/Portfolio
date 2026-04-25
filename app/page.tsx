@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { AnimatedBackground3D } from '@/components/AnimatedBackground3D'
 
 export default function Home() {
   const containerVariants = {
@@ -27,7 +28,8 @@ export default function Home() {
   }
 
   return (
-    <main className="relative w-full min-h-screen overflow-x-hidden">
+    <main className="relative w-full min-h-screen overflow-x-hidden bg-slate-950">
+      <AnimatedBackground3D />
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center pt-20">
         <motion.div
@@ -185,15 +187,40 @@ export default function Home() {
               <p className="text-slate-500 font-light mb-3">ESP32, Grove GSR Sensor, Arduino</p>
               <p className="text-slate-400 font-light leading-relaxed">Real-time GSR system performing ADC-based signal acquisition at 10-20 Hz sampling rate. Extracted tonic and phasic components with threshold-based classification to identify Calm, Normal, and Stress states, achieving under 1 second response latency.</p>
             </motion.div>
-            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.2 }} viewport={{ once: false }} className="border-l border-slate-700 pl-6">
+            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.15 }} viewport={{ once: false }} className="border-l border-slate-700 pl-6">
               <h3 className="text-2xl font-light text-slate-200 mb-2">LoRa-Enabled Soil Health Monitoring System</h3>
               <p className="text-slate-500 font-light mb-3">ESP32, RS485, LoRa, Modbus RTU</p>
               <p className="text-slate-400 font-light leading-relaxed">Programmed ESP32 to read NPK, pH, EC, moisture, and temperature via RS485 Modbus RTU with under 200ms decoding latency. Achieved 1 km wireless range with 80% packet delivery accuracy through optimized 50-byte sensor payloads and SPI-based LoRa communication.</p>
             </motion.div>
-            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.3 }} viewport={{ once: false }} className="border-l border-slate-700 pl-6">
+            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.2 }} viewport={{ once: false }} className="border-l border-slate-700 pl-6">
               <h3 className="text-2xl font-light text-slate-200 mb-2">IoT-Based Weather Reporting System</h3>
               <p className="text-slate-500 font-light mb-3">LPC2148, ESP-01, DHT11, ThingSpeak</p>
               <p className="text-slate-400 font-light leading-relaxed">Weather monitoring system capturing temperature and humidity data via DHT11, uploading to ThingSpeak at 15-second intervals. Optimized data transmission logic achieving 2°C temperature and 5% RH humidity accuracy with 60% reduction in retrieval time.</p>
+            </motion.div>
+            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.25 }} viewport={{ once: false }} className="border-l border-slate-700 pl-6">
+              <h3 className="text-2xl font-light text-slate-200 mb-2">Smart Home Automation System</h3>
+              <p className="text-slate-500 font-light mb-3">ESP8266, MQTT, Home Assistant</p>
+              <p className="text-slate-400 font-light leading-relaxed">Home automation platform with wireless IoT devices controlling lighting, temperature, and security systems. Implemented MQTT protocol for reliable device communication with 99.5% uptime and sub-500ms response time.</p>
+            </motion.div>
+            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.3 }} viewport={{ once: false }} className="border-l border-slate-700 pl-6">
+              <h3 className="text-2xl font-light text-slate-200 mb-2">Real-Time Audio Equalizer</h3>
+              <p className="text-slate-500 font-light mb-3">STM32F4, FFT, Audio DSP</p>
+              <p className="text-slate-400 font-light leading-relaxed">Real-time audio signal processing system implementing 1024-point FFT for spectral analysis and parametric equalization. Optimized DSP algorithms achieving low-latency processing under 50ms with minimal memory footprint.</p>
+            </motion.div>
+            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.35 }} viewport={{ once: false }} className="border-l border-slate-700 pl-6">
+              <h3 className="text-2xl font-light text-slate-200 mb-2">CAN Bus Communication System</h3>
+              <p className="text-slate-500 font-light mb-3">STM32, CAN Protocol, Vehicle Diagnostics</p>
+              <p className="text-slate-400 font-light leading-relaxed">Multi-node CAN bus system for vehicle communication with robust error handling and message prioritization. Implemented OBD-II protocol interface achieving error detection rate of 99.8% in real-time automotive environments.</p>
+            </motion.div>
+            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.4 }} viewport={{ once: false }} className="border-l border-slate-700 pl-6">
+              <h3 className="text-2xl font-light text-slate-200 mb-2">Power Management Unit Firmware</h3>
+              <p className="text-slate-500 font-light mb-3">ARM Cortex-M4, Voltage Regulation, Battery Monitoring</p>
+              <p className="text-slate-400 font-light leading-relaxed">Sophisticated power management system with intelligent battery charging, voltage monitoring, and thermal protection. Achieved 98% power conversion efficiency with dynamic load balancing across multiple supply rails.</p>
+            </motion.div>
+            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.45 }} viewport={{ once: false }} className="border-l border-slate-700 pl-6">
+              <h3 className="text-2xl font-light text-slate-200 mb-2">Health Assistant Chatbot</h3>
+              <p className="text-slate-500 font-light mb-3">Streamlit, Hugging Face, DistilGPT-2, Python</p>
+              <p className="text-slate-400 font-light leading-relaxed">AI-powered health chatbot reducing irrelevant responses by 40% with 85% response relevance. Implemented fallback mechanisms achieving sub-2 second query latency with optimized inference for healthcare domain.</p>
             </motion.div>
           </div>
         </motion.div>
