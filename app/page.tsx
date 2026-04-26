@@ -1,7 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { AnimatedBackground3D } from '@/components/AnimatedBackground3D'
+import { LiquidGlassBackground } from '@/components/LiquidGlassBackground'
+import { Navigation } from '@/components/Navigation'
 
 export default function Home() {
   const containerVariants = {
@@ -28,8 +29,9 @@ export default function Home() {
   }
 
   return (
-    <main className="relative w-full min-h-screen overflow-x-hidden bg-slate-950">
-      <AnimatedBackground3D />
+    <main className="relative w-full overflow-x-hidden bg-slate-950">
+      <LiquidGlassBackground />
+      <Navigation />
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center pt-20">
         <motion.div
@@ -61,34 +63,23 @@ export default function Home() {
             className="mt-12 flex gap-6 justify-center"
           >
             <motion.button
+              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
               whileHover={{ scale: 1.05, backgroundColor: 'rgba(30, 41, 59, 0.8)' }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 border border-slate-700 text-slate-300 font-light rounded transition-all duration-300 hover:text-slate-100"
+              className="px-8 py-3 border border-slate-700 text-slate-300 font-light rounded transition-all duration-300 hover:text-slate-100 cursor-pointer"
             >
               View Work
             </motion.button>
-            <motion.button
+            <motion.a
+              href="mailto:harshavardhankaturi@gmail.com"
               whileHover={{ scale: 1.05, backgroundColor: 'rgba(51, 65, 85, 0.8)' }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 bg-slate-800/40 border border-slate-700 text-slate-300 font-light rounded transition-all duration-300 hover:text-slate-100"
+              className="px-8 py-3 bg-slate-800/40 border border-slate-700 text-slate-300 font-light rounded transition-all duration-300 hover:text-slate-100 cursor-pointer"
             >
               Get in Touch
-            </motion.button>
+            </motion.a>
           </motion.div>
         </motion.div>
-      </section>
-
-      {/* Press Section */}
-      <section id="press" className="min-h-screen flex items-center justify-center py-20">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: false, amount: 0.3 }}
-          className="text-5xl md:text-6xl font-light text-center text-slate-100"
-        >
-          Press & Features Coming Soon
-        </motion.h2>
       </section>
 
       {/* About Section */}
@@ -150,22 +141,116 @@ export default function Home() {
           className="max-w-3xl mx-auto px-6"
         >
           <h2 className="text-5xl md:text-6xl font-light mb-12 text-slate-100">Skills</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="space-y-12">
             <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.1 }} viewport={{ once: false }}>
-              <h3 className="text-xl font-light text-slate-200 mb-4">Programming Languages</h3>
-              <p className="text-slate-400 font-light leading-relaxed">C, C++, Embedded C, Python</p>
+              <h3 className="text-xl font-light text-slate-200 mb-6">Programming Languages</h3>
+              <div className="space-y-4">
+                {[
+                  { name: 'Embedded C', level: 90 },
+                  { name: 'C/C++', level: 85 },
+                  { name: 'Python', level: 75 },
+                ].map((skill) => (
+                  <div key={skill.name}>
+                    <div className="flex justify-between mb-2">
+                      <span className="text-slate-300 font-light">{skill.name}</span>
+                      <span className="text-slate-500 font-light">{skill.level}%</span>
+                    </div>
+                    <div className="w-full bg-slate-800 rounded-full h-2">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${skill.level}%` }}
+                        transition={{ duration: 0.8, ease: 'easeOut' }}
+                        viewport={{ once: false }}
+                        className="bg-gradient-to-r from-blue-500 to-indigo-500 h-2 rounded-full"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
             </motion.div>
+
             <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.2 }} viewport={{ once: false }}>
-              <h3 className="text-xl font-light text-slate-200 mb-4">Protocols & Hardware</h3>
-              <p className="text-slate-400 font-light leading-relaxed">UART, SPI, I2C, RS485, Modbus, Hardware debugging, Logic analyzers, Board bring-up, Soldering</p>
+              <h3 className="text-xl font-light text-slate-200 mb-6">Communication Protocols & Hardware</h3>
+              <div className="space-y-4">
+                {[
+                  { name: 'UART/Serial Communication', level: 90 },
+                  { name: 'SPI & I2C', level: 85 },
+                  { name: 'RS485 & Modbus RTU', level: 80 },
+                  { name: 'Hardware Debugging', level: 85 },
+                  { name: 'Board Bring-up & Testing', level: 80 },
+                ].map((skill) => (
+                  <div key={skill.name}>
+                    <div className="flex justify-between mb-2">
+                      <span className="text-slate-300 font-light">{skill.name}</span>
+                      <span className="text-slate-500 font-light">{skill.level}%</span>
+                    </div>
+                    <div className="w-full bg-slate-800 rounded-full h-2">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${skill.level}%` }}
+                        transition={{ duration: 0.8, ease: 'easeOut' }}
+                        viewport={{ once: false }}
+                        className="bg-gradient-to-r from-green-500 to-emerald-500 h-2 rounded-full"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
             </motion.div>
+
             <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.3 }} viewport={{ once: false }}>
-              <h3 className="text-xl font-light text-slate-200 mb-4">Tools & IDEs</h3>
-              <p className="text-slate-400 font-light leading-relaxed">ESP32, ESP8266, LPC2148, Keil IDE, Arduino IDE, VS Code, Git, Ubuntu, Eclipse</p>
+              <h3 className="text-xl font-light text-slate-200 mb-6">Microcontrollers & Tools</h3>
+              <div className="space-y-4">
+                {[
+                  { name: 'ESP32 & ESP8266', level: 90 },
+                  { name: 'STM32 & ARM Cortex', level: 80 },
+                  { name: 'Keil IDE & Arduino IDE', level: 85 },
+                  { name: 'Git & Version Control', level: 80 },
+                ].map((skill) => (
+                  <div key={skill.name}>
+                    <div className="flex justify-between mb-2">
+                      <span className="text-slate-300 font-light">{skill.name}</span>
+                      <span className="text-slate-500 font-light">{skill.level}%</span>
+                    </div>
+                    <div className="w-full bg-slate-800 rounded-full h-2">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${skill.level}%` }}
+                        transition={{ duration: 0.8, ease: 'easeOut' }}
+                        viewport={{ once: false }}
+                        className="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
             </motion.div>
+
             <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.4 }} viewport={{ once: false }}>
-              <h3 className="text-xl font-light text-slate-200 mb-4">Standards & Practices</h3>
-              <p className="text-slate-400 font-light leading-relaxed">ISO 13485, IEC 60601, Product development, Verification & Validation, Documentation control</p>
+              <h3 className="text-xl font-light text-slate-200 mb-6">Standards & Methodologies</h3>
+              <div className="space-y-4">
+                {[
+                  { name: 'ISO 13485 Medical Device', level: 75 },
+                  { name: 'Product Development Lifecycle', level: 85 },
+                  { name: 'Verification & Validation', level: 80 },
+                ].map((skill) => (
+                  <div key={skill.name}>
+                    <div className="flex justify-between mb-2">
+                      <span className="text-slate-300 font-light">{skill.name}</span>
+                      <span className="text-slate-500 font-light">{skill.level}%</span>
+                    </div>
+                    <div className="w-full bg-slate-800 rounded-full h-2">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${skill.level}%` }}
+                        transition={{ duration: 0.8, ease: 'easeOut' }}
+                        viewport={{ once: false }}
+                        className="bg-gradient-to-r from-orange-500 to-red-500 h-2 rounded-full"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
             </motion.div>
           </div>
         </motion.div>
@@ -203,21 +288,6 @@ export default function Home() {
               <p className="text-slate-400 font-light leading-relaxed">Home automation platform with wireless IoT devices controlling lighting, temperature, and security systems. Implemented MQTT protocol for reliable device communication with 99.5% uptime and sub-500ms response time.</p>
             </motion.div>
             <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.3 }} viewport={{ once: false }} className="border-l border-slate-700 pl-6">
-              <h3 className="text-2xl font-light text-slate-200 mb-2">Real-Time Audio Equalizer</h3>
-              <p className="text-slate-500 font-light mb-3">STM32F4, FFT, Audio DSP</p>
-              <p className="text-slate-400 font-light leading-relaxed">Real-time audio signal processing system implementing 1024-point FFT for spectral analysis and parametric equalization. Optimized DSP algorithms achieving low-latency processing under 50ms with minimal memory footprint.</p>
-            </motion.div>
-            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.35 }} viewport={{ once: false }} className="border-l border-slate-700 pl-6">
-              <h3 className="text-2xl font-light text-slate-200 mb-2">CAN Bus Communication System</h3>
-              <p className="text-slate-500 font-light mb-3">STM32, CAN Protocol, Vehicle Diagnostics</p>
-              <p className="text-slate-400 font-light leading-relaxed">Multi-node CAN bus system for vehicle communication with robust error handling and message prioritization. Implemented OBD-II protocol interface achieving error detection rate of 99.8% in real-time automotive environments.</p>
-            </motion.div>
-            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.4 }} viewport={{ once: false }} className="border-l border-slate-700 pl-6">
-              <h3 className="text-2xl font-light text-slate-200 mb-2">Power Management Unit Firmware</h3>
-              <p className="text-slate-500 font-light mb-3">ARM Cortex-M4, Voltage Regulation, Battery Monitoring</p>
-              <p className="text-slate-400 font-light leading-relaxed">Sophisticated power management system with intelligent battery charging, voltage monitoring, and thermal protection. Achieved 98% power conversion efficiency with dynamic load balancing across multiple supply rails.</p>
-            </motion.div>
-            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.45 }} viewport={{ once: false }} className="border-l border-slate-700 pl-6">
               <h3 className="text-2xl font-light text-slate-200 mb-2">Health Assistant Chatbot</h3>
               <p className="text-slate-500 font-light mb-3">Streamlit, Hugging Face, DistilGPT-2, Python</p>
               <p className="text-slate-400 font-light leading-relaxed">AI-powered health chatbot reducing irrelevant responses by 40% with 85% response relevance. Implemented fallback mechanisms achieving sub-2 second query latency with optimized inference for healthcare domain.</p>
