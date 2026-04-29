@@ -44,130 +44,99 @@ const projects = [
   },
 ];
 
+const SLIDE_MS = 3000;
+
 export const HorizontalProjects = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [translateX, setTranslateX] = useState(0);
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const timerRef = useRef<number | null>(null);
 
   useEffect(() => {
-    const section = sectionRef.current;
-    const track = trackRef.current;
-    if (!section || !track) return;
-
-    let ticking = false;
-    const update = () => {
-      ticking = false;
-      const rect = section.getBoundingClientRect();
-      const viewH = window.innerHeight;
-      const total = section.offsetHeight - viewH;
-      if (total <= 0) return;
-      const scrolled = Math.max(0, Math.min(total, -rect.top));
-      const progress = scrolled / total;
-      const trackWidth = track.scrollWidth;
-      const maxX = trackWidth - window.innerWidth;
-      setTranslateX(-progress * maxX);
-    };
-
-    const onScroll = () => {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(update);
-      }
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", update);
-    update();
+    if (paused) return;
+    timerRef.current = window.setTimeout(() => {
+      setActive((i) => (i + 1) % projects.length);
+    }, SLIDE_MS);
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", update);
+      if (timerRef.current) window.clearTimeout(timerRef.current);
     };
-  }, []);
+  }, [active, paused]);
 
   return (
-    <section
-      ref={sectionRef}
-      id="projects"
-      className="relative"
-      style={{ height: `${projects.length * 90}vh` }}
-    >
-      <div className="sticky top-0 h-screen flex flex-col overflow-hidden">
-        {/* Header */}
-        <div className="container mx-auto px-6 pt-24 pb-6 z-10">
-          <div className="flex items-end justify-between flex-wrap gap-4">
-            <div>
-              <p className="text-xs uppercase tracking-[0.4em] text-primary/60 mb-3">
-                — Selected Work
-              </p>
-              <h2 className="font-display text-5xl md:text-7xl font-black tracking-tight">
-                Projects.
-              </h2>
-            </div>
-            <p className="text-foreground/40 text-sm max-w-xs">
-              Scroll to traverse · {projects.length} featured builds in firmware,
-              IoT, and intelligent systems.
+    <section id="projects" className="relative py-24 md:py-32">
+      <div className="container mx-auto px-6">
+        <div className="flex items-end justify-between flex-wrap gap-4 mb-10">
+          <div>
+            <p className="text-xs uppercase tracking-[0.4em] text-primary/70 mb-3">
+              — Selected Work
             </p>
+            <h2 className="font-display text-4xl md:text-6xl font-black tracking-tight">
+              Projects.
+            </h2>
           </div>
+          <p className="text-foreground/50 text-sm max-w-xs">
+            Auto-rotating · 3s per project · hover to pause.
+          </p>
         </div>
 
-        {/* Horizontal track */}
-        <div className="flex-1 flex items-center">
+        {/* Carousel */}
+        <div
+          className="relative overflow-hidden rounded-3xl"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          style={{ height: "min(70vh, 620px)" }}
+        >
           <div
-            ref={trackRef}
-            className="flex gap-8 pl-6 md:pl-24 will-change-transform"
-            style={{
-              transform: `translate3d(${translateX}px, 0, 0)`,
-            }}
+            className="flex h-full transition-transform duration-[900ms] ease-[cubic-bezier(0.76,0,0.24,1)] will-change-transform"
+            style={{ transform: `translate3d(-${active * 100}%, 0, 0)` }}
           >
             {projects.map((p) => (
               <article
                 key={p.num}
-                data-magnetic
-                className="group relative shrink-0 w-[85vw] md:w-[60vw] lg:w-[48vw] h-[60vh] rounded-3xl border border-foreground/10 overflow-hidden bg-background/40"
+                className="group relative shrink-0 w-full h-full overflow-hidden bg-white/[0.03] border border-white/10"
               >
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${p.color} opacity-60 group-hover:opacity-100 transition-opacity duration-700`}
-                />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--primary)/0.15),transparent_60%)]" />
+                <div className={`absolute inset-0 bg-gradient-to-br ${p.color} opacity-70`} />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--primary)/0.18),transparent_60%)]" />
 
-                <div className="relative h-full p-8 md:p-12 flex flex-col justify-between">
+                <div className="relative h-full p-8 md:p-16 flex flex-col justify-between">
                   <div className="flex items-start justify-between">
-                    <span className="font-display text-7xl md:text-8xl font-black text-foreground/20">
+                    <span className="font-display text-7xl md:text-9xl font-black text-foreground/15">
                       {p.num}
                     </span>
                     <ArrowUpRight className="h-8 w-8 text-foreground/40 group-hover:text-primary group-hover:rotate-45 transition-all duration-500" />
                   </div>
 
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.3em] text-primary/70 mb-3">
+                  <div className="max-w-2xl">
+                    <p className="text-xs uppercase tracking-[0.3em] text-primary/80 mb-3">
                       {p.tag}
                     </p>
                     <h3 className="font-display text-3xl md:text-5xl font-bold mb-4 leading-[1.05]">
                       {p.title}
                     </h3>
-                    <p className="text-foreground/60 text-sm md:text-base mb-6 max-w-md">
+                    <p className="text-foreground/70 text-sm md:text-base mb-6">
                       {p.description}
                     </p>
                     <div className="flex flex-wrap gap-2 mb-6">
                       {p.technologies.map((t) => (
                         <span
                           key={t}
-                          className="text-xs px-3 py-1 rounded-full border border-foreground/15 text-foreground/70"
+                          className="text-xs px-3 py-1 rounded-full border border-white/15 bg-white/[0.04] text-foreground/80"
                         >
                           {t}
                         </span>
                       ))}
                     </div>
-                    <div className="flex gap-3">
+                    <div className="flex gap-4">
                       <a
+                        data-magnetic
                         href={p.github}
-                        className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-foreground/70 hover:text-primary transition-colors"
+                        className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-foreground/80 hover:text-primary transition-colors"
                       >
                         <Github className="h-4 w-4" /> Code
                       </a>
                       <a
+                        data-magnetic
                         href="#"
-                        className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-foreground/70 hover:text-primary transition-colors"
+                        className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-foreground/80 hover:text-primary transition-colors"
                       >
                         <ExternalLink className="h-4 w-4" /> Demo
                       </a>
@@ -176,21 +145,27 @@ export const HorizontalProjects = () => {
                 </div>
               </article>
             ))}
-            {/* Spacer */}
-            <div className="shrink-0 w-[24vw]" />
           </div>
         </div>
 
-        {/* Progress bar */}
-        <div className="container mx-auto px-6 pb-10 z-10">
-          <div className="h-px w-full bg-foreground/10 overflow-hidden">
-            <div
-              className="h-full bg-gradient-to-r from-primary to-secondary"
-              style={{
-                width: `${(Math.abs(translateX) / Math.max(1, (trackRef.current?.scrollWidth ?? 1) - window.innerWidth)) * 100}%`,
-                transition: "width 0.1s linear",
-              }}
-            />
+        {/* Dots & progress */}
+        <div className="mt-8 flex items-center justify-between gap-6 flex-wrap">
+          <div className="flex gap-2">
+            {projects.map((p, i) => (
+              <button
+                key={p.num}
+                data-magnetic
+                onClick={() => setActive(i)}
+                aria-label={`Go to ${p.title}`}
+                className={`h-2 rounded-full transition-all duration-500 ${
+                  i === active ? "w-10 bg-primary" : "w-2 bg-foreground/20 hover:bg-foreground/40"
+                }`}
+              />
+            ))}
+          </div>
+          <div className="text-xs text-foreground/50 font-mono tabular-nums">
+            {String(active + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
+            {paused && <span className="ml-3 text-primary">paused</span>}
           </div>
         </div>
       </div>

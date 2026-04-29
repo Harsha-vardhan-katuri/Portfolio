@@ -8,8 +8,8 @@ export const PageTransition = () => {
   const [stage, setStage] = useState<"intro" | "exit" | "done">("intro");
 
   useEffect(() => {
-    const t1 = setTimeout(() => setStage("exit"), 1200);
-    const t2 = setTimeout(() => setStage("done"), 2200);
+    const t1 = setTimeout(() => setStage("exit"), 700);
+    const t2 = setTimeout(() => setStage("done"), 1500);
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
