@@ -1,4 +1,4 @@
-import { Briefcase, GraduationCap, Sparkles } from "lucide-react";
+import { Briefcase, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 
 const experiences = [
@@ -44,23 +44,10 @@ const experiences = [
       "Worked with ESP8266, LPC2148, Keil IDE, Ubuntu",
     ],
   },
-  {
-    type: "education",
-    title: "B.Tech in ECE",
-    company: "Gudlavalleru Engineering College",
-    location: "Andhra Pradesh",
-    period: "Aug 2019 — May 2023",
-    year: "2019",
-    description: [
-      "CGPA: 8.36 / 10",
-      "Focused on embedded systems, microcontrollers and IoT",
-      "Multiple firmware and hardware capstone projects",
-    ],
-  },
 ];
 
 const iconFor = (type: string) =>
-  type === "education" ? GraduationCap : type === "training" ? Sparkles : Briefcase;
+  type === "training" ? Sparkles : Briefcase;
 
 export const Experience = () => {
   return (

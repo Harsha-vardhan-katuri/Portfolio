@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Home, User, Cpu, Briefcase, Award, FolderKanban, Mail } from "lucide-react";
+import { Home, User, Cpu, Briefcase, Award, FolderKanban, Mail, GraduationCap } from "lucide-react";
 
 export const Navigation = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -10,7 +10,7 @@ export const Navigation = () => {
       if (raf) return;
       raf = requestAnimationFrame(() => {
         raf = 0;
-        const sections = ["home", "about", "skills", "projects", "experience", "certifications", "contact"];
+        const sections = ["home", "about", "skills", "projects", "experience", "education", "certifications", "contact"];
         const scrollPosition = window.scrollY + window.innerHeight / 2;
         for (const section of sections) {
           const el = document.getElementById(section);
@@ -39,6 +39,7 @@ export const Navigation = () => {
     { label: "Skills", id: "skills", icon: Cpu },
     { label: "Projects", id: "projects", icon: FolderKanban },
     { label: "Experience", id: "experience", icon: Briefcase },
+    { label: "Education", id: "education", icon: GraduationCap },
     { label: "Certifications", id: "certifications", icon: Award },
     { label: "Contact", id: "contact", icon: Mail },
   ];
