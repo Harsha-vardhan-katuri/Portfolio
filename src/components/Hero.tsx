@@ -1,5 +1,5 @@
 import { useRef, useCallback } from "react";
-import { ArrowDown, Github, Linkedin, Mail, ArrowUpRight, MapPin } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowUpRight, MapPin } from "lucide-react";
 import { ShaderHero } from "@/components/ShaderHero";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { Reveal } from "@/components/RevealText";
@@ -107,15 +107,13 @@ export const Hero = () => {
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <button
-          onClick={() => scrollToSection("about")}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-foreground/40 hover:text-foreground transition-colors"
+        {/* Scroll hint */}
+        <div
+          className="absolute bottom-24 left-1/2 -translate-x-1/2 z-10 text-[10px] uppercase tracking-[0.3em] text-foreground/40"
           style={{ opacity: Math.max(0, 1 - progress * 3) }}
         >
-          <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
-          <ArrowDown className="h-4 w-4 animate-bounce" />
-        </button>
+          Scroll to explore
+        </div>
       </div>
     </section>
   );
