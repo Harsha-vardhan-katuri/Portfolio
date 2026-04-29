@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import { Github, ExternalLink, ArrowUpRight } from "lucide-react";
 
 const projects = [
@@ -44,22 +43,9 @@ const projects = [
   },
 ];
 
-const SLIDE_MS = 3000;
-
 export const HorizontalProjects = () => {
-  const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const timerRef = useRef<number | null>(null);
-
-  useEffect(() => {
-    if (paused) return;
-    timerRef.current = window.setTimeout(() => {
-      setActive((i) => (i + 1) % projects.length);
-    }, SLIDE_MS);
-    return () => {
-      if (timerRef.current) window.clearTimeout(timerRef.current);
-    };
-  }, [active, paused]);
+  // Duplicate the list once so the marquee loops seamlessly
+  const loop = [...projects, ...projects];
 
   return (
     <section id="projects" className="relative py-24 md:py-32">
@@ -74,52 +60,48 @@ export const HorizontalProjects = () => {
             </h2>
           </div>
           <p className="text-foreground/50 text-sm max-w-xs">
-            Auto-rotating · 3s per project · hover to pause.
+            Continuously scrolling · hover to pause.
           </p>
         </div>
 
-        {/* Carousel */}
-        <div
-          className="relative overflow-hidden rounded-3xl"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-          style={{ height: "min(70vh, 620px)" }}
-        >
-          <div
-            className="flex h-full transition-transform duration-[900ms] ease-[cubic-bezier(0.76,0,0.24,1)] will-change-transform"
-            style={{ transform: `translate3d(-${active * 100}%, 0, 0)` }}
-          >
-            {projects.map((p) => (
+        {/* Continuous marquee */}
+        <div className="projects-marquee group relative overflow-hidden">
+          {/* edge fades */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 z-10 bg-gradient-to-r from-background to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 z-10 bg-gradient-to-l from-background to-transparent" />
+
+          <div className="projects-marquee-track flex gap-6 py-4 will-change-transform">
+            {loop.map((p, idx) => (
               <article
-                key={p.num}
-                className="group relative shrink-0 w-full h-full overflow-hidden bg-white/[0.03] border border-white/10"
+                key={`${p.num}-${idx}`}
+                className="group/card relative shrink-0 w-[85vw] sm:w-[520px] h-[440px] rounded-3xl overflow-hidden bg-white/[0.04] border border-white/10 backdrop-blur-md"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${p.color} opacity-70`} />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--primary)/0.18),transparent_60%)]" />
 
-                <div className="relative h-full p-8 md:p-16 flex flex-col justify-between">
+                <div className="relative h-full p-8 md:p-10 flex flex-col justify-between">
                   <div className="flex items-start justify-between">
-                    <span className="font-display text-7xl md:text-9xl font-black text-foreground/15">
+                    <span className="font-display text-6xl md:text-7xl font-black text-foreground/15">
                       {p.num}
                     </span>
-                    <ArrowUpRight className="h-8 w-8 text-foreground/40 group-hover:text-primary group-hover:rotate-45 transition-all duration-500" />
+                    <ArrowUpRight className="h-7 w-7 text-foreground/40 group-hover/card:text-primary group-hover/card:rotate-45 transition-all duration-500" />
                   </div>
 
-                  <div className="max-w-2xl">
-                    <p className="text-xs uppercase tracking-[0.3em] text-primary/80 mb-3">
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.3em] text-primary/80 mb-2">
                       {p.tag}
                     </p>
-                    <h3 className="font-display text-3xl md:text-5xl font-bold mb-4 leading-[1.05]">
+                    <h3 className="font-display text-2xl md:text-3xl font-bold mb-3 leading-[1.1]">
                       {p.title}
                     </h3>
-                    <p className="text-foreground/70 text-sm md:text-base mb-6">
+                    <p className="text-foreground/70 text-sm mb-5 line-clamp-3">
                       {p.description}
                     </p>
-                    <div className="flex flex-wrap gap-2 mb-6">
+                    <div className="flex flex-wrap gap-2 mb-5">
                       {p.technologies.map((t) => (
                         <span
                           key={t}
-                          className="text-xs px-3 py-1 rounded-full border border-white/15 bg-white/[0.04] text-foreground/80"
+                          className="text-[11px] px-2.5 py-1 rounded-full border border-white/15 bg-white/[0.04] text-foreground/80"
                         >
                           {t}
                         </span>
@@ -148,26 +130,18 @@ export const HorizontalProjects = () => {
           </div>
         </div>
 
-        {/* Dots & progress */}
-        <div className="mt-8 flex items-center justify-between gap-6 flex-wrap">
-          <div className="flex gap-2">
-            {projects.map((p, i) => (
-              <button
-                key={p.num}
-                data-magnetic
-                onClick={() => setActive(i)}
-                aria-label={`Go to ${p.title}`}
-                className={`h-2 rounded-full transition-all duration-500 ${
-                  i === active ? "w-10 bg-primary" : "w-2 bg-foreground/20 hover:bg-foreground/40"
-                }`}
-              />
-            ))}
-          </div>
-          <div className="text-xs text-foreground/50 font-mono tabular-nums">
-            {String(active + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
-            {paused && <span className="ml-3 text-primary">paused</span>}
-          </div>
-        </div>
+        <style>{`
+          .projects-marquee-track {
+            animation: projects-scroll 50s linear infinite;
+          }
+          .projects-marquee:hover .projects-marquee-track {
+            animation-play-state: paused;
+          }
+          @keyframes projects-scroll {
+            from { transform: translate3d(0, 0, 0); }
+            to   { transform: translate3d(-50%, 0, 0); }
+          }
+        `}</style>
       </div>
     </section>
   );

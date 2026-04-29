@@ -2,13 +2,61 @@ import { motion } from "framer-motion";
 import { ScrollSection } from "@/components/ScrollSection";
 
 export const Skills = () => {
-  const skillCategories = [
-    { title: "Programming Languages", skills: ["C", "C++", "Embedded C", "Python", "Data Structures"] },
-    { title: "Embedded Systems", skills: ["Microcontroller Architectures", "Hardware Interfacing", "Linux Internals", "Network Protocols", "Device Drivers"] },
-    { title: "System on Chips", skills: ["ESP32", "ESP8266", "LPC2148", "Arduino"] },
-    { title: "Communication Protocols", skills: ["UART", "I2C", "SPI", "RS485", "LoRa", "MQTT", "Modbus RTU"] },
-    { title: "Tools & Platforms", skills: ["Keil IDE", "Arduino IDE", "VS Code", "Git/GitHub/GitLab", "Ubuntu", "MATLAB"] },
-    { title: "IoT & AI", skills: ["Sensor Integration", "Cloud IoT", "Thing Speak", "Streamlit", "Hugging Face Transformers"] },
+  const skillCategories: { title: string; skills: { name: string; level: number }[] }[] = [
+    {
+      title: "Programming Languages",
+      skills: [
+        { name: "Embedded C", level: 92 },
+        { name: "C / C++", level: 88 },
+        { name: "Python", level: 80 },
+        { name: "Data Structures", level: 78 },
+      ],
+    },
+    {
+      title: "Embedded Systems",
+      skills: [
+        { name: "Microcontroller Architectures", level: 90 },
+        { name: "Hardware Interfacing", level: 88 },
+        { name: "Device Drivers", level: 78 },
+        { name: "Linux Internals", level: 72 },
+      ],
+    },
+    {
+      title: "System on Chips",
+      skills: [
+        { name: "ESP32", level: 92 },
+        { name: "ESP8266", level: 85 },
+        { name: "LPC2148", level: 80 },
+        { name: "Arduino", level: 88 },
+      ],
+    },
+    {
+      title: "Communication Protocols",
+      skills: [
+        { name: "UART / I2C / SPI", level: 92 },
+        { name: "RS485 / Modbus RTU", level: 85 },
+        { name: "LoRa", level: 82 },
+        { name: "MQTT", level: 78 },
+      ],
+    },
+    {
+      title: "Tools & Platforms",
+      skills: [
+        { name: "Keil / VS Code", level: 90 },
+        { name: "Git / GitHub / GitLab", level: 88 },
+        { name: "Ubuntu / Linux", level: 80 },
+        { name: "MATLAB", level: 70 },
+      ],
+    },
+    {
+      title: "IoT & AI",
+      skills: [
+        { name: "Sensor Integration", level: 90 },
+        { name: "Cloud IoT / ThingSpeak", level: 82 },
+        { name: "Hugging Face Transformers", level: 75 },
+        { name: "Streamlit", level: 78 },
+      ],
+    },
   ];
 
   return (
@@ -39,21 +87,32 @@ export const Skills = () => {
               {skillCategories.map((category, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 30, scale: 0.95 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true }}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
                   transition={{ duration: 0.6, delay: index * 0.08 }}
                   className="glass-card-hover p-6 group"
                 >
-                  <h3 className="text-lg font-bold font-display text-primary mb-4">{category.title}</h3>
-                  <div className="flex flex-wrap gap-2">
+                  <h3 className="text-base font-bold font-display text-primary mb-5 tracking-wide">
+                    {category.title}
+                  </h3>
+                  <div className="space-y-4">
                     {category.skills.map((skill, i) => (
-                      <span
-                        key={i}
-                        className="px-3 py-1.5 text-sm bg-primary/5 border border-primary/10 rounded-lg text-foreground/60 hover:bg-primary/15 hover:text-foreground hover:border-primary/30 transition-all duration-300 cursor-default"
-                      >
-                        {skill}
-                      </span>
+                      <div key={i}>
+                        <div className="flex items-center justify-between text-xs mb-1.5">
+                          <span className="text-foreground/80">{skill.name}</span>
+                          <span className="text-foreground/50 font-mono tabular-nums">{skill.level}%</span>
+                        </div>
+                        <div className="h-1 w-full rounded-full bg-white/[0.05] overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${skill.level}%` }}
+                            viewport={{ once: true, margin: "-40px" }}
+                            transition={{ duration: 1.1, delay: 0.15 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                            className="h-full rounded-full bg-gradient-to-r from-primary via-primary to-secondary shadow-[0_0_8px_hsl(var(--primary)/0.6)]"
+                          />
+                        </div>
+                      </div>
                     ))}
                   </div>
                 </motion.div>

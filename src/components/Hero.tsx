@@ -33,14 +33,6 @@ export const Hero = () => {
             transform: `translate3d(0, ${translateY}px, 0)`,
           }}
         >
-          {/* Centered location chip */}
-          <Reveal delay={0.1} className="mb-8">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-[11px] uppercase tracking-[0.3em] text-foreground/70 bg-white/[0.04] border border-white/10 backdrop-blur-md">
-              <MapPin className="h-3 w-3 text-primary" />
-              Bengaluru, India
-            </span>
-          </Reveal>
-
           {/* Name — clean, professional, single weight, single colour */}
           <h1 className="text-center font-display font-bold leading-[1.0] tracking-[-0.03em] text-foreground">
             <Reveal delay={0.2} block className="w-full">
@@ -67,8 +59,16 @@ export const Hero = () => {
             </p>
           </Reveal>
 
+          {/* Location chip — sits ABOVE the Get-in-touch button */}
+          <Reveal delay={0.85} className="mt-10">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-[11px] uppercase tracking-[0.3em] text-foreground/70 bg-white/[0.04] border border-white/10 backdrop-blur-md">
+              <MapPin className="h-3 w-3 text-primary" />
+              Bengaluru, India
+            </span>
+          </Reveal>
+
           {/* CTA row */}
-          <div className="mt-12 flex items-center gap-4 flex-wrap justify-center">
+          <div className="mt-6 flex items-center gap-4 flex-wrap justify-center">
             <button
               data-magnetic
               onClick={() => scrollToSection("contact")}
