@@ -1,5 +1,5 @@
 import { useRef, useCallback } from "react";
-import { ArrowDown, Github, Linkedin, Mail, ArrowUpRight } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, ArrowUpRight, MapPin } from "lucide-react";
 import { ShaderHero } from "@/components/ShaderHero";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { Reveal } from "@/components/RevealText";
@@ -26,13 +26,6 @@ export const Hero = () => {
       <div className="sticky top-0 h-screen overflow-hidden">
         <ShaderHero />
 
-        {/* Top label bar */}
-        <div className="absolute top-20 left-0 right-0 z-10 px-8 flex justify-between items-center text-[10px] uppercase tracking-[0.3em] text-foreground/40">
-          <span>Bengaluru, IN</span>
-          <span className="hidden md:inline">Available for work — 2026</span>
-          <span>v 2.0</span>
-        </div>
-
         <div
           className="relative z-10 h-full flex flex-col items-center justify-center px-6 pt-16 will-change-transform"
           style={{
@@ -40,10 +33,11 @@ export const Hero = () => {
             transform: `translate3d(0, ${translateY}px, 0)`,
           }}
         >
-          {/* Eyebrow */}
+          {/* Centered location chip */}
           <Reveal delay={0.1} className="mb-8">
-            <span className="text-xs uppercase tracking-[0.5em] text-primary font-medium">
-              Firmware Engineer · IoT Developer
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-[11px] uppercase tracking-[0.3em] text-foreground/70 bg-white/[0.04] border border-white/10 backdrop-blur-md">
+              <MapPin className="h-3 w-3 text-primary" />
+              Bengaluru, India
             </span>
           </Reveal>
 
