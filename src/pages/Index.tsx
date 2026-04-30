@@ -11,6 +11,7 @@ import { Footer } from "@/components/Footer";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { PageTransition } from "@/components/PageTransition";
 import { ShaderBackground } from "@/components/ShaderHero";
+import { SectionTransition } from "@/components/SectionTransition";
 
 const Index = () => {
   return (
@@ -20,13 +21,13 @@ const Index = () => {
         <ShaderBackground />
         <Navigation />
         <Hero />
-        <About />
-        <Skills />
-        <HorizontalProjects />
-        <Experience />
-        <Education />
-        <Certifications />
-        <Contact />
+        <SectionTransition><About /></SectionTransition>
+        <SectionTransition><Skills /></SectionTransition>
+        <SectionTransition><HorizontalProjects /></SectionTransition>
+        <SectionTransition><Experience /></SectionTransition>
+        <SectionTransition><Education /></SectionTransition>
+        <SectionTransition><Certifications /></SectionTransition>
+        <SectionTransition><Contact /></SectionTransition>
         <Footer />
       </div>
     </SmoothScroll>
