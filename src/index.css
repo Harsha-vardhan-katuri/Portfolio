@@ -50,10 +50,14 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
     font-family: 'Inter', system-ui, sans-serif;
     overflow-x: hidden;
-    background: var(--gradient-bg);
+    background: transparent;
+  }
+
+  html {
+    background: hsl(var(--background));
   }
 
   html {
