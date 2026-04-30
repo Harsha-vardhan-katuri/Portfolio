@@ -72,11 +72,12 @@ export const Experience = () => {
             <div className="space-y-16">
               {experiences.map((exp, i) => {
                 const Icon = iconFor(exp.type);
+                const left = i % 2 === 0; // even -> details on LEFT, year on RIGHT
                 return (
                   <motion.div
                     key={i}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, x: left ? -40 : 40, y: 20 }}
+                    whileInView={{ opacity: 1, x: 0, y: 0 }}
                     viewport={{ once: true, margin: "-80px" }}
                     transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                     className="relative grid md:grid-cols-2 gap-8 items-center"
@@ -88,18 +89,8 @@ export const Experience = () => {
                       </div>
                     </div>
 
-                    {/* Year — always left */}
-                    <div className="md:pr-12 md:text-right">
-                      <div className="font-display text-5xl md:text-7xl font-black text-foreground/15 leading-none">
-                        {exp.year}
-                      </div>
-                      <p className="mt-2 text-xs uppercase tracking-[0.3em] text-foreground/50">
-                        {exp.period}
-                      </p>
-                    </div>
-
-                    {/* Details — always right */}
-                    <div className="md:pl-12">
+                    {/* Details */}
+                    <div className={left ? "md:pr-12" : "md:order-2 md:pl-12"}>
                       <div className="group p-6 rounded-2xl bg-white/[0.025] border border-white/[0.07] backdrop-blur-md hover:bg-white/[0.05] hover:border-primary/30 transition-all duration-500">
                         <div className="flex items-start gap-3 mb-3">
                           <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
@@ -119,6 +110,16 @@ export const Experience = () => {
                           ))}
                         </ul>
                       </div>
+                    </div>
+
+                    {/* Year */}
+                    <div className={left ? "md:pl-12" : "md:order-1 md:pr-12 md:text-right"}>
+                      <div className="font-display text-5xl md:text-7xl font-black text-foreground/15 leading-none">
+                        {exp.year}
+                      </div>
+                      <p className="mt-2 text-xs uppercase tracking-[0.3em] text-foreground/50">
+                        {exp.period}
+                      </p>
                     </div>
                   </motion.div>
                 );
