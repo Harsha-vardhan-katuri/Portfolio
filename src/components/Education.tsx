@@ -42,50 +42,44 @@ export const Education = () => {
           </div>
 
           <div className="relative">
-            <div className="absolute left-4 md:left-6 top-2 bottom-2 w-px bg-gradient-to-b from-primary/40 via-foreground/10 to-secondary/40" />
+            {/* center vertical line */}
+            <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary/40 via-foreground/10 to-secondary/40" />
 
-            <div className="space-y-10">
-              {education.map((ed, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.6, delay: i * 0.1 }}
-                  className="relative pl-12 md:pl-20"
-                >
-                  <div className="absolute left-4 md:left-6 -translate-x-1/2 top-6">
-                    <div className="relative h-4 w-4 rounded-full bg-background border-2 border-primary">
-                      <div className="absolute inset-0 rounded-full bg-primary/40 animate-ping" />
-                    </div>
-                  </div>
-
-                  <div className="p-6 rounded-2xl bg-white/[0.025] border border-white/[0.07] backdrop-blur-md hover:bg-white/[0.05] hover:border-primary/30 transition-all duration-500">
-                    <div className="flex items-start gap-4 flex-wrap">
-                      <div className="p-2.5 rounded-lg bg-primary/10 border border-primary/20">
-                        <GraduationCap className="h-5 w-5 text-primary" />
+            <div className="space-y-16">
+              {education.map((ed, i) => {
+                const left = i % 2 === 0;
+                return (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: left ? -40 : 40, y: 20 }}
+                    whileInView={{ opacity: 1, x: 0, y: 0 }}
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                    className="relative grid md:grid-cols-2 gap-8 items-center"
+                  >
+                    {/* Node */}
+                    <div className="absolute left-1/2 -translate-x-1/2 z-10">
+                      <div className="relative h-5 w-5 rounded-full bg-background border-2 border-primary">
+                        <div className="absolute inset-0 rounded-full bg-primary/40 animate-ping" />
                       </div>
-                      <div className="flex-1 min-w-[240px]">
-                        <div className="flex items-start justify-between gap-3 flex-wrap">
-                          <div>
+                    </div>
+
+                    {/* Details */}
+                    <div className={left ? "md:pr-12" : "md:order-2 md:pl-12"}>
+                      <div className="p-6 rounded-2xl bg-white/[0.025] border border-white/[0.07] backdrop-blur-md hover:bg-white/[0.05] hover:border-primary/30 transition-all duration-500">
+                        <div className="flex items-start gap-3 mb-3">
+                          <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
+                            <GraduationCap className="h-4 w-4 text-primary" />
+                          </div>
+                          <div className="flex-1">
                             <h3 className="font-display font-bold text-lg leading-snug">
                               {ed.title}
                             </h3>
-                            <p className="text-primary text-sm font-medium">
-                              {ed.institution}
-                            </p>
+                            <p className="text-primary text-sm font-medium">{ed.institution}</p>
                             <p className="text-xs text-foreground/50">{ed.location}</p>
                           </div>
-                          <div className="text-right">
-                            <p className="font-display text-2xl font-black text-foreground/30 leading-none">
-                              {ed.year}
-                            </p>
-                            <p className="mt-1 text-[10px] uppercase tracking-[0.3em] text-foreground/50">
-                              {ed.period}
-                            </p>
-                          </div>
                         </div>
-                        <p className="mt-3 inline-block text-xs px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary">
+                        <p className="mt-1 inline-block text-xs px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary">
                           {ed.score}
                         </p>
                         <ul className="mt-4 space-y-1.5">
@@ -97,9 +91,19 @@ export const Education = () => {
                         </ul>
                       </div>
                     </div>
-                  </div>
-                </motion.div>
-              ))}
+
+                    {/* Year */}
+                    <div className={left ? "md:pl-12" : "md:order-1 md:pr-12 md:text-right"}>
+                      <div className="font-display text-5xl md:text-7xl font-black text-foreground/15 leading-none">
+                        {ed.year}
+                      </div>
+                      <p className="mt-2 text-xs uppercase tracking-[0.3em] text-foreground/50">
+                        {ed.period}
+                      </p>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </div>
