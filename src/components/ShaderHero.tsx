@@ -131,3 +131,21 @@ export const ShaderHero = () => {
     </div>
   );
 };
+
+/**
+ * Fixed, page-wide variant of the shader — sits behind every section so the
+ * same animated 3D background flows through the whole site.
+ */
+export const ShaderBackground = () => {
+  return (
+    <div className="fixed inset-0 -z-10 pointer-events-none">
+      <Canvas
+        dpr={[1, 1.5]}
+        gl={{ antialias: false, powerPreference: "high-performance", alpha: false }}
+        camera={{ position: [0, 0, 1] }}
+      >
+        <ShaderPlane />
+      </Canvas>
+    </div>
+  );
+};
