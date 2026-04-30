@@ -67,8 +67,8 @@ export const HorizontalProjects = () => {
         {/* Continuous marquee */}
         <div className="projects-marquee group relative overflow-hidden">
           {/* edge fades */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 z-10 bg-gradient-to-r from-background to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 z-10 bg-gradient-to-l from-background to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 z-10 bg-gradient-to-r from-background/60 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 z-10 bg-gradient-to-l from-background/60 to-transparent" />
 
           <div className="projects-marquee-track flex gap-6 py-4 will-change-transform">
             {loop.map((p, idx) => (
