@@ -1,4 +1,3 @@
-import { BackgroundEffects } from "@/components/BackgroundEffects";
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
@@ -12,13 +11,14 @@ import { Footer } from "@/components/Footer";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { MagneticCursor } from "@/components/MagneticCursor";
 import { PageTransition } from "@/components/PageTransition";
+import { ShaderBackground } from "@/components/ShaderHero";
 
 const Index = () => {
   return (
     <SmoothScroll>
       <div className="relative">
         <PageTransition />
-        <BackgroundEffects />
+        <ShaderBackground />
         <MagneticCursor />
         <Navigation />
         <Hero />
