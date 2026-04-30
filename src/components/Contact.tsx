@@ -73,7 +73,7 @@ export const Contact = () => {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       required
-                      className="bg-muted/30 border-border/50 focus:border-primary/50 h-12 rounded-xl placeholder:text-muted-foreground/40"
+                      className="bg-white/[0.03] backdrop-blur-md border-white/[0.08] focus:border-primary/50 h-12 rounded-xl placeholder:text-muted-foreground/40"
                     />
                   </div>
                   <div>
@@ -83,7 +83,7 @@ export const Contact = () => {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       required
-                      className="bg-muted/30 border-border/50 focus:border-primary/50 h-12 rounded-xl placeholder:text-muted-foreground/40"
+                      className="bg-white/[0.03] backdrop-blur-md border-white/[0.08] focus:border-primary/50 h-12 rounded-xl placeholder:text-muted-foreground/40"
                     />
                   </div>
                   <div>
@@ -93,7 +93,7 @@ export const Contact = () => {
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       required
                       rows={4}
-                      className="bg-muted/30 border-border/50 focus:border-primary/50 rounded-xl resize-none placeholder:text-muted-foreground/40"
+                      className="bg-white/[0.03] backdrop-blur-md border-white/[0.08] focus:border-primary/50 rounded-xl resize-none placeholder:text-muted-foreground/40"
                     />
                   </div>
                   <Button
