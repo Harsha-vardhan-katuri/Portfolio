@@ -50,7 +50,7 @@ const fragment = /* glsl */ `
     float n = fbm(p + q * 1.8 + uMouse * 0.15 + t);
 
     // Deep violet-black base
-    vec3 base = vec3(0.025, 0.012, 0.045);
+    vec3 base = vec3(0.04, 0.018, 0.075);
     // Rich violet
     vec3 violet = vec3(0.55, 0.30, 0.95);
     // Magenta / purple
@@ -59,9 +59,9 @@ const fragment = /* glsl */ `
     vec3 lavender = vec3(0.80, 0.65, 1.0);
 
     vec3 col = base;
-    col = mix(col, violet * 0.65, smoothstep(0.35, 0.85, n));
-    col = mix(col, magenta * 0.55, smoothstep(0.55, 0.95, n) * 0.75);
-    col += lavender * pow(smoothstep(0.7, 1.0, n), 4.0) * 0.5;
+    col = mix(col, violet * 0.95, smoothstep(0.25, 0.85, n));
+    col = mix(col, magenta * 0.85, smoothstep(0.45, 0.95, n) * 0.85);
+    col += lavender * pow(smoothstep(0.6, 1.0, n), 3.0) * 0.7;
 
     // Vignette
     float vig = smoothstep(1.2, 0.2, length(p));
