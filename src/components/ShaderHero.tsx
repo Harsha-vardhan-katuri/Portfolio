@@ -49,19 +49,19 @@ const fragment = /* glsl */ `
     vec2 q = vec2(fbm(p + t), fbm(p - t + 5.2));
     float n = fbm(p + q * 1.8 + uMouse * 0.15 + t);
 
-    // Deep midnight base
-    vec3 base = vec3(0.012, 0.02, 0.05);
-    // Electric blue
-    vec3 blue = vec3(0.20, 0.55, 1.0);
-    // Violet
-    vec3 violet = vec3(0.45, 0.25, 0.95);
-    // Cyan highlight
-    vec3 cyan = vec3(0.4, 0.9, 1.0);
+    // Deep violet-black base
+    vec3 base = vec3(0.025, 0.012, 0.045);
+    // Rich violet
+    vec3 violet = vec3(0.55, 0.30, 0.95);
+    // Magenta / purple
+    vec3 magenta = vec3(0.75, 0.30, 0.95);
+    // Soft lavender highlight
+    vec3 lavender = vec3(0.80, 0.65, 1.0);
 
     vec3 col = base;
-    col = mix(col, blue * 0.55, smoothstep(0.35, 0.85, n));
-    col = mix(col, violet * 0.6, smoothstep(0.55, 0.95, n) * 0.7);
-    col += cyan * pow(smoothstep(0.7, 1.0, n), 4.0) * 0.6;
+    col = mix(col, violet * 0.65, smoothstep(0.35, 0.85, n));
+    col = mix(col, magenta * 0.55, smoothstep(0.55, 0.95, n) * 0.75);
+    col += lavender * pow(smoothstep(0.7, 1.0, n), 4.0) * 0.5;
 
     // Vignette
     float vig = smoothstep(1.2, 0.2, length(p));

@@ -67,14 +67,14 @@ export const HorizontalProjects = () => {
         {/* Continuous marquee */}
         <div className="projects-marquee group relative overflow-hidden">
           {/* edge fades */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 z-10 bg-gradient-to-r from-background to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 z-10 bg-gradient-to-l from-background to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 z-10 bg-gradient-to-r from-background/60 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 z-10 bg-gradient-to-l from-background/60 to-transparent" />
 
           <div className="projects-marquee-track flex gap-6 py-4 will-change-transform">
             {loop.map((p, idx) => (
               <article
                 key={`${p.num}-${idx}`}
-                className="group/card relative shrink-0 w-[85vw] sm:w-[520px] h-[440px] rounded-3xl overflow-hidden bg-white/[0.04] border border-white/10 backdrop-blur-md"
+                className="group/card relative shrink-0 w-[85vw] sm:w-[520px] h-[440px] rounded-3xl overflow-hidden bg-white/[0.025] border border-white/[0.07] backdrop-blur-md"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${p.color} opacity-70`} />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--primary)/0.18),transparent_60%)]" />
@@ -101,7 +101,7 @@ export const HorizontalProjects = () => {
                       {p.technologies.map((t) => (
                         <span
                           key={t}
-                          className="text-[11px] px-2.5 py-1 rounded-full border border-white/15 bg-white/[0.04] text-foreground/80"
+                        className="text-[11px] px-2.5 py-1 rounded-full border border-white/[0.1] bg-white/[0.03] text-foreground/80"
                         >
                           {t}
                         </span>

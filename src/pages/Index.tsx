@@ -9,7 +9,6 @@ import { Certifications } from "@/components/Certifications";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { SmoothScroll } from "@/components/SmoothScroll";
-import { MagneticCursor } from "@/components/MagneticCursor";
 import { PageTransition } from "@/components/PageTransition";
 import { ShaderBackground } from "@/components/ShaderHero";
 
@@ -19,7 +18,6 @@ const Index = () => {
       <div className="relative">
         <PageTransition />
         <ShaderBackground />
-        <MagneticCursor />
         <Navigation />
         <Hero />
         <About />

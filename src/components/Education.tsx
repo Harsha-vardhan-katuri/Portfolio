@@ -60,10 +60,7 @@ export const Education = () => {
                     </div>
                   </div>
 
-                  <div
-                    data-magnetic
-                    className="p-6 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-md hover:bg-white/[0.07] hover:border-primary/30 transition-all duration-500"
-                  >
+                  <div className="p-6 rounded-2xl bg-white/[0.025] border border-white/[0.07] backdrop-blur-md hover:bg-white/[0.05] hover:border-primary/30 transition-all duration-500">
                     <div className="flex items-start gap-4 flex-wrap">
                       <div className="p-2.5 rounded-lg bg-primary/10 border border-primary/20">
                         <GraduationCap className="h-5 w-5 text-primary" />

@@ -72,7 +72,6 @@ export const Experience = () => {
             <div className="space-y-16">
               {experiences.map((exp, i) => {
                 const Icon = iconFor(exp.type);
-                const left = i % 2 === 0;
                 return (
                   <motion.div
                     key={i}
@@ -89,23 +88,30 @@ export const Experience = () => {
                       </div>
                     </div>
 
-                    {/* Details */}
-                    <div className={`${left ? "md:pr-12 md:text-right" : "md:order-2 md:pl-12"}`}>
-                      <div
-                        data-magnetic
-                        className="group p-6 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-md hover:bg-white/[0.07] hover:border-primary/30 transition-all duration-500"
-                      >
-                        <div className={`flex items-start gap-3 mb-3 ${left ? "md:flex-row-reverse" : ""}`}>
+                    {/* Year — always left */}
+                    <div className="md:pr-12 md:text-right">
+                      <div className="font-display text-5xl md:text-7xl font-black text-foreground/15 leading-none">
+                        {exp.year}
+                      </div>
+                      <p className="mt-2 text-xs uppercase tracking-[0.3em] text-foreground/50">
+                        {exp.period}
+                      </p>
+                    </div>
+
+                    {/* Details — always right */}
+                    <div className="md:pl-12">
+                      <div className="group p-6 rounded-2xl bg-white/[0.025] border border-white/[0.07] backdrop-blur-md hover:bg-white/[0.05] hover:border-primary/30 transition-all duration-500">
+                        <div className="flex items-start gap-3 mb-3">
                           <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
                             <Icon className="h-4 w-4 text-primary" />
                           </div>
-                          <div className={`flex-1 ${left ? "md:text-right" : ""}`}>
+                          <div className="flex-1">
                             <h3 className="text-lg font-bold font-display">{exp.title}</h3>
                             <p className="text-primary text-sm font-medium">{exp.company}</p>
                             <p className="text-xs text-foreground/50">{exp.location}</p>
                           </div>
                         </div>
-                        <ul className={`space-y-1.5 ${left ? "md:text-right" : ""}`}>
+                        <ul className="space-y-1.5">
                           {exp.description.map((d, k) => (
                             <li key={k} className="text-sm text-foreground/70">
                               {d}
@@ -113,16 +119,6 @@ export const Experience = () => {
                           ))}
                         </ul>
                       </div>
-                    </div>
-
-                    {/* Year */}
-                    <div className={`${left ? "md:order-2 md:pl-12" : "md:pr-12 md:text-right"}`}>
-                      <div className="font-display text-5xl md:text-7xl font-black text-foreground/15 leading-none">
-                        {exp.year}
-                      </div>
-                      <p className="mt-2 text-xs uppercase tracking-[0.3em] text-foreground/50">
-                        {exp.period}
-                      </p>
                     </div>
                   </motion.div>
                 );
