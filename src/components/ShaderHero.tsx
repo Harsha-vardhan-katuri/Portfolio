@@ -32,7 +32,7 @@ const fragment = /* glsl */ `
   float fbm(vec2 p){
     float v = 0.0;
     float a = 0.5;
-    for(int i=0;i<5;i++){
+    for(int i=0;i<4;i++){
       v += a*noise(p);
       p *= 2.0;
       a *= 0.5;
@@ -45,9 +45,9 @@ const fragment = /* glsl */ `
     vec2 p = (uv - 0.5);
     p.x *= uResolution.x / uResolution.y;
 
-    float t = uTime * 0.08;
+    float t = uTime * 0.05;
     vec2 q = vec2(fbm(p + t), fbm(p - t + 5.2));
-    float n = fbm(p + q * 1.8 + uMouse * 0.15 + t);
+    float n = fbm(p + q * 0.9 + uMouse * 0.08 + t);
 
     // Deep violet-black base
     vec3 base = vec3(0.04, 0.018, 0.075);
@@ -59,17 +59,17 @@ const fragment = /* glsl */ `
     vec3 lavender = vec3(0.80, 0.65, 1.0);
 
     vec3 col = base;
-    col = mix(col, violet * 0.95, smoothstep(0.25, 0.85, n));
-    col = mix(col, magenta * 0.85, smoothstep(0.45, 0.95, n) * 0.85);
-    col += lavender * pow(smoothstep(0.6, 1.0, n), 3.0) * 0.7;
+    col = mix(col, violet * 0.55, smoothstep(0.45, 0.95, n));
+    col = mix(col, magenta * 0.45, smoothstep(0.65, 1.0, n) * 0.5);
+    col += lavender * pow(smoothstep(0.8, 1.0, n), 4.0) * 0.25;
 
-    // Vignette
-    float vig = smoothstep(1.2, 0.2, length(p));
+    // Vignette (stronger to push haze to edges)
+    float vig = smoothstep(1.1, 0.1, length(p));
     col *= vig;
 
     // Subtle grain
     float g = fract(sin(dot(uv * uResolution, vec2(12.9898,78.233))) * 43758.5453);
-    col += (g - 0.5) * 0.025;
+    col += (g - 0.5) * 0.018;
 
     gl_FragColor = vec4(col, 1.0);
   }
