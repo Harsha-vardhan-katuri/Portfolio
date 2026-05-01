@@ -13,7 +13,8 @@ export const SectionTransition = ({
   className?: string;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-10% 0px -10% 0px" });
+  // Trigger as soon as the section's top crosses ~85% of the viewport
+  const inView = useInView(ref, { once: true, amount: 0.15 });
 
   return (
     <div ref={ref} className={`relative overflow-hidden ${className}`}>
