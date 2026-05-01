@@ -100,24 +100,92 @@ export const HorizontalProjects = () => {
   const cardRefs = useRef<(HTMLElement | null)[]>([]);
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
+  const pausedRef = useRef(false);
+  const rafRef = useRef<number | null>(null);
+  const jumpTargetRef = useRef<number | null>(null);
 
-  // Auto-advance through projects; pause on hover
+  // Continuous, seamless auto-scroll with rAF.
+  // We render the project list twice; when the scrollLeft reaches the end of
+  // the first copy, we wrap by subtracting that width — the visual is unbroken.
   useEffect(() => {
-    if (paused) return;
-    const id = window.setInterval(() => {
-      setActive((prev) => (prev + 1) % projects.length);
-    }, 3500);
-    return () => window.clearInterval(id);
+    const track = trackRef.current;
+    if (!track) return;
+
+    // Start at the very beginning (project 01).
+    track.scrollLeft = 0;
+
+    const SPEED = 60; // pixels per second
+    let last = performance.now();
+
+    const tick = (now: number) => {
+      const dt = (now - last) / 1000;
+      last = now;
+
+      // Width of one full set of cards (first copy).
+      const loopWidth = track.scrollWidth / 2;
+
+      // Handle a click-to-jump request smoothly.
+      if (jumpTargetRef.current !== null) {
+        const target = jumpTargetRef.current;
+        const diff = target - track.scrollLeft;
+        // Ease toward target; once close, snap and clear.
+        if (Math.abs(diff) < 1) {
+          track.scrollLeft = target;
+          jumpTargetRef.current = null;
+        } else {
+          track.scrollLeft += diff * Math.min(1, dt * 6);
+        }
+      } else if (!pausedRef.current) {
+        track.scrollLeft += SPEED * dt;
+      }
+
+      // Seamless wrap-around.
+      if (loopWidth > 0 && track.scrollLeft >= loopWidth) {
+        track.scrollLeft -= loopWidth;
+      } else if (track.scrollLeft < 0) {
+        track.scrollLeft += loopWidth;
+      }
+
+      // Update active dot based on which card is closest to viewport center.
+      const center = track.scrollLeft + track.clientWidth / 2;
+      let bestIdx = 0;
+      let bestDist = Infinity;
+      for (let i = 0; i < projects.length; i++) {
+        const c = cardRefs.current[i];
+        if (!c) continue;
+        const cCenter = c.offsetLeft + c.clientWidth / 2;
+        const d = Math.abs(cCenter - center);
+        if (d < bestDist) {
+          bestDist = d;
+          bestIdx = i;
+        }
+      }
+      setActive(bestIdx);
+
+      rafRef.current = requestAnimationFrame(tick);
+    };
+
+    rafRef.current = requestAnimationFrame((t) => {
+      last = t;
+      tick(t);
+    });
+
+    return () => {
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    pausedRef.current = paused;
   }, [paused]);
 
-  // Scroll the active card into view smoothly
-  useEffect(() => {
-    const card = cardRefs.current[active];
+  const jumpTo = (idx: number) => {
+    const card = cardRefs.current[idx];
     const track = trackRef.current;
     if (!card || !track) return;
     const target = card.offsetLeft - (track.clientWidth - card.clientWidth) / 2;
-    track.scrollTo({ left: target, behavior: "smooth" });
-  }, [active]);
+    jumpTargetRef.current = target;
+  };
 
   return (
     <section id="projects" className="relative py-24 md:py-32">
@@ -146,13 +214,18 @@ export const HorizontalProjects = () => {
 
           <div
             ref={trackRef}
-            className="flex gap-6 py-4 overflow-x-auto scroll-smooth no-scrollbar snap-x snap-mandatory"
+            className="flex gap-6 py-4 overflow-x-auto no-scrollbar"
           >
-            {projects.map((p, idx) => (
+            {[...projects, ...projects].map((p, i) => {
+              const idx = i % projects.length;
+              const isFirstCopy = i < projects.length;
+              return (
               <article
-                key={p.num}
-                ref={(el) => (cardRefs.current[idx] = el)}
-                className="group/card relative shrink-0 snap-center w-[85vw] sm:w-[520px] h-[440px] rounded-3xl overflow-hidden bg-white/[0.015] border border-white/[0.08] backdrop-blur-[6px] shadow-[0_20px_60px_hsl(265_60%_5%/0.35)]"
+                key={`${p.num}-${i}`}
+                ref={(el) => {
+                  if (isFirstCopy) cardRefs.current[idx] = el;
+                }}
+                className="group/card relative shrink-0 w-[85vw] sm:w-[520px] h-[440px] rounded-3xl overflow-hidden bg-white/[0.015] border border-white/[0.08] backdrop-blur-[6px] shadow-[0_20px_60px_hsl(265_60%_5%/0.35)]"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${p.color} opacity-25`} />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--primary)/0.10),transparent_60%)]" />
@@ -212,7 +285,8 @@ export const HorizontalProjects = () => {
                   </div>
                 </div>
               </article>
-            ))}
+              );
+            })}
           </div>
         </div>
 
@@ -222,7 +296,7 @@ export const HorizontalProjects = () => {
             <button
               key={p.num}
               data-magnetic
-              onClick={() => setActive(idx)}
+              onClick={() => jumpTo(idx)}
               aria-label={`Go to project ${idx + 1}`}
               className={`transition-all duration-300 rounded-full ${
                 active === idx
