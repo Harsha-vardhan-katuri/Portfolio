@@ -1,51 +1,123 @@
 import { Github, ExternalLink, ArrowUpRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
-const projects = [
+type Project = {
+  num: string;
+  title: string;
+  tag: string;
+  description: string;
+  technologies: string[];
+  color: string;
+  github?: string;
+  demo?: string;
+};
+
+const projects: Project[] = [
   {
     num: "01",
-    title: "LoRa Soil Health Monitor",
-    tag: "IoT · Embedded",
+    title: "Multi-Parameter Medical Device Firmware",
+    tag: "Embedded C · RTOS",
     description:
-      "Architected an advanced IoT system using ESP32 and RS485-based sensors to monitor soil parameters with LoRa wireless transmission over 1km range.",
-    technologies: ["ESP32", "RS485", "LoRa", "Modbus RTU"],
+      "Modular embedded firmware in C for SPO2, Lipid, WBC, and HbA1c on a multi-threaded POSIX pthread system. Debugged thread interactions and hardware signals using logic analyzer and oscilloscope.",
+    technologies: ["Embedded C", "pthreads", "UART", "USB", "Ethernet"],
     color: "from-cyan-500/30 via-blue-600/20 to-transparent",
-    github: "#",
+    github: "https://github.com/Harsha-vardhan-katuri/HC_FW_Code",
   },
   {
     num: "02",
-    title: "IoT Weather Reporting",
-    tag: "Embedded · Cloud",
+    title: "GSR-Based Stress Monitoring System",
+    tag: "ESP32 · Bio-Signals",
     description:
-      "Real-time weather monitoring system with DHT11 sensor integration and cloud connectivity via ThingSpeak.",
-    technologies: ["LPC2148", "ESP01", "DHT11", "ThingSpeak"],
+      "Real-time GSR pipeline on ESP32 with ADC sampling at 10–20 Hz, extracting tonic (SCL) and phasic (SCR) components to classify Calm, Normal, and Stress states with <1s latency.",
+    technologies: ["ESP32", "Grove GSR", "ADC", "DSP"],
     color: "from-violet-500/30 via-purple-600/20 to-transparent",
-    github: "#",
+    github: "https://github.com/Harsha-vardhan-katuri/GSR-Sensor-Project",
   },
   {
     num: "03",
-    title: "AI Health Chatbot",
-    tag: "AI · Python",
+    title: "LoRa Soil Health Monitoring",
+    tag: "IoT · LoRa · RS485",
     description:
-      "Intelligent chatbot using Streamlit and Hugging Face Transformers for health-related conversations with 90% response accuracy.",
-    technologies: ["Python", "Streamlit", "DistilGPT-2"],
+      "ESP32 reading NPK, pH, EC, moisture, and temperature via RS485 Modbus RTU, paired with SPI-based LoRa achieving 1 km range and compact 50-byte payloads for remote monitoring.",
+    technologies: ["ESP32", "RS485", "LoRa", "Modbus RTU"],
     color: "from-fuchsia-500/30 via-pink-600/20 to-transparent",
-    github: "#",
+    github: "https://github.com/Harsha-vardhan-katuri/Soil-Sensor-Project",
   },
   {
     num: "04",
-    title: "HealthCube HCXL",
-    tag: "Production Firmware",
+    title: "AI Health Chatbot",
+    tag: "AI · NLP · Streamlit",
     description:
-      "Contributing to production-grade firmware for medical diagnostic devices, integrating multiple sensors and protocols.",
-    technologies: ["C/C++", "RTOS", "I2C", "SPI"],
+      "Health assistant chatbot using Streamlit and Hugging Face Transformers with rule-based intent matching plus DistilGPT-2 fallback, reaching 85% response relevance and <2s latency.",
+    technologies: ["Python", "Streamlit", "DistilGPT-2", "NLTK"],
     color: "from-emerald-500/30 via-teal-600/20 to-transparent",
-    github: "#",
+    github: "https://github.com/Harsha-vardhan-katuri/AI_Chat_Bot",
+    demo: "https://aichatbot-scmfkmwqvmvzdj9ayyzp8c.streamlit.app/",
+  },
+  {
+    num: "05",
+    title: "Image Projector Firmware",
+    tag: "Embedded · Packet Parsing",
+    description:
+      "Embedded firmware in C for a toy projector that validates packet headers, performs chunk-based image extraction, and reconstructs frames from streamed byte data with controlled rendering.",
+    technologies: ["C", "Embedded", "Packet Parsing", "Memory"],
+    color: "from-indigo-500/30 via-blue-600/20 to-transparent",
+    github: "https://github.com/Harsha-vardhan-katuri/Image_Projector_Firmware",
+  },
+  {
+    num: "06",
+    title: "Button-Controlled LEDs",
+    tag: "Bare-Metal · GPIO",
+    description:
+      "Register-level embedded firmware (DDRB, PORTB, PINB) controlling LED patterns from a debounced push-button input with finite-state logic to minimize false triggers.",
+    technologies: ["Embedded C", "GPIO", "Debouncing", "AVR"],
+    color: "from-amber-500/25 via-orange-600/20 to-transparent",
+    github: "https://github.com/Harsha-vardhan-katuri/Button_Controlled_LEDs",
+    demo: "https://wokwi.com/projects/419441645494336513",
+  },
+  {
+    num: "07",
+    title: "Voice-Based Home Automation",
+    tag: "IBM Cloud · IoT",
+    description:
+      "Voice-controlled home automation using IBM Watson Assistant with Speech-to-Text and Text-to-Speech, orchestrated via Node-RED flows for hands-free appliance control.",
+    technologies: ["IBM Watson", "Node-RED", "STT/TTS", "Python"],
+    color: "from-rose-500/30 via-pink-600/20 to-transparent",
+  },
+  {
+    num: "08",
+    title: "OTP-Based Smart Wireless Lock",
+    tag: "Arduino · Bluetooth",
+    description:
+      "Smart locking system on Arduino UNO with HC-05 Bluetooth and an MIT App Inventor Android app generating and validating OTPs to actuate a servo-driven lock mechanism.",
+    technologies: ["Arduino", "HC-05", "Servo", "Embedded C"],
+    color: "from-purple-500/30 via-violet-600/20 to-transparent",
   },
 ];
 
 export const HorizontalProjects = () => {
-  // Duplicate the list once so the marquee loops seamlessly
-  const loop = [...projects, ...projects];
+  const trackRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLElement | null)[]>([]);
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  // Auto-advance through projects; pause on hover
+  useEffect(() => {
+    if (paused) return;
+    const id = window.setInterval(() => {
+      setActive((prev) => (prev + 1) % projects.length);
+    }, 3500);
+    return () => window.clearInterval(id);
+  }, [paused]);
+
+  // Scroll the active card into view smoothly
+  useEffect(() => {
+    const card = cardRefs.current[active];
+    const track = trackRef.current;
+    if (!card || !track) return;
+    const target = card.offsetLeft - (track.clientWidth - card.clientWidth) / 2;
+    track.scrollTo({ left: target, behavior: "smooth" });
+  }, [active]);
 
   return (
     <section id="projects" className="relative py-24 md:py-32">
@@ -60,21 +132,27 @@ export const HorizontalProjects = () => {
             </h2>
           </div>
           <p className="text-foreground/50 text-sm max-w-xs">
-            Continuously scrolling · hover to pause.
+            Auto-scrolling · hover to pause · click a dot to jump.
           </p>
         </div>
 
-        {/* Continuous marquee */}
-        <div className="projects-marquee group relative overflow-hidden">
-          {/* edge fades */}
+        <div
+          className="projects-marquee relative"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
           <div className="pointer-events-none absolute inset-y-0 left-0 w-24 z-10 bg-gradient-to-r from-background/60 to-transparent" />
           <div className="pointer-events-none absolute inset-y-0 right-0 w-24 z-10 bg-gradient-to-l from-background/60 to-transparent" />
 
-          <div className="projects-marquee-track flex gap-6 py-4 will-change-transform">
-            {loop.map((p, idx) => (
+          <div
+            ref={trackRef}
+            className="flex gap-6 py-4 overflow-x-auto scroll-smooth no-scrollbar snap-x snap-mandatory"
+          >
+            {projects.map((p, idx) => (
               <article
-                key={`${p.num}-${idx}`}
-                className="group/card relative shrink-0 w-[85vw] sm:w-[520px] h-[440px] rounded-3xl overflow-hidden bg-white/[0.025] border border-white/[0.07] backdrop-blur-md"
+                key={p.num}
+                ref={(el) => (cardRefs.current[idx] = el)}
+                className="group/card relative shrink-0 snap-center w-[85vw] sm:w-[520px] h-[440px] rounded-3xl overflow-hidden bg-white/[0.025] border border-white/[0.07] backdrop-blur-md"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${p.color} opacity-70`} />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--primary)/0.18),transparent_60%)]" />
@@ -101,27 +179,35 @@ export const HorizontalProjects = () => {
                       {p.technologies.map((t) => (
                         <span
                           key={t}
-                        className="text-[11px] px-2.5 py-1 rounded-full border border-white/[0.1] bg-white/[0.03] text-foreground/80"
+                          className="text-[11px] px-2.5 py-1 rounded-full border border-white/[0.1] bg-white/[0.03] text-foreground/80"
                         >
                           {t}
                         </span>
                       ))}
                     </div>
                     <div className="flex gap-4">
-                      <a
-                        data-magnetic
-                        href={p.github}
-                        className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-foreground/80 hover:text-primary transition-colors"
-                      >
-                        <Github className="h-4 w-4" /> Code
-                      </a>
-                      <a
-                        data-magnetic
-                        href="#"
-                        className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-foreground/80 hover:text-primary transition-colors"
-                      >
-                        <ExternalLink className="h-4 w-4" /> Demo
-                      </a>
+                      {p.github && (
+                        <a
+                          data-magnetic
+                          href={p.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-foreground/80 hover:text-primary transition-colors"
+                        >
+                          <Github className="h-4 w-4" /> Code
+                        </a>
+                      )}
+                      {p.demo && (
+                        <a
+                          data-magnetic
+                          href={p.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-foreground/80 hover:text-primary transition-colors"
+                        >
+                          <ExternalLink className="h-4 w-4" /> Demo
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -130,17 +216,26 @@ export const HorizontalProjects = () => {
           </div>
         </div>
 
+        {/* Dot navigation */}
+        <div className="mt-8 flex items-center justify-center gap-3">
+          {projects.map((p, idx) => (
+            <button
+              key={p.num}
+              data-magnetic
+              onClick={() => setActive(idx)}
+              aria-label={`Go to project ${idx + 1}`}
+              className={`transition-all duration-300 rounded-full ${
+                active === idx
+                  ? "w-8 h-2.5 bg-primary shadow-[0_0_12px_hsl(var(--primary))]"
+                  : "w-2.5 h-2.5 bg-white/25 hover:bg-white/50"
+              }`}
+            />
+          ))}
+        </div>
+
         <style>{`
-          .projects-marquee-track {
-            animation: projects-scroll 32s linear infinite;
-          }
-          .projects-marquee:hover .projects-marquee-track {
-            animation-play-state: paused;
-          }
-          @keyframes projects-scroll {
-            from { transform: translate3d(0, 0, 0); }
-            to   { transform: translate3d(-50%, 0, 0); }
-          }
+          .no-scrollbar::-webkit-scrollbar { display: none; }
+          .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         `}</style>
       </div>
     </section>
