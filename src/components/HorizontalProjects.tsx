@@ -132,7 +132,7 @@ export const HorizontalProjects = () => {
 
         <style>{`
           .projects-marquee-track {
-            animation: projects-scroll 50s linear infinite;
+            animation: projects-scroll 32s linear infinite;
           }
           .projects-marquee:hover .projects-marquee-track {
             animation-play-state: paused;
