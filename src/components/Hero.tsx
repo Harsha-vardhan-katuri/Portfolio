@@ -68,19 +68,19 @@ export const Hero = () => {
           </Reveal>
 
           {/* CTA row */}
-          <div className="mt-6 flex items-center gap-4 flex-wrap justify-center">
+          <div className="mt-5 flex items-center gap-3 flex-wrap justify-center">
             <button
               data-magnetic
               onClick={() => scrollToSection("contact")}
-              className="group relative px-8 py-4 rounded-full bg-foreground text-background text-sm font-semibold inline-flex items-center gap-3 overflow-hidden hover:scale-[1.03] transition-transform duration-300"
+              className="group relative px-5 py-2.5 rounded-full bg-foreground text-background text-xs font-semibold inline-flex items-center gap-2 overflow-hidden hover:scale-[1.03] transition-transform duration-300"
             >
               <span>Get in touch</span>
-              <ArrowUpRight className="h-4 w-4 group-hover:rotate-45 transition-transform duration-300" />
+              <ArrowUpRight className="h-3.5 w-3.5 group-hover:rotate-45 transition-transform duration-300" />
             </button>
             <button
               data-magnetic
               onClick={() => scrollToSection("projects")}
-              className="px-8 py-4 rounded-full border border-foreground/20 text-sm font-semibold hover:border-primary hover:text-primary transition-colors duration-300"
+              className="px-5 py-2.5 rounded-full border border-foreground/20 text-xs font-semibold hover:border-primary hover:text-primary transition-colors duration-300"
             >
               See work
             </button>
@@ -109,7 +109,7 @@ export const Hero = () => {
 
         {/* Scroll hint */}
         <div
-          className="absolute bottom-24 left-1/2 -translate-x-1/2 z-10 text-[10px] uppercase tracking-[0.3em] text-foreground/40"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 text-[10px] uppercase tracking-[0.3em] text-foreground/40"
           style={{ opacity: Math.max(0, 1 - progress * 3) }}
         >
           Scroll to explore
