@@ -43,9 +43,9 @@ export const Education = () => {
 
           <div className="relative">
             {/* center vertical line */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary/40 via-foreground/10 to-secondary/40" />
+            <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary/40 via-foreground/10 to-secondary/40" />
 
-            <div className="space-y-16">
+            <div className="space-y-10 md:space-y-16">
               {education.map((ed, i) => {
                 const left = i % 2 === 0;
                 return (
@@ -58,7 +58,7 @@ export const Education = () => {
                     className="relative grid md:grid-cols-2 gap-8 items-center"
                   >
                     {/* Node */}
-                    <div className="absolute left-1/2 -translate-x-1/2 z-10">
+                    <div className="hidden md:block absolute left-1/2 -translate-x-1/2 z-10">
                       <div className="relative h-5 w-5 rounded-full bg-background border-2 border-primary">
                         <div className="absolute inset-0 rounded-full bg-primary/40 animate-ping" />
                       </div>
@@ -93,7 +93,7 @@ export const Education = () => {
                     </div>
 
                     {/* Year */}
-                    <div className={left ? "md:pl-12" : "md:order-1 md:pr-12 md:text-right"}>
+                    <div className={`hidden md:block ${left ? "md:pl-12" : "md:order-1 md:pr-12 md:text-right"}`}>
                       <div className="font-display text-5xl md:text-7xl font-black text-foreground/15 leading-none">
                         {ed.year}
                       </div>

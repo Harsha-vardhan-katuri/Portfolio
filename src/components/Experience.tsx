@@ -67,9 +67,9 @@ export const Experience = () => {
           {/* Timeline */}
           <div className="relative">
             {/* Vertical line */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary/40 via-foreground/10 to-secondary/40" />
+            <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary/40 via-foreground/10 to-secondary/40" />
 
-            <div className="space-y-16">
+            <div className="space-y-10 md:space-y-16">
               {experiences.map((exp, i) => {
                 const Icon = iconFor(exp.type);
                 const left = i % 2 === 0; // even -> details on LEFT, year on RIGHT
@@ -83,7 +83,7 @@ export const Experience = () => {
                     className="relative grid md:grid-cols-2 gap-8 items-center"
                   >
                     {/* Node */}
-                    <div className="absolute left-1/2 -translate-x-1/2 z-10">
+                    <div className="hidden md:block absolute left-1/2 -translate-x-1/2 z-10">
                       <div className="relative h-5 w-5 rounded-full bg-background border-2 border-primary">
                         <div className="absolute inset-0 rounded-full bg-primary/40 animate-ping" />
                       </div>
@@ -113,7 +113,7 @@ export const Experience = () => {
                     </div>
 
                     {/* Year */}
-                    <div className={left ? "md:pl-12" : "md:order-1 md:pr-12 md:text-right"}>
+                    <div className={`hidden md:block ${left ? "md:pl-12" : "md:order-1 md:pr-12 md:text-right"}`}>
                       <div className="font-display text-5xl md:text-7xl font-black text-foreground/15 leading-none">
                         {exp.year}
                       </div>
