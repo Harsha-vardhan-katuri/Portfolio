@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Mail, Phone, MapPin, Github, Linkedin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Github, Linkedin, Send, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { motion } from "framer-motion";
 import { ScrollSection } from "@/components/ScrollSection";
 import { toast } from "sonner";
+import { SOCIAL_LINKS } from "@/lib/links";
 
 export const Contact = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -145,8 +146,9 @@ export const Contact = () => {
                   <h3 className="text-xl font-bold font-display mb-4">Social Links</h3>
                   <div className="space-y-3">
                     {[
-                      { icon: Github, label: "GitHub", url: "https://github.com/Harsha-vardhan-katuri" },
-                      { icon: Linkedin, label: "LinkedIn", url: "https://www.linkedin.com/in/harsha-vardhan-katuri-772166256/" },
+                      { icon: Github, label: "GitHub", url: SOCIAL_LINKS.github },
+                      { icon: Linkedin, label: "LinkedIn", url: SOCIAL_LINKS.linkedin },
+                      { icon: FileText, label: "Resume", url: SOCIAL_LINKS.resumeView },
                     ].map((link, i) => (
                       <a
                         key={i}
@@ -162,10 +164,18 @@ export const Contact = () => {
                   </div>
                   <div className="mt-5 pt-5 border-t border-border/30">
                     <Button
+                      asChild
                       className="w-full bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20 rounded-xl"
-                      onClick={() => toast.success("Resume download started!")}
                     >
-                      Download CV
+                      <a
+                        href={SOCIAL_LINKS.resumeDownload}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => toast.success("Resume download started!")}
+                      >
+                        <FileText className="h-4 w-4 mr-2" />
+                        Download CV
+                      </a>
                     </Button>
                   </div>
                 </motion.div>
