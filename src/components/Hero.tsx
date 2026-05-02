@@ -1,8 +1,9 @@
 import { useRef, useCallback } from "react";
-import { Github, Linkedin, Mail, ArrowUpRight, MapPin } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowUpRight, MapPin, FileText } from "lucide-react";
 import { ShaderHero } from "@/components/ShaderHero";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { Reveal } from "@/components/RevealText";
+import { SOCIAL_LINKS } from "@/lib/links";
 
 export const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -84,14 +85,24 @@ export const Hero = () => {
             >
               See work
             </button>
+            <a
+              data-magnetic
+              href={SOCIAL_LINKS.resumeView}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2.5 rounded-full border border-primary/40 text-primary text-xs font-semibold inline-flex items-center gap-2 hover:bg-primary/10 transition-colors duration-300"
+            >
+              <FileText className="h-3.5 w-3.5" />
+              Resume
+            </a>
           </div>
 
           {/* Social links */}
           <div className="mt-10 flex items-center gap-3">
             {[
-              { icon: Github, href: "https://github.com/Harsha-vardhan-katuri" },
-              { icon: Linkedin, href: "https://www.linkedin.com/in/harsha-vardhan-katuri-772166256/" },
-              { icon: Mail, href: "mailto:harsha@example.com" },
+              { icon: Github, href: SOCIAL_LINKS.github },
+              { icon: Linkedin, href: SOCIAL_LINKS.linkedin },
+              { icon: Mail, href: SOCIAL_LINKS.email },
             ].map(({ icon: Icon, href }, i) => (
               <a
                 key={i}
