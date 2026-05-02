@@ -89,8 +89,8 @@ export const Hero = () => {
           {/* Social links */}
           <div className="mt-10 flex items-center gap-3">
             {[
-              { icon: Github, href: "https://github.com" },
-              { icon: Linkedin, href: "https://linkedin.com" },
+              { icon: Github, href: "https://github.com/Harsha-vardhan-katuri" },
+              { icon: Linkedin, href: "https://www.linkedin.com/in/harsha-vardhan-katuri-772166256/" },
               { icon: Mail, href: "mailto:harsha@example.com" },
             ].map(({ icon: Icon, href }, i) => (
               <a

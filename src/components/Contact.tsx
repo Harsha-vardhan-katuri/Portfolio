@@ -145,8 +145,8 @@ export const Contact = () => {
                   <h3 className="text-xl font-bold font-display mb-4">Social Links</h3>
                   <div className="space-y-3">
                     {[
-                      { icon: Github, label: "GitHub", url: "https://github.com" },
-                      { icon: Linkedin, label: "LinkedIn", url: "https://linkedin.com" },
+                      { icon: Github, label: "GitHub", url: "https://github.com/Harsha-vardhan-katuri" },
+                      { icon: Linkedin, label: "LinkedIn", url: "https://www.linkedin.com/in/harsha-vardhan-katuri-772166256/" },
                     ].map((link, i) => (
                       <a
                         key={i}
