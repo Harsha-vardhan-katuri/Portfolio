@@ -59,9 +59,9 @@ const fragment = /* glsl */ `
     vec3 lavender = vec3(0.80, 0.65, 1.0);
 
     vec3 col = base;
-    col = mix(col, violet * 0.55, smoothstep(0.45, 0.95, n));
-    col = mix(col, magenta * 0.45, smoothstep(0.65, 1.0, n) * 0.5);
-    col += lavender * pow(smoothstep(0.8, 1.0, n), 4.0) * 0.25;
+    col = mix(col, violet * 0.605, smoothstep(0.42, 0.95, n));
+    col = mix(col, magenta * 0.495, smoothstep(0.62, 1.0, n) * 0.55);
+    col += lavender * pow(smoothstep(0.78, 1.0, n), 4.0) * 0.275;
 
     // Vignette (stronger to push haze to edges)
     float vig = smoothstep(1.1, 0.1, length(p));
