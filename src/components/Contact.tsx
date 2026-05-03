@@ -50,7 +50,7 @@ export const Contact = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0, delay: 0 }}
+                transition={{ duration: 0, delay: 0}}
                 className="text-lg text-muted-foreground max-w-lg mx-auto"
               >
                 Always open to discussing new projects, creative ideas, or opportunities.
@@ -140,7 +140,7 @@ export const Contact = () => {
                   initial={{ opacity: 0, x: 30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0, delay: 0 }}
+                  transition={{ duration: 0, delay: 0}}
                   className="glass-card p-8"
                 >
                   <h3 className="text-xl font-bold font-display mb-4">Social Links</h3>

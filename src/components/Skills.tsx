@@ -78,7 +78,7 @@ export const Skills = () => {
                 initial={{ width: 0 }}
                 whileInView={{ width: 80 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0, delay: 0 }}
+                transition={{ duration: 0, delay: 0}}
                 className="h-0.5 bg-gradient-to-r from-primary to-secondary"
               />
             </div>
@@ -90,7 +90,7 @@ export const Skills = () => {
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0, delay: index * 0.08 }}
+                  transition={{ duration: 0, delay: 0}}
                   className="glass-card-hover p-6 group"
                 >
                   <h3 className="text-base font-bold font-display text-primary mb-5 tracking-wide">
@@ -108,7 +108,7 @@ export const Skills = () => {
                             initial={{ width: 0 }}
                             whileInView={{ width: `${skill.level}%` }}
                             viewport={{ once: true, margin: "-40px" }}
-                            transition={{ duration: 0, delay: 0 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                            transition={{ duration: 0, delay: 0, ease: [0.22, 1, 0.36, 1] }}
                             className="h-full rounded-full bg-gradient-to-r from-primary via-primary to-secondary shadow-[0_0_8px_hsl(var(--primary)/0.6)]"
                           />
                         </div>

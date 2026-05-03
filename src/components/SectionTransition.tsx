@@ -23,7 +23,7 @@ export const SectionTransition = ({
         aria-hidden
         initial={{ y: "0%" }}
         animate={inView ? { y: "-101%" } : { y: "0%" }}
-        transition={{ duration: 0, ease: [0.76, 0, 0.24, 1], delay: 0 }}
+        transition={{ duration: 0, ease: [0.76, 0, 0.24, 1], delay: 0}}
         className="pointer-events-none absolute inset-0 z-30"
         style={{
           background:
@@ -36,7 +36,7 @@ export const SectionTransition = ({
         aria-hidden
         initial={{ y: "100%", opacity: 1 }}
         animate={inView ? { y: "-101%", opacity: 0 } : { y: "100%", opacity: 1 }}
-        transition={{ duration: 0, ease: [0.76, 0, 0.24, 1], delay: 0 }}
+        transition={{ duration: 0, ease: [0.76, 0, 0.24, 1], delay: 0}}
         className="pointer-events-none absolute inset-x-0 top-0 z-30 h-[2px]"
         style={{
           background:
