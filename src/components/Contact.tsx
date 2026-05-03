@@ -19,7 +19,7 @@ export const Contact = () => {
 
   const contactInfo = [
     { icon: Phone, label: "Phone", value: "+91 9676227794", action: "tel:+919676227794" },
-    { icon: Mail, label: "Email", value: "harsha@example.com", action: "mailto:harsha@example.com" },
+    { icon: Mail, label: "Email", value: "katuriharshavardhan369@gmail.com", action: "mailto:katuriharshavardhan369@gmail.com" },
     { icon: MapPin, label: "Location", value: "Bengaluru, Karnataka", action: null },
   ];
 
@@ -41,7 +41,7 @@ export const Contact = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.2 }}
+                transition={{ duration: 0.6 }}
                 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display gradient-text-shimmer mb-4"
               >
                 Let's Connect
@@ -50,7 +50,7 @@ export const Contact = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.2, delay: 0}}
+                transition={{ duration: 0.6, delay: 0}}
                 className="text-lg text-muted-foreground max-w-lg mx-auto"
               >
                 Always open to discussing new projects, creative ideas, or opportunities.
@@ -63,7 +63,7 @@ export const Contact = () => {
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.2 }}
+                transition={{ duration: 0.6 }}
                 className="glass-card p-8"
               >
                 <h3 className="text-xl font-bold font-display mb-6">Send a Message</h3>
@@ -113,7 +113,7 @@ export const Contact = () => {
                   initial={{ opacity: 0, x: 30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.2 }}
+                  transition={{ duration: 0.6 }}
                   className="glass-card p-8 space-y-5"
                 >
                   <h3 className="text-xl font-bold font-display">Contact Info</h3>
@@ -140,7 +140,7 @@ export const Contact = () => {
                   initial={{ opacity: 0, x: 30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.2, delay: 0}}
+                  transition={{ duration: 0.6, delay: 0}}
                   className="glass-card p-8"
                 >
                   <h3 className="text-xl font-bold font-display mb-4">Social Links</h3>
@@ -148,7 +148,6 @@ export const Contact = () => {
                     {[
                       { icon: Github, label: "GitHub", url: SOCIAL_LINKS.github },
                       { icon: Linkedin, label: "LinkedIn", url: SOCIAL_LINKS.linkedin },
-                      { icon: FileText, label: "Resume", url: SOCIAL_LINKS.resumeView },
                     ].map((link, i) => (
                       <a
                         key={i}
@@ -168,10 +167,10 @@ export const Contact = () => {
                       className="w-full bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20 rounded-xl"
                     >
                       <a
-                        href={SOCIAL_LINKS.resumeDownload}
+                        href={SOCIAL_LINKS.resumeView}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={() => toast.success("Resume download started!")}
+                        onClick={() => toast.success("Opening resume…")}
                       >
                         <FileText className="h-4 w-4 mr-2" />
                         Download CV
@@ -187,7 +186,7 @@ export const Contact = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.6 }}
               className="glass-card p-10 text-center relative overflow-hidden"
             >
               <div
@@ -200,7 +199,7 @@ export const Contact = () => {
               <Button
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-primary-foreground animate-glow-pulse relative z-10 rounded-xl"
-                onClick={() => window.location.href = "mailto:harsha@example.com"}
+                onClick={() => window.location.href = "mailto:katuriharshavardhan369@gmail.com"}
               >
                 <Mail className="mr-2 h-5 w-5" />
                 Send me an email
