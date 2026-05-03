@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, ReactNode } from "react";
+import { useRef, ReactNode } from "react";
 
 interface RevealProps {
   children: ReactNode;
@@ -20,23 +20,7 @@ export const Reveal = ({
   block = false,
 }: RevealProps) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [shown, setShown] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShown(true);
-          obs.disconnect();
-        }
-      },
-      { threshold: 0.15 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
+  const shown = true;
 
   return (
     <Tag
@@ -47,10 +31,8 @@ export const Reveal = ({
       <span
         style={{
           display: block ? "block" : "inline-block",
-          transform: shown ? "translate3d(0,0,0)" : "translate3d(0,110%,0)",
-          opacity: shown ? 1 : 0,
-          transition: `transform 1.1s cubic-bezier(0.22,1,0.36,1) ${delay}s, opacity 0.8s ease ${delay}s`,
-          willChange: "transform",
+          transform: "translate3d(0,0,0)",
+          opacity: 1,
         }}
       >
         {children}
