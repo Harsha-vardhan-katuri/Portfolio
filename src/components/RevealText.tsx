@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, ReactNode } from "react";
+import { useRef, ReactNode } from "react";
 
 interface RevealProps {
   children: ReactNode;
