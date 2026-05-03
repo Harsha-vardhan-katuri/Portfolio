@@ -19,7 +19,7 @@ export const About = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
+                transition={{ duration: 0 }}
                 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display gradient-text-shimmer mb-4"
               >
                 About Me
@@ -28,7 +28,7 @@ export const About = () => {
                 initial={{ width: 0 }}
                 whileInView={{ width: 80 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1.2, delay: 0.3 }}
+                transition={{ duration: 0, delay: 0 }}
                 className="h-0.5 bg-gradient-to-r from-primary to-secondary"
               />
             </div>
@@ -45,7 +45,7 @@ export const About = () => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: i * 0.15 }}
+                    transition={{ duration: 0, delay: i * 0.15 }}
                     className="text-lg text-foreground/80 leading-relaxed"
                   >
                     {text}
@@ -57,7 +57,7 @@ export const About = () => {
                 initial={{ opacity: 0, x: 40 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.3 }}
+                transition={{ duration: 0, delay: 0 }}
                 className="glass-card p-8 space-y-4"
               >
                 <h3 className="text-2xl font-bold font-display mb-6">Quick Facts</h3>
@@ -84,7 +84,7 @@ export const About = () => {
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.12 }}
+                  transition={{ duration: 0, delay: index * 0.12 }}
                   className="glass-card-hover p-8"
                 >
                   <item.icon className="h-10 w-10 text-primary mb-4" />
