@@ -49,7 +49,7 @@ export const Reveal = ({
           display: block ? "block" : "inline-block",
           transform: shown ? "translate3d(0,0,0)" : "translate3d(0,100%,0)",
           opacity: shown ? 1 : 0,
-          transition: "transform 0.6s cubic-bezier(0.22,1,0.36,1), opacity 0.4s ease",
+          transition: "transform 0.2s cubic-bezier(0.22,1,0.36,1), opacity 0.2s ease",
           willChange: "transform",
         }}
       >
