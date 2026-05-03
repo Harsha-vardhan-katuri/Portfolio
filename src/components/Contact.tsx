@@ -41,7 +41,7 @@ export const Contact = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0 }}
+                transition={{ duration: 0.6 }}
                 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display gradient-text-shimmer mb-4"
               >
                 Let's Connect
@@ -50,7 +50,7 @@ export const Contact = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0, delay: 0}}
+                transition={{ duration: 0.6, delay: 0}}
                 className="text-lg text-muted-foreground max-w-lg mx-auto"
               >
                 Always open to discussing new projects, creative ideas, or opportunities.
@@ -63,7 +63,7 @@ export const Contact = () => {
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0 }}
+                transition={{ duration: 0.6 }}
                 className="glass-card p-8"
               >
                 <h3 className="text-xl font-bold font-display mb-6">Send a Message</h3>
@@ -113,7 +113,7 @@ export const Contact = () => {
                   initial={{ opacity: 0, x: 30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0 }}
+                  transition={{ duration: 0.6 }}
                   className="glass-card p-8 space-y-5"
                 >
                   <h3 className="text-xl font-bold font-display">Contact Info</h3>
@@ -140,7 +140,7 @@ export const Contact = () => {
                   initial={{ opacity: 0, x: 30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0, delay: 0}}
+                  transition={{ duration: 0.6, delay: 0}}
                   className="glass-card p-8"
                 >
                   <h3 className="text-xl font-bold font-display mb-4">Social Links</h3>
@@ -187,7 +187,7 @@ export const Contact = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0 }}
+              transition={{ duration: 0.6 }}
               className="glass-card p-10 text-center relative overflow-hidden"
             >
               <div
