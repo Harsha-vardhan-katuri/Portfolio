@@ -69,7 +69,7 @@ export const Skills = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0 }}
+                transition={{ duration: 0.6 }}
                 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display gradient-text-shimmer mb-4"
               >
                 Skills & Expertise
