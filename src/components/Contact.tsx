@@ -71,6 +71,7 @@ export const Contact = () => {
                   <div>
                     <Input
                       placeholder="Your Name"
+                      aria-label="Your name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       required
@@ -81,6 +82,7 @@ export const Contact = () => {
                     <Input
                       type="email"
                       placeholder="Your Email"
+                      aria-label="Your email"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       required
@@ -90,6 +92,7 @@ export const Contact = () => {
                   <div>
                     <Textarea
                       placeholder="Your Message"
+                      aria-label="Your message"
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       required
