@@ -1,0 +1,9 @@
+# Harsha Vardhan Katuri Portfolio
+
+> A modern, high-tech portfolio website showcasing embedded systems, AI, and full-stack development skills with cinematic 3D animations and glassmorphism design.
+
+This is the personal portfolio of Harsha Vardhan Katuri, a developer specializing in embedded firmware, AI/ML, IoT, and web development. The site features a continuous violet WebGL shader background, smooth scroll animations, and an interactive project showcase.
+
+## Pages
+
+- [Home](/): Hero section with 3D animated background, skills grid with progress bars, auto-scrolling project carousel, interactive experience and education timelines, certifications, and contact form.
