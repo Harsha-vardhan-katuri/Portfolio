@@ -44,6 +44,7 @@ export const Hero = () => {
             <Reveal delay={0.35} block className="w-full">
               <span className="block text-[clamp(2.5rem,7.5vw,7rem)]">
                 Katuri
+                <span className="sr-only"> — Firmware Engineer</span>
               </span>
             </Reveal>
           </h1>
@@ -100,16 +101,17 @@ export const Hero = () => {
           {/* Social links */}
           <div className="mt-10 flex items-center gap-3">
             {[
-              { icon: Github, href: SOCIAL_LINKS.github },
-              { icon: Linkedin, href: SOCIAL_LINKS.linkedin },
-              { icon: Mail, href: SOCIAL_LINKS.email },
-            ].map(({ icon: Icon, href }, i) => (
+              { icon: Github, href: SOCIAL_LINKS.github, label: "GitHub" },
+              { icon: Linkedin, href: SOCIAL_LINKS.linkedin, label: "LinkedIn" },
+              { icon: Mail, href: SOCIAL_LINKS.email, label: "Email" },
+            ].map(({ icon: Icon, href, label }, i) => (
               <a
                 key={i}
                 data-magnetic
                 href={href}
                 target={href.startsWith("mailto") ? undefined : "_blank"}
                 rel="noopener noreferrer"
+                aria-label={label}
                 className="p-3 rounded-full border border-foreground/10 hover:border-primary/60 hover:bg-primary/10 transition-all duration-300"
               >
                 <Icon className="h-4 w-4 text-foreground/60" />
