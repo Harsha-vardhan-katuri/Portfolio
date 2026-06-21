@@ -59,9 +59,9 @@ const fragment = /* glsl */ `
     vec3 lavender = vec3(0.80, 0.65, 1.0);
 
     vec3 col = base;
-    col = mix(col, violet * 0.605, smoothstep(0.42, 0.95, n));
-    col = mix(col, magenta * 0.495, smoothstep(0.62, 1.0, n) * 0.55);
-    col += lavender * pow(smoothstep(0.78, 1.0, n), 4.0) * 0.275;
+    col = mix(col, violet * 0.847, smoothstep(0.38, 0.95, n));
+    col = mix(col, magenta * 0.693, smoothstep(0.58, 1.0, n) * 0.65);
+    col += lavender * pow(smoothstep(0.74, 1.0, n), 4.0) * 0.385;
 
     // Vignette (stronger to push haze to edges)
     float vig = smoothstep(1.1, 0.1, length(p));
@@ -140,7 +140,7 @@ export const ShaderBackground = () => {
   return (
     <div className="fixed inset-0 -z-10 pointer-events-none">
       <Canvas
-        dpr={[1, 1.5]}
+        dpr={[0.75, 1]}
         gl={{ antialias: false, powerPreference: "high-performance", alpha: false }}
         camera={{ position: [0, 0, 1] }}
       >
