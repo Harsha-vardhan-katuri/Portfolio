@@ -66,7 +66,7 @@ const projects: Project[] = [
   },
   {
     num: "06",
-    title: "Button-Controlled LEDs",
+    title: "Bare Metal GPIO Controller",
     tag: "Bare-Metal · GPIO",
     description:
       "Register-level embedded firmware (DDRB, PORTB, PINB) controlling LED patterns from a debounced push-button input with finite-state logic to minimize false triggers.",
