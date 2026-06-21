@@ -140,7 +140,7 @@ export const ShaderBackground = () => {
   return (
     <div className="fixed inset-0 -z-10 pointer-events-none">
       <Canvas
-        dpr={[1, 1.5]}
+        dpr={[0.75, 1]}
         gl={{ antialias: false, powerPreference: "high-performance", alpha: false }}
         camera={{ position: [0, 0, 1] }}
       >
