@@ -1,6 +1,5 @@
-import { useRef, useCallback } from "react";
 import { Github, Linkedin, Mail, ArrowUpRight, MapPin, FileText } from "lucide-react";
-import { ShaderHero } from "@/components/ShaderHero";
+import { useRef, useCallback } from "react";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { Reveal } from "@/components/RevealText";
 import { SOCIAL_LINKS } from "@/lib/links";
@@ -25,8 +24,6 @@ export const Hero = () => {
       style={{ height: "180vh" }}
     >
       <div className="sticky top-0 h-screen overflow-hidden">
-        <ShaderHero />
-
         <div
           className="relative z-10 h-full flex flex-col items-center justify-center px-6 pt-16 will-change-transform"
           style={{
