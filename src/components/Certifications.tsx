@@ -1,4 +1,4 @@
-import { Award, BadgeCheck, ExternalLink, Mail } from "lucide-react";
+import { Award, BadgeCheck, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 import { ScrollSection } from "@/components/ScrollSection";
 import { Button } from "@/components/ui/button";
@@ -166,34 +166,6 @@ export const Certifications = () => {
                 </motion.div>
               </div>
             </div>
-
-            {/* CTA with glow */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="glass-card p-10 text-center relative overflow-hidden"
-            >
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background:
-                    "radial-gradient(ellipse at 50% 100%, hsl(199 89% 48% / 0.06) 0%, transparent 60%)",
-                }}
-              />
-              <p className="text-lg mb-6 text-foreground/75 relative z-10">
-                Interested in how these certifications translate into real-world embedded projects?
-              </p>
-              <Button
-                size="lg"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground animate-glow-pulse relative z-10 rounded-xl"
-                onClick={() => (window.location.href = "mailto:katuriharshavardhan369@gmail.com")}
-              >
-                <Mail className="mr-2 h-5 w-5" />
-                Get in touch
-              </Button>
-            </motion.div>
           </div>
         </div>
       )}
