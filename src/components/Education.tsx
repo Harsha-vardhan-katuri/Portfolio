@@ -17,12 +17,21 @@ const education = [
   },
   {
     title: "Intermediate (MPC)",
-    institution: "Sri Chaitanya Junior College",
+    institution: "Narayana Junior College",
     location: "Andhra Pradesh, India",
     period: "2017 — 2019",
     year: "2019",
-    score: "Percentage · 92%",
+    score: "CGPA · 9.94 / 10",
     highlights: ["Mathematics, Physics and Chemistry stream"],
+  },
+  {
+    title: "10th Grade (SSC)",
+    institution: "",
+    location: "Andhra Pradesh, India",
+    period: "2016 — 2017",
+    year: "2017",
+    score: "CGPA · 9.0 / 10",
+    highlights: ["Completed secondary school certificate in 2017"],
   },
 ];
 
@@ -75,7 +84,9 @@ export const Education = () => {
                             <h3 className="font-display font-bold text-lg leading-snug">
                               {ed.title}
                             </h3>
-                            <p className="text-primary text-sm font-medium">{ed.institution}</p>
+                            {ed.institution && (
+                              <p className="text-primary text-sm font-medium">{ed.institution}</p>
+                            )}
                             <p className="text-xs text-foreground/50">{ed.location}</p>
                           </div>
                         </div>
