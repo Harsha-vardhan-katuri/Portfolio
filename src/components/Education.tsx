@@ -84,7 +84,9 @@ export const Education = () => {
                             <h3 className="font-display font-bold text-lg leading-snug">
                               {ed.title}
                             </h3>
-                            <p className="text-primary text-sm font-medium">{ed.institution}</p>
+                            {ed.institution && (
+                              <p className="text-primary text-sm font-medium">{ed.institution}</p>
+                            )}
                             <p className="text-xs text-foreground/50">{ed.location}</p>
                           </div>
                         </div>
