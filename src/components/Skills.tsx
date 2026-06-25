@@ -51,8 +51,8 @@ export const Skills = () => {
     {
       title: "Tools & Environment",
       skills: [
-        { name: "Git / GitHub / CI-CD", level: 90 },
-        { name: "VS Code / Eclipse", level: 88 },
+        { name: "Git / GitHub", level: 90 },
+        { name: "CI/CD / GitHub Actions", level: 85 },
         { name: "Makefile / Doxygen", level: 82 },
         { name: "Ubuntu / Unit Testing", level: 80 },
       ],
