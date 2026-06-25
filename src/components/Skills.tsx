@@ -55,6 +55,7 @@ export const Skills = () => {
         { name: "CI/CD / GitHub Actions", level: 85 },
         { name: "VS Code / Eclipse", level: 88 },
         { name: "Makefile / Doxygen", level: 82 },
+        { name: "Ubuntu / Unit Testing", level: 80 },
       ],
     },
   ];
