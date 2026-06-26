@@ -25,6 +25,15 @@ const projects: Project[] = [
   },
   {
     num: "02",
+    title: "Modular BLE Advertisement Analysis Framework",
+    tag: "Embedded C · BLE",
+    description:
+      "Architected a modular BLE advertisement analysis framework in Embedded C, supporting four packet categories and extracting three-axis accelerometer data for motion classification. Incorporated packet validation, logging, and fault handling mechanisms, improving decoding reliability across valid, corrupted, and malformed packet scenarios. Automated build verification, unit testing, and API documentation using GitHub Actions, Makefile, and Doxygen, achieving 100% successful CI pipeline execution.",
+    technologies: ["Embedded C", "BLE", "GitHub Actions", "Makefile", "Doxygen"],
+    color: "from-sky-500/30 via-cyan-600/20 to-transparent",
+  },
+  {
+    num: "03",
     title: "GSR-Based Stress Monitoring System",
     tag: "ESP32 · Bio-Signals",
     description:
@@ -34,7 +43,7 @@ const projects: Project[] = [
     github: "https://github.com/Harsha-vardhan-katuri/GSR-Sensor-Project",
   },
   {
-    num: "03",
+    num: "04",
     title: "LoRa Soil Health Monitoring",
     tag: "IoT · LoRa · RS485",
     description:
@@ -44,7 +53,7 @@ const projects: Project[] = [
     github: "https://github.com/Harsha-vardhan-katuri/Soil-Sensor-Project",
   },
   {
-    num: "04",
+    num: "05",
     title: "AI Health Chatbot",
     tag: "AI · NLP · Streamlit",
     description:
@@ -55,7 +64,7 @@ const projects: Project[] = [
     demo: "https://aichatbot-scmfkmwqvmvzdj9ayyzp8c.streamlit.app/",
   },
   {
-    num: "05",
+    num: "06",
     title: "Image Projector Firmware",
     tag: "Embedded · Packet Parsing",
     description:
@@ -65,7 +74,7 @@ const projects: Project[] = [
     github: "https://github.com/Harsha-vardhan-katuri/Image_Projector_Firmware",
   },
   {
-    num: "06",
+    num: "07",
     title: "Bare Metal GPIO Controller",
     tag: "Bare-Metal · GPIO",
     description:
@@ -76,7 +85,7 @@ const projects: Project[] = [
     demo: "https://wokwi.com/projects/419441645494336513",
   },
   {
-    num: "07",
+    num: "08",
     title: "Voice-Based Home Automation",
     tag: "IBM Cloud · IoT",
     description:
@@ -85,7 +94,7 @@ const projects: Project[] = [
     color: "from-rose-500/30 via-pink-600/20 to-transparent",
   },
   {
-    num: "08",
+    num: "09",
     title: "OTP-Based Smart Wireless Lock",
     tag: "Arduino · Bluetooth",
     description:
