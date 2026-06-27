@@ -181,6 +181,10 @@ export const HorizontalProjects = () => {
     };
   }, []);
 
+  useEffect(() => {
+    pausedRef.current = paused;
+  }, [paused]);
+
   const jumpTo = (idx: number) => {
     const card = cardRefs.current[idx];
     const track = trackRef.current;
