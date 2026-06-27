@@ -171,12 +171,15 @@ export const HorizontalProjects = () => {
 
     return () => {
       if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+      if (resumeTimeoutRef.current !== null) window.clearTimeout(resumeTimeoutRef.current);
     };
   }, []);
 
   useEffect(() => {
-    pausedRef.current = paused;
-  }, [paused]);
+    return () => {
+      if (resumeTimeoutRef.current !== null) window.clearTimeout(resumeTimeoutRef.current);
+    };
+  }, []);
 
   const jumpTo = (idx: number) => {
     const card = cardRefs.current[idx];
