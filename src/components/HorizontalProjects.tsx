@@ -182,6 +182,17 @@ export const HorizontalProjects = () => {
     const card = cardRefs.current[idx];
     const track = trackRef.current;
     if (!card || !track) return;
+
+    // Pause auto-scroll, then resume after 13 seconds.
+    setPaused(true);
+    if (resumeTimeoutRef.current !== null) {
+      window.clearTimeout(resumeTimeoutRef.current);
+    }
+    resumeTimeoutRef.current = window.setTimeout(() => {
+      setPaused(false);
+      resumeTimeoutRef.current = null;
+    }, RESUME_DELAY);
+
     const loopWidth = track.scrollWidth / 2;
     let target = card.offsetLeft - (track.clientWidth - card.clientWidth) / 2;
     // Normalize into [0, loopWidth).
