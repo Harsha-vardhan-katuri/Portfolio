@@ -111,8 +111,8 @@ export const HorizontalProjects = () => {
   const [paused, setPaused] = useState(false);
   const pausedRef = useRef(false);
   const rafRef = useRef<number | null>(null);
-  // No easing target — clicks snap instantly so auto-scroll can never get
-  // stuck mid-jump when the wrap boundary is crossed.
+  const resumeTimeoutRef = useRef<number | null>(null);
+  const RESUME_DELAY = 13000; // 13s pause after clicking a dot
 
   // Continuous, seamless auto-scroll with rAF.
   // We render the project list twice; when the scrollLeft reaches the end of
