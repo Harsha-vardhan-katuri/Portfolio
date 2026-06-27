@@ -111,7 +111,8 @@ export const HorizontalProjects = () => {
   const [paused, setPaused] = useState(false);
   const pausedRef = useRef(false);
   const rafRef = useRef<number | null>(null);
-  const jumpTargetRef = useRef<number | null>(null);
+  // No easing target — clicks snap instantly so auto-scroll can never get
+  // stuck mid-jump when the wrap boundary is crossed.
 
   // Continuous, seamless auto-scroll with rAF.
   // We render the project list twice; when the scrollLeft reaches the end of
@@ -133,18 +134,7 @@ export const HorizontalProjects = () => {
       // Width of one full set of cards (first copy).
       const loopWidth = track.scrollWidth / 2;
 
-      // Handle a click-to-jump request smoothly.
-      if (jumpTargetRef.current !== null) {
-        const target = jumpTargetRef.current;
-        const diff = target - track.scrollLeft;
-        // Ease toward target; once close, snap and clear.
-        if (Math.abs(diff) < 1) {
-          track.scrollLeft = target;
-          jumpTargetRef.current = null;
-        } else {
-          track.scrollLeft += diff * Math.min(1, dt * 6);
-        }
-      } else if (!pausedRef.current) {
+      if (!pausedRef.current) {
         track.scrollLeft += SPEED * dt;
       }
 
@@ -192,8 +182,20 @@ export const HorizontalProjects = () => {
     const card = cardRefs.current[idx];
     const track = trackRef.current;
     if (!card || !track) return;
-    const target = card.offsetLeft - (track.clientWidth - card.clientWidth) / 2;
-    jumpTargetRef.current = target;
+    const loopWidth = track.scrollWidth / 2;
+    let target = card.offsetLeft - (track.clientWidth - card.clientWidth) / 2;
+    // Normalize into [0, loopWidth).
+    if (loopWidth > 0) {
+      target = ((target % loopWidth) + loopWidth) % loopWidth;
+      // Pick the shorter direction by optionally using the duplicated card.
+      const current = track.scrollLeft;
+      const forward = (target - current + loopWidth) % loopWidth;
+      const backward = loopWidth - forward;
+      if (backward < forward) target = current - backward;
+      else target = current + forward;
+    }
+    // Instant snap — no easing, no stuck states.
+    track.scrollLeft = target;
   };
 
   return (
