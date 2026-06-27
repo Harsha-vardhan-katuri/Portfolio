@@ -111,8 +111,8 @@ export const HorizontalProjects = () => {
   const [paused, setPaused] = useState(false);
   const pausedRef = useRef(false);
   const rafRef = useRef<number | null>(null);
-  // No easing target — clicks snap instantly so auto-scroll can never get
-  // stuck mid-jump when the wrap boundary is crossed.
+  const resumeTimeoutRef = useRef<number | null>(null);
+  const RESUME_DELAY = 13000; // 13s pause after clicking a dot
 
   // Continuous, seamless auto-scroll with rAF.
   // We render the project list twice; when the scrollLeft reaches the end of
@@ -171,6 +171,13 @@ export const HorizontalProjects = () => {
 
     return () => {
       if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+      if (resumeTimeoutRef.current !== null) window.clearTimeout(resumeTimeoutRef.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (resumeTimeoutRef.current !== null) window.clearTimeout(resumeTimeoutRef.current);
     };
   }, []);
 
@@ -182,6 +189,17 @@ export const HorizontalProjects = () => {
     const card = cardRefs.current[idx];
     const track = trackRef.current;
     if (!card || !track) return;
+
+    // Pause auto-scroll, then resume after 13 seconds.
+    setPaused(true);
+    if (resumeTimeoutRef.current !== null) {
+      window.clearTimeout(resumeTimeoutRef.current);
+    }
+    resumeTimeoutRef.current = window.setTimeout(() => {
+      setPaused(false);
+      resumeTimeoutRef.current = null;
+    }, RESUME_DELAY);
+
     const loopWidth = track.scrollWidth / 2;
     let target = card.offsetLeft - (track.clientWidth - card.clientWidth) / 2;
     // Normalize into [0, loopWidth).
