@@ -65,11 +65,11 @@ const projects: Project[] = [
   },
   {
     num: "06",
-    title: "Image Projector Firmware",
-    tag: "Embedded · Packet Parsing",
+    title: "Packet-Based Image Projector Firmware",
+    tag: "Embedded C · CI/CD",
     description:
-      "Embedded firmware in C for a toy projector that validates packet headers, performs chunk-based image extraction, and reconstructs frames from streamed byte data with controlled rendering.",
-    technologies: ["C", "Embedded", "Packet Parsing", "Memory"],
+      "Constructed modular image projector software in Embedded C, processing packetized image data and reconstructing display content through structured payload handling. Introduced packet validation, unit testing, and API documentation, improving maintainability and verification across multiple software modules. Established CI/CD workflows using GitHub Actions and Makefile-based build automation, achieving 100% automated build verification across repository updates.",
+    technologies: ["Embedded C", "Packet Parsing", "CI/CD", "GitHub Actions", "Makefile"],
     color: "from-indigo-500/30 via-blue-600/20 to-transparent",
     github: "https://github.com/Harsha-vardhan-katuri/Image_Projector_Firmware",
   },
