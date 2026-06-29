@@ -5,8 +5,8 @@ export const SOCIAL_LINKS = {
   email: "mailto:katuriharshavardhan369@gmail.com",
   // Google Drive — opens preview in a new tab (works regardless of share permissions)
   resumeView:
-    "https://drive.google.com/file/d/127DU1uatWt7iTYNfwqE3EANoAQWrWdGi/view?usp=drive_link",
+    "https://drive.google.com/file/d/1lYhdQYLYqZ0BPuCR4JWuDhhuBEUk1Y5X/view?usp=drive_link",
   // Direct download endpoint for the same file
   resumeDownload:
-    "https://drive.google.com/uc?export=download&id=127DU1uatWt7iTYNfwqE3EANoAQWrWdGi",
+    "https://drive.google.com/uc?export=download&id=1lYhdQYLYqZ0BPuCR4JWuDhhuBEUk1Y5X",
 };
