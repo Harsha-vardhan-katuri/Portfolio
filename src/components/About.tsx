@@ -35,11 +35,10 @@ export const About = () => {
 
             <div className="grid md:grid-cols-2 gap-12 items-start mb-16">
               <div className="space-y-5">
-                {[
-                  <>I'm a <span className="text-primary font-semibold">Firmware Engineer</span> at HealthCubed India, where I architect cutting-edge IoT systems and develop production-grade embedded firmware.</>,
-                  <>With expertise spanning from <span className="text-primary font-semibold">microcontroller architectures</span> to <span className="text-primary font-semibold">wireless communication protocols</span>, I specialize in creating robust, efficient solutions for agricultural and medical device platforms.</>,
-                  <>My journey includes architecting a <span className="text-primary font-semibold">LoRa-enabled soil health monitoring system</span>, developing <span className="text-primary font-semibold">AI-powered chatbots</span>, and mastering protocols like UART, I2C, SPI, and RS485.</>,
-                ].map((text, i) => (
+              {[
+                <>I'm a <span className="text-primary font-semibold">Firmware Engineer</span> with 1.5+ years of experience developing Embedded Linux firmware and application middleware for connected products. My work focuses on <span className="text-primary font-semibold">C programming</span>, protocol integration, firmware optimization, and debugging hardware-software interactions.</>,
+                <>I enjoy building reliable embedded software and continuously improving my expertise through hands-on projects involving <span className="text-primary font-semibold">BLE</span>, <span className="text-primary font-semibold">Modbus RTU</span>, packet parsing, board bring-up, and modern development practices including Git, GitHub Actions, CI/CD, Makefile, and Doxygen.</>,
+              ].map((text, i) => (
                   <motion.p
                     key={i}
                     initial={{ opacity: 0, y: 20 }}
