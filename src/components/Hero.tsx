@@ -54,7 +54,7 @@ export const Hero = () => {
           {/* Subtitle */}
           <Reveal delay={0.7} block className="mt-6 max-w-2xl">
             <p className="text-center text-base md:text-lg text-foreground/70 px-4 leading-relaxed">
-              Engineering production-grade firmware for embedded, IoT and AI-enabled systems. Based in Bengaluru, India.
+              Developing reliable Embedded Linux firmware, application middleware, and communication software for connected products.
             </p>
           </Reveal>
 
