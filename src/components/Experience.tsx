@@ -19,10 +19,8 @@ const experiences = [
     location: "Remote",
     period: "Dec 2024 — Jan 2025",
     year: "2024",
-    description: [
-      "Created an AI-powered health assistant that leverages Natural Language Processing and transformer models to understand user queries and generate meaningful responses.",
-      "Optimized for response quality, low latency, and an intuitive web-based user experience.",
-    ],
+    description:
+      "Created an AI-powered health assistant that leverages Natural Language Processing and transformer models to understand user queries and generate meaningful responses. Optimized for response quality, low latency, and an intuitive web-based user experience.",
   },
   {
     type: "training",
