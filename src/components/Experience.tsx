@@ -29,12 +29,8 @@ const experiences = [
     location: "Hyderabad",
     period: "Jul 2023 — Apr 2024",
     year: "2023",
-    description: [
-      "Completed 6+ hands-on projects in C, C++, Embedded C",
-      "Mastered microcontroller architectures and HW interfacing",
-      "Gained expertise in Linux internals and device drivers",
-      "Worked with ESP8266, LPC2148, Keil IDE, Ubuntu",
-    ],
+    description:
+      "Completed 6+ hands-on projects in C, C++, and Embedded C, mastering microcontroller architectures, hardware interfacing, Linux internals, and device drivers using ESP8266, LPC2148, Keil IDE, and Ubuntu.",
   },
 ];
 
