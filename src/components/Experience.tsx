@@ -22,10 +22,8 @@ const experiences = [
     period: "Dec 2024 — Jan 2025",
     year: "2024",
     description: [
-      "Developed AI Health Assistant Chatbot with 90% accuracy",
-      "Implemented rule-based keyword matching (+40% accuracy)",
-      "Integrated DistilGPT-2, reducing response time by 35%",
-      "Increased user engagement by 50%",
+      "Created an AI-powered health assistant that leverages Natural Language Processing and transformer models to understand user queries and generate meaningful responses.",
+      "Optimized for response quality, low latency, and an intuitive web-based user experience.",
     ],
   },
   {
