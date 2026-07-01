@@ -94,13 +94,9 @@ export const Experience = () => {
                             <p className="text-xs text-foreground/50">{exp.location}</p>
                           </div>
                         </div>
-                        <ul className="space-y-1.5">
-                          {exp.description.map((d, k) => (
-                            <li key={k} className="text-sm text-foreground/70">
-                              {d}
-                            </li>
-                          ))}
-                        </ul>
+                        <p className="text-sm text-foreground/70 leading-relaxed">
+                          {exp.description}
+                        </p>
                       </div>
                     </div>
 
