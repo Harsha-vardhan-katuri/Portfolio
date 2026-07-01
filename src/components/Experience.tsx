@@ -9,10 +9,8 @@ const experiences = [
     location: "Bengaluru",
     period: "Feb 2025 — Present",
     year: "2025",
-    description: [
-      "Worked on Embedded Linux firmware for a multi-parameter medical diagnostic platform, delivering feature enhancements, optimizing device communication, and improving system performance.",
-      "Developed an Android application for portable, real-time soil parameter monitoring through binary packet decoding.",
-    ],
+    description:
+      "Worked on Embedded Linux firmware for a multi-parameter medical diagnostic platform, delivering feature enhancements, optimizing device communication, and improving system performance. Additionally, developed an Android application for portable, real-time soil parameter monitoring through binary packet decoding.",
   },
   {
     type: "work",
