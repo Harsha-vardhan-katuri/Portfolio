@@ -10,10 +10,8 @@ const experiences = [
     period: "Feb 2025 — Present",
     year: "2025",
     description: [
-      "Architecting LoRa-enabled soil health monitoring system with ESP32",
-      "Integrating RS485-based 7-in-1 sensors for NPK, pH, EC, moisture",
-      "Configuring UART, I2C, SPI, and RS485 protocols",
-      "Contributing to HealthCube HCXL's production-grade firmware",
+      "Worked on Embedded Linux firmware for a multi-parameter medical diagnostic platform, delivering feature enhancements, optimizing device communication, and improving system performance.",
+      "Developed an Android application for portable, real-time soil parameter monitoring through binary packet decoding.",
     ],
   },
   {
@@ -24,10 +22,8 @@ const experiences = [
     period: "Dec 2024 — Jan 2025",
     year: "2024",
     description: [
-      "Developed AI Health Assistant Chatbot with 90% accuracy",
-      "Implemented rule-based keyword matching (+40% accuracy)",
-      "Integrated DistilGPT-2, reducing response time by 35%",
-      "Increased user engagement by 50%",
+      "Created an AI-powered health assistant that leverages Natural Language Processing and transformer models to understand user queries and generate meaningful responses.",
+      "Optimized for response quality, low latency, and an intuitive web-based user experience.",
     ],
   },
   {
