@@ -10,10 +10,8 @@ const experiences = [
     period: "Feb 2025 — Present",
     year: "2025",
     description: [
-      "Architecting LoRa-enabled soil health monitoring system with ESP32",
-      "Integrating RS485-based 7-in-1 sensors for NPK, pH, EC, moisture",
-      "Configuring UART, I2C, SPI, and RS485 protocols",
-      "Contributing to HealthCube HCXL's production-grade firmware",
+      "Worked on Embedded Linux firmware for a multi-parameter medical diagnostic platform, delivering feature enhancements, optimizing device communication, and improving system performance.",
+      "Developed an Android application for portable, real-time soil parameter monitoring through binary packet decoding.",
     ],
   },
   {
