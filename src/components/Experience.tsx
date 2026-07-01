@@ -9,10 +9,8 @@ const experiences = [
     location: "Bengaluru",
     period: "Feb 2025 — Present",
     year: "2025",
-    description: [
-      "Worked on Embedded Linux firmware for a multi-parameter medical diagnostic platform, delivering feature enhancements, optimizing device communication, and improving system performance.",
-      "Developed an Android application for portable, real-time soil parameter monitoring through binary packet decoding.",
-    ],
+    description:
+      "Worked on Embedded Linux firmware for a multi-parameter medical diagnostic platform, delivering feature enhancements, optimizing device communication, and improving system performance. Additionally, developed an Android application for portable, real-time soil parameter monitoring through binary packet decoding.",
   },
   {
     type: "work",
@@ -21,10 +19,8 @@ const experiences = [
     location: "Remote",
     period: "Dec 2024 — Jan 2025",
     year: "2024",
-    description: [
-      "Created an AI-powered health assistant that leverages Natural Language Processing and transformer models to understand user queries and generate meaningful responses.",
-      "Optimized for response quality, low latency, and an intuitive web-based user experience.",
-    ],
+    description:
+      "Created an AI-powered health assistant that leverages Natural Language Processing and transformer models to understand user queries and generate meaningful responses. Optimized for response quality, low latency, and an intuitive web-based user experience.",
   },
   {
     type: "training",
@@ -33,12 +29,8 @@ const experiences = [
     location: "Hyderabad",
     period: "Jul 2023 — Apr 2024",
     year: "2023",
-    description: [
-      "Completed 6+ hands-on projects in C, C++, Embedded C",
-      "Mastered microcontroller architectures and HW interfacing",
-      "Gained expertise in Linux internals and device drivers",
-      "Worked with ESP8266, LPC2148, Keil IDE, Ubuntu",
-    ],
+    description:
+      "Completed 6+ hands-on projects in C, C++, and Embedded C, mastering microcontroller architectures, hardware interfacing, Linux internals, and device drivers using ESP8266, LPC2148, Keil IDE, and Ubuntu.",
   },
 ];
 
@@ -98,13 +90,9 @@ export const Experience = () => {
                             <p className="text-xs text-foreground/50">{exp.location}</p>
                           </div>
                         </div>
-                        <ul className="space-y-1.5">
-                          {exp.description.map((d, k) => (
-                            <li key={k} className="text-sm text-foreground/70">
-                              {d}
-                            </li>
-                          ))}
-                        </ul>
+                        <p className="text-sm text-foreground/70 leading-relaxed">
+                          {exp.description}
+                        </p>
                       </div>
                     </div>
 
