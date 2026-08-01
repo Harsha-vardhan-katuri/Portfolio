@@ -1,0 +1,224 @@
+// Public portfolio content exposed through the MCP server.
+// Mirrors what is already published on the website.
+
+export const profile = {
+  name: "Harsha Vardhan Katuri",
+  role: "Firmware Engineer",
+  location: "Bengaluru, India",
+  headline:
+    "Developing reliable Embedded Linux firmware, application middleware, and communication software for connected products.",
+  about:
+    "I'm a Firmware Engineer with 1.5+ years of experience developing Embedded Linux firmware and application middleware for connected products. My work focuses on C programming, protocol integration, firmware optimization, and debugging hardware-software interactions. I enjoy building reliable embedded software and continuously improving my expertise through hands-on projects involving BLE, Modbus RTU, packet parsing, board bring-up, and modern development practices including Git, GitHub Actions, CI/CD, Makefile, and Doxygen.",
+};
+
+export const contact = {
+  email: "katuriharshavardhan369@gmail.com",
+  github: "https://github.com/Harsha-vardhan-katuri",
+  linkedin: "https://www.linkedin.com/in/harsha-vardhan-katuri-772166256/",
+  resume:
+    "https://drive.google.com/file/d/1lYhdQYLYqZ0BPuCR4JWuDhhuBEUk1Y5X/view?usp=drive_link",
+};
+
+export const projects = [
+  {
+    num: "01",
+    title: "Multi-Parameter Medical Device Firmware",
+    tag: "Embedded C · RTOS",
+    description:
+      "Modular embedded firmware in C for SPO2, Lipid, WBC, and HbA1c on a multi-threaded POSIX pthread system. Debugged thread interactions and hardware signals using logic analyzer and oscilloscope.",
+    technologies: ["Embedded C", "pthreads", "UART", "USB", "Ethernet"],
+    github: "https://github.com/Harsha-vardhan-katuri/HC_FW_Code",
+  },
+  {
+    num: "02",
+    title: "Modular BLE Advertisement Analysis Framework",
+    tag: "Embedded C · BLE",
+    description:
+      "Modular BLE advertisement analysis framework in Embedded C supporting four packet categories and extracting three-axis accelerometer data for motion classification, with packet validation, logging, fault handling, and fully automated CI via GitHub Actions, Makefile, and Doxygen.",
+    technologies: ["Embedded C", "BLE", "GitHub Actions", "Makefile", "Doxygen"],
+  },
+  {
+    num: "03",
+    title: "GSR-Based Stress Monitoring System",
+    tag: "ESP32 · Bio-Signals",
+    description:
+      "Real-time GSR pipeline on ESP32 with ADC sampling at 10-20 Hz, extracting tonic (SCL) and phasic (SCR) components to classify Calm, Normal, and Stress states with sub-second latency.",
+    technologies: ["ESP32", "Grove GSR", "ADC", "DSP"],
+    github: "https://github.com/Harsha-vardhan-katuri/GSR-Sensor-Project",
+  },
+  {
+    num: "04",
+    title: "LoRa Soil Health Monitoring",
+    tag: "IoT · LoRa · RS485",
+    description:
+      "ESP32 reading NPK, pH, EC, moisture, and temperature via RS485 Modbus RTU, paired with SPI-based LoRa achieving 1 km range and compact 50-byte payloads for remote monitoring.",
+    technologies: ["ESP32", "RS485", "LoRa", "Modbus RTU"],
+    github: "https://github.com/Harsha-vardhan-katuri/Soil-Sensor-Project",
+  },
+  {
+    num: "05",
+    title: "AI Health Chatbot",
+    tag: "AI · NLP · Streamlit",
+    description:
+      "Health assistant chatbot using Streamlit and Hugging Face Transformers with rule-based intent matching plus DistilGPT-2 fallback, reaching 85% response relevance and sub-2s latency.",
+    technologies: ["Python", "Streamlit", "DistilGPT-2", "NLTK"],
+    github: "https://github.com/Harsha-vardhan-katuri/AI_Chat_Bot",
+    demo: "https://aichatbot-scmfkmwqvmvzdj9ayyzp8c.streamlit.app/",
+  },
+  {
+    num: "06",
+    title: "Packet-Based Image Projector Firmware",
+    tag: "Embedded C · CI/CD",
+    description:
+      "Modular image projector software in Embedded C processing packetized image data and reconstructing display content, with packet validation, unit testing, API documentation, and CI/CD build automation.",
+    technologies: ["Embedded C", "Packet Parsing", "CI/CD", "GitHub Actions", "Makefile"],
+    github: "https://github.com/Harsha-vardhan-katuri/Image_Projector_Firmware",
+  },
+  {
+    num: "07",
+    title: "Bare Metal GPIO Controller",
+    tag: "Bare-Metal · GPIO",
+    description:
+      "Register-level embedded firmware (DDRB, PORTB, PINB) controlling LED patterns from a debounced push-button input with finite-state logic to minimize false triggers.",
+    technologies: ["Embedded C", "GPIO", "Debouncing", "AVR"],
+    github: "https://github.com/Harsha-vardhan-katuri/Button_Controlled_LEDs",
+    demo: "https://wokwi.com/projects/419441645494336513",
+  },
+  {
+    num: "08",
+    title: "Voice-Based Home Automation",
+    tag: "IBM Cloud · IoT",
+    description:
+      "Voice-controlled home automation using IBM Watson Assistant with Speech-to-Text and Text-to-Speech, orchestrated via Node-RED flows for hands-free appliance control.",
+    technologies: ["IBM Watson", "Node-RED", "STT/TTS", "Python"],
+  },
+  {
+    num: "09",
+    title: "OTP-Based Smart Wireless Lock",
+    tag: "Arduino · Bluetooth",
+    description:
+      "Smart locking system on Arduino UNO with HC-05 Bluetooth and an MIT App Inventor Android app generating and validating OTPs to actuate a servo-driven lock mechanism.",
+    technologies: ["Arduino", "HC-05", "Servo", "Embedded C"],
+  },
+];
+
+export const skills = [
+  {
+    category: "Programming Languages",
+    items: ["C / Embedded C", "C++", "Python", "Basic Assembly"],
+  },
+  {
+    category: "Embedded Firmware & Platform",
+    items: [
+      "Embedded Linux",
+      "Register Level Programming",
+      "State Machines / U-Boot",
+      "HAL / Build Automation",
+    ],
+  },
+  {
+    category: "Communication Protocols",
+    items: ["UART / SPI / I2C", "RS485 / Modbus RTU", "BLE / LoRa", "Ethernet / USB"],
+  },
+  {
+    category: "Hardware Validation & Interfacing",
+    items: [
+      "GPIO / Sensor Interfacing",
+      "Interrupts / Board Bring-up",
+      "Packet Parsing / Protocol Analysis",
+      "Logic Analyzer / Oscilloscope",
+    ],
+  },
+  {
+    category: "System on Chips & Platforms",
+    items: ["ESP32", "ESP8266", "LPC2148", "TI AM335x"],
+  },
+  {
+    category: "Tools & Environment",
+    items: [
+      "Git / GitHub",
+      "CI/CD / GitHub Actions",
+      "VS Code / Eclipse",
+      "Makefile / Doxygen",
+      "Ubuntu / Unit Testing",
+    ],
+  },
+];
+
+export const experience = [
+  {
+    title: "Firmware Engineer",
+    company: "HealthCubed India Pvt. Ltd.",
+    location: "Bengaluru",
+    period: "Feb 2025 — Present",
+    description:
+      "Worked on Embedded Linux firmware for a multi-parameter medical diagnostic platform, delivering feature enhancements, optimizing device communication, and improving system performance. Additionally, developed an Android application for portable, real-time soil parameter monitoring through binary packet decoding.",
+  },
+  {
+    title: "AI Internship",
+    company: "Edunet Foundation (Microsoft & SAP)",
+    location: "Remote",
+    period: "Dec 2024 — Jan 2025",
+    description:
+      "Created an AI-powered health assistant that leverages Natural Language Processing and transformer models to understand user queries and generate meaningful responses. Optimized for response quality, low latency, and an intuitive web-based user experience.",
+  },
+  {
+    title: "Embedded Systems Trainee",
+    company: "Vector India",
+    location: "Hyderabad",
+    period: "Jul 2023 — Apr 2024",
+    description:
+      "Completed 6+ hands-on projects in C, C++, and Embedded C, mastering microcontroller architectures, hardware interfacing, Linux internals, and device drivers using ESP8266, LPC2148, Keil IDE, and Ubuntu.",
+  },
+];
+
+export const education = [
+  {
+    title: "B.Tech in Electronics & Communication Engineering",
+    institution: "Gudlavalleru Engineering College",
+    location: "Andhra Pradesh, India",
+    period: "Aug 2019 — May 2023",
+    score: "CGPA 8.36 / 10",
+  },
+  {
+    title: "Intermediate (MPC)",
+    institution: "Narayana Junior College",
+    location: "Andhra Pradesh, India",
+    period: "2017 — 2019",
+    score: "CGPA 9.94 / 10",
+  },
+  {
+    title: "10th Grade (SSC)",
+    institution: "",
+    location: "Andhra Pradesh, India",
+    period: "2016 — 2017",
+    score: "CGPA 9.0 / 10",
+  },
+];
+
+export const certifications = [
+  {
+    title: "Embedded Systems & Firmware Engineering",
+    issuer: "Vector India",
+    year: "2024",
+    skills: ["C/C++", "Embedded C", "Microcontrollers"],
+  },
+  {
+    title: "AI Internship — Microsoft & SAP",
+    issuer: "Edunet Foundation",
+    year: "2025",
+    skills: ["Python", "Hugging Face", "DistilGPT-2"],
+  },
+  {
+    title: "IoT & Cloud Communication",
+    issuer: "Self-Certified Project Portfolio",
+    year: "2024",
+    skills: ["LoRa", "MQTT", "ThingSpeak"],
+  },
+  {
+    title: "Linux Internals & Device Drivers",
+    issuer: "Vector India",
+    year: "2023",
+    skills: ["Linux", "Kernel", "Drivers"],
+  },
+];
