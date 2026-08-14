@@ -71,23 +71,56 @@
 
 @layer utilities {
   .glass-card {
-    background: hsl(0 0% 100% / 0.025);
-    border: 1px solid hsl(0 0% 100% / 0.06);
-    border-radius: 20px;
-    box-shadow: 0 20px 60px hsl(265 60% 5% / 0.35);
-    backdrop-filter: blur(14px);
+    background: hsl(258 40% 8% / 0.55);
+    border: 1px solid hsl(265 90% 68% / 0.15);
+    border-radius: 1.5rem;
+    box-shadow: 0 20px 60px hsl(265 60% 3% / 0.45);
+    backdrop-filter: blur(16px);
+    position: relative;
+    overflow: hidden;
   }
 
   .glass-card-hover {
     @apply glass-card;
-    transition: var(--transition-smooth);
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+      border-color 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
+    will-change: transform;
   }
 
   .glass-card-hover:hover {
-    background: hsl(0 0% 100% / 0.05);
-    border-color: hsl(265 90% 68% / 0.25);
-    box-shadow: 0 20px 60px hsl(265 60% 5% / 0.5), 0 0 40px hsl(265 90% 68% / 0.12);
-    transform: translateY(-2px);
+    background: hsl(258 40% 10% / 0.65);
+    border-color: hsl(265 90% 68% / 0.55);
+    box-shadow: 0 24px 70px hsl(265 60% 3% / 0.55), 0 0 30px hsl(265 90% 68% / 0.14);
+    transform: translate3d(0, -3px, 0);
+  }
+
+  /* Circuit dot field used inside feature tiles */
+  .circuit-bg {
+    background-image: radial-gradient(hsl(var(--primary)) 0.5px, transparent 0.5px);
+    background-size: 24px 24px;
+    opacity: 0.1;
+  }
+
+  /* Hairline schematic grid */
+  .schematic-bg {
+    background-image:
+      linear-gradient(hsl(var(--primary) / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--primary) / 0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .eyebrow {
+    @apply text-[10px] md:text-xs uppercase tracking-[0.35em] text-primary/80 font-medium;
+  }
+
+  .stat-tile {
+    @apply rounded-xl bg-white/[0.04] border border-white/[0.06] text-center py-4 px-3;
   }
 
   .glass-effect {
