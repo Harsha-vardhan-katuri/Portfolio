@@ -1,4 +1,5 @@
 import { GraduationCap } from "lucide-react";
+import { FlyIn } from "@/components/FlyIn";
 import { motion } from "framer-motion";
 
 const education = [

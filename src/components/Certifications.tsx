@@ -1,4 +1,5 @@
 import { Award, BadgeCheck, ExternalLink } from "lucide-react";
+import { FlyIn } from "@/components/FlyIn";
 import { motion } from "framer-motion";
 import { ScrollSection } from "@/components/ScrollSection";
 import { Button } from "@/components/ui/button";
