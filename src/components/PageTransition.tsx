@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
-const NAME = "HARSHA VARDHAN KATURI";
+const LINES = ["HARSHA VARDHAN", "KATURI"];
 
 /** deterministic pseudo-random offsets so letters fly in from all directions */
 const offsetFor = (i: number) => {
@@ -18,7 +18,7 @@ const offsetFor = (i: number) => {
 export const PageTransition = () => {
   const [stage, setStage] = useState<"init" | "intro" | "exit" | "done">("init");
 
-  const letters = useMemo(() => NAME.split(""), []);
+  const lines = useMemo(() => LINES.map((l) => l.split("")), []);
 
   useEffect(() => {
     const t0 = requestAnimationFrame(() => setStage("intro"));
@@ -62,29 +62,33 @@ export const PageTransition = () => {
       />
 
       {/* Flying letters */}
-      <h1 className="relative z-10 font-display font-extrabold text-center px-4 text-[clamp(1.6rem,6vw,4rem)] tracking-[0.12em] text-foreground">
-        {letters.map((ch, i) => {
-          const { x, y } = offsetFor(i);
-          return (
-            <span
-              key={i}
-              className="inline-block will-change-transform"
-              style={{
-                whiteSpace: "pre",
-                opacity: active ? 1 : 0,
-                filter: active ? "blur(0px)" : "blur(15px)",
-                transform: active
-                  ? "translate3d(0,0,0)"
-                  : `translate3d(${x}px, ${y}px, 0)`,
-                transition: `transform 1.6s cubic-bezier(0.16,1,0.3,1) ${
-                  0.05 * i
-                }s, opacity 1.2s ease ${0.05 * i}s, filter 1.2s ease ${0.05 * i}s`,
-              }}
-            >
-              {ch}
-            </span>
-          );
-        })}
+      <h1 className="relative z-10 font-display font-extrabold text-center px-4 text-[clamp(1.6rem,6vw,4rem)] tracking-[0.12em] leading-[1.15] text-foreground">
+        {lines.map((chars, li) => (
+          <span key={li} className="block text-center">
+            {chars.map((ch, ci) => {
+              const i = li * 20 + ci;
+              const { x, y } = offsetFor(i);
+              const d = 0.05 * (li * 8 + ci);
+              return (
+                <span
+                  key={ci}
+                  className="inline-block will-change-transform"
+                  style={{
+                    whiteSpace: "pre",
+                    opacity: active ? 1 : 0,
+                    filter: active ? "blur(0px)" : "blur(15px)",
+                    transform: active
+                      ? "translate3d(0,0,0)"
+                      : `translate3d(${x}px, ${y}px, 0)`,
+                    transition: `transform 1.6s cubic-bezier(0.16,1,0.3,1) ${d}s, opacity 1.2s ease ${d}s, filter 1.2s ease ${d}s`,
+                  }}
+                >
+                  {ch}
+                </span>
+              );
+            })}
+          </span>
+        ))}
       </h1>
     </div>
   );
