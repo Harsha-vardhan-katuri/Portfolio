@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
-const NAME = "HARSHA VARDHAN KATURI";
+const LINES = ["HARSHA VARDHAN", "KATURI"];
 
 /** deterministic pseudo-random offsets so letters fly in from all directions */
 const offsetFor = (i: number) => {
