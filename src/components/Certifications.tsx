@@ -117,13 +117,7 @@ export const Certifications = () => {
 
               {/* Highlights + action */}
               <div className="space-y-6">
-                <motion.div
-                  initial={{ opacity: 0, x: 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
-                  className="glass-card p-8 space-y-5"
-                >
+                <FlyIn direction="top-right" className="glass-card p-8 space-y-5">
                   <h3 className="text-xl font-bold font-display">Highlights</h3>
                   {[
                     { label: "Total credentials", value: "4+" },
@@ -135,15 +129,9 @@ export const Certifications = () => {
                       <span className="text-sm font-semibold">{item.value}</span>
                     </div>
                   ))}
-                </motion.div>
+                </FlyIn>
 
-                <motion.div
-                  initial={{ opacity: 0, x: 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0 }}
-                  className="glass-card p-8"
-                >
+                <FlyIn direction="bottom-right" delay={0.08} className="glass-card p-8">
                   <h3 className="text-xl font-bold font-display mb-4">Validate Credentials</h3>
                   <p className="text-sm text-muted-foreground mb-5">
                     Want to verify a certificate or learn more about the training programs behind these credentials?
@@ -163,7 +151,7 @@ export const Certifications = () => {
                       View on LinkedIn
                     </a>
                   </Button>
-                </motion.div>
+                </FlyIn>
               </div>
             </div>
           </div>

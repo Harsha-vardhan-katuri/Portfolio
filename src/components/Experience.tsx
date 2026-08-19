@@ -62,12 +62,9 @@ export const Experience = () => {
                 const Icon = iconFor(exp.type);
                 const left = i % 2 === 0; // even -> details on LEFT, year on RIGHT
                 return (
-                  <motion.div
+                  <FlyIn
                     key={i}
-                    initial={{ opacity: 0, x: left ? -40 : 40, y: 20 }}
-                    whileInView={{ opacity: 1, x: 0, y: 0 }}
-                    viewport={{ once: true, margin: "-80px" }}
-                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    direction={left ? "bottom-left" : "top-right"}
                     className="relative grid md:grid-cols-2 gap-8 items-center"
                   >
                     {/* Node */}
@@ -105,7 +102,7 @@ export const Experience = () => {
                         {exp.period}
                       </p>
                     </div>
-                  </motion.div>
+                  </FlyIn>
                 );
               })}
             </div>
