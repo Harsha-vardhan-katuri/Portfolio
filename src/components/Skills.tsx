@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ScrollSection } from "@/components/ScrollSection";
+import { FlyIn } from "@/components/FlyIn";
 
 export const Skills = () => {
   const skillCategories: { title: string; skills: { name: string; level: number }[] }[] = [
@@ -86,14 +87,7 @@ export const Skills = () => {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {skillCategories.map((category, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0.6, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                  className="glass-card-hover p-6 group"
-                >
+                <FlyIn key={index} index={index} className="glass-card-hover p-6 group">
                   <h3 className="text-base font-bold font-display text-primary mb-5 tracking-wide">
                     {category.title}
                   </h3>
@@ -116,7 +110,7 @@ export const Skills = () => {
                       </div>
                     ))}
                   </div>
-                </motion.div>
+                </FlyIn>
               ))}
             </div>
           </div>

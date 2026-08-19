@@ -1,4 +1,5 @@
 import { GraduationCap } from "lucide-react";
+import { FlyIn } from "@/components/FlyIn";
 import { motion } from "framer-motion";
 
 const education = [
@@ -58,12 +59,9 @@ export const Education = () => {
               {education.map((ed, i) => {
                 const left = i % 2 === 0;
                 return (
-                  <motion.div
+                  <FlyIn
                     key={i}
-                    initial={{ opacity: 0, x: left ? -40 : 40, y: 20 }}
-                    whileInView={{ opacity: 1, x: 0, y: 0 }}
-                    viewport={{ once: true, margin: "-80px" }}
-                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    direction={left ? "top-left" : "bottom-right"}
                     className="relative grid md:grid-cols-2 gap-8 items-center"
                   >
                     {/* Node */}
@@ -112,7 +110,7 @@ export const Education = () => {
                         {ed.period}
                       </p>
                     </div>
-                  </motion.div>
+                  </FlyIn>
                 );
               })}
             </div>
