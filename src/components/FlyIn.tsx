@@ -78,10 +78,7 @@ export const FlyIn = ({
         ease: [0.16, 1, 0.3, 1],
       }}
       onAnimationComplete={() => setDone(true)}
-      style={{
-        willChange: done ? "auto" : "transform, opacity",
-        transform: done ? "none" : undefined,
-      }}
+      style={{ willChange: done ? "auto" : "transform, opacity" }}
     >
       {children}
     </motion.div>
