@@ -34,16 +34,16 @@ export const Hero = () => {
         >
           {/* Name — particle text that gathers into place and repels the pointer */}
           <h1 className="sr-only">Harsha Vardhan Katuri — Firmware Engineer</h1>
-          <div className="w-full max-w-5xl h-[clamp(170px,32vw,340px)]" aria-hidden>
+          <div className="w-full max-w-3xl h-[clamp(100px,19vw,205px)]" aria-hidden>
             <ParticleText
               lines={["HARSHA VARDHAN", "KATURI"]}
-              particleSize={2.2}
+              particleSize={1.8}
               density={4}
               color="#f1f0fa"
               highlightColor="#a78bfa"
-              scatter={190}
-              gatherDuration={1600}
-              stagger={420}
+              scatter={140}
+              gatherDuration={1800}
+              stagger={500}
               pointerRepel={42}
               repelRadius={120}
               idleDrift={0.8}
@@ -52,18 +52,6 @@ export const Hero = () => {
               className="w-full h-full"
             />
           </div>
-
-          {/* Accent underline */}
-          <Reveal delay={0.55} className="mt-8">
-            <span className="block h-[3px] w-24 bg-primary rounded-full" />
-          </Reveal>
-
-          {/* Subtitle */}
-          <Reveal delay={0.7} block className="mt-6 max-w-2xl">
-            <p className="text-center text-base md:text-lg text-foreground/70 px-4 leading-relaxed">
-              Developing reliable Embedded Linux firmware, application middleware, and communication software for connected products.
-            </p>
-          </Reveal>
 
           {/* Location chip — sits ABOVE the Get-in-touch button */}
           <Reveal delay={0.85} className="mt-10">
