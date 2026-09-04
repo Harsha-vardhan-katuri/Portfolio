@@ -39,8 +39,8 @@ export const Hero = () => {
               lines={["HARSHA VARDHAN", "KATURI"]}
               particleSize={1.8}
               density={4}
-              color="#f1f0fa"
-              highlightColor="#a78bfa"
+              color="#ffffff"
+              highlightColor="#ffffff"
               scatter={140}
               gatherDuration={1800}
               stagger={500}
