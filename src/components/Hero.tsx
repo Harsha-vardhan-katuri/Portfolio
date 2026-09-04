@@ -3,6 +3,7 @@ import { useRef, useCallback } from "react";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { Reveal } from "@/components/RevealText";
 import { SOCIAL_LINKS } from "@/lib/links";
+import { ParticleText } from "@/components/ParticleText";
 
 export const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -31,20 +32,26 @@ export const Hero = () => {
             transform: `translate3d(0, ${translateY}px, 0)`,
           }}
         >
-          {/* Name — clean, professional, single weight, single colour */}
-          <h1 className="text-center font-display font-bold leading-[1.0] tracking-[-0.03em] text-foreground">
-            <Reveal delay={0.2} block className="w-full">
-              <span className="block text-[clamp(2.5rem,7.5vw,7rem)]">
-                Harsha Vardhan
-              </span>
-            </Reveal>
-            <Reveal delay={0.35} block className="w-full">
-              <span className="block text-[clamp(2.5rem,7.5vw,7rem)]">
-                Katuri
-                <span className="sr-only"> — Firmware Engineer</span>
-              </span>
-            </Reveal>
-          </h1>
+          {/* Name — particle text that gathers into place and repels the pointer */}
+          <h1 className="sr-only">Harsha Vardhan Katuri — Firmware Engineer</h1>
+          <div className="w-full max-w-5xl h-[clamp(170px,32vw,340px)]" aria-hidden>
+            <ParticleText
+              lines={["HARSHA VARDHAN", "KATURI"]}
+              particleSize={2.2}
+              density={4}
+              color="#f1f0fa"
+              highlightColor="#a78bfa"
+              scatter={190}
+              gatherDuration={1600}
+              stagger={420}
+              pointerRepel={42}
+              repelRadius={120}
+              idleDrift={0.8}
+              fontSize={110}
+              fontWeight={700}
+              className="w-full h-full"
+            />
+          </div>
 
           {/* Accent underline */}
           <Reveal delay={0.55} className="mt-8">
