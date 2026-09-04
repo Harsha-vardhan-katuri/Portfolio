@@ -77,8 +77,18 @@ export const ParticleText = ({
       canvas.style.height = `${h}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      // Responsive font size
-      const fs = Math.min(fontSize, (w / Math.max(...lines.map((l) => l.length))) * 1.6);
+      // Responsive font size — measure real glyph width so edge letters never clip
+      const probe = document.createElement("canvas").getContext("2d");
+      let fs = Math.min(fontSize, (w / Math.max(...lines.map((l) => l.length))) * 1.6);
+      if (probe) {
+        probe.font = `${fontWeight} ${fs}px ${fontFamily}`;
+        const maxW = Math.max(...lines.map((l) => probe.measureText(l).width));
+        const avail = w * 0.94; // 3% breathing room each side
+        if (maxW > avail) fs = (fs * avail) / maxW;
+        // also cap so all lines fit vertically
+        const maxFsByHeight = (h * 0.92) / (lines.length * 1.15);
+        if (fs > maxFsByHeight) fs = maxFsByHeight;
+      }
       const lineHeight = fs * 1.15;
 
       // Sample text pixels offscreen
