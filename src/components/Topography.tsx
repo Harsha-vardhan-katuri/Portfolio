@@ -75,7 +75,8 @@ const fragment = /* glsl */ `
     float lines = h * 24.0 * 2.0;
     float f = abs(fract(lines) - 0.5);
     float aa = fwidth(lines) * 1.2;
-    float line = smoothstep(0.5, 0.5 - (0.01 * 50.0) - aa, f);
+    float w = 0.06; // line half-width (thickness 0.01 scaled)
+    float line = 1.0 - smoothstep(w, w + aa * 2.0 + 0.02, f);
 
     vec3 col = ramp(h);
     // contrast 3
