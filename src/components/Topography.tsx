@@ -71,21 +71,24 @@ const fragment = /* glsl */ `
     float t = uTime * 0.35;
     float h = height(p, t);
 
-    // 2 bands per unit -> contour frequency
-    float lines = h * 24.0 * 2.0;
+    // contour frequency — sparse, elegant lines
+    float lines = h * 12.0;
     float f = abs(fract(lines) - 0.5);
-    float line = 1.0 - smoothstep(0.06, 0.12, f); // thickness 0.01-style thin lines
+    float line = 1.0 - smoothstep(0.05, 0.11, f); // thin lines
 
     vec3 col = ramp(h);
     // contrast 3
     col = (col - 0.5) * 3.0 + 0.5;
     // brightness 1, glow 0.5 on the lines
-    vec3 lineCol = clamp(col, 0.0, 1.0) * (1.0 + 0.5 * 1.5) + 0.12;
+    vec3 lineCol = clamp(col, 0.0, 1.0) * (1.0 + 0.5 * 1.5) + 0.10;
     vec3 base = vec3(0.012, 0.008, 0.03); // near-black backdrop
-    vec3 outCol = base + lineCol * line * 1.1;
+    vec3 outCol = base + lineCol * line * 0.7;
 
     // faint filled tint so bands are readable
-    outCol += clamp(col, 0.0, 1.0) * 0.05 * h;
+    outCol += clamp(col, 0.0, 1.0) * 0.04 * h;
+
+    // dim the center so hero text stays readable
+    outCol *= 1.0 - 0.5 * exp(-dot(p, p) / 0.22);
 
     // vignette (gentle so lines stay visible)
     float vig = smoothstep(1.35, 0.35, length(p / 2.0)) * 0.35 + 0.65;
