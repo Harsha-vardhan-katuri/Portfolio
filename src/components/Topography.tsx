@@ -80,16 +80,16 @@ const fragment = /* glsl */ `
     vec3 col = ramp(h);
     // contrast 3
     col = (col - 0.5) * 3.0 + 0.5;
-    // brightness 1 (identity), glow 0.5 on the lines
-    vec3 lineCol = col * (1.0 + 0.5 * 1.5);
+    // brightness 1, glow 0.5 on the lines
+    vec3 lineCol = clamp(col, 0.0, 1.0) * (1.0 + 0.5 * 1.5) + 0.12;
     vec3 base = vec3(0.012, 0.008, 0.03); // near-black backdrop
-    vec3 outCol = base + lineCol * line * 0.85;
+    vec3 outCol = base + lineCol * line * 1.1;
 
     // faint filled tint so bands are readable
-    outCol += col * 0.045 * h;
+    outCol += clamp(col, 0.0, 1.0) * 0.05 * h;
 
-    // vignette
-    float vig = smoothstep(1.15, 0.15, length(p / 2.0));
+    // vignette (gentle so lines stay visible)
+    float vig = smoothstep(1.35, 0.35, length(p / 2.0)) * 0.35 + 0.65;
     outCol *= vig;
 
     // grain
