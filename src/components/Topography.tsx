@@ -74,9 +74,7 @@ const fragment = /* glsl */ `
     // 2 bands per unit -> contour frequency
     float lines = h * 24.0 * 2.0;
     float f = abs(fract(lines) - 0.5);
-    float aa = fwidth(lines) * 1.2;
-    float w = 0.06; // line half-width (thickness 0.01 scaled)
-    float line = 1.0 - smoothstep(w, w + aa * 2.0 + 0.02, f);
+    float line = 1.0 - smoothstep(0.06, 0.12, f); // thickness 0.01-style thin lines
 
     vec3 col = ramp(h);
     // contrast 3
