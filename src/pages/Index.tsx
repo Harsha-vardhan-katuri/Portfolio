@@ -10,14 +10,12 @@ import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { PageTransition } from "@/components/PageTransition";
-import { ShaderBackground } from "@/components/ShaderHero";
 
 const Index = () => {
   return (
     <SmoothScroll>
       <div className="relative">
         <PageTransition />
-        <ShaderBackground />
         <Navigation />
         <Hero />
         <About />
