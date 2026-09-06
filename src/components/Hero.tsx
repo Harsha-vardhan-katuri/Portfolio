@@ -4,7 +4,7 @@ import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { Reveal } from "@/components/RevealText";
 import { SOCIAL_LINKS } from "@/lib/links";
 import { ParticleText } from "@/components/ParticleText";
-import { TopographyHero } from "@/components/Topography";
+import Topography from "@/components/Topography";
 
 export const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -26,7 +26,29 @@ export const Hero = () => {
       style={{ height: "180vh" }}
     >
       <div className="sticky top-0 h-screen overflow-hidden">
-        <TopographyHero />
+        <Topography
+          lowColor="#0307e3"
+          midColor="#720707"
+          highColor="#10B981"
+          speed={0.35}
+          morphAmount={3}
+          morphSpeed={0.05}
+          bands={2}
+          thickness={0.01}
+          scale={2}
+          pixelSize={1}
+          glow={0.5}
+          colorMode="elevation"
+          contrast={3}
+          brightness={1}
+          fillBands={false}
+          opacity={1}
+          grain
+          grainIntensity={0.05}
+          mouseInteraction
+          mouseRadius={0.3}
+          mouseStrength={0.4}
+        />
         <div
           className="relative z-10 h-full flex flex-col items-center justify-center px-6 pt-16 will-change-transform"
           style={{
