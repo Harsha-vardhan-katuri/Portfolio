@@ -24,6 +24,8 @@ type TopographyProps = {
   mouseInteraction: boolean;
   mouseRadius: number;
   mouseStrength: number;
+  /** Deterministic noise seed — same value renders the same field on every load. */
+  seed?: number;
 };
 
 const vertexShader = /* glsl */ `
@@ -58,9 +60,10 @@ const fragmentShader = /* glsl */ `
   uniform float uMouseInteraction;
   uniform float uMouseRadius;
   uniform float uMouseStrength;
+  uniform float uSeed;
 
   float hash(vec2 p) {
-    return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
+    return fract(sin(dot(p + uSeed, vec2(127.1, 311.7))) * 43758.5453123);
   }
 
   float noise(vec2 p) {
@@ -126,7 +129,7 @@ const fragmentShader = /* glsl */ `
     finalColor += clamp(color, 0.0, 1.0) * line * (1.0 + uGlow * 1.5);
 
     if (uGrain > 0.5) {
-      float grainValue = hash(frag + fract(uTime) * 97.31) - 0.5;
+      float grainValue = hash(frag + floor(uTime * 24.0) * 97.31) - 0.5;
       finalColor += grainValue * uGrainIntensity;
     }
 
@@ -137,6 +140,7 @@ const fragmentShader = /* glsl */ `
 const TopographyPlane = (props: TopographyProps) => {
   const materialRef = useRef<THREE.ShaderMaterial>(null);
   const pointer = useRef(new THREE.Vector2());
+  const elapsed = useRef(0);
   const { size } = useThree();
 
   const uniforms = useMemo(
@@ -164,6 +168,7 @@ const TopographyPlane = (props: TopographyProps) => {
       uMouseInteraction: { value: props.mouseInteraction ? 1 : 0 },
       uMouseRadius: { value: props.mouseRadius },
       uMouseStrength: { value: props.mouseStrength },
+      uSeed: { value: props.seed ?? 1337 },
     }),
     [props, size.height, size.width],
   );
@@ -172,11 +177,14 @@ const TopographyPlane = (props: TopographyProps) => {
     uniforms.uResolution.value.set(size.width, size.height);
   }, [size.height, size.width, uniforms]);
 
-  useFrame((state) => {
+  useFrame((state, delta) => {
     const material = materialRef.current;
     if (!material) return;
 
-    material.uniforms.uTime.value = state.clock.elapsedTime;
+    // Own accumulator (starts at exactly 0 on every mount, clamped delta)
+    // so the animation is deterministic and frame-rate independent.
+    elapsed.current += Math.min(delta, 1 / 30);
+    material.uniforms.uTime.value = elapsed.current;
     const aspect = size.width / size.height;
     const targetX = state.pointer.x * 0.5 * aspect * props.scale;
     const targetY = state.pointer.y * 0.5 * props.scale;
