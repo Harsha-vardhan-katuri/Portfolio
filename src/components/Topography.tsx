@@ -1,161 +1,216 @@
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 
-/**
- * Animated topography (contour-line) background.
- * Single full-screen shader plane — cheap, GPU-driven.
- * Props mirror the requested config: elevation color ramp, morphing bands,
- * mouse interaction, and subtle grain.
- */
-const fragment = /* glsl */ `
-  precision highp float;
-  uniform float uTime;
-  uniform vec2 uResolution;
-  uniform vec2 uMouse;
+type TopographyProps = {
+  lowColor: string;
+  midColor: string;
+  highColor: string;
+  speed: number;
+  morphAmount: number;
+  morphSpeed: number;
+  bands: number;
+  thickness: number;
+  scale: number;
+  pixelSize: number;
+  glow: number;
+  colorMode: "elevation";
+  contrast: number;
+  brightness: number;
+  fillBands: boolean;
+  opacity: number;
+  grain: boolean;
+  grainIntensity: number;
+  mouseInteraction: boolean;
+  mouseRadius: number;
+  mouseStrength: number;
+};
 
-  vec3 hash3(vec2 p){
-    vec3 q = vec3(dot(p,vec2(127.1,311.7)),
-                  dot(p,vec2(269.5,183.3)),
-                  dot(p,vec2(419.2,371.9)));
-    return fract(sin(q)*43758.5453);
-  }
-  float noise(vec2 p){
-    vec2 i = floor(p);
-    vec2 f = fract(p);
-    vec2 u = f*f*(3.0-2.0*f);
-    float a = hash3(i+vec2(0.0,0.0)).x;
-    float b = hash3(i+vec2(1.0,0.0)).x;
-    float c = hash3(i+vec2(0.0,1.0)).x;
-    float d = hash3(i+vec2(1.0,1.0)).x;
-    return mix(mix(a,b,u.x), mix(c,d,u.x), u.y);
-  }
-  float fbm(vec2 p){
-    float v = 0.0;
-    float a = 0.5;
-    for(int i=0;i<4;i++){
-      v += a*noise(p);
-      p *= 2.0;
-      a *= 0.5;
-    }
-    return v;
-  }
-
-  // Elevation ramp: low -> mid -> high
-  vec3 ramp(float e){
-    vec3 low = vec3(0.012, 0.027, 0.89);   // #0307e3 electric blue
-    vec3 mid = vec3(0.447, 0.027, 0.027);  // #720707 deep red
-    vec3 high = vec3(0.063, 0.725, 0.506); // #10B981 emerald
-    vec3 c = mix(low, mid, smoothstep(0.0, 0.55, e));
-    c = mix(c, high, smoothstep(0.55, 1.0, e));
-    return c;
-  }
-
-  float height(vec2 p, float t){
-    // morphing base field
-    vec2 q = vec2(fbm(p + t * 0.05), fbm(p - t * 0.05 + 5.2));
-    float h = fbm(p + q * 3.0 + t * 0.05);
-    // mouse bump
-    vec2 m = uMouse;
-    float d = length(p - m);
-    h += 0.4 * exp(-(d*d) / (0.3*0.3));
-    return h;
-  }
-
-  void main(){
-    vec2 uv = gl_FragCoord.xy / uResolution.xy;
-    vec2 p = (uv - 0.5);
-    p.x *= uResolution.x / uResolution.y;
-    p *= 2.0; // scale
-
-    float t = uTime * 0.35;
-    float h = height(p, t);
-
-    // contour frequency — sparse, elegant lines
-    float lines = h * 12.0;
-    float f = abs(fract(lines) - 0.5);
-    float line = 1.0 - smoothstep(0.05, 0.11, f); // thin lines
-
-    vec3 col = ramp(h);
-    // contrast 3
-    col = (col - 0.5) * 3.0 + 0.5;
-    // brightness 1, glow 0.5 on the lines
-    vec3 lineCol = clamp(col, 0.0, 1.0) * (1.0 + 0.5 * 1.5) + 0.10;
-    vec3 base = vec3(0.012, 0.008, 0.03); // near-black backdrop
-    vec3 outCol = base + lineCol * line * 0.7;
-
-    // faint filled tint so bands are readable
-    outCol += clamp(col, 0.0, 1.0) * 0.04 * h;
-
-    // dim the center so hero text stays readable
-    outCol *= 1.0 - 0.5 * exp(-dot(p, p) / 0.22);
-
-    // vignette (gentle so lines stay visible)
-    float vig = smoothstep(1.35, 0.35, length(p / 2.0)) * 0.35 + 0.65;
-    outCol *= vig;
-
-    // grain
-    float g = fract(sin(dot(uv * uResolution, vec2(12.9898,78.233))) * 43758.5453);
-    outCol += (g - 0.5) * 0.05;
-
-    gl_FragColor = vec4(outCol, 1.0);
-  }
-`;
-
-const vertex = /* glsl */ `
+const vertexShader = /* glsl */ `
   void main() {
     gl_Position = vec4(position, 1.0);
   }
 `;
 
-const TopoPlane = () => {
-  const matRef = useRef<THREE.ShaderMaterial>(null);
+const fragmentShader = /* glsl */ `
+  precision highp float;
+
+  uniform float uTime;
+  uniform vec2 uResolution;
+  uniform vec2 uMouse;
+  uniform vec3 uLowColor;
+  uniform vec3 uMidColor;
+  uniform vec3 uHighColor;
+  uniform float uSpeed;
+  uniform float uMorphAmount;
+  uniform float uMorphSpeed;
+  uniform float uBands;
+  uniform float uThickness;
+  uniform float uScale;
+  uniform float uPixelSize;
+  uniform float uGlow;
+  uniform float uContrast;
+  uniform float uBrightness;
+  uniform float uFillBands;
+  uniform float uOpacity;
+  uniform float uGrain;
+  uniform float uGrainIntensity;
+  uniform float uMouseInteraction;
+  uniform float uMouseRadius;
+  uniform float uMouseStrength;
+
+  float hash(vec2 p) {
+    return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
+  }
+
+  float noise(vec2 p) {
+    vec2 i = floor(p);
+    vec2 f = fract(p);
+    vec2 u = f * f * (3.0 - 2.0 * f);
+    return mix(
+      mix(hash(i), hash(i + vec2(1.0, 0.0)), u.x),
+      mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), u.x),
+      u.y
+    );
+  }
+
+  float fbm(vec2 p) {
+    float value = 0.0;
+    float amplitude = 0.5;
+    for (int i = 0; i < 5; i++) {
+      value += amplitude * noise(p);
+      p = p * 2.03 + vec2(9.2, 3.7);
+      amplitude *= 0.5;
+    }
+    return value;
+  }
+
+  vec3 elevationColor(float elevation) {
+    vec3 lower = mix(uLowColor, uMidColor, smoothstep(0.0, 0.55, elevation));
+    return mix(lower, uHighColor, smoothstep(0.52, 1.0, elevation));
+  }
+
+  void main() {
+    vec2 frag = floor(gl_FragCoord.xy / uPixelSize) * uPixelSize;
+    vec2 uv = frag / uResolution;
+    vec2 p = uv - 0.5;
+    p.x *= uResolution.x / uResolution.y;
+    p *= uScale;
+
+    float time = uTime * uSpeed;
+    vec2 warp = vec2(
+      fbm(p + vec2(time * uMorphSpeed, 0.0)),
+      fbm(p + vec2(4.7, -time * uMorphSpeed))
+    );
+    float elevation = fbm(p + (warp - 0.5) * uMorphAmount + time * uMorphSpeed);
+
+    if (uMouseInteraction > 0.5) {
+      vec2 mouse = uMouse;
+      float distanceToMouse = length(p - mouse);
+      float influence = exp(-(distanceToMouse * distanceToMouse) /
+        max(0.0001, uMouseRadius * uMouseRadius));
+      elevation += influence * uMouseStrength;
+    }
+
+    float contour = fract(elevation * max(1.0, uBands * 6.0));
+    float distanceToLine = min(contour, 1.0 - contour);
+    float line = 1.0 - smoothstep(uThickness, uThickness + 0.018, distanceToLine);
+
+    vec3 color = elevationColor(clamp(elevation, 0.0, 1.0));
+    color = (color - 0.5) * uContrast + 0.5;
+    color *= uBrightness;
+
+    vec3 background = vec3(0.003, 0.004, 0.015);
+    float bandFill = uFillBands * 0.2 * elevation;
+    vec3 finalColor = background + clamp(color, 0.0, 1.0) * bandFill;
+    finalColor += clamp(color, 0.0, 1.0) * line * (1.0 + uGlow * 1.5);
+
+    if (uGrain > 0.5) {
+      float grainValue = hash(frag + fract(uTime) * 97.31) - 0.5;
+      finalColor += grainValue * uGrainIntensity;
+    }
+
+    gl_FragColor = vec4(max(finalColor, 0.0), uOpacity);
+  }
+`;
+
+const TopographyPlane = (props: TopographyProps) => {
+  const materialRef = useRef<THREE.ShaderMaterial>(null);
+  const pointer = useRef(new THREE.Vector2());
   const { size } = useThree();
-  const mouse = useRef(new THREE.Vector2(0, 0));
 
   const uniforms = useMemo(
     () => ({
       uTime: { value: 0 },
       uResolution: { value: new THREE.Vector2(size.width, size.height) },
-      uMouse: { value: new THREE.Vector2(0, 0) },
+      uMouse: { value: new THREE.Vector2() },
+      uLowColor: { value: new THREE.Color(props.lowColor) },
+      uMidColor: { value: new THREE.Color(props.midColor) },
+      uHighColor: { value: new THREE.Color(props.highColor) },
+      uSpeed: { value: props.speed },
+      uMorphAmount: { value: props.morphAmount },
+      uMorphSpeed: { value: props.morphSpeed },
+      uBands: { value: props.bands },
+      uThickness: { value: props.thickness },
+      uScale: { value: props.scale },
+      uPixelSize: { value: props.pixelSize },
+      uGlow: { value: props.glow },
+      uContrast: { value: props.contrast },
+      uBrightness: { value: props.brightness },
+      uFillBands: { value: props.fillBands ? 1 : 0 },
+      uOpacity: { value: props.opacity },
+      uGrain: { value: props.grain ? 1 : 0 },
+      uGrainIntensity: { value: props.grainIntensity },
+      uMouseInteraction: { value: props.mouseInteraction ? 1 : 0 },
+      uMouseRadius: { value: props.mouseRadius },
+      uMouseStrength: { value: props.mouseStrength },
     }),
-    [] // eslint-disable-line react-hooks/exhaustive-deps
+    [props, size.height, size.width],
   );
 
+  useEffect(() => {
+    uniforms.uResolution.value.set(size.width, size.height);
+  }, [size.height, size.width, uniforms]);
+
   useFrame((state) => {
-    if (!matRef.current) return;
-    matRef.current.uniforms.uTime.value = state.clock.elapsedTime;
-    matRef.current.uniforms.uResolution.value.set(size.width, size.height);
+    const material = materialRef.current;
+    if (!material) return;
+
+    material.uniforms.uTime.value = state.clock.elapsedTime;
     const aspect = size.width / size.height;
-    mouse.current.x += (state.pointer.x * 0.5 * aspect - mouse.current.x) * 0.06;
-    mouse.current.y += (state.pointer.y * 0.5 - mouse.current.y) * 0.06;
-    matRef.current.uniforms.uMouse.value.copy(mouse.current);
+    const targetX = state.pointer.x * 0.5 * aspect * props.scale;
+    const targetY = state.pointer.y * 0.5 * props.scale;
+    pointer.current.x += (targetX - pointer.current.x) * 0.08;
+    pointer.current.y += (targetY - pointer.current.y) * 0.08;
+    material.uniforms.uMouse.value.copy(pointer.current);
   });
 
   return (
-    <mesh>
+    <mesh frustumCulled={false}>
       <planeGeometry args={[2, 2]} />
       <shaderMaterial
-        ref={matRef}
-        fragmentShader={fragment}
-        vertexShader={vertex}
+        ref={materialRef}
+        vertexShader={vertexShader}
+        fragmentShader={fragmentShader}
         uniforms={uniforms}
+        transparent={props.opacity < 1}
+        depthWrite={false}
+        depthTest={false}
       />
     </mesh>
   );
 };
 
-/** Hero-scoped topography background. */
-export const TopographyHero = () => (
-  <div className="absolute inset-0 -z-10">
+export const Topography = (props: TopographyProps) => (
+  <div className="absolute inset-0 z-0" aria-hidden="true">
     <Canvas
-      dpr={[0.75, 1]}
-      gl={{ antialias: false, powerPreference: "high-performance", alpha: false }}
+      dpr={[1, 1.5]}
+      gl={{ antialias: true, powerPreference: "high-performance", alpha: props.opacity < 1 }}
       camera={{ position: [0, 0, 1] }}
     >
-      <TopoPlane />
+      <TopographyPlane {...props} />
     </Canvas>
   </div>
 );
 
-export default TopographyHero;
+export default Topography;
