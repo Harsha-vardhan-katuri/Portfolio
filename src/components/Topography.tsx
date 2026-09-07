@@ -118,10 +118,12 @@ const fragmentShader = /* glsl */ `
     // Apply contrast to the elevation field, not to the RGB channels. Applying
     // it to the supplied dark red/blue colors crushed most channels to black.
     float gradedElevation = clamp((elevation - 0.5) * uContrast + 0.5, 0.0, 1.0);
-    float contour = fract(gradedElevation * max(1.0, uBands * 6.0));
+    // Keep contour geometry on the continuous field. Using the contrast-clamped
+    // field here creates broad plateaus that incorrectly look like filled bands.
+    float contour = fract(elevation * max(1.0, uBands * 6.0));
     float distanceToLine = min(contour, 1.0 - contour);
-    float line = 1.0 - smoothstep(uThickness, uThickness + 0.014, distanceToLine);
-    float halo = 1.0 - smoothstep(uThickness + 0.014, uThickness + 0.075, distanceToLine);
+    float line = 1.0 - smoothstep(uThickness, uThickness + 0.012, distanceToLine);
+    float halo = 1.0 - smoothstep(uThickness + 0.012, uThickness + 0.045, distanceToLine);
 
     vec3 color = elevationColor(gradedElevation) * uBrightness;
 
