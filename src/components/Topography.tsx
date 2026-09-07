@@ -115,18 +115,21 @@ const fragmentShader = /* glsl */ `
       elevation += influence * uMouseStrength;
     }
 
-    float contour = fract(elevation * max(1.0, uBands * 6.0));
+    // Apply contrast to the elevation field, not to the RGB channels. Applying
+    // it to the supplied dark red/blue colors crushed most channels to black.
+    float gradedElevation = clamp((elevation - 0.5) * uContrast + 0.5, 0.0, 1.0);
+    float contour = fract(gradedElevation * max(1.0, uBands * 6.0));
     float distanceToLine = min(contour, 1.0 - contour);
-    float line = 1.0 - smoothstep(uThickness, uThickness + 0.018, distanceToLine);
+    float line = 1.0 - smoothstep(uThickness, uThickness + 0.014, distanceToLine);
+    float halo = 1.0 - smoothstep(uThickness + 0.014, uThickness + 0.075, distanceToLine);
 
-    vec3 color = elevationColor(clamp(elevation, 0.0, 1.0));
-    color = (color - 0.5) * uContrast + 0.5;
-    color *= uBrightness;
+    vec3 color = elevationColor(gradedElevation) * uBrightness;
 
     vec3 background = vec3(0.003, 0.004, 0.015);
-    float bandFill = uFillBands * 0.2 * elevation;
-    vec3 finalColor = background + clamp(color, 0.0, 1.0) * bandFill;
-    finalColor += clamp(color, 0.0, 1.0) * line * (1.0 + uGlow * 1.5);
+    float bandFill = uFillBands * 0.2 * gradedElevation;
+    vec3 finalColor = background + color * bandFill;
+    finalColor += color * halo * uGlow * 0.55;
+    finalColor += color * line * (1.15 + uGlow);
 
     if (uGrain > 0.5) {
       float grainValue = hash(frag + floor(uTime * 24.0) * 97.31) - 0.5;
@@ -212,8 +215,9 @@ const TopographyPlane = (props: TopographyProps) => {
 export const Topography = (props: TopographyProps) => (
   <div className="absolute inset-0 z-0" aria-hidden="true">
     <Canvas
-      dpr={[1, 1.5]}
-      gl={{ antialias: true, powerPreference: "high-performance", alpha: props.opacity < 1 }}
+      dpr={1}
+      flat
+      gl={{ antialias: false, powerPreference: "high-performance", alpha: props.opacity < 1 }}
       camera={{ position: [0, 0, 1] }}
     >
       <TopographyPlane {...props} />
