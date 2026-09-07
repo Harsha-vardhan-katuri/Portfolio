@@ -1,14 +1,38 @@
 import { Github, Linkedin, Mail, ArrowUpRight, MapPin, FileText } from "lucide-react";
-import { useRef, useCallback } from "react";
+import { useRef, useCallback, useEffect, useState } from "react";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { Reveal } from "@/components/RevealText";
 import { SOCIAL_LINKS } from "@/lib/links";
 import { ParticleText } from "@/components/ParticleText";
 import Topography from "@/components/Topography";
+import {
+  BACKGROUND_VERSION,
+  BACKGROUND_PREF_KEY,
+  purgeStaleBackgroundPrefs,
+} from "@/lib/backgroundVersion";
 
 export const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const progress = useScrollProgress(sectionRef as React.RefObject<HTMLElement>);
+  const [bgOn, setBgOn] = useState(true);
+
+  // Drop any preference saved by an older background version, then read this one.
+  useEffect(() => {
+    purgeStaleBackgroundPrefs();
+    setBgOn(localStorage.getItem(BACKGROUND_PREF_KEY) !== "off");
+  }, []);
+
+  const toggleBackground = useCallback(() => {
+    setBgOn((prev) => {
+      const next = !prev;
+      try {
+        localStorage.setItem(BACKGROUND_PREF_KEY, next ? "on" : "off");
+      } catch {
+        /* storage unavailable */
+      }
+      return next;
+    });
+  }, []);
 
   const scrollToSection = useCallback((id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -26,7 +50,9 @@ export const Hero = () => {
       style={{ height: "180vh" }}
     >
       <div className="sticky top-0 h-screen overflow-hidden">
+        {bgOn && (
         <Topography
+          key={BACKGROUND_VERSION}
           lowColor="#0307e3"
           midColor="#720707"
           highColor="#10B981"
@@ -48,7 +74,19 @@ export const Hero = () => {
           mouseInteraction
           mouseRadius={0.3}
           mouseStrength={0.4}
+          seed={1337}
         />
+        )}
+
+        {/* Background toggle — confirms only the latest layer renders */}
+        <button
+          type="button"
+          onClick={toggleBackground}
+          aria-pressed={bgOn}
+          className="absolute top-20 right-5 z-20 px-3 py-1.5 rounded-full text-[10px] uppercase tracking-[0.2em] text-foreground/70 bg-white/[0.05] border border-white/10 backdrop-blur-md hover:text-primary hover:border-primary/40 transition-colors duration-300"
+        >
+          BG: {bgOn ? "Topography" : "Off"}
+        </button>
         <div
           className="relative z-10 h-full flex flex-col items-center justify-center px-6 pt-16 will-change-transform"
           style={{
