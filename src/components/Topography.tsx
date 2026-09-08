@@ -199,8 +199,8 @@ const TopographyPlane = (props: TopographyProps) => {
     elapsed.current += Math.min(delta, 1 / 30);
     material.uniforms.uTime.value = elapsed.current;
     const aspect = size.width / size.height;
-    const targetX = state.pointer.x * 0.5 * aspect * props.scale;
-    const targetY = state.pointer.y * 0.5 * props.scale;
+    const targetX = hasPointer.current ? state.pointer.x * 0.5 * aspect * props.scale : 999;
+    const targetY = hasPointer.current ? state.pointer.y * 0.5 * props.scale : 999;
     pointer.current.x += (targetX - pointer.current.x) * 0.08;
     pointer.current.y += (targetY - pointer.current.y) * 0.08;
     material.uniforms.uMouse.value.copy(pointer.current);
