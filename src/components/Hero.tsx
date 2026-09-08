@@ -27,9 +27,9 @@ export const Hero = () => {
     >
       <div className="sticky top-0 h-screen overflow-hidden">
         <Topography
-          lowColor="#0307e3"
-          midColor="#720707"
-          highColor="#10B981"
+          lowColor="#bd0000"
+          midColor="#011857"
+          highColor="#FFFFFF"
           speed={0.35}
           morphAmount={3}
           morphSpeed={0.05}

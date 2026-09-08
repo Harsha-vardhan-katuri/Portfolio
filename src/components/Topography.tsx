@@ -122,16 +122,16 @@ const fragmentShader = /* glsl */ `
     // field here creates broad plateaus that incorrectly look like filled bands.
     float contour = fract(elevation * max(1.0, uBands * 6.0));
     float distanceToLine = min(contour, 1.0 - contour);
-    float line = 1.0 - smoothstep(uThickness, uThickness + 0.012, distanceToLine);
-    float halo = 1.0 - smoothstep(uThickness + 0.012, uThickness + 0.045, distanceToLine);
+    float line = 1.0 - smoothstep(uThickness, uThickness + 0.02, distanceToLine);
+    float halo = 1.0 - smoothstep(uThickness + 0.02, uThickness + 0.08, distanceToLine);
 
     vec3 color = elevationColor(gradedElevation) * uBrightness;
 
     vec3 background = vec3(0.003, 0.004, 0.015);
     float bandFill = uFillBands * 0.2 * gradedElevation;
     vec3 finalColor = background + color * bandFill;
-    finalColor += color * halo * uGlow * 0.55;
-    finalColor += color * line * (1.15 + uGlow);
+    finalColor += color * halo * uGlow * 0.7;
+    finalColor += color * line * (1.6 + uGlow);
 
     if (uGrain > 0.5) {
       float grainValue = hash(frag + floor(uTime * 24.0) * 97.31) - 0.5;
@@ -144,9 +144,17 @@ const fragmentShader = /* glsl */ `
 
 const TopographyPlane = (props: TopographyProps) => {
   const materialRef = useRef<THREE.ShaderMaterial>(null);
-  const pointer = useRef(new THREE.Vector2());
+  // Start far off-screen so the mouse-influence blob doesn't sit at center on load.
+  const pointer = useRef(new THREE.Vector2(999, 999));
+  const hasPointer = useRef(false);
   const elapsed = useRef(0);
   const { size } = useThree();
+
+  useEffect(() => {
+    const onMove = () => { hasPointer.current = true; };
+    window.addEventListener("pointermove", onMove, { once: true });
+    return () => window.removeEventListener("pointermove", onMove);
+  }, []);
 
   const uniforms = useMemo(
     () => ({
@@ -191,8 +199,8 @@ const TopographyPlane = (props: TopographyProps) => {
     elapsed.current += Math.min(delta, 1 / 30);
     material.uniforms.uTime.value = elapsed.current;
     const aspect = size.width / size.height;
-    const targetX = state.pointer.x * 0.5 * aspect * props.scale;
-    const targetY = state.pointer.y * 0.5 * props.scale;
+    const targetX = hasPointer.current ? state.pointer.x * 0.5 * aspect * props.scale : 999;
+    const targetY = hasPointer.current ? state.pointer.y * 0.5 * props.scale : 999;
     pointer.current.x += (targetX - pointer.current.x) * 0.08;
     pointer.current.y += (targetY - pointer.current.y) * 0.08;
     material.uniforms.uMouse.value.copy(pointer.current);
