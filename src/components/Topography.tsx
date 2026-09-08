@@ -120,7 +120,7 @@ const fragmentShader = /* glsl */ `
     float gradedElevation = clamp((elevation - 0.5) * uContrast + 0.5, 0.0, 1.0);
     // Keep contour geometry on the continuous field. Using the contrast-clamped
     // field here creates broad plateaus that incorrectly look like filled bands.
-    float contour = fract(elevation * max(1.0, uBands * 3.5));
+    float contour = fract(elevation * max(1.0, uBands * 6.0));
     float distanceToLine = min(contour, 1.0 - contour);
     float line = 1.0 - smoothstep(uThickness, uThickness + 0.02, distanceToLine);
     float halo = 1.0 - smoothstep(uThickness + 0.02, uThickness + 0.08, distanceToLine);
