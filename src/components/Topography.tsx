@@ -122,8 +122,8 @@ const fragmentShader = /* glsl */ `
     // field here creates broad plateaus that incorrectly look like filled bands.
     float contour = fract(elevation * max(1.0, uBands * 6.0));
     float distanceToLine = min(contour, 1.0 - contour);
-    float line = 1.0 - smoothstep(uThickness, uThickness + 0.012, distanceToLine);
-    float halo = 1.0 - smoothstep(uThickness + 0.012, uThickness + 0.045, distanceToLine);
+    float line = 1.0 - smoothstep(uThickness, uThickness + 0.02, distanceToLine);
+    float halo = 1.0 - smoothstep(uThickness + 0.02, uThickness + 0.08, distanceToLine);
 
     vec3 color = elevationColor(gradedElevation) * uBrightness;
 
