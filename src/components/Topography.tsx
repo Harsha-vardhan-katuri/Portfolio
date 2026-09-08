@@ -130,8 +130,8 @@ const fragmentShader = /* glsl */ `
     vec3 background = vec3(0.003, 0.004, 0.015);
     float bandFill = uFillBands * 0.2 * gradedElevation;
     vec3 finalColor = background + color * bandFill;
-    finalColor += color * halo * uGlow * 0.55;
-    finalColor += color * line * (1.15 + uGlow);
+    finalColor += color * halo * uGlow * 0.7;
+    finalColor += color * line * (1.6 + uGlow);
 
     if (uGrain > 0.5) {
       float grainValue = hash(frag + floor(uTime * 24.0) * 97.31) - 0.5;
