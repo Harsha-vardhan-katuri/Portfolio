@@ -146,8 +146,15 @@ const TopographyPlane = (props: TopographyProps) => {
   const materialRef = useRef<THREE.ShaderMaterial>(null);
   // Start far off-screen so the mouse-influence blob doesn't sit at center on load.
   const pointer = useRef(new THREE.Vector2(999, 999));
+  const hasPointer = useRef(false);
   const elapsed = useRef(0);
   const { size } = useThree();
+
+  useEffect(() => {
+    const onMove = () => { hasPointer.current = true; };
+    window.addEventListener("pointermove", onMove, { once: true });
+    return () => window.removeEventListener("pointermove", onMove);
+  }, []);
 
   const uniforms = useMemo(
     () => ({
