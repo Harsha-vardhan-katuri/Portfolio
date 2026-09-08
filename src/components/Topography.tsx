@@ -120,7 +120,7 @@ const fragmentShader = /* glsl */ `
     float gradedElevation = clamp((elevation - 0.5) * uContrast + 0.5, 0.0, 1.0);
     // Keep contour geometry on the continuous field. Using the contrast-clamped
     // field here creates broad plateaus that incorrectly look like filled bands.
-    float contour = fract(elevation * max(1.0, uBands * 6.0));
+    float contour = fract(elevation * max(1.0, uBands * 3.5));
     float distanceToLine = min(contour, 1.0 - contour);
     float line = 1.0 - smoothstep(uThickness, uThickness + 0.02, distanceToLine);
     float halo = 1.0 - smoothstep(uThickness + 0.02, uThickness + 0.08, distanceToLine);
@@ -144,7 +144,8 @@ const fragmentShader = /* glsl */ `
 
 const TopographyPlane = (props: TopographyProps) => {
   const materialRef = useRef<THREE.ShaderMaterial>(null);
-  const pointer = useRef(new THREE.Vector2());
+  // Start far off-screen so the mouse-influence blob doesn't sit at center on load.
+  const pointer = useRef(new THREE.Vector2(999, 999));
   const elapsed = useRef(0);
   const { size } = useThree();
 
