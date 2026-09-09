@@ -1,6 +1,7 @@
 import { Github, Linkedin, Mail, ArrowUpRight, MapPin, FileText } from "lucide-react";
 import { useRef, useCallback } from "react";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { Reveal } from "@/components/RevealText";
 import { SOCIAL_LINKS } from "@/lib/links";
 import { ParticleText } from "@/components/ParticleText";
