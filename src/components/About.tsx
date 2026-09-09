@@ -27,7 +27,7 @@ export const About = () => {
           twinkle={1}
           zoom={2}
           backgroundGlow={1}
-          opacity={0.55}
+          opacity={0.38}
           mouseInteraction
           mouseStrength={1}
           mouseRadius={0.6}
