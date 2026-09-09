@@ -10,6 +10,7 @@ import Topography from "@/components/Topography";
 export const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const progress = useScrollProgress(sectionRef as React.RefObject<HTMLElement>);
+  const isMobile = useIsMobile();
 
   const scrollToSection = useCallback((id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -32,11 +33,11 @@ export const Hero = () => {
           midColor="#011857"
           highColor="#FFFFFF"
           speed={0.35}
-          morphAmount={3}
+          morphAmount={isMobile ? 2.5 : 3}
           morphSpeed={0.05}
           bands={2}
           thickness={0.01}
-          scale={2}
+          scale={isMobile ? 1.6 : 2}
           pixelSize={1}
           glow={0.5}
           colorMode="elevation"
@@ -48,7 +49,7 @@ export const Hero = () => {
           grainIntensity={0.05}
           mouseInteraction
           mouseRadius={0.3}
-          mouseStrength={0.4}
+          mouseStrength={isMobile ? 0.25 : 0.4}
         />
 
 
@@ -61,20 +62,23 @@ export const Hero = () => {
         >
           {/* Name — particle text that gathers into place and repels the pointer */}
           <h1 className="sr-only">Harsha Vardhan Katuri — Firmware Engineer</h1>
-          <div className="w-full max-w-3xl h-[clamp(100px,19vw,205px)]" aria-hidden>
+          <div
+            className={`w-full max-w-3xl ${isMobile ? "h-[clamp(150px,30vw,220px)]" : "h-[clamp(100px,19vw,205px)]"}`}
+            aria-hidden
+          >
             <ParticleText
               lines={["HARSHA VARDHAN", "KATURI"]}
-              particleSize={1.8}
-              density={4}
+              particleSize={isMobile ? 1.4 : 1.8}
+              density={isMobile ? 5 : 4}
               color="#ffffff"
               highlightColor="#ffffff"
-              scatter={140}
-              gatherDuration={1800}
-              stagger={500}
-              pointerRepel={42}
-              repelRadius={120}
+              scatter={isMobile ? 90 : 140}
+              gatherDuration={isMobile ? 2000 : 1800}
+              stagger={isMobile ? 600 : 500}
+              pointerRepel={isMobile ? 28 : 42}
+              repelRadius={isMobile ? 80 : 120}
               idleDrift={0.8}
-              fontSize={110}
+              fontSize={isMobile ? 80 : 110}
               fontWeight={700}
               className="w-full h-full"
             />
