@@ -2,7 +2,6 @@ import { Code, Cpu, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import { ScrollSection } from "@/components/ScrollSection";
 import { FlyIn } from "@/components/FlyIn";
-import Lightfall from "@/components/Lightfall";
 
 export const About = () => {
   const highlights = [
@@ -12,28 +11,7 @@ export const About = () => {
   ];
 
   return (
-    <ScrollSection
-      id="about"
-      background={
-        <Lightfall
-          colors={["#A6C8FF", "#5227FF", "#FF9FFC"]}
-          backgroundColor="#0A29FF"
-          speed={0.5}
-          streakCount={4}
-          streakWidth={1}
-          streakLength={1}
-          glow={1}
-          density={1}
-          twinkle={1}
-          zoom={2}
-          backgroundGlow={1}
-          opacity={0.38}
-          mouseInteraction
-          mouseStrength={1}
-          mouseRadius={0.6}
-        />
-      }
-    >
+    <ScrollSection id="about">
       {(progress) => (
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
