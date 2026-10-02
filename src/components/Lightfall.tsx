@@ -86,81 +86,35 @@ vec3 palette(float h) {
   return uColor7;
 }
 
-vec3 tanhv(vec3 x) {
-  vec3 e = exp(-2.0 * x);
-  return (1.0 - e) / (1.0 + e);
-}
-
-vec2 sceneC(vec2 frag, vec2 r) {
-  vec2 P = (frag + frag - r) / r.x;
-  float z = 0.0;
-  float d = 1e3;
-  vec4 O = vec4(0.0);
-  for (int k = 0; k < 39; k++) {
-    if (d <= 1e-4) break;
-    O = z * normalize(vec4(P, uZoom, 0.0)) - vec4(0.0, 4.0, 1.0, 0.0) / 4.5;
-    d = 1.0 - sqrt(length(O * O));
-    z += d;
-  }
-  return vec2(O.x, atan(O.z, O.y));
+float hash(float n) {
+  return fract(sin(n * 127.1 + 311.7) * 43758.5453);
 }
 
 void mainImage(out vec4 o, vec2 C) {
   vec2 r = iResolution.xy;
-  vec2 uv0 = (C + C - r) / r.x;
-  float T = 0.1 * iTime * uSpeed + 9.0;
-  float angRings = max(1.0, floor(6.28318530718 * max(uDensity, 0.05) + 0.5));
-  vec2 Y = vec2(5e-3, 6.28318530718 / angRings);
-  vec2 c0 = sceneC(C, r);
-  vec2 cdx = sceneC(C + vec2(1.0, 0.0), r);
-  vec2 cdy = sceneC(C + vec2(0.0, 1.0), r);
-  vec2 dCx = cdx - c0;
-  vec2 dCy = cdy - c0;
-  dCx.y -= 6.28318530718 * floor(dCx.y / 6.28318530718 + 0.5);
-  dCy.y -= 6.28318530718 * floor(dCy.y / 6.28318530718 + 0.5);
-  vec2 fw = abs(dCx) + abs(dCy);
-  C = c0;
-  vec2 P = vec2(2.0, 1.0) * uv0 - (r / r.x) * vec2(0.0, 1.0);
-  vec4 O = uLightMode > 0.5
-    ? vec4(0.0)
-    : vec4(uBgColor * 90.0 * uBgGlow / (1e3 * dot(P, P) + 6.0), 0.0);
-  float mGlow = 0.0;
-  if (uMouseEnabled > 0.5) {
-    vec2 mN = (iMouse + iMouse - r) / r.x;
-    float md = length(uv0 - mN);
-    mGlow = exp(-md * md / max(uMouseRadius * uMouseRadius, 1e-4)) * uMouseStrength;
-    O.rgb += uMouseColor * mGlow * 0.25;
-  }
-  float zr = 5e-4 * uStreakWidth;
-  vec2 rr = vec2(max(length(fw), 1e-5));
-  float tail = 19.0 / max(uStreakLength, 0.05);
+  // Fixed screen-space columns: every trail remains perfectly vertical.
+  float spacing = max(18.0, 34.0 / max(uDensity, 0.2));
+  float lane = floor(C.x / spacing);
+  float x = (lane + 0.5) * spacing + (hash(lane) - 0.5) * spacing * 0.7;
+  float dx = abs(C.x - x);
+  float width = max(0.65, uStreakWidth * 0.85);
+  float core = 1.0 - smoothstep(width * 0.3, width + 1.0, dx);
+  float halo = exp(-dx * dx / (width * width * 16.0));
+  float intensity = 0.0;
   for (int m = 0; m < 16; m++) {
     if (m >= uStreakCount) break;
-    float jf = float(m) + 1.0;
-    float ic = fract(sin(dot(vec2(jf, floor(C.x / Y.x + 0.5)), vec2(7.0, 11.0)) * 73.0));
-    vec2 Pp = C - (T + T * ic) * vec2(0.0, 1.0);
-    Pp -= floor(Pp / Y + 0.5) * Y;
-    float h = fract(8663.0 * ic);
-    vec3 col = palette(h);
-    float weight = mix(1.5, 1.0 + sin(T + 7.0 * h + 4.0), uTwinkle);
-    weight *= (1.0 + mGlow * 2.0);
-    vec2 inner = vec2(length(max(Pp, vec2(-1.0, 0.0))), length(Pp) - zr) - zr;
-    vec2 sm = vec2(1.0) - smoothstep(-rr, rr, inner);
-    O.rgb += dot(sm, vec2(exp(tail * Pp.y), 3.0)) * col * weight;
-    C.x += Y.x / 8.0;
+    float seed = lane * 19.0 + float(m) * 43.0;
+    float cycle = r.y * (1.9 + hash(seed) * 0.9);
+    float speedPx = (85.0 + 65.0 * hash(seed + 3.0)) * uSpeed;
+    float head = mod(iTime * speedPx + hash(seed + 7.0) * cycle, cycle);
+    float lengthPx = (40.0 + 100.0 * hash(seed + 11.0)) * uStreakLength;
+    float behind = head - (r.y - C.y);
+    float line = smoothstep(-2.0, 2.0, behind) * (1.0 - smoothstep(lengthPx - 4.0, lengthPx + 2.0, behind));
+    intensity = max(intensity, line * (0.42 + 0.58 * hash(seed + 17.0)));
   }
-  vec3 colr = sqrt(tanhv(max(O.rgb * uGlow - vec3(0.04, 0.08, 0.02), 0.0)));
-  if (uLightMode > 0.5) {
-    float peak = max(colr.r, max(colr.g, colr.b));
-    float coverage = smoothstep(0.035, 0.58, peak) * uOpacity;
-    vec3 chroma = clamp(colr / max(peak, 1e-4), 0.0, 1.0);
-    chroma = pow(chroma, vec3(1.35));
-    float chromaPeak = max(chroma.r, max(chroma.g, chroma.b));
-    chroma /= max(chromaPeak, 1e-4);
-    o = vec4(mix(vec3(1.0), chroma, coverage * 0.94), 1.0);
-  } else {
-    o = vec4(colr, uOpacity);
-  }
+  vec3 col = palette(hash(lane + 23.0));
+  vec3 light = col * (core + halo * 0.25) * intensity * uGlow;
+  o = vec4(light, clamp((core + halo * 0.3) * intensity * uOpacity, 0.0, 1.0));
 }
 
 void main() {
