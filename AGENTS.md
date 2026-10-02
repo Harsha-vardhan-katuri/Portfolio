@@ -1,1 +1,1 @@
-- Mount the shared Lightfall scene once in the About-to-Contact page wrapper and keep it sticky to the viewport; this preserves animation continuity without remounts at section boundaries.
+- Mount one transparent, straight-trail Lightfall scene sticky across About-to-Contact while giving each section its own translucent CSS atmosphere; this preserves continuous motion and distinct section identities.
