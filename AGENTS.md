@@ -1,0 +1,1 @@
+- Mount the shared Lightfall scene once in the About-to-Contact page wrapper and keep it sticky to the viewport; this preserves animation continuity without remounts at section boundaries.

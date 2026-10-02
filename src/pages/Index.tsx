@@ -10,6 +10,7 @@ import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { PageTransition } from "@/components/PageTransition";
+import Lightfall from "@/components/Lightfall";
 
 const Index = () => {
   return (
@@ -18,13 +19,36 @@ const Index = () => {
         <PageTransition />
         <Navigation />
         <Hero />
-        <About />
-        <Skills />
-        <HorizontalProjects />
-        <Experience />
-        <Education />
-        <Certifications />
-        <Contact />
+        <div className="relative isolate">
+          <div className="sticky top-0 h-screen -mb-[100vh] pointer-events-none" aria-hidden="true">
+            <Lightfall
+              colors={["#A6C8FF", "#5227FF", "#FF9FFC"]}
+              backgroundColor="#0A29FF"
+              speed={0.5}
+              streakCount={4}
+              streakWidth={1}
+              streakLength={1}
+              glow={1}
+              density={1}
+              twinkle={1}
+              zoom={2}
+              backgroundGlow={1}
+              opacity={0.38}
+              mouseInteraction
+              mouseStrength={1}
+              mouseRadius={0.6}
+            />
+          </div>
+          <div className="relative z-10">
+            <About />
+            <Skills />
+            <HorizontalProjects />
+            <Experience />
+            <Education />
+            <Certifications />
+            <Contact />
+          </div>
+        </div>
         <Footer />
       </div>
     </SmoothScroll>
