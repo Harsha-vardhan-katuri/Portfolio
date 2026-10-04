@@ -88,7 +88,7 @@ export const Skills = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {skillCategories.map((category, index) => (
                 <FlyIn key={index} index={index} className="glass-card-hover p-6 group">
-                  <h3 className="text-base font-bold font-display text-primary mb-5 tracking-wide">
+                  <h3 className="text-base font-bold font-display text-foreground mb-5 tracking-wide">
                     {category.title}
                   </h3>
                   <div className="space-y-4">
@@ -104,7 +104,7 @@ export const Skills = () => {
                             whileInView={{ width: `${skill.level}%` }}
                             viewport={{ once: true, margin: "-40px" }}
                             transition={{ duration: 0.8, delay: 0.2 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                            className="h-full rounded-full bg-gradient-to-r from-primary via-primary to-secondary shadow-[0_0_8px_hsl(var(--primary)/0.6)]"
+                            className="h-full rounded-full bg-[hsl(var(--skill-level))] shadow-[0_0_8px_hsl(var(--skill-level)/0.45)]"
                           />
                         </div>
                       </div>

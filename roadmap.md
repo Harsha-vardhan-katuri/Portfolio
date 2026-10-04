@@ -1,0 +1,3 @@
+- [x] Darken project cards and remove their smoky gradients.
+- [x] Set section headings to white and violet word accents to biscuit.
+- [x] Set skills category headings to white and progress bars to red.

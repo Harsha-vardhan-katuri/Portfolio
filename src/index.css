@@ -6,40 +6,41 @@
 
 @layer base {
   :root {
-    --background: 258 45% 5%;
-    --foreground: 210 40% 96%;
+    --background: 260 8% 6%;
+    --foreground: 0 0% 100%;
 
-    --card: 258 40% 8%;
-    --card-foreground: 210 40% 96%;
+    --card: 260 6% 8%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 258 40% 8%;
-    --popover-foreground: 210 40% 96%;
+    --popover: 260 6% 8%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 265 90% 68%;
-    --primary-foreground: 258 45% 5%;
+    --primary: 39 100% 78%;
+    --primary-foreground: 260 8% 6%;
 
-    --secondary: 285 75% 60%;
-    --secondary-foreground: 210 40% 96%;
+    --secondary: 34 100% 71%;
+    --secondary-foreground: 260 8% 6%;
 
-    --muted: 258 25% 14%;
-    --muted-foreground: 260 15% 65%;
+    --muted: 260 6% 14%;
+    --muted-foreground: 260 5% 65%;
 
-    --accent: 265 90% 68%;
-    --accent-foreground: 258 45% 5%;
+    --accent: 39 100% 78%;
+    --accent-foreground: 260 8% 6%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 258 25% 14%;
-    --input: 258 25% 14%;
-    --ring: 265 90% 68%;
+    --border: 260 6% 18%;
+    --input: 260 6% 18%;
+    --ring: 39 100% 78%;
+    --skill-level: 0 100% 52%;
 
     --radius: 1.25rem;
 
-    --gradient-primary: linear-gradient(135deg, hsl(265 90% 68%) 0%, hsl(295 80% 60%) 100%);
-    --gradient-bg: radial-gradient(ellipse at 50% 50%, hsl(258 40% 9%) 0%, hsl(258 45% 5%) 70%);
-    --glow-primary: 0 0 60px hsl(265 90% 68% / 0.18);
-    --glow-secondary: 0 0 60px hsl(295 80% 60% / 0.18);
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+    --gradient-bg: radial-gradient(ellipse at 50% 50%, hsl(var(--card)) 0%, hsl(var(--background)) 70%);
+    --glow-primary: 0 0 60px hsl(var(--primary) / 0.18);
+    --glow-secondary: 0 0 60px hsl(var(--secondary) / 0.18);
     --transition-smooth: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   }
 }
@@ -71,10 +72,10 @@
 
 @layer utilities {
   .glass-card {
-    background: hsl(258 40% 8% / 0.55);
-    border: 1px solid hsl(265 90% 68% / 0.15);
+    background: hsl(var(--card) / 0.85);
+    border: 1px solid hsl(var(--primary) / 0.15);
     border-radius: 1.5rem;
-    box-shadow: 0 20px 60px hsl(265 60% 3% / 0.45);
+    box-shadow: 0 20px 60px hsl(var(--background) / 0.45);
     backdrop-filter: blur(16px);
     position: relative;
     overflow: hidden;
@@ -88,9 +89,9 @@
   }
 
   .glass-card-hover:hover {
-    background: hsl(258 40% 10% / 0.65);
-    border-color: hsl(265 90% 68% / 0.55);
-    box-shadow: 0 24px 70px hsl(265 60% 3% / 0.55), 0 0 30px hsl(265 90% 68% / 0.14);
+    background: hsl(var(--card) / 0.95);
+    border-color: hsl(var(--primary) / 0.55);
+    box-shadow: 0 24px 70px hsl(var(--background) / 0.55), 0 0 30px hsl(var(--primary) / 0.14);
     transform: translate3d(0, -3px, 0);
   }
 
@@ -133,17 +134,7 @@
   }
 
   .gradient-text-shimmer {
-    @apply bg-clip-text text-transparent;
-    background-size: 200% auto;
-    background-image: linear-gradient(
-      90deg,
-      hsl(265 90% 68%) 0%,
-      hsl(295 80% 60%) 25%,
-      hsl(265 90% 68%) 50%,
-      hsl(295 80% 60%) 75%,
-      hsl(265 90% 68%) 100%
-    );
-    animation: shimmer 8s linear infinite;
+    color: hsl(var(--foreground));
   }
 
   .glow-effect {
@@ -218,7 +209,7 @@
 /* Distinct translucent atmospheres above the uninterrupted falling-light layer. */
 #about { background: radial-gradient(ellipse at 12% 30%, hsl(var(--primary) / 0.16), transparent 65%); }
 #skills { background: radial-gradient(ellipse at 88% 25%, hsl(var(--secondary) / 0.16), transparent 65%); }
-#projects { background: radial-gradient(ellipse at 50% 75%, hsl(var(--ring) / 0.11), transparent 68%); }
+#projects { background: transparent; }
 #experience { background: radial-gradient(ellipse at 15% 70%, hsl(var(--primary) / 0.13), transparent 62%); }
 #education { background: radial-gradient(ellipse at 82% 50%, hsl(var(--secondary) / 0.13), transparent 64%); }
 #certifications { background: radial-gradient(ellipse at 35% 20%, hsl(var(--ring) / 0.12), transparent 64%); }
