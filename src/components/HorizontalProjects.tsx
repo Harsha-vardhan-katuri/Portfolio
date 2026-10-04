@@ -7,7 +7,6 @@ type Project = {
   tag: string;
   description: string;
   technologies: string[];
-  color: string;
   github?: string;
   demo?: string;
 };
@@ -20,7 +19,6 @@ const projects: Project[] = [
     description:
       "Modular embedded firmware in C for SPO2, Lipid, WBC, and HbA1c on a multi-threaded POSIX pthread system. Debugged thread interactions and hardware signals using logic analyzer and oscilloscope.",
     technologies: ["Embedded C", "pthreads", "UART", "USB", "Ethernet"],
-    color: "from-cyan-500/30 via-blue-600/20 to-transparent",
     github: "https://github.com/Harsha-vardhan-katuri/HC_FW_Code",
   },
   {
@@ -30,7 +28,6 @@ const projects: Project[] = [
     description:
       "Architected a modular BLE advertisement analysis framework in Embedded C, supporting four packet categories and extracting three-axis accelerometer data for motion classification. Incorporated packet validation, logging, and fault handling mechanisms, improving decoding reliability across valid, corrupted, and malformed packet scenarios. Automated build verification, unit testing, and API documentation using GitHub Actions, Makefile, and Doxygen, achieving 100% successful CI pipeline execution.",
     technologies: ["Embedded C", "BLE", "GitHub Actions", "Makefile", "Doxygen"],
-    color: "from-sky-500/30 via-cyan-600/20 to-transparent",
   },
   {
     num: "03",
@@ -39,7 +36,6 @@ const projects: Project[] = [
     description:
       "Real-time GSR pipeline on ESP32 with ADC sampling at 10–20 Hz, extracting tonic (SCL) and phasic (SCR) components to classify Calm, Normal, and Stress states with <1s latency.",
     technologies: ["ESP32", "Grove GSR", "ADC", "DSP"],
-    color: "from-violet-500/30 via-purple-600/20 to-transparent",
     github: "https://github.com/Harsha-vardhan-katuri/GSR-Sensor-Project",
   },
   {
@@ -49,7 +45,6 @@ const projects: Project[] = [
     description:
       "ESP32 reading NPK, pH, EC, moisture, and temperature via RS485 Modbus RTU, paired with SPI-based LoRa achieving 1 km range and compact 50-byte payloads for remote monitoring.",
     technologies: ["ESP32", "RS485", "LoRa", "Modbus RTU"],
-    color: "from-fuchsia-500/30 via-pink-600/20 to-transparent",
     github: "https://github.com/Harsha-vardhan-katuri/Soil-Sensor-Project",
   },
   {
@@ -59,7 +54,6 @@ const projects: Project[] = [
     description:
       "Health assistant chatbot using Streamlit and Hugging Face Transformers with rule-based intent matching plus DistilGPT-2 fallback, reaching 85% response relevance and <2s latency.",
     technologies: ["Python", "Streamlit", "DistilGPT-2", "NLTK"],
-    color: "from-emerald-500/30 via-teal-600/20 to-transparent",
     github: "https://github.com/Harsha-vardhan-katuri/AI_Chat_Bot",
     demo: "https://aichatbot-scmfkmwqvmvzdj9ayyzp8c.streamlit.app/",
   },
@@ -70,7 +64,6 @@ const projects: Project[] = [
     description:
       "Constructed modular image projector software in Embedded C, processing packetized image data and reconstructing display content through structured payload handling. Introduced packet validation, unit testing, and API documentation, improving maintainability and verification across multiple software modules. Established CI/CD workflows using GitHub Actions and Makefile-based build automation, achieving 100% automated build verification across repository updates.",
     technologies: ["Embedded C", "Packet Parsing", "CI/CD", "GitHub Actions", "Makefile"],
-    color: "from-indigo-500/30 via-blue-600/20 to-transparent",
     github: "https://github.com/Harsha-vardhan-katuri/Image_Projector_Firmware",
   },
   {
@@ -80,7 +73,6 @@ const projects: Project[] = [
     description:
       "Register-level embedded firmware (DDRB, PORTB, PINB) controlling LED patterns from a debounced push-button input with finite-state logic to minimize false triggers.",
     technologies: ["Embedded C", "GPIO", "Debouncing", "AVR"],
-    color: "from-amber-500/25 via-orange-600/20 to-transparent",
     github: "https://github.com/Harsha-vardhan-katuri/Button_Controlled_LEDs",
     demo: "https://wokwi.com/projects/419441645494336513",
   },
@@ -91,7 +83,6 @@ const projects: Project[] = [
     description:
       "Voice-controlled home automation using IBM Watson Assistant with Speech-to-Text and Text-to-Speech, orchestrated via Node-RED flows for hands-free appliance control.",
     technologies: ["IBM Watson", "Node-RED", "STT/TTS", "Python"],
-    color: "from-rose-500/30 via-pink-600/20 to-transparent",
   },
   {
     num: "09",
@@ -100,7 +91,6 @@ const projects: Project[] = [
     description:
       "Smart locking system on Arduino UNO with HC-05 Bluetooth and an MIT App Inventor Android app generating and validating OTPs to actuate a servo-driven lock mechanism.",
     technologies: ["Arduino", "HC-05", "Servo", "Embedded C"],
-    color: "from-purple-500/30 via-violet-600/20 to-transparent",
   },
 ];
 
@@ -254,11 +244,8 @@ export const HorizontalProjects = () => {
                 ref={(el) => {
                   if (isFirstCopy) cardRefs.current[idx] = el;
                 }}
-                className="group/card relative shrink-0 w-[85vw] sm:w-[520px] h-[440px] rounded-3xl overflow-hidden bg-white/[0.015] border border-white/[0.08] backdrop-blur-[6px] shadow-[0_20px_60px_hsl(265_60%_5%/0.35)]"
+                className="group/card relative shrink-0 w-[85vw] sm:w-[520px] h-[440px] rounded-3xl overflow-hidden bg-card border border-border shadow-[0_20px_60px_hsl(var(--background)/0.35)]"
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${p.color} opacity-25`} />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--primary)/0.10),transparent_60%)]" />
-
                 <div className="relative h-full p-8 md:p-10 flex flex-col justify-between">
                   <div className="flex items-start justify-between">
                     <span className="font-display text-6xl md:text-7xl font-black text-foreground/15">

@@ -104,7 +104,7 @@ export const Skills = () => {
                             whileInView={{ width: `${skill.level}%` }}
                             viewport={{ once: true, margin: "-40px" }}
                             transition={{ duration: 0.8, delay: 0.2 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                            className="h-full rounded-full bg-gradient-to-r from-primary via-primary to-secondary shadow-[0_0_8px_hsl(var(--primary)/0.6)]"
+                            className="h-full rounded-full bg-[hsl(var(--skill-level))] shadow-[0_0_8px_hsl(var(--skill-level)/0.45)]"
                           />
                         </div>
                       </div>

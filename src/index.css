@@ -209,7 +209,7 @@
 /* Distinct translucent atmospheres above the uninterrupted falling-light layer. */
 #about { background: radial-gradient(ellipse at 12% 30%, hsl(var(--primary) / 0.16), transparent 65%); }
 #skills { background: radial-gradient(ellipse at 88% 25%, hsl(var(--secondary) / 0.16), transparent 65%); }
-#projects { background: radial-gradient(ellipse at 50% 75%, hsl(var(--ring) / 0.11), transparent 68%); }
+#projects { background: transparent; }
 #experience { background: radial-gradient(ellipse at 15% 70%, hsl(var(--primary) / 0.13), transparent 62%); }
 #education { background: radial-gradient(ellipse at 82% 50%, hsl(var(--secondary) / 0.13), transparent 64%); }
 #certifications { background: radial-gradient(ellipse at 35% 20%, hsl(var(--ring) / 0.12), transparent 64%); }
