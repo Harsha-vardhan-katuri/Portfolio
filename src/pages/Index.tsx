@@ -22,7 +22,7 @@ const Index = () => {
         <div className="relative isolate">
           <div className="sticky top-0 h-screen -mb-[100vh] pointer-events-none" aria-hidden="true">
             <Lightfall
-              colors={["#A6C8FF", "#5227FF", "#FF9FFC"]}
+              colors={["#FF1717", "#FFFFFF"]}
               backgroundColor="#0A29FF"
               speed={0.5}
               streakCount={4}
