@@ -33,7 +33,7 @@ const Index = () => {
               twinkle={1}
               zoom={2}
               backgroundGlow={1}
-              opacity={0.55}
+              opacity={0.9}
               mouseInteraction={false}
             />
           </div>
