@@ -88,7 +88,7 @@ export const Skills = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {skillCategories.map((category, index) => (
                 <FlyIn key={index} index={index} className="glass-card-hover p-6 group">
-                  <h3 className="text-base font-bold font-display text-primary mb-5 tracking-wide">
+                  <h3 className="text-base font-bold font-display text-foreground mb-5 tracking-wide">
                     {category.title}
                   </h3>
                   <div className="space-y-4">
