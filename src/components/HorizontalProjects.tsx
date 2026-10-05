@@ -244,7 +244,7 @@ export const HorizontalProjects = () => {
                 ref={(el) => {
                   if (isFirstCopy) cardRefs.current[idx] = el;
                 }}
-                className="group/card relative shrink-0 w-[85vw] sm:w-[520px] h-[440px] rounded-3xl overflow-hidden bg-card border border-border shadow-[0_20px_60px_hsl(var(--background)/0.35)]"
+                className="glass-card group/card relative shrink-0 w-[85vw] sm:w-[520px] h-[440px] overflow-hidden"
               >
                 <div className="relative h-full p-8 md:p-10 flex flex-col justify-between">
                   <div className="flex items-start justify-between">
@@ -268,7 +268,7 @@ export const HorizontalProjects = () => {
                       {p.technologies.map((t) => (
                         <span
                           key={t}
-                          className="text-[11px] px-2.5 py-1 rounded-full border border-white/[0.12] bg-white/[0.02] backdrop-blur-[4px] text-foreground/80"
+                          className="text-[11px] px-2.5 py-1 rounded-full border border-primary/20 bg-primary/[0.04] text-foreground/80"
                         >
                           {t}
                         </span>
