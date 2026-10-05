@@ -63,13 +63,13 @@ export const Hero = () => {
           {/* Name — particle text that gathers into place and repels the pointer */}
           <h1 className="sr-only">Harsha Vardhan Katuri — Firmware Engineer</h1>
           <div
-            className={`w-full max-w-3xl ${isMobile ? "h-[clamp(150px,30vw,220px)]" : "h-[clamp(100px,19vw,205px)]"}`}
+            className={`w-full max-w-3xl ${isMobile ? "h-[160px]" : "h-[clamp(100px,19vw,205px)]"}`}
             aria-hidden
           >
             <ParticleText
               lines={["HARSHA VARDHAN", "KATURI"]}
-              particleSize={isMobile ? 1.4 : 1.8}
-              density={isMobile ? 5 : 4}
+              particleSize={isMobile ? 2.2 : 1.8}
+              density={isMobile ? 2 : 4}
               color="#ffffff"
               highlightColor="#ffffff"
               scatter={isMobile ? 90 : 140}
@@ -79,7 +79,7 @@ export const Hero = () => {
               repelRadius={isMobile ? 80 : 120}
               idleDrift={0.8}
               fontSize={isMobile ? 80 : 110}
-              fontWeight={700}
+              fontWeight={800}
               className="w-full h-full"
             />
           </div>
