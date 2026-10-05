@@ -41,15 +41,6 @@ export const Certifications = () => {
       {() => (
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            {/* Ambient glow behind section */}
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background:
-                  "radial-gradient(ellipse 50% 40% at 50% 50%, hsl(199 89% 48% / 0.04) 0%, transparent 70%)",
-              }}
-            />
-
             <div className="mb-12 text-center relative z-10">
               <motion.h2
                 initial={{ opacity: 0, y: 30 }}
@@ -84,9 +75,8 @@ export const Certifications = () => {
                 {certifications.map((c, i) => (
                   <div
                     key={i}
-                    className="group relative p-4 rounded-2xl bg-white/[0.025] border border-white/[0.07] hover:bg-white/[0.05] hover:border-primary/30 transition-all duration-500 overflow-hidden"
+                    className="group relative p-4 rounded-2xl bg-card/20 border border-primary/15 hover:bg-card/30 hover:border-primary/30 transition-all duration-500 overflow-hidden"
                   >
-                    <div className="absolute -top-10 -right-10 h-32 w-32 rounded-full bg-primary/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                     <div className="relative flex items-start gap-4">
                       <div className="p-3 rounded-xl bg-primary/10 border border-primary/20 shrink-0">
                         <Award className="h-5 w-5 text-primary" />
@@ -125,7 +115,7 @@ export const Certifications = () => {
                     { label: "Core focus", value: "Firmware & Embedded Systems" },
                     { label: "Tools covered", value: "C/C++, Linux, Python, LoRa, MQTT" },
                   ].map((item, i) => (
-                    <div key={i} className="flex items-center justify-between p-3.5 rounded-xl bg-white/[0.025] border border-white/[0.07]">
+                    <div key={i} className="flex items-center justify-between p-3.5 rounded-xl bg-card/20 border border-primary/15">
                       <span className="text-sm text-muted-foreground">{item.label}</span>
                       <span className="text-sm font-semibold">{item.value}</span>
                     </div>

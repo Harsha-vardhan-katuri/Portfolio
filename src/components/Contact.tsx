@@ -29,12 +29,6 @@ export const Contact = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             {/* Ambient glow behind section */}
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background: "radial-gradient(ellipse 50% 40% at 50% 50%, hsl(199 89% 48% / 0.04) 0%, transparent 70%)",
-              }}
-            />
 
             <div className="mb-12 text-center relative z-10">
               <motion.h2
@@ -75,7 +69,7 @@ export const Contact = () => {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       required
-                      className="bg-white/[0.03] backdrop-blur-md border-white/[0.08] focus:border-primary/50 h-12 rounded-xl placeholder:text-muted-foreground/40"
+                      className="bg-card/30 border-primary/20 focus:border-primary/50 h-12 rounded-xl placeholder:text-muted-foreground/40"
                     />
                   </div>
                   <div>
@@ -86,7 +80,7 @@ export const Contact = () => {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       required
-                      className="bg-white/[0.03] backdrop-blur-md border-white/[0.08] focus:border-primary/50 h-12 rounded-xl placeholder:text-muted-foreground/40"
+                      className="bg-card/30 border-primary/20 focus:border-primary/50 h-12 rounded-xl placeholder:text-muted-foreground/40"
                     />
                   </div>
                   <div>
@@ -97,7 +91,7 @@ export const Contact = () => {
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       required
                       rows={4}
-                      className="bg-white/[0.03] backdrop-blur-md border-white/[0.08] focus:border-primary/50 rounded-xl resize-none placeholder:text-muted-foreground/40"
+                      className="bg-card/30 border-primary/20 focus:border-primary/50 rounded-xl resize-none placeholder:text-muted-foreground/40"
                     />
                   </div>
                   <Button
@@ -192,10 +186,6 @@ export const Contact = () => {
               transition={{ duration: 0.6 }}
               className="glass-card p-10 text-center relative overflow-hidden"
             >
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{ background: "radial-gradient(ellipse at 50% 100%, hsl(199 89% 48% / 0.06) 0%, transparent 60%)" }}
-              />
               <p className="text-lg mb-6 text-foreground/75 relative z-10">
                 Looking for a dedicated firmware engineer to bring your embedded systems project to life?
               </p>
