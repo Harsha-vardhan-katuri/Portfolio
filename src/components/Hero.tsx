@@ -86,7 +86,7 @@ export const Hero = () => {
 
           {/* Location chip — sits ABOVE the Get-in-touch button */}
           <Reveal delay={0.85} className="mt-10">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-[11px] uppercase tracking-[0.3em] text-foreground/70 bg-white/[0.04] border border-white/10 backdrop-blur-md">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-[11px] uppercase tracking-[0.3em] text-foreground/70 bg-card/35 border border-primary/20 backdrop-blur-sm">
               <MapPin className="h-3 w-3 text-primary" />
               Bengaluru, India
             </span>

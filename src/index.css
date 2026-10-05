@@ -15,16 +15,16 @@
     --popover: 260 6% 8%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 39 100% 78%;
+    --primary: 208 100% 62%;
     --primary-foreground: 260 8% 6%;
 
-    --secondary: 34 100% 71%;
+    --secondary: 195 100% 70%;
     --secondary-foreground: 260 8% 6%;
 
     --muted: 260 6% 14%;
     --muted-foreground: 260 5% 65%;
 
-    --accent: 39 100% 78%;
+    --accent: 208 100% 62%;
     --accent-foreground: 260 8% 6%;
 
     --destructive: 0 84% 60%;
@@ -32,8 +32,10 @@
 
     --border: 260 6% 18%;
     --input: 260 6% 18%;
-    --ring: 39 100% 78%;
+    --ring: 208 100% 62%;
     --skill-level: 0 100% 52%;
+    --glass-surface: 260 6% 9%;
+    --glass-edge: 208 100% 72%;
 
     --radius: 1.25rem;
 
@@ -72,11 +74,11 @@
 
 @layer utilities {
   .glass-card {
-    background: hsl(var(--card) / 0.85);
-    border: 1px solid hsl(var(--primary) / 0.15);
+    background: linear-gradient(150deg, hsl(var(--glass-edge) / 0.055), transparent 42%), hsl(var(--glass-surface) / 0.34);
+    border: 1px solid hsl(var(--glass-edge) / 0.22);
     border-radius: 1.5rem;
-    box-shadow: 0 20px 60px hsl(var(--background) / 0.45);
-    backdrop-filter: blur(16px);
+    box-shadow: inset 0 1px hsl(var(--foreground) / 0.13), 0 14px 32px hsl(var(--background) / 0.18);
+    backdrop-filter: blur(2px);
     position: relative;
     overflow: hidden;
   }
@@ -89,9 +91,9 @@
   }
 
   .glass-card-hover:hover {
-    background: hsl(var(--card) / 0.95);
-    border-color: hsl(var(--primary) / 0.55);
-    box-shadow: 0 24px 70px hsl(var(--background) / 0.55), 0 0 30px hsl(var(--primary) / 0.14);
+    background: linear-gradient(150deg, hsl(var(--glass-edge) / 0.1), transparent 45%), hsl(var(--glass-surface) / 0.42);
+    border-color: hsl(var(--glass-edge) / 0.48);
+    box-shadow: inset 0 1px hsl(var(--foreground) / 0.2), 0 18px 36px hsl(var(--background) / 0.2);
     transform: translate3d(0, -3px, 0);
   }
 
@@ -125,7 +127,9 @@
   }
 
   .glass-effect {
-    @apply bg-white/[0.03] backdrop-blur-md border border-white/[0.06];
+    background: hsl(var(--glass-surface) / 0.28);
+    border: 1px solid hsl(var(--glass-edge) / 0.2);
+    backdrop-filter: blur(2px);
   }
 
   .gradient-text {
@@ -206,11 +210,11 @@
   }
 }
 
-/* Distinct translucent atmospheres above the uninterrupted falling-light layer. */
-#about { background: radial-gradient(ellipse at 12% 30%, hsl(var(--primary) / 0.16), transparent 65%); }
-#skills { background: radial-gradient(ellipse at 88% 25%, hsl(var(--secondary) / 0.16), transparent 65%); }
+/* Flat, nearly transparent section washes keep identity without fogging the light trails. */
+#about { background: hsl(var(--primary) / 0.018); }
+#skills { background: hsl(var(--secondary) / 0.015); }
 #projects { background: transparent; }
-#experience { background: radial-gradient(ellipse at 15% 70%, hsl(var(--primary) / 0.13), transparent 62%); }
-#education { background: radial-gradient(ellipse at 82% 50%, hsl(var(--secondary) / 0.13), transparent 64%); }
-#certifications { background: radial-gradient(ellipse at 35% 20%, hsl(var(--ring) / 0.12), transparent 64%); }
-#contact { background: radial-gradient(ellipse at 75% 85%, hsl(var(--primary) / 0.14), transparent 64%); }
+#experience { background: hsl(var(--primary) / 0.012); }
+#education { background: hsl(var(--secondary) / 0.018); }
+#certifications { background: hsl(var(--ring) / 0.014); }
+#contact { background: hsl(var(--primary) / 0.02); }
