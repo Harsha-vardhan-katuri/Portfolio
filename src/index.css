@@ -15,27 +15,27 @@
     --popover: 260 6% 8%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 208 100% 62%;
-    --primary-foreground: 260 8% 6%;
+    --primary: 217 100% 21%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 195 100% 70%;
-    --secondary-foreground: 260 8% 6%;
+    --secondary: 217 100% 21%;
+    --secondary-foreground: 0 0% 100%;
 
     --muted: 260 6% 14%;
     --muted-foreground: 260 5% 65%;
 
-    --accent: 208 100% 62%;
-    --accent-foreground: 260 8% 6%;
+    --accent: 217 100% 21%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 260 6% 18%;
     --input: 260 6% 18%;
-    --ring: 208 100% 62%;
+    --ring: 217 100% 21%;
     --skill-level: 0 100% 52%;
     --glass-surface: 260 6% 9%;
-    --glass-edge: 208 100% 72%;
+    --glass-edge: 217 100% 40%;
 
     --radius: 1.25rem;
 
@@ -218,3 +218,13 @@
 #education { background: hsl(var(--secondary) / 0.018); }
 #certifications { background: hsl(var(--ring) / 0.014); }
 #contact { background: hsl(var(--primary) / 0.02); }
+
+/* Let the particles arrive, then resolve to sharp, legible mobile lettering. */
+.mobile-name-particles { animation: name-particles-out 0.45s ease 2.15s both; }
+.mobile-name-settled { animation: name-settle-in 0.45s ease 2.15s both; }
+@keyframes name-particles-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes name-settle-in { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .mobile-name-particles { animation: none; opacity: 0; }
+  .mobile-name-settled { animation: none; opacity: 1; }
+}
