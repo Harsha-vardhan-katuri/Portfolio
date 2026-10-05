@@ -1,6 +1,6 @@
 - [x] Darken project cards and remove their smoky gradients.
-- [x] Set section headings to white and violet word accents to biscuit.
+- [x] Set section headings to white and replace violet word accents with bright blue.
 - [x] Set skills category headings to white and progress bars to red.
-- [ ] Remove smoky overlays that obscure the 3D animation.
-- [ ] Make component surfaces clear liquid-glass rather than heavily blurred.
-- [ ] Replace biscuit accents with bright blue while retaining white headings and red skill bars.
+- [x] Remove smoky overlays that obscure the 3D animation.
+- [x] Make component surfaces clear liquid-glass rather than heavily blurred.
+- [x] Replace biscuit accents with bright blue while retaining white headings and red skill bars.
