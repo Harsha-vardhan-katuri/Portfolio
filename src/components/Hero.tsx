@@ -63,7 +63,7 @@ export const Hero = () => {
           {/* Name — particle text that gathers into place and repels the pointer */}
           <h1 className="sr-only">Harsha Vardhan Katuri — Firmware Engineer</h1>
           <div
-            className={`w-full max-w-3xl ${isMobile ? "h-[160px]" : "h-[clamp(100px,19vw,205px)]"}`}
+            className={`relative w-full max-w-3xl ${isMobile ? "h-[160px]" : "h-[clamp(100px,19vw,205px)]"}`}
             aria-hidden
           >
             <ParticleText
@@ -80,8 +80,14 @@ export const Hero = () => {
               idleDrift={0.8}
               fontSize={isMobile ? 80 : 110}
               fontWeight={800}
-              className="w-full h-full"
+              className={`w-full h-full ${isMobile ? "mobile-name-particles" : ""}`}
             />
+            {isMobile && (
+              <div className="mobile-name-settled absolute inset-0 flex flex-col items-center justify-center font-display font-extrabold text-foreground text-[28px] min-[375px]:text-[32px] leading-[1.15] whitespace-nowrap text-center">
+                <span>HARSHA VARDHAN</span>
+                <span>KATURI</span>
+              </div>
+            )}
           </div>
 
           {/* Location chip — sits ABOVE the Get-in-touch button */}

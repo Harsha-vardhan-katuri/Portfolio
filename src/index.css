@@ -218,3 +218,13 @@
 #education { background: hsl(var(--secondary) / 0.018); }
 #certifications { background: hsl(var(--ring) / 0.014); }
 #contact { background: hsl(var(--primary) / 0.02); }
+
+/* Let the particles arrive, then resolve to sharp, legible mobile lettering. */
+.mobile-name-particles { animation: name-particles-out 0.45s ease 2.15s both; }
+.mobile-name-settled { animation: name-settle-in 0.45s ease 2.15s both; }
+@keyframes name-particles-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes name-settle-in { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .mobile-name-particles { animation: none; opacity: 0; }
+  .mobile-name-settled { animation: none; opacity: 1; }
+}
