@@ -18,6 +18,7 @@ export default {
         display: ['Space Grotesk', 'Inter', 'sans-serif'],
       },
       colors: {
+        highlight: "hsl(var(--text-highlight))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
