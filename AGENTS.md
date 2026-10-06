@@ -1,2 +1,2 @@
 - Mount one transparent, straight-trail Lightfall scene sticky across About-to-Contact while giving each section its own translucent CSS atmosphere; this preserves continuous motion and distinct section identities.
-- Use semantic global CSS color tokens for section accents and skill-level bars; a shared palette keeps headings and highlights consistent across sections.
+- Use semantic global CSS color tokens for section accents, skill-level bars, hover states, and section symbols; a shared palette keeps headings and highlights consistent across sections.

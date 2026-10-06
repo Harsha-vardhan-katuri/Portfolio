@@ -10,7 +10,7 @@ interface MarqueeProps {
 export const Marquee = ({ items, speed = 40, reverse = false }: MarqueeProps) => {
   const content = items.map((item, i) => (
     <span key={i} className="mx-12 inline-flex items-center gap-12">
-      <span className="font-display text-5xl md:text-7xl lg:text-8xl font-black tracking-tight text-foreground/[0.08] hover:text-highlight transition-colors duration-500">
+      <span className="font-display text-5xl md:text-7xl lg:text-8xl font-black tracking-tight text-foreground/[0.08] hover:text-hover-accent transition-colors duration-500">
         {item}
       </span>
       <span className="h-3 w-3 rounded-full bg-primary/30" aria-hidden />

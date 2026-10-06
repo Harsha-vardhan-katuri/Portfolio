@@ -75,11 +75,11 @@ export const Certifications = () => {
                 {certifications.map((c, i) => (
                   <div
                     key={i}
-                    className="group relative p-4 rounded-2xl bg-card/20 border border-primary/15 hover:bg-card/30 hover:border-highlight/30 transition-all duration-500 overflow-hidden"
+                    className="group relative p-4 rounded-2xl bg-card/20 border border-primary/15 hover:bg-card/30 hover:border-hover-accent/30 transition-all duration-500 overflow-hidden"
                   >
                     <div className="relative flex items-start gap-4">
                       <div className="p-3 rounded-xl bg-primary/10 border border-primary/20 shrink-0">
-                        <Award className="h-5 w-5 text-primary" />
+                        <Award className="h-5 w-5 text-section-symbol" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-start justify-between gap-3 mb-1">
@@ -87,7 +87,7 @@ export const Certifications = () => {
                           <span className="text-xs text-foreground/50 font-mono shrink-0">{c.year}</span>
                         </div>
                         <p className="text-sm text-highlight mb-3 inline-flex items-center gap-1.5">
-                          <BadgeCheck className="h-3.5 w-3.5" />
+                          <BadgeCheck className="h-3.5 w-3.5 text-section-symbol" />
                           {c.issuer}
                         </p>
                         <div className="flex flex-wrap gap-2">
@@ -130,7 +130,7 @@ export const Certifications = () => {
                   <Button
                     asChild
                     variant="outline"
-                    className="w-full rounded-xl border-white/[0.08] hover:bg-highlight/[0.05] hover:text-highlight"
+                    className="w-full rounded-xl border-white/[0.08] hover:bg-hover-accent/[0.05] hover:text-hover-accent"
                   >
                     <a
                       href="https://www.linkedin.com/in/harsha-vardhan-katuri/details/certifications/"
