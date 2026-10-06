@@ -96,7 +96,7 @@ export const Contact = () => {
                   </div>
                   <Button
                     type="submit"
-                    className="w-full bg-primary hover:bg-highlight hover:text-background text-primary-foreground h-12 rounded-xl"
+                    className="w-full bg-primary hover:bg-hover-accent hover:text-background text-primary-foreground h-12 rounded-xl"
                   >
                     <Send className="h-4 w-4 mr-2" />
                     Send Message
@@ -122,7 +122,7 @@ export const Contact = () => {
                       <div>
                         <p className="text-xs text-muted-foreground">{item.label}</p>
                         {item.action ? (
-                          <a href={item.action} className="text-sm font-medium hover:text-highlight transition-colors">
+                          <a href={item.action} className="text-sm font-medium hover:text-hover-accent transition-colors">
                             {item.value}
                           </a>
                         ) : (
@@ -161,7 +161,7 @@ export const Contact = () => {
                   <div className="mt-5 pt-5 border-t border-border/30">
                     <Button
                       asChild
-                      className="w-full bg-primary/10 hover:bg-highlight/20 hover:text-highlight text-primary border border-primary/20 rounded-xl"
+                      className="w-full bg-primary/10 hover:bg-hover-accent/20 hover:text-hover-accent text-primary border border-primary/20 rounded-xl"
                     >
                       <a
                         href={SOCIAL_LINKS.resumeView}
@@ -191,7 +191,7 @@ export const Contact = () => {
               </p>
               <Button
                 size="lg"
-                className="bg-primary hover:bg-highlight hover:text-background text-primary-foreground animate-glow-pulse relative z-10 rounded-xl"
+                className="bg-primary hover:bg-hover-accent hover:text-background text-primary-foreground animate-glow-pulse relative z-10 rounded-xl"
                 onClick={() => window.location.href = "mailto:katuriharshavardhan369@gmail.com"}
               >
                 <Mail className="mr-2 h-5 w-5" />

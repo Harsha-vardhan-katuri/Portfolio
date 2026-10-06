@@ -73,10 +73,10 @@ export const Education = () => {
 
                     {/* Details */}
                     <div className={left ? "md:pr-12" : "md:order-2 md:pl-12"}>
-                      <div className="glass-card-hover p-6 hover:border-highlight/30 transition-all duration-500">
+                      <div className="glass-card-hover p-6 hover:border-hover-accent/30 transition-all duration-500">
                         <div className="flex items-start gap-3 mb-3">
                           <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
-                            <GraduationCap className="h-4 w-4 text-primary" />
+                            <GraduationCap className="h-4 w-4 text-section-symbol" />
                           </div>
                           <div className="flex-1">
                             <h3 className="font-display font-bold text-lg leading-snug">

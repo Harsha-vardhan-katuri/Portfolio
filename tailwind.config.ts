@@ -19,6 +19,8 @@ export default {
       },
       colors: {
         highlight: "hsl(var(--text-highlight))",
+        "hover-accent": "hsl(var(--hover-accent))",
+        "section-symbol": "hsl(var(--section-symbol))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

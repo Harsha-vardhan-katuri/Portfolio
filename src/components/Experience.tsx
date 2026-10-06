@@ -77,10 +77,10 @@ export const Experience = () => {
 
                     {/* Details */}
                     <div className={left ? "md:pr-12" : "md:order-2 md:pl-12"}>
-                      <div className="glass-card-hover group p-6 hover:border-highlight/30 transition-all duration-500">
+                      <div className="glass-card-hover group p-6 hover:border-hover-accent/30 transition-all duration-500">
                         <div className="flex items-start gap-3 mb-3">
                           <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
-                            <Icon className="h-4 w-4 text-primary" />
+                            <Icon className="h-4 w-4 text-section-symbol" />
                           </div>
                           <div className="flex-1">
                             <h3 className="text-lg font-bold font-display">{exp.title}</h3>

@@ -35,6 +35,8 @@
     --ring: 217 100% 21%;
     --skill-level: 56.705882 100% 50%;
     --text-highlight: 56.705882 100% 50%;
+    --hover-accent: 180 100% 50%;
+    --section-symbol: 0 100% 57.058824%;
     --glass-surface: 260 6% 9%;
     --glass-edge: 217 100% 40%;
 
@@ -92,9 +94,9 @@
   }
 
   .glass-card-hover:hover {
-    background: linear-gradient(150deg, hsl(var(--text-highlight) / 0.06), transparent 45%), hsl(var(--glass-surface) / 0.42);
-    border-color: hsl(var(--text-highlight) / 0.48);
-    box-shadow: inset 0 1px hsl(var(--foreground) / 0.2), 0 0 20px hsl(var(--text-highlight) / 0.08);
+    background: linear-gradient(150deg, hsl(var(--hover-accent) / 0.06), transparent 45%), hsl(var(--glass-surface) / 0.42);
+    border-color: hsl(var(--hover-accent) / 0.48);
+    box-shadow: inset 0 1px hsl(var(--foreground) / 0.2), 0 0 20px hsl(var(--hover-accent) / 0.08);
     transform: translate3d(0, -3px, 0);
   }
 

@@ -251,7 +251,7 @@ export const HorizontalProjects = () => {
                     <span className="font-display text-6xl md:text-7xl font-black text-foreground/15">
                       {p.num}
                     </span>
-                    <ArrowUpRight className="h-7 w-7 text-foreground/40 group-hover/card:text-highlight group-hover/card:rotate-45 transition-all duration-500" />
+                    <ArrowUpRight className="h-7 w-7 text-foreground/40 group-hover/card:text-hover-accent group-hover/card:rotate-45 transition-all duration-500" />
                   </div>
 
                   <div>
@@ -281,7 +281,7 @@ export const HorizontalProjects = () => {
                           href={p.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-foreground/80 hover:text-highlight transition-colors"
+                          className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-foreground/80 hover:text-hover-accent transition-colors"
                         >
                           <Github className="h-4 w-4" /> Code
                         </a>
@@ -292,7 +292,7 @@ export const HorizontalProjects = () => {
                           href={p.demo}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-foreground/80 hover:text-highlight transition-colors"
+                          className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-foreground/80 hover:text-hover-accent transition-colors"
                         >
                           <ExternalLink className="h-4 w-4" /> Demo
                         </a>
@@ -317,7 +317,7 @@ export const HorizontalProjects = () => {
               className={`transition-all duration-300 rounded-full ${
                 active === idx
                   ? "w-8 h-2.5 bg-primary shadow-[0_0_12px_hsl(var(--primary))]"
-                  : "w-2.5 h-2.5 bg-white/25 hover:bg-highlight/50"
+                  : "w-2.5 h-2.5 bg-white/25 hover:bg-hover-accent/50"
               }`}
             />
           ))}

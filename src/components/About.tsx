@@ -77,7 +77,7 @@ export const About = () => {
                   index={index}
                   className="glass-card-hover p-8"
                 >
-                  <item.icon className="h-10 w-10 text-primary mb-4" />
+                  <item.icon className="h-10 w-10 text-section-symbol mb-4" />
                   <h3 className="text-xl font-bold font-display mb-3">{item.title}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
                 </FlyIn>
