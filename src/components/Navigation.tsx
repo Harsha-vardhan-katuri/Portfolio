@@ -56,7 +56,7 @@ export const Navigation = () => {
               data-magnetic
               onClick={() => scrollToSection(item.id)}
               className={`group relative flex items-center gap-2 px-3 md:px-4 py-2 rounded-full text-xs font-medium transition-colors duration-300 ${
-                active ? "text-primary" : "text-foreground/60 hover:text-foreground"
+                active ? "text-primary" : "text-foreground/60 hover:text-highlight"
               }`}
               aria-label={item.label}
             >

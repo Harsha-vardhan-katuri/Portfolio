@@ -5,4 +5,6 @@
 - [x] Make component surfaces clear liquid-glass rather than heavily blurred.
 - [x] Replace biscuit accents with bright blue while retaining white headings and red skill bars.
 - [x] Make the mobile particle name readable and use the requested #00296b blue instead of sky blue.
-- [x] Use #fff100 only for emphasized prose and #00296b for skill-level bars.
+- [x] Use #fff100 for emphasized prose (superseded for skill bars by the latest request).
+- [x] Apply #fff100 to college/CGPA/company/issuer/project-skill labels, Quick Facts headings, skill bars, and hover effects; preserve other blue accents.
+- [x] Update all resume links to the supplied Drive file and verify the displayed styling.

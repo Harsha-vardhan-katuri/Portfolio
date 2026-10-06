@@ -16,7 +16,7 @@ export const contact = {
   github: "https://github.com/Harsha-vardhan-katuri",
   linkedin: "https://www.linkedin.com/in/harsha-vardhan-katuri-772166256/",
   resume:
-    "https://drive.google.com/file/d/1lYhdQYLYqZ0BPuCR4JWuDhhuBEUk1Y5X/view?usp=drive_link",
+    "https://drive.google.com/file/d/1UhLhxO3uUCmz5Iiu-rPSdZH2gkdKT9Xc/view?usp=drive_link",
 };
 
 export const projects = [

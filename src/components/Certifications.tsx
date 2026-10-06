@@ -75,7 +75,7 @@ export const Certifications = () => {
                 {certifications.map((c, i) => (
                   <div
                     key={i}
-                    className="group relative p-4 rounded-2xl bg-card/20 border border-primary/15 hover:bg-card/30 hover:border-primary/30 transition-all duration-500 overflow-hidden"
+                    className="group relative p-4 rounded-2xl bg-card/20 border border-primary/15 hover:bg-card/30 hover:border-highlight/30 transition-all duration-500 overflow-hidden"
                   >
                     <div className="relative flex items-start gap-4">
                       <div className="p-3 rounded-xl bg-primary/10 border border-primary/20 shrink-0">
@@ -86,7 +86,7 @@ export const Certifications = () => {
                           <h4 className="font-display font-bold text-lg leading-snug">{c.title}</h4>
                           <span className="text-xs text-foreground/50 font-mono shrink-0">{c.year}</span>
                         </div>
-                        <p className="text-sm text-primary/90 mb-3 inline-flex items-center gap-1.5">
+                        <p className="text-sm text-highlight mb-3 inline-flex items-center gap-1.5">
                           <BadgeCheck className="h-3.5 w-3.5" />
                           {c.issuer}
                         </p>
@@ -130,7 +130,7 @@ export const Certifications = () => {
                   <Button
                     asChild
                     variant="outline"
-                    className="w-full rounded-xl border-white/[0.08] hover:bg-white/[0.05] hover:text-primary"
+                    className="w-full rounded-xl border-white/[0.08] hover:bg-highlight/[0.05] hover:text-highlight"
                   >
                     <a
                       href="https://www.linkedin.com/in/harsha-vardhan-katuri/details/certifications/"

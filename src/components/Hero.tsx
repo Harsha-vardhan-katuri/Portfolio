@@ -103,7 +103,7 @@ export const Hero = () => {
             <button
               data-magnetic
               onClick={() => scrollToSection("contact")}
-              className="group relative px-5 py-2.5 rounded-full bg-foreground text-background text-xs font-semibold inline-flex items-center gap-2 overflow-hidden hover:scale-[1.03] transition-transform duration-300"
+              className="group relative px-5 py-2.5 rounded-full bg-foreground text-background text-xs font-semibold inline-flex items-center gap-2 overflow-hidden hover:bg-highlight hover:scale-[1.03] transition-[color,background-color,transform] duration-300"
             >
               <span>Get in touch</span>
               <ArrowUpRight className="h-3.5 w-3.5 group-hover:rotate-45 transition-transform duration-300" />
@@ -111,7 +111,7 @@ export const Hero = () => {
             <button
               data-magnetic
               onClick={() => scrollToSection("projects")}
-              className="px-5 py-2.5 rounded-full border border-foreground/20 text-xs font-semibold hover:border-primary hover:text-primary transition-colors duration-300"
+              className="px-5 py-2.5 rounded-full border border-foreground/20 text-xs font-semibold hover:border-highlight hover:text-highlight transition-colors duration-300"
             >
               See work
             </button>
@@ -120,7 +120,7 @@ export const Hero = () => {
               href={SOCIAL_LINKS.resumeView}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-2.5 rounded-full border border-primary/40 text-primary text-xs font-semibold inline-flex items-center gap-2 hover:bg-primary/10 transition-colors duration-300"
+              className="px-5 py-2.5 rounded-full border border-primary/40 text-primary text-xs font-semibold inline-flex items-center gap-2 hover:bg-highlight/10 transition-colors duration-300"
             >
               <FileText className="h-3.5 w-3.5" />
               Resume
@@ -141,7 +141,7 @@ export const Hero = () => {
                 target={href.startsWith("mailto") ? undefined : "_blank"}
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="p-3 rounded-full border border-foreground/10 hover:border-primary/60 hover:bg-primary/10 transition-all duration-300"
+                className="p-3 rounded-full border border-foreground/10 hover:border-highlight/60 hover:bg-highlight/10 transition-all duration-300"
               >
                 <Icon className="h-4 w-4 text-foreground/60" />
               </a>
