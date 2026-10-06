@@ -33,7 +33,8 @@
     --border: 260 6% 18%;
     --input: 260 6% 18%;
     --ring: 217 100% 21%;
-    --skill-level: 0 100% 52%;
+    --skill-level: 217 100% 21%;
+    --text-highlight: 57 100% 50%;
     --glass-surface: 260 6% 9%;
     --glass-edge: 217 100% 40%;
 
@@ -139,6 +140,10 @@
 
   .gradient-text-shimmer {
     color: hsl(var(--foreground));
+  }
+
+  .text-highlight {
+    color: hsl(var(--text-highlight));
   }
 
   .glow-effect {

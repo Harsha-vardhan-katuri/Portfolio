@@ -5,3 +5,4 @@
 - [x] Make component surfaces clear liquid-glass rather than heavily blurred.
 - [x] Replace biscuit accents with bright blue while retaining white headings and red skill bars.
 - [x] Make the mobile particle name readable and use the requested #00296b blue instead of sky blue.
+- [x] Use #fff100 only for emphasized prose and #00296b for skill-level bars.

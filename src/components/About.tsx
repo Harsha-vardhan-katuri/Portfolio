@@ -37,8 +37,8 @@ export const About = () => {
             <div className="grid md:grid-cols-2 gap-12 items-start mb-16">
               <div className="space-y-5">
               {[
-                <>I'm a <span className="text-primary font-semibold">Firmware Engineer</span> with 1.5+ years of experience developing Embedded Linux firmware and application middleware for connected products. My work focuses on <span className="text-primary font-semibold">C programming</span>, protocol integration, firmware optimization, and debugging hardware-software interactions.</>,
-                <>I enjoy building reliable embedded software and continuously improving my expertise through hands-on projects involving <span className="text-primary font-semibold">BLE</span>, <span className="text-primary font-semibold">Modbus RTU</span>, packet parsing, board bring-up, and modern development practices including Git, GitHub Actions, CI/CD, Makefile, and Doxygen.</>,
+                <>I'm a <span className="text-highlight font-semibold">Firmware Engineer</span> with 1.5+ years of experience developing Embedded Linux firmware and application middleware for connected products. My work focuses on <span className="text-highlight font-semibold">C programming</span>, protocol integration, firmware optimization, and debugging hardware-software interactions.</>,
+                <>I enjoy building reliable embedded software and continuously improving my expertise through hands-on projects involving <span className="text-highlight font-semibold">BLE</span>, <span className="text-highlight font-semibold">Modbus RTU</span>, packet parsing, board bring-up, and modern development practices including Git, GitHub Actions, CI/CD, Makefile, and Doxygen.</>,
               ].map((text, i) => (
                   <FlyIn
                     key={i}
