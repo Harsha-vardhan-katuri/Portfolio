@@ -52,7 +52,7 @@ export const About = () => {
               </div>
 
               <FlyIn direction="top-right" delay={0.15} className="glass-card p-8 space-y-4">
-                <h3 className="text-2xl font-bold font-display mb-6">Quick Facts</h3>
+                <h3 className="text-2xl font-bold font-display text-highlight mb-6">Quick Facts</h3>
                 {[
                   { label: "Location", value: "Bengaluru, Karnataka" },
                   { label: "Education", value: "B.Tech in ECE (CGPA: 8.36)" },
@@ -62,7 +62,7 @@ export const About = () => {
                   <div key={i} className="flex items-center gap-3">
                     <div className="w-1.5 h-1.5 rounded-full bg-primary" />
                     <p className="text-foreground/80">
-                      <span className="text-primary font-semibold">{fact.label}:</span> {fact.value}
+                      <span className="text-highlight font-semibold">{fact.label}:</span> {fact.value}
                     </p>
                   </div>
                 ))}

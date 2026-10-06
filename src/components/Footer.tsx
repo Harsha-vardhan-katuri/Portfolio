@@ -20,7 +20,7 @@ export const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="p-2.5 rounded-full border border-foreground/10 hover:border-primary/60 hover:bg-primary/10 transition-all duration-300"
+                className="p-2.5 rounded-full border border-foreground/10 hover:border-highlight/60 hover:bg-highlight/10 transition-all duration-300"
               >
                 <Icon className="h-4 w-4 text-foreground/70" />
               </a>

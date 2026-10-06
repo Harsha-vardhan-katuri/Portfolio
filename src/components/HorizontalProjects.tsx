@@ -244,18 +244,18 @@ export const HorizontalProjects = () => {
                 ref={(el) => {
                   if (isFirstCopy) cardRefs.current[idx] = el;
                 }}
-                className="glass-card group/card relative shrink-0 w-[85vw] sm:w-[520px] h-[440px] overflow-hidden"
+                className="glass-card-hover group/card relative shrink-0 w-[85vw] sm:w-[520px] h-[440px] overflow-hidden"
               >
                 <div className="relative h-full p-8 md:p-10 flex flex-col justify-between">
                   <div className="flex items-start justify-between">
                     <span className="font-display text-6xl md:text-7xl font-black text-foreground/15">
                       {p.num}
                     </span>
-                    <ArrowUpRight className="h-7 w-7 text-foreground/40 group-hover/card:text-primary group-hover/card:rotate-45 transition-all duration-500" />
+                    <ArrowUpRight className="h-7 w-7 text-foreground/40 group-hover/card:text-highlight group-hover/card:rotate-45 transition-all duration-500" />
                   </div>
 
                   <div>
-                    <p className="text-xs uppercase tracking-[0.3em] text-primary/80 mb-2">
+                    <p className="text-xs uppercase tracking-[0.3em] text-highlight mb-2">
                       {p.tag}
                     </p>
                     <h3 className="font-display text-2xl md:text-3xl font-bold mb-3 leading-[1.1]">
@@ -268,7 +268,7 @@ export const HorizontalProjects = () => {
                       {p.technologies.map((t) => (
                         <span
                           key={t}
-                          className="text-[11px] px-2.5 py-1 rounded-full border border-primary/20 bg-primary/[0.04] text-foreground/80"
+                          className="text-[11px] px-2.5 py-1 rounded-full border border-primary/20 bg-primary/[0.04] text-highlight"
                         >
                           {t}
                         </span>
@@ -281,7 +281,7 @@ export const HorizontalProjects = () => {
                           href={p.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-foreground/80 hover:text-primary transition-colors"
+                          className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-foreground/80 hover:text-highlight transition-colors"
                         >
                           <Github className="h-4 w-4" /> Code
                         </a>
@@ -292,7 +292,7 @@ export const HorizontalProjects = () => {
                           href={p.demo}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-foreground/80 hover:text-primary transition-colors"
+                          className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-foreground/80 hover:text-highlight transition-colors"
                         >
                           <ExternalLink className="h-4 w-4" /> Demo
                         </a>
@@ -317,7 +317,7 @@ export const HorizontalProjects = () => {
               className={`transition-all duration-300 rounded-full ${
                 active === idx
                   ? "w-8 h-2.5 bg-primary shadow-[0_0_12px_hsl(var(--primary))]"
-                  : "w-2.5 h-2.5 bg-white/25 hover:bg-white/50"
+                  : "w-2.5 h-2.5 bg-white/25 hover:bg-highlight/50"
               }`}
             />
           ))}
