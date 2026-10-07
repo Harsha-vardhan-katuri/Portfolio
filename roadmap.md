@@ -8,4 +8,5 @@
 - [x] Use #fff100 for emphasized prose (superseded for skill bars by the latest request).
 - [x] Apply #fff100 to college/CGPA/company/issuer/project-skill labels, Quick Facts headings, skill bars, and hover effects; preserve other blue accents.
 - [x] Update all resume links to the supplied Drive file and verify the displayed styling.
-- [x] Make home Resume text white, switch hover effects to #00FFFF, and set About/Experience/Education/Certifications symbols to #FF2424.
+- [x] Make home Resume text white and set About/Experience/Education/Certifications symbols to #FF2424.
+- [x] Replace cyan hover backgrounds with #00296b while keeping the home Resume text white.
