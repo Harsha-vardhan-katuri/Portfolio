@@ -11,3 +11,4 @@
 - [x] Make home Resume text white and set About/Experience/Education/Certifications symbols to #FF2424.
 - [x] Replace cyan hover backgrounds with #00296b while keeping the home Resume text white.
 - [x] Make Home location and all Contact icons #FF2424; match the Home Resume button border and hover to See work.
+- [ ] Standardize all portfolio action buttons to white backgrounds with black text and #00296b hover backgrounds with white text.

@@ -130,7 +130,7 @@ export const Certifications = () => {
                   <Button
                     asChild
                     variant="outline"
-                    className="w-full rounded-xl border-white/[0.08] hover:bg-hover-accent/[0.05] hover:text-hover-accent"
+                    className="w-full rounded-xl"
                   >
                     <a
                       href="https://www.linkedin.com/in/harsha-vardhan-katuri/details/certifications/"
