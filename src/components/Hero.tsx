@@ -103,7 +103,7 @@ export const Hero = () => {
             <button
               data-magnetic
               onClick={() => scrollToSection("contact")}
-              className="group relative px-5 py-2.5 rounded-full bg-foreground text-background text-xs font-semibold inline-flex items-center gap-2 overflow-hidden hover:bg-hover-accent hover:scale-[1.03] transition-[color,background-color,transform] duration-300"
+              className="group relative px-5 py-2.5 rounded-full border border-foreground bg-foreground text-background text-xs font-semibold inline-flex items-center gap-2 overflow-hidden hover:border-hover-accent hover:bg-hover-accent hover:text-foreground hover:scale-[1.03] transition-[color,background-color,border-color,transform] duration-300"
             >
               <span>Get in touch</span>
               <ArrowUpRight className="h-3.5 w-3.5 group-hover:rotate-45 transition-transform duration-300" />
@@ -111,7 +111,7 @@ export const Hero = () => {
             <button
               data-magnetic
               onClick={() => scrollToSection("projects")}
-              className="px-5 py-2.5 rounded-full border border-foreground/20 text-xs font-semibold hover:border-hover-accent hover:text-hover-accent transition-colors duration-300"
+              className="px-5 py-2.5 rounded-full border border-foreground bg-foreground text-background text-xs font-semibold hover:border-hover-accent hover:bg-hover-accent hover:text-foreground transition-colors duration-300"
             >
               See work
             </button>
@@ -120,7 +120,7 @@ export const Hero = () => {
               href={SOCIAL_LINKS.resumeView}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-2.5 rounded-full border border-foreground/20 text-foreground text-xs font-semibold inline-flex items-center gap-2 hover:border-hover-accent hover:text-hover-accent transition-colors duration-300"
+              className="px-5 py-2.5 rounded-full border border-foreground bg-foreground text-background text-xs font-semibold inline-flex items-center gap-2 hover:border-hover-accent hover:bg-hover-accent hover:text-foreground transition-colors duration-300"
             >
               <FileText className="h-3.5 w-3.5" />
               Resume

@@ -93,12 +93,12 @@ export const Projects = () => {
                     </div>
 
                     <div className="flex md:flex-col gap-3 self-end">
-                      <Button variant="outline" size="sm" className="border-primary/15 hover:bg-primary/10 hover:border-primary/30 transition-all duration-300" asChild>
+                      <Button variant="outline" size="sm" className="transition-all duration-300" asChild>
                         <a href={project.github} target="_blank" rel="noopener noreferrer">
                           <Github className="h-4 w-4 mr-2" /> Code
                         </a>
                       </Button>
-                      <Button variant="outline" size="sm" className="border-primary/15 hover:bg-primary/10 hover:border-primary/30 transition-all duration-300">
+                      <Button variant="outline" size="sm" className="transition-all duration-300">
                         <ExternalLink className="h-4 w-4 mr-2" /> Demo
                       </Button>
                     </div>
