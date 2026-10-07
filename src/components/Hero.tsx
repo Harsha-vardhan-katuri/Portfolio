@@ -93,7 +93,7 @@ export const Hero = () => {
           {/* Location chip — sits ABOVE the Get-in-touch button */}
           <Reveal delay={0.85} className="mt-10">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-[11px] uppercase tracking-[0.3em] text-foreground/70 bg-card/35 border border-primary/20 backdrop-blur-sm">
-              <MapPin className="h-3 w-3 text-primary" />
+              <MapPin className="h-3 w-3 text-section-symbol" />
               Bengaluru, India
             </span>
           </Reveal>
@@ -120,7 +120,7 @@ export const Hero = () => {
               href={SOCIAL_LINKS.resumeView}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-2.5 rounded-full border border-primary/40 text-foreground text-xs font-semibold inline-flex items-center gap-2 hover:bg-hover-accent/10 transition-colors duration-300"
+              className="px-5 py-2.5 rounded-full border border-foreground/20 text-foreground text-xs font-semibold inline-flex items-center gap-2 hover:border-hover-accent hover:text-hover-accent transition-colors duration-300"
             >
               <FileText className="h-3.5 w-3.5" />
               Resume

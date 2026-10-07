@@ -10,3 +10,4 @@
 - [x] Update all resume links to the supplied Drive file and verify the displayed styling.
 - [x] Make home Resume text white and set About/Experience/Education/Certifications symbols to #FF2424.
 - [x] Replace cyan hover backgrounds with #00296b while keeping the home Resume text white.
+- [x] Make Home location and all Contact icons #FF2424; match the Home Resume button border and hover to See work.
