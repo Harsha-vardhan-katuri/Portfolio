@@ -117,7 +117,7 @@ export const Contact = () => {
                   {contactInfo.map((item, i) => (
                     <div key={i} className="flex items-center gap-4">
                       <div className="p-2.5 glass-card rounded-xl flex-shrink-0">
-                        <item.icon className="h-4 w-4 text-primary" />
+                        <item.icon className="h-4 w-4 text-section-symbol" />
                       </div>
                       <div>
                         <p className="text-xs text-muted-foreground">{item.label}</p>
@@ -153,7 +153,7 @@ export const Contact = () => {
                         rel="noopener noreferrer"
                         className="flex items-center gap-4 p-3.5 glass-card-hover rounded-xl"
                       >
-                        <link.icon className="h-5 w-5 text-primary" />
+                        <link.icon className="h-5 w-5 text-section-symbol" />
                         <span className="font-medium text-sm">{link.label}</span>
                       </a>
                     ))}
@@ -169,7 +169,7 @@ export const Contact = () => {
                         rel="noopener noreferrer"
                         onClick={() => toast.success("Opening resume…")}
                       >
-                        <FileText className="h-4 w-4 mr-2" />
+                        <FileText className="h-4 w-4 mr-2 text-section-symbol" />
                         Download CV
                       </a>
                     </Button>
