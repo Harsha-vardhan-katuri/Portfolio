@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Home, User, Cpu, Briefcase, Award, FolderKanban, Mail, GraduationCap } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export const Navigation = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -11,22 +12,26 @@ export const Navigation = () => {
       raf = requestAnimationFrame(() => {
         raf = 0;
         const sections = ["home", "about", "skills", "projects", "experience", "education", "certifications", "contact"];
-        const scrollPosition = window.scrollY + window.innerHeight / 2;
+        // Viewport coordinates work even inside the shared background wrapper.
+        const trackingLine = 96;
+        let currentSection = "home";
         for (const section of sections) {
           const el = document.getElementById(section);
           if (el) {
-            const { offsetTop, offsetHeight } = el;
-            if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-              setActiveSection(section);
-              break;
-            }
+            if (el.getBoundingClientRect().top <= trackingLine) currentSection = section;
           }
         }
+        setActiveSection(currentSection);
       });
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -51,21 +56,22 @@ export const Navigation = () => {
           const Icon = item.icon;
           const active = activeSection === item.id;
           return (
-            <button
+            <Button
               key={item.id}
               data-magnetic
               onClick={() => scrollToSection(item.id)}
-              className={`group relative flex items-center gap-2 px-3 md:px-4 py-2 rounded-full text-xs font-medium transition-colors duration-300 ${
-                active ? "text-primary hover:text-hover-accent" : "text-foreground/60 hover:text-hover-accent"
+              className={`group relative h-auto flex items-center gap-2 px-3 md:px-4 py-2 rounded-full text-xs font-medium transition-colors duration-300 hover:border-hover-accent hover:bg-hover-accent hover:text-foreground ${
+                active ? "border-foreground bg-foreground text-background" : "border-transparent bg-transparent text-foreground/60"
               }`}
               aria-label={item.label}
+              aria-current={active ? "location" : undefined}
             >
               <Icon className="h-4 w-4 shrink-0" />
               <span className="hidden md:inline">{item.label}</span>
               {active && (
-                <span className="absolute left-1/2 -translate-x-1/2 -bottom-[6px] h-[2px] w-6 rounded-full bg-primary shadow-[0_0_10px_hsl(var(--primary))]" />
+                <span className="absolute left-1/2 -translate-x-1/2 -bottom-[6px] h-[2px] w-6 rounded-full bg-foreground" />
               )}
-            </button>
+            </Button>
           );
         })}
       </div>

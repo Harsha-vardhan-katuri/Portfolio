@@ -1,2 +1,3 @@
 - Mount one transparent, straight-trail Lightfall scene sticky across About-to-Contact while giving each section its own translucent CSS atmosphere; this preserves continuous motion and distinct section identities.
 - Use semantic global CSS color tokens for section accents, skill-level bars, hover states, and section symbols; a shared palette keeps headings and highlights consistent across sections.
+- Track navigation using viewport-relative section bounds at the navigation line, not offset-parent coordinates; nested continuous-background wrappers must not shift active-section detection.
