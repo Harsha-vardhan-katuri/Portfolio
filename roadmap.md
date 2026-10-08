@@ -12,3 +12,4 @@
 - [x] Replace cyan hover backgrounds with #00296b while keeping the home Resume text white.
 - [x] Make Home location and all Contact icons #FF2424; match the Home Resume button border and hover to See work.
 - [x] Standardize all portfolio action buttons to white backgrounds with black text and #00296b hover backgrounds with white text.
+- [x] Correct nested-section navigation tracking and match the active highlight and Home location badge to Get in touch.
