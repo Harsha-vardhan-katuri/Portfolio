@@ -68,9 +68,6 @@ export const Navigation = () => {
             >
               <Icon className="h-4 w-4 shrink-0" />
               <span className="hidden md:inline">{item.label}</span>
-              {active && (
-                <span className="absolute left-1/2 -translate-x-1/2 -bottom-[6px] h-[2px] w-6 rounded-full bg-foreground" />
-              )}
             </Button>
           );
         })}
